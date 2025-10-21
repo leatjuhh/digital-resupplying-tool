@@ -1,0 +1,17 @@
+[data-draggable="true"] {
+  cursor: grab;
+}
+
+[data-draggable="true"]:active {
+  cursor: grabbing;
+}
+
+.dragging {
+  opacity: 0.5;
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+.drop-target {
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 2px dashed rgba(59, 130, 246, 0.5);
+}

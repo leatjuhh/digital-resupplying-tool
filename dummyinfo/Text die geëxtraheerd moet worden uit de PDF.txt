@@ -1,0 +1,37 @@
+Lumitex B.V.	09/03/2025	23:27 Blad 1
+Overzicht: Interfiliaalverdeling	V7.10 R026 EP
+BAS 
+
+Volgnummer : 423264 
+Leverancier : 70 NED 
+Kleur : 32 pink 
+Hoofdgroep : 149 D T-Shirt Diversen 
+Artikelgroep : 0 
+Seizoenjaar: 2025 
+Collectie : 10 Voorjaar Voorkoop 
+Bestelcode : TC039-04 Brisia475 
+Omschrijving : Brisia Peacock Top 
+Laatste leverdatum:
+
+Filiaal	< Voorraad per maat >					Verkocht
+		XXS	XS	S	M	L	XL	XXL	XXXL		
+Totaal	.	.	6	12	9	8	5				14
+0	Centraal	M	.	.	.	.	.	.	.	0
+2	Lumitex	.	.	.	.	.	.	.	.	.	0
+3	Mag	Part.	.	.	.	.	.	.	.	.	0
+5	Panningen	1	1	.	.	.	.	.	.	6
+6	Echt	.	.	1	1	1	1	.	.	.	1
+8	Weert	.	1	1	1	.	1	.	.	.	1
+9	Stein	.	1	2	1	1	.	.	.	.	0
+11	Brunssum	.	1	1	1	1	.	.	.	1
+12	Kerkrade	.	1	1	2	1	.	.	.	1
+13	Budel	.	1	2	1	1	.	.	.	.	0
+14	OL	Weert	.	.	.	.	.	.	.	.	0
+15	OL	Sittard	.	.	.	.	.	.	.	.	0
+16	OL	Roermon	.	.	.	.	.	.	.	.	0
+27	Klachten	.	.	.	.	.	.	.	.	0
+31	Tilburg	.	.	1	1	1	1	.	.	.	1
+35	Etten-Leur	1	1	1	1	.	.	.	.	2
+38	Tegelen	.	1	1	1	.	.	.	.	.	1
+39	OL	Blerick	.	.	.	.	.	.	.	.	0
+99	Verschil	.	.	.	.	.	.	.	.	0
