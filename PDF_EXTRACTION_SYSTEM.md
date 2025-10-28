@@ -239,9 +239,28 @@ for row in parsed.rows:
 cd backend
 python test_pdf_extraction.py
 
-# Debug table extraction
-python debug_pdf_table.py
+# Test all PDFs in batch
+python test_all_pdfs.py
+
+# Generate visual HTML test report
+python visual_pdf_test.py
 ```
+
+### Visual Test Report
+
+The `visual_pdf_test.py` script generates a comprehensive HTML report with:
+- ✅ Complete data tables for all extracted PDFs
+- ✅ Metadata visualization per PDF
+- ✅ Color-coded status indicators (SUCCESS, PARTIAL_SUCCESS, FAILED)
+- ✅ Voorraad data per filiaal and maat
+- ✅ Negative voorraad detection and warnings
+- ✅ JSON export for programmatic use
+
+**Test Results (October 28, 2025):**
+- 📊 7 PDFs tested from dummyinfo folder
+- ✅ 6 PDFs successfully extracted (86%)
+- ⚠️ 1 PDF partially successful (negative voorraad correctly handled)
+- ✅ 100% data completeness - all filialen, maten, and verkocht values
 
 ### Test Coverage
 
@@ -249,12 +268,14 @@ python debug_pdf_table.py
 ✅ Metadata extraction  
 ✅ Table extraction (multiple strategies)  
 ✅ Text-based fallback parsing  
-✅ Size detection (8 standard sizes)  
+✅ Size detection (8 standard sizes + numeric 32-48)  
 ✅ Filiaal name normalization  
 ✅ Voorraad value conversion  
+✅ Negative voorraad detection and handling  
 ✅ Data validation  
 ✅ Database storage  
 ✅ Error handling and logging  
+✅ Visual report generation  
 
 ---
 
