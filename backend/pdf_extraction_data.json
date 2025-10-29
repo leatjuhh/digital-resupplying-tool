@@ -1,0 +1,2257 @@
+[
+  {
+    "filename": "422557.pdf",
+    "status": "SUCCESS",
+    "volgnummer": "422557",
+    "metadata": {
+      "Lumitex B.V. 20/10/2025 02": "20 Blad 1",
+      "Overzicht": "Interfiliaalverdeling V7.10 R026 EP",
+      "Volgnummer": "422557",
+      "Hoofdgroep": "109 D Pant Div. Artikelgroep : 0",
+      "Seizoenjaar": "2025 Collectie : 20 Najaar Voorkoop Bestelcode : 006006 Angie001",
+      "Omschrijving": "Angie Asky Pant"
+    },
+    "sizes": [
+      "32",
+      "34",
+      "36",
+      "38",
+      "40",
+      "42",
+      "44",
+      "46",
+      "48"
+    ],
+    "rows": [
+      {
+        "filiaal_code": "0",
+        "filiaal_naam": "Centraal M",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "2",
+        "filiaal_naam": "Lumitex",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "3",
+        "filiaal_naam": "Magazijn Particulier",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "5",
+        "filiaal_naam": "Panningen",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 1,
+          "38": 0,
+          "40": 2,
+          "42": 2,
+          "44": 1,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 11
+      },
+      {
+        "filiaal_code": "6",
+        "filiaal_naam": "Echt",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 1,
+          "40": 1,
+          "42": 1,
+          "44": 1,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 3
+      },
+      {
+        "filiaal_code": "8",
+        "filiaal_naam": "Weert",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 1,
+          "40": 1,
+          "42": 1,
+          "44": 1,
+          "46": 1,
+          "48": 0
+        },
+        "verkocht": 12
+      },
+      {
+        "filiaal_code": "9",
+        "filiaal_naam": "Stein",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 1,
+          "38": 1,
+          "40": 1,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "11",
+        "filiaal_naam": "Brunssum",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 1,
+          "38": 1,
+          "40": 1,
+          "42": 1,
+          "44": 1,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 4
+      },
+      {
+        "filiaal_code": "12",
+        "filiaal_naam": "Kerkrade",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 1,
+          "42": 1,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "13",
+        "filiaal_naam": "Budel",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 1,
+          "40": 1,
+          "42": 1,
+          "44": 1,
+          "46": 1,
+          "48": 0
+        },
+        "verkocht": 10
+      },
+      {
+        "filiaal_code": "14",
+        "filiaal_naam": "Outlet Weert",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "15",
+        "filiaal_naam": "Outlet Sittard",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "16",
+        "filiaal_naam": "Outlet Roermon",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "27",
+        "filiaal_naam": "Klachten",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "31",
+        "filiaal_naam": "Tilburg",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 1,
+          "40": 0,
+          "42": 2,
+          "44": 1,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 6
+      },
+      {
+        "filiaal_code": "35",
+        "filiaal_naam": "Etten-Leur",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 1,
+          "38": 1,
+          "40": 1,
+          "42": 1,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "38",
+        "filiaal_naam": "Tegelen",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 2,
+          "40": 1,
+          "42": 0,
+          "44": 0,
+          "46": 1,
+          "48": 0
+        },
+        "verkocht": 9
+      },
+      {
+        "filiaal_code": "39",
+        "filiaal_naam": "Outlet Blerick",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      }
+    ],
+    "totals": {
+      "filiaal_code": "",
+      "filiaal_naam": "",
+      "voorraad_per_maat": {
+        "32": 0,
+        "34": 0,
+        "36": 4,
+        "38": 9,
+        "40": 10,
+        "42": 10,
+        "44": 6,
+        "46": 3,
+        "48": 0
+      },
+      "verkocht": 61
+    },
+    "row_count": 18,
+    "error_count": 0,
+    "errors": [],
+    "warnings": [],
+    "negative_voorraad": []
+  },
+  {
+    "filename": "424123.pdf",
+    "status": "SUCCESS",
+    "volgnummer": "424123",
+    "metadata": {
+      "Lumitex B.V. 20/10/2025 02": "16 Blad 1",
+      "Overzicht": "Interfiliaalverdeling V7.10 R026 EP",
+      "Volgnummer": "424123",
+      "Hoofdgroep": "128 D Vest Artikelgroep : 0",
+      "Seizoenjaar": "2025 Collectie : 20 Najaar Voorkoop Bestelcode : 4669 JacketIndigo",
+      "Omschrijving": "Jacket Loops"
+    },
+    "sizes": [
+      "XXS",
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "rows": [
+      {
+        "filiaal_code": "0",
+        "filiaal_naam": "Centraal M",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "2",
+        "filiaal_naam": "Lumitex",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "3",
+        "filiaal_naam": "Magazijn Particulier",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "5",
+        "filiaal_naam": "Panningen",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 8
+      },
+      {
+        "filiaal_code": "6",
+        "filiaal_naam": "Echt",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "8",
+        "filiaal_naam": "Weert",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 2,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 5
+      },
+      {
+        "filiaal_code": "9",
+        "filiaal_naam": "Stein",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 4
+      },
+      {
+        "filiaal_code": "11",
+        "filiaal_naam": "Brunssum",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "12",
+        "filiaal_naam": "Kerkrade",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 5
+      },
+      {
+        "filiaal_code": "13",
+        "filiaal_naam": "Budel",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 1,
+          "XL": 0,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 6
+      },
+      {
+        "filiaal_code": "14",
+        "filiaal_naam": "Outlet Weert",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "15",
+        "filiaal_naam": "Outlet Sittard",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "16",
+        "filiaal_naam": "Outlet Roermon",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "27",
+        "filiaal_naam": "Klachten",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "31",
+        "filiaal_naam": "Tilburg",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 1,
+          "L": 0,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 3
+      },
+      {
+        "filiaal_code": "35",
+        "filiaal_naam": "Etten-Leur",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "38",
+        "filiaal_naam": "Tegelen",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 1,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 5
+      },
+      {
+        "filiaal_code": "39",
+        "filiaal_naam": "Outlet Blerick",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      }
+    ],
+    "totals": {
+      "filiaal_code": "",
+      "filiaal_naam": "",
+      "voorraad_per_maat": {
+        "XXS": 0,
+        "XS": 0,
+        "S": 1,
+        "M": 1,
+        "L": 3,
+        "XL": 4,
+        "XXL": 4,
+        "XXXL": 0
+      },
+      "verkocht": 41
+    },
+    "row_count": 18,
+    "error_count": 0,
+    "errors": [],
+    "warnings": [],
+    "negative_voorraad": []
+  },
+  {
+    "filename": "424128.pdf",
+    "status": "SUCCESS",
+    "volgnummer": "424128",
+    "metadata": {
+      "Lumitex B.V. 20/10/2025 02": "17 Blad 1",
+      "Overzicht": "Interfiliaalverdeling V7.10 R026 EP",
+      "Volgnummer": "424128",
+      "Hoofdgroep": "128 D Vest Artikelgroep : 0",
+      "Seizoenjaar": "2025 Collectie : 20 Najaar Voorkoop Bestelcode : 4672 CardiganEspress",
+      "Omschrijving": "Sleeveless Fuzzy Cardigan"
+    },
+    "sizes": [
+      "XXS",
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "rows": [
+      {
+        "filiaal_code": "0",
+        "filiaal_naam": "Centraal M",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "2",
+        "filiaal_naam": "Lumitex",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "3",
+        "filiaal_naam": "Magazijn Particulier",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "5",
+        "filiaal_naam": "Panningen",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 8
+      },
+      {
+        "filiaal_code": "6",
+        "filiaal_naam": "Echt",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 2,
+          "XXXL": 0
+        },
+        "verkocht": 8
+      },
+      {
+        "filiaal_code": "8",
+        "filiaal_naam": "Weert",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "9",
+        "filiaal_naam": "Stein",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 4
+      },
+      {
+        "filiaal_code": "11",
+        "filiaal_naam": "Brunssum",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 1,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 3
+      },
+      {
+        "filiaal_code": "12",
+        "filiaal_naam": "Kerkrade",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 9
+      },
+      {
+        "filiaal_code": "13",
+        "filiaal_naam": "Budel",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 3
+      },
+      {
+        "filiaal_code": "14",
+        "filiaal_naam": "Outlet Weert",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "15",
+        "filiaal_naam": "Outlet Sittard",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "16",
+        "filiaal_naam": "Outlet Roermon",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "27",
+        "filiaal_naam": "Klachten",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "31",
+        "filiaal_naam": "Tilburg",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 4
+      },
+      {
+        "filiaal_code": "35",
+        "filiaal_naam": "Etten-Leur",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "38",
+        "filiaal_naam": "Tegelen",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 8
+      },
+      {
+        "filiaal_code": "39",
+        "filiaal_naam": "Outlet Blerick",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      }
+    ],
+    "totals": {
+      "filiaal_code": "",
+      "filiaal_naam": "",
+      "voorraad_per_maat": {
+        "XXS": 0,
+        "XS": 0,
+        "S": 0,
+        "M": 1,
+        "L": 0,
+        "XL": 0,
+        "XXL": 3,
+        "XXXL": 0
+      },
+      "verkocht": 50
+    },
+    "row_count": 18,
+    "error_count": 0,
+    "errors": [],
+    "warnings": [],
+    "negative_voorraad": []
+  },
+  {
+    "filename": "424205.pdf",
+    "status": "SUCCESS",
+    "volgnummer": "424205",
+    "metadata": {
+      "Lumitex B.V. 20/10/2025 02": "20 Blad 1",
+      "Overzicht": "Interfiliaalverdeling V7.10 R026 EP",
+      "Volgnummer": "424205",
+      "Hoofdgroep": "109 D Pant Div. Artikelgroep : 0",
+      "Seizoenjaar": "2025 Collectie : 20 Najaar Voorkoop Bestelcode : 001320 Angie205",
+      "Omschrijving": "Angie Elastic Pant"
+    },
+    "sizes": [
+      "32",
+      "34",
+      "36",
+      "38",
+      "40",
+      "42",
+      "44",
+      "46",
+      "48"
+    ],
+    "rows": [
+      {
+        "filiaal_code": "0",
+        "filiaal_naam": "Centraal M",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "2",
+        "filiaal_naam": "Lumitex",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "3",
+        "filiaal_naam": "Magazijn Particulier",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "5",
+        "filiaal_naam": "Panningen",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 9
+      },
+      {
+        "filiaal_code": "6",
+        "filiaal_naam": "Echt",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 1,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 8
+      },
+      {
+        "filiaal_code": "8",
+        "filiaal_naam": "Weert",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 4
+      },
+      {
+        "filiaal_code": "9",
+        "filiaal_naam": "Stein",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 1,
+          "38": 2,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 1,
+          "48": 0
+        },
+        "verkocht": 7
+      },
+      {
+        "filiaal_code": "11",
+        "filiaal_naam": "Brunssum",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "12",
+        "filiaal_naam": "Kerkrade",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 1,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "13",
+        "filiaal_naam": "Budel",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 1,
+          "38": 1,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 1,
+          "48": 0
+        },
+        "verkocht": 5
+      },
+      {
+        "filiaal_code": "14",
+        "filiaal_naam": "Outlet Weert",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "15",
+        "filiaal_naam": "Outlet Sittard",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "16",
+        "filiaal_naam": "Outlet Roermon",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "27",
+        "filiaal_naam": "Klachten",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "31",
+        "filiaal_naam": "Tilburg",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "35",
+        "filiaal_naam": "Etten-Leur",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 4
+      },
+      {
+        "filiaal_code": "38",
+        "filiaal_naam": "Tegelen",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 1,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 9
+      },
+      {
+        "filiaal_code": "39",
+        "filiaal_naam": "Outlet Blerick",
+        "voorraad_per_maat": {
+          "32": 0,
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      }
+    ],
+    "totals": {
+      "filiaal_code": "",
+      "filiaal_naam": "",
+      "voorraad_per_maat": {
+        "32": 0,
+        "34": 0,
+        "36": 3,
+        "38": 4,
+        "40": 0,
+        "42": 1,
+        "44": 0,
+        "46": 2,
+        "48": 0
+      },
+      "verkocht": 50
+    },
+    "row_count": 18,
+    "error_count": 0,
+    "errors": [],
+    "warnings": [],
+    "negative_voorraad": []
+  },
+  {
+    "filename": "424784.pdf",
+    "status": "SUCCESS",
+    "volgnummer": "424784",
+    "metadata": {
+      "Lumitex B.V. 20/10/2025 02": "17 Blad 1",
+      "Overzicht": "Interfiliaalverdeling V7.10 R026 EP",
+      "Volgnummer": "424784",
+      "Hoofdgroep": "169 D Blouse diversen Artikelgroep : 0",
+      "Seizoenjaar": "2025 Collectie : 21 Najaar Nakoop Bestelcode : WI25.60.011 Josin006",
+      "Omschrijving": "Josina V-Neck Blouse"
+    },
+    "sizes": [
+      "XXS",
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "rows": [
+      {
+        "filiaal_code": "0",
+        "filiaal_naam": "Centraal M",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "2",
+        "filiaal_naam": "Lumitex",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "3",
+        "filiaal_naam": "Magazijn Particulier",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "5",
+        "filiaal_naam": "Panningen",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 2,
+          "L": 2,
+          "XL": 2,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "6",
+        "filiaal_naam": "Echt",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "8",
+        "filiaal_naam": "Weert",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 1,
+          "L": 2,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "9",
+        "filiaal_naam": "Stein",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 2,
+          "L": 1,
+          "XL": 1,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "11",
+        "filiaal_naam": "Brunssum",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 1,
+          "L": 2,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "12",
+        "filiaal_naam": "Kerkrade",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 2,
+          "L": 1,
+          "XL": 1,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "13",
+        "filiaal_naam": "Budel",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 1,
+          "L": 2,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "14",
+        "filiaal_naam": "Outlet Weert",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "15",
+        "filiaal_naam": "Outlet Sittard",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "16",
+        "filiaal_naam": "Outlet Roermon",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "27",
+        "filiaal_naam": "Klachten",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "31",
+        "filiaal_naam": "Tilburg",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 1,
+          "L": 1,
+          "XL": 2,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "35",
+        "filiaal_naam": "Etten-Leur",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 2,
+          "L": 1,
+          "XL": 1,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "38",
+        "filiaal_naam": "Tegelen",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "39",
+        "filiaal_naam": "Outlet Blerick",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      }
+    ],
+    "totals": {
+      "filiaal_code": "",
+      "filiaal_naam": "",
+      "voorraad_per_maat": {
+        "XXS": 0,
+        "XS": 0,
+        "S": 7,
+        "M": 14,
+        "L": 14,
+        "XL": 12,
+        "XXL": 7,
+        "XXXL": 0
+      },
+      "verkocht": 0
+    },
+    "row_count": 18,
+    "error_count": 0,
+    "errors": [],
+    "warnings": [],
+    "negative_voorraad": []
+  },
+  {
+    "filename": "54448.pdf",
+    "status": "PARTIAL_SUCCESS",
+    "volgnummer": "54448",
+    "metadata": {
+      "Lumitex B.V. 20/10/2025 02": "20 Blad 1",
+      "Overzicht": "Interfiliaalverdeling V7.10 R026 EP",
+      "Volgnummer": "54448",
+      "Hoofdgroep": "109 D Pant Div. Artikelgroep : 0",
+      "Seizoenjaar": "2025 Collectie : 20 Najaar Voorkoop Bestelcode : 199268 Vayen001",
+      "Omschrijving": "Vayen City Crepe Pants"
+    },
+    "sizes": [
+      "34",
+      "36",
+      "38",
+      "40",
+      "42",
+      "44",
+      "46",
+      "48"
+    ],
+    "rows": [
+      {
+        "filiaal_code": "0",
+        "filiaal_naam": "Centraal M",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "2",
+        "filiaal_naam": "Lumitex",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "3",
+        "filiaal_naam": "Magazijn Particulier",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "5",
+        "filiaal_naam": "Panningen",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "6",
+        "filiaal_naam": "Echt",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 1,
+          "38": 1,
+          "40": 2,
+          "42": 0,
+          "44": 0,
+          "46": 1,
+          "48": 0
+        },
+        "verkocht": 3
+      },
+      {
+        "filiaal_code": "8",
+        "filiaal_naam": "Weert",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 1,
+          "38": 0,
+          "40": 2,
+          "42": 0,
+          "44": 1,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 27
+      },
+      {
+        "filiaal_code": "9",
+        "filiaal_naam": "Stein",
+        "voorraad_per_maat": {
+          "34": 1,
+          "36": 1,
+          "38": 1,
+          "40": 2,
+          "42": 1,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 3
+      },
+      {
+        "filiaal_code": "11",
+        "filiaal_naam": "Brunssum",
+        "voorraad_per_maat": {
+          "34": 1,
+          "36": 1,
+          "38": 2,
+          "40": 1,
+          "42": 1,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "12",
+        "filiaal_naam": "Kerkrade",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 2,
+          "42": 2,
+          "44": 0,
+          "46": 1,
+          "48": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "13",
+        "filiaal_naam": "Budel",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 0,
+          "38": 2,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 5
+      },
+      {
+        "filiaal_code": "14",
+        "filiaal_naam": "Outlet Weert",
+        "voorraad_per_maat": {
+          "34": 2,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "15",
+        "filiaal_naam": "Outlet Sittard",
+        "voorraad_per_maat": {
+          "34": 1,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "16",
+        "filiaal_naam": "Outlet Roermon",
+        "voorraad_per_maat": {
+          "34": 2,
+          "36": 0,
+          "38": 1,
+          "40": 2,
+          "42": 0,
+          "44": 1,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "27",
+        "filiaal_naam": "Klachten",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 0,
+          "38": 1,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "31",
+        "filiaal_naam": "Tilburg",
+        "voorraad_per_maat": {
+          "34": 1,
+          "36": 0,
+          "38": 0,
+          "40": 3,
+          "42": 0,
+          "44": 1,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 8
+      },
+      {
+        "filiaal_code": "35",
+        "filiaal_naam": "Etten-Leur",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 2,
+          "42": 1,
+          "44": 1,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 3
+      },
+      {
+        "filiaal_code": "38",
+        "filiaal_naam": "Tegelen",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 1,
+          "38": 2,
+          "40": 2,
+          "42": 0,
+          "44": 1,
+          "46": 1,
+          "48": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "39",
+        "filiaal_naam": "Outlet Blerick",
+        "voorraad_per_maat": {
+          "34": 0,
+          "36": 0,
+          "38": 0,
+          "40": 0,
+          "42": 0,
+          "44": 0,
+          "46": 0,
+          "48": 0
+        },
+        "verkocht": 0
+      }
+    ],
+    "totals": {
+      "filiaal_code": "",
+      "filiaal_naam": "",
+      "voorraad_per_maat": {
+        "34": 8,
+        "36": 5,
+        "38": 10,
+        "40": 18,
+        "42": 5,
+        "44": 4,
+        "46": 3,
+        "48": 0
+      },
+      "verkocht": 53
+    },
+    "row_count": 18,
+    "error_count": 1,
+    "errors": [
+      "Total mismatch for size 44: calculated 5, reported 4"
+    ],
+    "warnings": [],
+    "negative_voorraad": [
+      {
+        "filiaal_code": "14",
+        "filiaal_naam": "Outlet Weert",
+        "maat": "44",
+        "raw_value": "-1",
+        "normalized_value": 0
+      }
+    ]
+  },
+  {
+    "filename": "Interfiliaalverdeling vooraf - 423264.pdf",
+    "status": "SUCCESS",
+    "volgnummer": "423264",
+    "metadata": {
+      "Lumitex B.V. 09/03/2025 23": "27 Blad 1",
+      "Overzicht": "Interfiliaalverdeling V7.10 R026 EP",
+      "Volgnummer": "423264",
+      "Hoofdgroep": "149 D T-Shirt Diversen Artikelgroep : 0",
+      "Seizoenjaar": "2025 Collectie : 10 Voorjaar Voorkoop Bestelcode : TC039-04 Brisia475",
+      "Omschrijving": "Brisia Peacock Top"
+    },
+    "sizes": [
+      "XXS",
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "rows": [
+      {
+        "filiaal_code": "0",
+        "filiaal_naam": "Centraal M",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "2",
+        "filiaal_naam": "Lumitex",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "3",
+        "filiaal_naam": "Magazijn Particulier",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "5",
+        "filiaal_naam": "Panningen",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 1,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 6
+      },
+      {
+        "filiaal_code": "6",
+        "filiaal_naam": "Echt",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "8",
+        "filiaal_naam": "Weert",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 0,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "9",
+        "filiaal_naam": "Stein",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 2,
+          "L": 1,
+          "XL": 1,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "11",
+        "filiaal_naam": "Brunssum",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "12",
+        "filiaal_naam": "Kerkrade",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 1,
+          "L": 1,
+          "XL": 2,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "13",
+        "filiaal_naam": "Budel",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 2,
+          "L": 1,
+          "XL": 1,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "14",
+        "filiaal_naam": "Outlet Weert",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "15",
+        "filiaal_naam": "Outlet Sittard",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "16",
+        "filiaal_naam": "Outlet Roermon",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "27",
+        "filiaal_naam": "Klachten",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      },
+      {
+        "filiaal_code": "31",
+        "filiaal_naam": "Tilburg",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1,
+          "XXXL": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "35",
+        "filiaal_naam": "Etten-Leur",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 2
+      },
+      {
+        "filiaal_code": "38",
+        "filiaal_naam": "Tegelen",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 1
+      },
+      {
+        "filiaal_code": "39",
+        "filiaal_naam": "Outlet Blerick",
+        "voorraad_per_maat": {
+          "XXS": 0,
+          "XS": 0,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0,
+          "XXL": 0,
+          "XXXL": 0
+        },
+        "verkocht": 0
+      }
+    ],
+    "totals": {
+      "filiaal_code": "",
+      "filiaal_naam": "",
+      "voorraad_per_maat": {
+        "XXS": 0,
+        "XS": 0,
+        "S": 6,
+        "M": 12,
+        "L": 9,
+        "XL": 8,
+        "XXL": 5,
+        "XXXL": 0
+      },
+      "verkocht": 14
+    },
+    "row_count": 18,
+    "error_count": 0,
+    "errors": [],
+    "warnings": [],
+    "negative_voorraad": []
+  }
+]

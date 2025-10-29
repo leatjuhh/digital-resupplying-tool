@@ -5,6 +5,39 @@ Alle belangrijke wijzigingen aan dit project worden gedocumenteerd in dit bestan
 Het formaat is gebaseerd op [Keep a Changelog](https://keepachangelog.com/nl/1.0.0/),
 en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
+## [1.3.1] - 2025-10-29
+
+### Added
+- ✅ **MC Company Branding**
+  - MC Company logo toegevoegd aan sidebar met witte achtergrond voor contrast
+  - Logo is klikbaar en linkt naar https://mc-company.nl/
+  - Logo wordt gebruikt als favicon in browser tab
+  - "DRT" afkorting prominent weergegeven met volledige uitleg "Digital Resupplying Tool"
+  
+- ✅ **Icon-Only Collapsible Sidebar**
+  - Sidebar kan ingeklapt worden naar icon-only mode (~48px breed)
+  - In collapsed state blijven alle navigatie iconen zichtbaar
+  - Tooltips tonen bij hover over iconen
+  - Keyboard shortcut: Ctrl+B / Cmd+B om te togglen
+  - State wordt bewaard in cookie (blijft na refresh)
+  
+- ✅ **Responsive Layout Fixes**
+  - `SidebarInset` component toegevoegd voor correcte content spacing
+  - Content past automatisch aan bij collapsed/expanded sidebar
+  - Smooth transitions tussen sidebar states
+  - Geen overlap meer tussen sidebar en content
+
+### Changed
+- 🎨 **App Titel**: "Digital Resupplying Tool" → "DRT - Digital Resupplying Tool"
+- 🎨 **Sidebar Logo**: Vergroot van 32x32 naar 48x48 pixels
+- 🎨 **Sidebar Collapsible Mode**: Van "offcanvas" naar "icon" voor betere UX
+- 🎨 **Branding Consistentie**: DRT naam doorheen hele applicatie
+
+### Technical
+- Updated `frontend/components/app-sidebar.tsx` met logo en branding
+- Updated `frontend/app/layout.tsx` met SidebarInset en favicon metadata
+- Copied `dummyinfo/applogo/smalltransp.png` → `frontend/public/mc-company-logo.png`
+
 ## [1.3.0] - 2025-10-29
 
 ### Added - MAJOR RELEASE 🎉

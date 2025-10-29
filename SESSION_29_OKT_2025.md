@@ -634,3 +634,40 @@ De applicatie doet nu wat het moet doen: slim artikelen herverdelen gebaseerd op
 Enorme stappen gezet - het herverdelingsalgoritme is nu een realiteit! 
 
 **Tot de volgende sessie!** 🎉
+
+---
+
+## 🎨 Update: Branding & UX Verbeteringen (Later Today)
+
+### MC Company Branding Toegevoegd ✅
+
+#### Logo Implementatie
+- ✅ MC Company logo toegevoegd aan sidebar
+- ✅ Logo op witte achtergrond voor contrast (werkt in dark/light mode)
+- ✅ Logo klikbaar → linkt naar https://mc-company.nl/
+- ✅ Logo vergroot van 32x32 naar 48x48 pixels
+- ✅ Logo als favicon in browser tab
+
+#### App Rebranding naar "DRT"
+- ✅ "Digital Resupplying Tool" → "DRT - Digital Resupplying Tool" 
+- ✅ DRT afkorting prominent in sidebar
+- ✅ Volledige uitleg "Digital Resupplying Tool" onder afkorting
+- ✅ Consistente naamgeving door hele app
+
+#### Collapsible Sidebar Verbeterd
+- ✅ Icon-only mode geïmplementeerd (was offcanvas, nu icon mode)
+- ✅ In collapsed state: alleen iconen + toggle knop zichtbaar
+- ✅ Tooltips bij hover over iconen
+- ✅ SidebarInset component voor correcte content spacing
+- ✅ Geen overlap meer tussen sidebar en content
+- ✅ Smooth transitions bij collapse/expand
+
+#### Affected Files
+```
+frontend/components/app-sidebar.tsx     - Logo + branding + collapsible mode
+frontend/app/layout.tsx                  - SidebarInset + favicon metadata  
+frontend/public/mc-company-logo.png     - Logo bestand gekopieerd
+CHANGELOG.md                             - v1.3.1 entry
+```
+
+**Status:** Volledige branding implementatie compleet! 🎨

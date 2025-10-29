@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Extraction Test Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header .timestamp {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+        
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+        
+        .stat-card.success { background: #10b981; }
+        .stat-card.partial { background: #f59e0b; }
+        .stat-card.failed { background: #ef4444; }
+        .stat-card.exception { background: #dc2626; }
+        
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .overview-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .overview-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .overview-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .overview-table tr:hover {
+            background: #f9fafb;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .status-badge.success { background: #d1fae5; color: #065f46; }
+        .status-badge.partial { background: #fef3c7; color: #92400e; }
+        .status-badge.failed { background: #fee2e2; color: #991b1b; }
+        .status-badge.exception { background: #fecaca; color: #7f1d1d; }
+        
+        .pdf-detail {
+            margin-bottom: 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .pdf-header {
+            background: #f9fafb;
+            padding: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .pdf-header h2 {
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+        
+        .pdf-content {
+            padding: 20px;
+        }
+        
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .metadata-item {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .metadata-item .label {
+            font-weight: 600;
+            color: #4b5563;
+            font-size: 0.85em;
+            margin-bottom: 3px;
+        }
+        
+        .metadata-item .value {
+            color: #1f2937;
+            font-size: 1em;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .data-table th {
+            background: #374151;
+            color: white;
+            padding: 10px 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85em;
+            border: 1px solid #1f2937;
+        }
+        
+        .data-table td {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+        
+        .data-table tbody tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        
+        .data-table tbody tr:hover {
+            background: #f3f4f6;
+        }
+        
+        .data-table .filiaal-cell {
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .data-table .totals-row {
+            background: #dbeafe !important;
+            font-weight: 600;
+        }
+        
+        .data-table .totals-row td {
+            border-top: 2px solid #374151;
+        }
+        
+        .empty-value {
+            color: #9ca3af;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .warning-box h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+        
+        .warning-box ul {
+            margin-left: 20px;
+            color: #78350f;
+        }
+        
+        .error-box {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .error-box h4 {
+            color: #991b1b;
+            margin-bottom: 10px;
+        }
+        
+        .error-box ul {
+            margin-left: 20px;
+            color: #7f1d1d;
+        }
+        
+        .comparison-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+        }
+        
+        .comparison-section h3 {
+            color: #065f46;
+            margin-bottom: 15px;
+        }
+        
+        .size-badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin: 2px;
+            font-weight: 500;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 PDF Extraction Test Report</h1>
+            <div class="timestamp">Generated: 2025-10-28 22:13:11</div>
+        </div>
+        
+        <div class="summary">
+            <div class="stat-card success">
+                <div class="number">6</div>
+                <div class="label">✓ Succesvol</div>
+            </div>
+            <div class="stat-card partial">
+                <div class="number">1</div>
+                <div class="label">⚠️ Gedeeltelijk</div>
+            </div>
+            <div class="stat-card failed">
+                <div class="number">0</div>
+                <div class="label">✗ Mislukt</div>
+            </div>
+            <div class="stat-card exception">
+                <div class="number">0</div>
+                <div class="label">💥 Exception</div>
+            </div>
+        </div>
+        
+        <h2 style="margin-bottom: 15px;">📋 Overzicht</h2>
+        <table class="overview-table">
+            <thead>
+                <tr>
+                    <th>Bestand</th>
+                    <th>Status</th>
+                    <th>Volgnummer</th>
+                    <th>Rijen</th>
+                    <th>Maten</th>
+                    <th>Errors</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td><strong>422557.pdf</strong></td>
+                    <td><span class="status-badge success">✓ SUCCESS</span></td>
+                    <td>422557</td>
+                    <td>18</td>
+                    <td>9 maten</td>
+                    <td>0</td>
+                </tr>
+
+                <tr>
+                    <td><strong>424123.pdf</strong></td>
+                    <td><span class="status-badge success">✓ SUCCESS</span></td>
+                    <td>424123</td>
+                    <td>18</td>
+                    <td>8 maten</td>
+                    <td>0</td>
+                </tr>
+
+                <tr>
+                    <td><strong>424128.pdf</strong></td>
+                    <td><span class="status-badge success">✓ SUCCESS</span></td>
+                    <td>424128</td>
+                    <td>18</td>
+                    <td>8 maten</td>
+                    <td>0</td>
+                </tr>
+
+                <tr>
+                    <td><strong>424205.pdf</strong></td>
+                    <td><span class="status-badge success">✓ SUCCESS</span></td>
+                    <td>424205</td>
+                    <td>18</td>
+                    <td>9 maten</td>
+                    <td>0</td>
+                </tr>
+
+                <tr>
+                    <td><strong>424784.pdf</strong></td>
+                    <td><span class="status-badge success">✓ SUCCESS</span></td>
+                    <td>424784</td>
+                    <td>18</td>
+                    <td>8 maten</td>
+                    <td>0</td>
+                </tr>
+
+                <tr>
+                    <td><strong>54448.pdf</strong></td>
+                    <td><span class="status-badge partial-success">⚠️ PARTIAL_SUCCESS</span></td>
+                    <td>54448</td>
+                    <td>18</td>
+                    <td>8 maten</td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Interfiliaalverdeling vooraf - 423264.pdf</strong></td>
+                    <td><span class="status-badge success">✓ SUCCESS</span></td>
+                    <td>423264</td>
+                    <td>18</td>
+                    <td>8 maten</td>
+                    <td>0</td>
+                </tr>
+
+            </tbody>
+        </table>
+        
+        <h2 style="margin: 40px 0 20px 0;">📄 Gedetailleerde Extractie Data</h2>
+
+        <div class="pdf-detail">
+            <div class="pdf-header">
+                <h2>📄 422557.pdf</h2>
+                <span class="status-badge success">✓ SUCCESS</span>
+            </div>
+            <div class="pdf-content">
+
+                <h3>📋 Metadata</h3>
+                <div class="metadata-grid">
+
+                    <div class="metadata-item">
+                        <div class="label">Lumitex B.V. 20/10/2025 02</div>
+                        <div class="value">20 Blad 1</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Overzicht</div>
+                        <div class="value">Interfiliaalverdeling V7.10 R026 EP</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Volgnummer</div>
+                        <div class="value">422557</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Hoofdgroep</div>
+                        <div class="value">109 D Pant Div. Artikelgroep : 0</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Seizoenjaar</div>
+                        <div class="value">2025 Collectie : 20 Najaar Voorkoop Bestelcode : 006006 Angie001</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Omschrijving</div>
+                        <div class="value">Angie Asky Pant</div>
+                    </div>
+
+                </div>
+
+                <h3>📏 Gedetecteerde Maten</h3>
+                <p style="margin: 10px 0;">
+<span class="size-badge">32</span><span class="size-badge">34</span><span class="size-badge">36</span><span class="size-badge">38</span><span class="size-badge">40</span><span class="size-badge">42</span><span class="size-badge">44</span><span class="size-badge">46</span><span class="size-badge">48</span>
+                </p>
+
+                <h3>📊 Voorraad Data (18 rijen)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Filiaal</th>
+<th>32</th><th>34</th><th>36</th><th>38</th><th>40</th><th>42</th><th>44</th><th>46</th><th>48</th>
+                                <th>Verkocht</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>0</td>
+                                <td class="filiaal-cell">Centraal M</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td class="filiaal-cell">Lumitex</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td class="filiaal-cell">Magazijn Particulier</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td class="filiaal-cell">Panningen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td><strong>2</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>11</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td class="filiaal-cell">Echt</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td class="filiaal-cell">Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>12</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td class="filiaal-cell">Stein</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td class="filiaal-cell">Brunssum</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>4</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td class="filiaal-cell">Kerkrade</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td class="filiaal-cell">Budel</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>10</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td class="filiaal-cell">Outlet Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td class="filiaal-cell">Outlet Sittard</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td class="filiaal-cell">Outlet Roermon</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>27</td>
+                                <td class="filiaal-cell">Klachten</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>31</td>
+                                <td class="filiaal-cell">Tilburg</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td><strong>2</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>6</td>
+                            </tr>
+
+                            <tr>
+                                <td>35</td>
+                                <td class="filiaal-cell">Etten-Leur</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>38</td>
+                                <td class="filiaal-cell">Tegelen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>2</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td>9</td>
+                            </tr>
+
+                            <tr>
+                                <td>39</td>
+                                <td class="filiaal-cell">Outlet Blerick</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr class="totals-row">
+                                <td></td>
+                                <td class="filiaal-cell">TOTAAL</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>4</strong></td><td><strong>9</strong></td><td><strong>10</strong></td><td><strong>10</strong></td><td><strong>6</strong></td><td><strong>3</strong></td><td class="empty-value">.</td><td><strong>61</strong></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pdf-detail">
+            <div class="pdf-header">
+                <h2>📄 424123.pdf</h2>
+                <span class="status-badge success">✓ SUCCESS</span>
+            </div>
+            <div class="pdf-content">
+
+                <h3>📋 Metadata</h3>
+                <div class="metadata-grid">
+
+                    <div class="metadata-item">
+                        <div class="label">Lumitex B.V. 20/10/2025 02</div>
+                        <div class="value">16 Blad 1</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Overzicht</div>
+                        <div class="value">Interfiliaalverdeling V7.10 R026 EP</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Volgnummer</div>
+                        <div class="value">424123</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Hoofdgroep</div>
+                        <div class="value">128 D Vest Artikelgroep : 0</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Seizoenjaar</div>
+                        <div class="value">2025 Collectie : 20 Najaar Voorkoop Bestelcode : 4669 JacketIndigo</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Omschrijving</div>
+                        <div class="value">Jacket Loops</div>
+                    </div>
+
+                </div>
+
+                <h3>📏 Gedetecteerde Maten</h3>
+                <p style="margin: 10px 0;">
+<span class="size-badge">XXS</span><span class="size-badge">XS</span><span class="size-badge">S</span><span class="size-badge">M</span><span class="size-badge">L</span><span class="size-badge">XL</span><span class="size-badge">XXL</span><span class="size-badge">XXXL</span>
+                </p>
+
+                <h3>📊 Voorraad Data (18 rijen)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Filiaal</th>
+<th>XXS</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>XXXL</th>
+                                <th>Verkocht</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>0</td>
+                                <td class="filiaal-cell">Centraal M</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td class="filiaal-cell">Lumitex</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td class="filiaal-cell">Magazijn Particulier</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td class="filiaal-cell">Panningen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>8</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td class="filiaal-cell">Echt</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td class="filiaal-cell">Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>2</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>5</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td class="filiaal-cell">Stein</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>4</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td class="filiaal-cell">Brunssum</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td class="filiaal-cell">Kerkrade</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>5</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td class="filiaal-cell">Budel</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td>6</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td class="filiaal-cell">Outlet Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td class="filiaal-cell">Outlet Sittard</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td class="filiaal-cell">Outlet Roermon</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>27</td>
+                                <td class="filiaal-cell">Klachten</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>31</td>
+                                <td class="filiaal-cell">Tilburg</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>35</td>
+                                <td class="filiaal-cell">Etten-Leur</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>38</td>
+                                <td class="filiaal-cell">Tegelen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>5</td>
+                            </tr>
+
+                            <tr>
+                                <td>39</td>
+                                <td class="filiaal-cell">Outlet Blerick</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr class="totals-row">
+                                <td></td>
+                                <td class="filiaal-cell">TOTAAL</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>3</strong></td><td><strong>4</strong></td><td><strong>4</strong></td><td class="empty-value">.</td><td><strong>41</strong></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pdf-detail">
+            <div class="pdf-header">
+                <h2>📄 424128.pdf</h2>
+                <span class="status-badge success">✓ SUCCESS</span>
+            </div>
+            <div class="pdf-content">
+
+                <h3>📋 Metadata</h3>
+                <div class="metadata-grid">
+
+                    <div class="metadata-item">
+                        <div class="label">Lumitex B.V. 20/10/2025 02</div>
+                        <div class="value">17 Blad 1</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Overzicht</div>
+                        <div class="value">Interfiliaalverdeling V7.10 R026 EP</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Volgnummer</div>
+                        <div class="value">424128</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Hoofdgroep</div>
+                        <div class="value">128 D Vest Artikelgroep : 0</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Seizoenjaar</div>
+                        <div class="value">2025 Collectie : 20 Najaar Voorkoop Bestelcode : 4672 CardiganEspress</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Omschrijving</div>
+                        <div class="value">Sleeveless Fuzzy Cardigan</div>
+                    </div>
+
+                </div>
+
+                <h3>📏 Gedetecteerde Maten</h3>
+                <p style="margin: 10px 0;">
+<span class="size-badge">XXS</span><span class="size-badge">XS</span><span class="size-badge">S</span><span class="size-badge">M</span><span class="size-badge">L</span><span class="size-badge">XL</span><span class="size-badge">XXL</span><span class="size-badge">XXXL</span>
+                </p>
+
+                <h3>📊 Voorraad Data (18 rijen)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Filiaal</th>
+<th>XXS</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>XXXL</th>
+                                <th>Verkocht</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>0</td>
+                                <td class="filiaal-cell">Centraal M</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td class="filiaal-cell">Lumitex</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td class="filiaal-cell">Magazijn Particulier</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td class="filiaal-cell">Panningen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>8</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td class="filiaal-cell">Echt</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>2</strong></td><td class="empty-value">.</td><td>8</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td class="filiaal-cell">Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td class="filiaal-cell">Stein</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>4</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td class="filiaal-cell">Brunssum</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td class="filiaal-cell">Kerkrade</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>9</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td class="filiaal-cell">Budel</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td class="filiaal-cell">Outlet Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td class="filiaal-cell">Outlet Sittard</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td class="filiaal-cell">Outlet Roermon</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>27</td>
+                                <td class="filiaal-cell">Klachten</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>31</td>
+                                <td class="filiaal-cell">Tilburg</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>4</td>
+                            </tr>
+
+                            <tr>
+                                <td>35</td>
+                                <td class="filiaal-cell">Etten-Leur</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>38</td>
+                                <td class="filiaal-cell">Tegelen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td>8</td>
+                            </tr>
+
+                            <tr>
+                                <td>39</td>
+                                <td class="filiaal-cell">Outlet Blerick</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr class="totals-row">
+                                <td></td>
+                                <td class="filiaal-cell">TOTAAL</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>3</strong></td><td class="empty-value">.</td><td><strong>50</strong></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pdf-detail">
+            <div class="pdf-header">
+                <h2>📄 424205.pdf</h2>
+                <span class="status-badge success">✓ SUCCESS</span>
+            </div>
+            <div class="pdf-content">
+
+                <h3>📋 Metadata</h3>
+                <div class="metadata-grid">
+
+                    <div class="metadata-item">
+                        <div class="label">Lumitex B.V. 20/10/2025 02</div>
+                        <div class="value">20 Blad 1</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Overzicht</div>
+                        <div class="value">Interfiliaalverdeling V7.10 R026 EP</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Volgnummer</div>
+                        <div class="value">424205</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Hoofdgroep</div>
+                        <div class="value">109 D Pant Div. Artikelgroep : 0</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Seizoenjaar</div>
+                        <div class="value">2025 Collectie : 20 Najaar Voorkoop Bestelcode : 001320 Angie205</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Omschrijving</div>
+                        <div class="value">Angie Elastic Pant</div>
+                    </div>
+
+                </div>
+
+                <h3>📏 Gedetecteerde Maten</h3>
+                <p style="margin: 10px 0;">
+<span class="size-badge">32</span><span class="size-badge">34</span><span class="size-badge">36</span><span class="size-badge">38</span><span class="size-badge">40</span><span class="size-badge">42</span><span class="size-badge">44</span><span class="size-badge">46</span><span class="size-badge">48</span>
+                </p>
+
+                <h3>📊 Voorraad Data (18 rijen)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Filiaal</th>
+<th>32</th><th>34</th><th>36</th><th>38</th><th>40</th><th>42</th><th>44</th><th>46</th><th>48</th>
+                                <th>Verkocht</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>0</td>
+                                <td class="filiaal-cell">Centraal M</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td class="filiaal-cell">Lumitex</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td class="filiaal-cell">Magazijn Particulier</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td class="filiaal-cell">Panningen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>9</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td class="filiaal-cell">Echt</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>8</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td class="filiaal-cell">Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>4</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td class="filiaal-cell">Stein</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td>7</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td class="filiaal-cell">Brunssum</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td class="filiaal-cell">Kerkrade</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td class="filiaal-cell">Budel</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td>5</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td class="filiaal-cell">Outlet Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td class="filiaal-cell">Outlet Sittard</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td class="filiaal-cell">Outlet Roermon</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>27</td>
+                                <td class="filiaal-cell">Klachten</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>31</td>
+                                <td class="filiaal-cell">Tilburg</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>35</td>
+                                <td class="filiaal-cell">Etten-Leur</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>4</td>
+                            </tr>
+
+                            <tr>
+                                <td>38</td>
+                                <td class="filiaal-cell">Tegelen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>9</td>
+                            </tr>
+
+                            <tr>
+                                <td>39</td>
+                                <td class="filiaal-cell">Outlet Blerick</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr class="totals-row">
+                                <td></td>
+                                <td class="filiaal-cell">TOTAAL</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>3</strong></td><td><strong>4</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td><strong>2</strong></td><td class="empty-value">.</td><td><strong>50</strong></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pdf-detail">
+            <div class="pdf-header">
+                <h2>📄 424784.pdf</h2>
+                <span class="status-badge success">✓ SUCCESS</span>
+            </div>
+            <div class="pdf-content">
+
+                <h3>📋 Metadata</h3>
+                <div class="metadata-grid">
+
+                    <div class="metadata-item">
+                        <div class="label">Lumitex B.V. 20/10/2025 02</div>
+                        <div class="value">17 Blad 1</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Overzicht</div>
+                        <div class="value">Interfiliaalverdeling V7.10 R026 EP</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Volgnummer</div>
+                        <div class="value">424784</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Hoofdgroep</div>
+                        <div class="value">169 D Blouse diversen Artikelgroep : 0</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Seizoenjaar</div>
+                        <div class="value">2025 Collectie : 21 Najaar Nakoop Bestelcode : WI25.60.011 Josin006</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Omschrijving</div>
+                        <div class="value">Josina V-Neck Blouse</div>
+                    </div>
+
+                </div>
+
+                <h3>📏 Gedetecteerde Maten</h3>
+                <p style="margin: 10px 0;">
+<span class="size-badge">XXS</span><span class="size-badge">XS</span><span class="size-badge">S</span><span class="size-badge">M</span><span class="size-badge">L</span><span class="size-badge">XL</span><span class="size-badge">XXL</span><span class="size-badge">XXXL</span>
+                </p>
+
+                <h3>📊 Voorraad Data (18 rijen)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Filiaal</th>
+<th>XXS</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>XXXL</th>
+                                <th>Verkocht</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>0</td>
+                                <td class="filiaal-cell">Centraal M</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td class="filiaal-cell">Lumitex</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td class="filiaal-cell">Magazijn Particulier</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td class="filiaal-cell">Panningen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>2</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td class="filiaal-cell">Echt</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td class="filiaal-cell">Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td class="filiaal-cell">Stein</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td class="filiaal-cell">Brunssum</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td class="filiaal-cell">Kerkrade</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td class="filiaal-cell">Budel</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td class="filiaal-cell">Outlet Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td class="filiaal-cell">Outlet Sittard</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td class="filiaal-cell">Outlet Roermon</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>27</td>
+                                <td class="filiaal-cell">Klachten</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>31</td>
+                                <td class="filiaal-cell">Tilburg</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>35</td>
+                                <td class="filiaal-cell">Etten-Leur</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>38</td>
+                                <td class="filiaal-cell">Tegelen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>39</td>
+                                <td class="filiaal-cell">Outlet Blerick</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr class="totals-row">
+                                <td></td>
+                                <td class="filiaal-cell">TOTAAL</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>7</strong></td><td><strong>14</strong></td><td><strong>14</strong></td><td><strong>12</strong></td><td><strong>7</strong></td><td class="empty-value">.</td><td><strong>0</strong></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pdf-detail">
+            <div class="pdf-header">
+                <h2>📄 54448.pdf</h2>
+                <span class="status-badge partial-success">⚠️ PARTIAL_SUCCESS</span>
+            </div>
+            <div class="pdf-content">
+
+                <h3>📋 Metadata</h3>
+                <div class="metadata-grid">
+
+                    <div class="metadata-item">
+                        <div class="label">Lumitex B.V. 20/10/2025 02</div>
+                        <div class="value">20 Blad 1</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Overzicht</div>
+                        <div class="value">Interfiliaalverdeling V7.10 R026 EP</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Volgnummer</div>
+                        <div class="value">54448</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Hoofdgroep</div>
+                        <div class="value">109 D Pant Div. Artikelgroep : 0</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Seizoenjaar</div>
+                        <div class="value">2025 Collectie : 20 Najaar Voorkoop Bestelcode : 199268 Vayen001</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Omschrijving</div>
+                        <div class="value">Vayen City Crepe Pants</div>
+                    </div>
+
+                </div>
+
+                <h3>📏 Gedetecteerde Maten</h3>
+                <p style="margin: 10px 0;">
+<span class="size-badge">34</span><span class="size-badge">36</span><span class="size-badge">38</span><span class="size-badge">40</span><span class="size-badge">42</span><span class="size-badge">44</span><span class="size-badge">46</span><span class="size-badge">48</span>
+                </p>
+
+                <h3>📊 Voorraad Data (18 rijen)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Filiaal</th>
+<th>34</th><th>36</th><th>38</th><th>40</th><th>42</th><th>44</th><th>46</th><th>48</th>
+                                <th>Verkocht</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>0</td>
+                                <td class="filiaal-cell">Centraal M</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td class="filiaal-cell">Lumitex</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td class="filiaal-cell">Magazijn Particulier</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td class="filiaal-cell">Panningen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td class="filiaal-cell">Echt</td>
+<td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>2</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td class="filiaal-cell">Weert</td>
+<td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td><strong>2</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>27</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td class="filiaal-cell">Stein</td>
+<td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td class="filiaal-cell">Brunssum</td>
+<td><strong>1</strong></td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td class="filiaal-cell">Kerkrade</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>2</strong></td><td><strong>2</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td class="filiaal-cell">Budel</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>2</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>5</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td class="filiaal-cell">Outlet Weert</td>
+<td><strong>2</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td class="filiaal-cell">Outlet Sittard</td>
+<td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td class="filiaal-cell">Outlet Roermon</td>
+<td><strong>2</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>27</td>
+                                <td class="filiaal-cell">Klachten</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>31</td>
+                                <td class="filiaal-cell">Tilburg</td>
+<td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>3</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>8</td>
+                            </tr>
+
+                            <tr>
+                                <td>35</td>
+                                <td class="filiaal-cell">Etten-Leur</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>38</td>
+                                <td class="filiaal-cell">Tegelen</td>
+<td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>2</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>39</td>
+                                <td class="filiaal-cell">Outlet Blerick</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr class="totals-row">
+                                <td></td>
+                                <td class="filiaal-cell">TOTAAL</td>
+<td><strong>8</strong></td><td><strong>5</strong></td><td><strong>10</strong></td><td><strong>18</strong></td><td><strong>5</strong></td><td><strong>4</strong></td><td><strong>3</strong></td><td class="empty-value">.</td><td><strong>53</strong></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="error-box">
+                    <h4>✗ Errors</h4>
+                    <ul>
+<li>Total mismatch for size 44: calculated 5, reported 4</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Negatieve Voorraad Gedetecteerd</h4>
+                    <ul>
+<li>Filiaal 14 (Outlet Weert), 
+                               Maat 44: -1 → 0</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pdf-detail">
+            <div class="pdf-header">
+                <h2>📄 Interfiliaalverdeling vooraf - 423264.pdf</h2>
+                <span class="status-badge success">✓ SUCCESS</span>
+            </div>
+            <div class="pdf-content">
+
+                <h3>📋 Metadata</h3>
+                <div class="metadata-grid">
+
+                    <div class="metadata-item">
+                        <div class="label">Lumitex B.V. 09/03/2025 23</div>
+                        <div class="value">27 Blad 1</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Overzicht</div>
+                        <div class="value">Interfiliaalverdeling V7.10 R026 EP</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Volgnummer</div>
+                        <div class="value">423264</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Hoofdgroep</div>
+                        <div class="value">149 D T-Shirt Diversen Artikelgroep : 0</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Seizoenjaar</div>
+                        <div class="value">2025 Collectie : 10 Voorjaar Voorkoop Bestelcode : TC039-04 Brisia475</div>
+                    </div>
+
+                    <div class="metadata-item">
+                        <div class="label">Omschrijving</div>
+                        <div class="value">Brisia Peacock Top</div>
+                    </div>
+
+                </div>
+
+                <h3>📏 Gedetecteerde Maten</h3>
+                <p style="margin: 10px 0;">
+<span class="size-badge">XXS</span><span class="size-badge">XS</span><span class="size-badge">S</span><span class="size-badge">M</span><span class="size-badge">L</span><span class="size-badge">XL</span><span class="size-badge">XXL</span><span class="size-badge">XXXL</span>
+                </p>
+
+                <h3>📊 Voorraad Data (18 rijen)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Filiaal</th>
+<th>XXS</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>XXXL</th>
+                                <th>Verkocht</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>0</td>
+                                <td class="filiaal-cell">Centraal M</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td class="filiaal-cell">Lumitex</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td class="filiaal-cell">Magazijn Particulier</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td class="filiaal-cell">Panningen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>6</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td class="filiaal-cell">Echt</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td class="filiaal-cell">Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td><strong>1</strong></td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td class="filiaal-cell">Stein</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td class="filiaal-cell">Brunssum</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td class="filiaal-cell">Kerkrade</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td class="filiaal-cell">Budel</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td class="filiaal-cell">Outlet Weert</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td class="filiaal-cell">Outlet Sittard</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td class="filiaal-cell">Outlet Roermon</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>27</td>
+                                <td class="filiaal-cell">Klachten</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr>
+                                <td>31</td>
+                                <td class="filiaal-cell">Tilburg</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>35</td>
+                                <td class="filiaal-cell">Etten-Leur</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td>2</td>
+                            </tr>
+
+                            <tr>
+                                <td>38</td>
+                                <td class="filiaal-cell">Tegelen</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>1</strong></td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>39</td>
+                                <td class="filiaal-cell">Outlet Blerick</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td class="empty-value">.</td><td>.</td>
+                            </tr>
+
+                            <tr class="totals-row">
+                                <td></td>
+                                <td class="filiaal-cell">TOTAAL</td>
+<td class="empty-value">.</td><td class="empty-value">.</td><td><strong>6</strong></td><td><strong>12</strong></td><td><strong>9</strong></td><td><strong>8</strong></td><td><strong>5</strong></td><td class="empty-value">.</td><td><strong>14</strong></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h3>🔍 Vergelijking met Verwachte Data (423264.pdf)</h3>
+            <p>De verwachte data is beschikbaar in: <code>Text die geëxtraheerd moet worden uit de PDF.txt</code></p>
+            <p><em>Handmatige verificatie aanbevolen door beide documenten naast elkaar te bekijken.</em></p>
+        </div>
+
+    </div>
+</body>
+</html>

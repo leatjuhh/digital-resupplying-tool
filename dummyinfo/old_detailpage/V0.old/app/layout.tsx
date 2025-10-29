@@ -3,19 +3,16 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
+import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "DRT - Digital Resupplying Tool",
-  description: "DRT: Verwerk en keur herverdelingsvoorstellen goed voor damesmodewinkels",
-  generator: 'v0.app',
-  icons: {
-    icon: '/mc-company-logo.png',
-  }
+  title: "Digital Resupplying Tool",
+  description: "Verwerk en keur herverdelingsvoorstellen goed voor damesmodewinkels",
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -30,7 +27,7 @@ export default function RootLayout({
           <SidebarProvider>
             <div className="flex min-h-screen">
               <AppSidebar />
-              <SidebarInset>{children}</SidebarInset>
+              <div className="flex-1 flex flex-col">{children}</div>
             </div>
             <Toaster />
           </SidebarProvider>

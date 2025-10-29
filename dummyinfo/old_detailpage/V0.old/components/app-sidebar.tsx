@@ -1,9 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { BarChart3, FileUp, LayoutDashboard, LogOut, Settings, ClipboardList } from "lucide-react"
+import { BarChart3, FileUp, LayoutDashboard, LogOut, Settings, ShoppingBag, ClipboardList } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sidebar,
@@ -13,7 +12,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarRail,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { ModeToggle } from "@/components/mode-toggle"
@@ -25,27 +23,11 @@ export function AppSidebar() {
   const isStoreUser = false
 
   return (
-    <Sidebar collapsible="icon">
-      <SidebarHeader className="flex items-center justify-between px-4 py-4">
-        <Link 
-          href="https://mc-company.nl/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 hover:opacity-80 transition-opacity group"
-        >
-          <div className="bg-white dark:bg-white/95 p-2 rounded-lg shadow-sm">
-            <Image 
-              src="/mc-company-logo.png" 
-              alt="MC Company Logo" 
-              width={48} 
-              height={48}
-              className="object-contain"
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold text-lg leading-tight">DRT</span>
-            <span className="text-[10px] text-muted-foreground leading-tight">Digital Resupplying Tool</span>
-          </div>
+    <Sidebar>
+      <SidebarHeader className="flex items-center justify-between px-4 py-2">
+        <Link href="/" className="flex items-center gap-2">
+          <ShoppingBag className="h-6 w-6" />
+          <span className="font-bold">Digital Resupplying</span>
         </Link>
         <SidebarTrigger />
       </SidebarHeader>
