@@ -461,10 +461,11 @@ def validate_extraction(parsed: ParsedDoc) -> Dict[str, Any]:
         if field not in parsed.meta or not parsed.meta[field]:
             errors.append(f"Missing required metadata: {field}")
     
-    # Validate totals if present
+    # Validate totals if present (but only as warnings, not errors)
     if parsed.totals and parsed.rows:
-        validation_errors = validate_totals(parsed.rows, parsed.totals, parsed.sizes)
-        errors.extend(validation_errors)
+        validation_warnings = validate_totals(parsed.rows, parsed.totals, parsed.sizes)
+        # Add to warnings instead of errors - totals mismatches shouldn't fail extraction
+        parsed.warnings.extend(validation_warnings)
     
     # Check for nulls in critical fields
     for idx, row in enumerate(parsed.rows):

@@ -1,3 +1,7 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { api } from "@/lib/api"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
@@ -6,21 +10,82 @@ interface BatchDetailsProps {
 }
 
 export function BatchDetails({ id }: BatchDetailsProps) {
-  // Dit zou normaal van de API komen
-  const batchData = {
-    id,
-    description: "Automatisch gegenereerd - Voorjaar 2025",
-    date: "23 maart 2025",
-    count: 42,
-    approved: 12,
-    rejected: 3,
-    pending: 27,
-    generatedBy: "Systeem",
-    collection: "Voorjaar 2025 (10)",
-    type: "auto",
+  const [batchData, setBatchData] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  // Fetch batch data from API
+  useEffect(() => {
+    async function fetchBatchData() {
+      try {
+        setLoading(true)
+        
+        // Fetch batch info and proposals
+        const [batchInfo, proposalsData] = await Promise.all([
+          api.pdf.getBatchById(parseInt(id)),
+          api.pdf.getBatchProposals(parseInt(id))
+        ])
+        
+        // Format date
+        const date = new Date(batchInfo.created_at)
+        const formattedDate = date.toLocaleDateString('nl-NL', { 
+          day: 'numeric', 
+          month: 'long', 
+          year: 'numeric' 
+        })
+        
+        setBatchData({
+          id,
+          description: batchInfo.naam || `Batch ${id}`,
+          date: formattedDate,
+          count: proposalsData.total_proposals || 0,
+          approved: proposalsData.status_counts?.approved || 0,
+          rejected: proposalsData.status_counts?.rejected || 0,
+          pending: proposalsData.status_counts?.pending || 0,
+          edited: proposalsData.status_counts?.edited || 0,
+          generatedBy: "Systeem",
+          collection: batchInfo.naam || "Onbekend",
+          type: "auto",
+        })
+        setError(null)
+      } catch (err) {
+        console.error('Failed to fetch batch data:', err)
+        setError('Kon batch details niet ophalen')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchBatchData()
+  }, [id])
+
+  if (loading) {
+    return (
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 my-6">
+        <Card>
+          <CardContent className="pt-6">
+            <p className="text-sm text-muted-foreground">Laden...</p>
+          </CardContent>
+        </Card>
+      </div>
+    )
   }
 
-  const progressPercentage = Math.round(((batchData.approved + batchData.rejected) / batchData.count) * 100)
+  if (error || !batchData) {
+    return (
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 my-6">
+        <Card>
+          <CardContent className="pt-6">
+            <p className="text-sm text-destructive">{error || 'Geen data beschikbaar'}</p>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  const progressPercentage = batchData.count > 0 
+    ? Math.round(((batchData.approved + batchData.rejected) / batchData.count) * 100)
+    : 0
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 my-6">

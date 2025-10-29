@@ -1,7 +1,69 @@
 # Volgende Stappen - Prioriteitsanalyse
 **Project**: Digital Resupplying Tool  
-**Status**: PDF Extractie Layer Compleet  
-**Datum**: 20 oktober 2025
+**Status**: Herverdelingsalgoritme Compleet, API Integration Nodig  
+**Laatste Update**: 29 oktober 2025
+
+---
+
+## 🎉 UPDATE 29 OKTOBER 2025 - MAJOR BREAKTHROUGH!
+
+### ✅ HERVERDELINGSALGORITME COMPLEET! (Priority 1 - AFGEROND)
+
+**Status**: ✅ **VOLLEDIG GEÏMPLEMENTEERD**  
+**Impact**: 🚀 **Core functionaliteit van de applicatie is nu werkend!**
+
+Dit was de **#1 prioriteit** en is nu volledig afgerond. Zie `SESSION_29_OKT_2025.md` voor complete details.
+
+#### Wat is Geïmplementeerd:
+
+1. **Algorithm Core** (`backend/redistribution/algorithm.py`) ✅
+   - `generate_redistribution_proposals_for_article()` - Volledig werkend
+   - `generate_redistribution_proposals_for_batch()` - Volledig werkend
+   - BV consolidatie logica - Detecteert gefragmenteerde BV's
+   - Demand-based allocation - Verkoop cijfers worden meegewogen
+   - Size sequence detection - Alle maat types ondersteund
+   - Greedy matching algoritme - Efficiënte herverdeling
+
+2. **Supporting Modules** ✅
+   - `domain.py` - Alle data modellen compleet
+   - `constraints.py` - Configureerbare parameters
+   - `scoring.py` - Move quality scoring (0.0-1.0)
+   - `optimizer.py` - Move consolidatie
+   - `bv_config.py` - BV mapping en validatie
+
+3. **Frontend UI** ✅
+   - Proposal detail view (`/proposals/[id]`)
+   - Editable proposal view (`/proposals/[id]/edit`)
+   - Live balance validation
+   - Visual feedback en progress tracking
+   - Complete component set
+
+4. **Test Scripts** ✅
+   - `backend/test_generate_proposals.py` werkend
+   - Edge case testing
+   - Performance validation
+
+#### Wat Nog Nodig Is (Quick Wins - 1-2 uur):
+
+1. **Proposals API Router** (30 min) ⏳
+   - `backend/routers/proposals.py` aanmaken
+   - POST `/api/proposals/generate/{batch_id}`
+   - GET `/api/proposals/{id}`
+   - PUT `/api/proposals/{id}` (voor edits)
+   - POST `/api/proposals/{id}/approve`
+   - POST `/api/proposals/{id}/reject`
+
+2. **Database Proposals Table** (30 min) ⏳
+   - Proposals model in `db_models.py`
+   - Migratie script
+   - Test data seeding
+
+3. **Frontend API Integration** (30 min) ⏳
+   - Uncomment TODO in `frontend/app/proposals/[id]/edit/page.tsx` (regel 77-78)
+   - Implementeer `api.proposals.update()` in `lib/api.ts`
+   - Test de complete flow
+
+**Na deze 3 stappen: MVP IS COMPLEET! 🎉**
 
 ---
 

@@ -107,8 +107,11 @@ class Proposal(Base):
     # Unieke ID voor elk voorstel
     id = Column(Integer, primary_key=True, index=True)
     
-    # Verwijzing naar de batch
-    batch_id = Column(Integer, ForeignKey('batches.id'), nullable=False)
+    # Verwijzing naar de batch (oude systeem, optioneel)
+    batch_id = Column(Integer, ForeignKey('batches.id'), nullable=True)
+    
+    # Verwijzing naar PDF batch (nieuw systeem)
+    pdf_batch_id = Column(Integer, ForeignKey('pdf_batches.id'), nullable=True, index=True)
     
     # Artikelnummer waarop dit voorstel betrekking heeft
     artikelnummer = Column(String, nullable=False, index=True)
@@ -116,11 +119,15 @@ class Proposal(Base):
     # Artikel omschrijving
     article_name = Column(String, nullable=False)
     
-    # Huidige distributie als JSON: {"store_id": {"size": quantity}}
-    current_distribution = Column(JSON, nullable=False)
+    # Moves (herverdelingsbewegingen) als JSON
+    # [{"size": "M", "from_store": "001", "to_store": "002", "qty": 5, "reason": "..."}]
+    moves = Column(JSON, nullable=False)
     
-    # Voorgestelde distributie als JSON
-    proposed_distribution = Column(JSON, nullable=False)
+    # Totaal aantal moves
+    total_moves = Column(Integer, default=0, nullable=False)
+    
+    # Totaal aantal stuks
+    total_quantity = Column(Integer, default=0, nullable=False)
     
     # Status: 'pending', 'approved', 'rejected', 'edited'
     status = Column(String, default='pending', nullable=False)
@@ -130,6 +137,12 @@ class Proposal(Base):
     
     # Toegepaste regels (lijst van regel-namen als JSON)
     applied_rules = Column(JSON, default=[])
+    
+    # Optimization applied flag
+    optimization_applied = Column(String, default='false', nullable=False)
+    
+    # Betrokken winkels (set van store codes als JSON)
+    stores_affected = Column(JSON, default=[])
     
     # Aanmaak tijdstip
     created_at = Column(DateTime(timezone=True), server_default=func.now())

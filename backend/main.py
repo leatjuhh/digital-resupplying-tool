@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 # Importeer de routers voor verschillende endpoints
-from routers import articles, batches, pdf_ingest
+from routers import articles, batches, pdf_ingest, redistribution
 
 # Laad omgevingsvariabelen uit .env bestand
 load_dotenv()
@@ -40,6 +40,10 @@ app.include_router(batches.router, prefix="/api", tags=["batches"])
 # Voeg de pdf_ingest router toe
 # Alle endpoints in pdf_ingest.py zijn bereikbaar via /api/pdf
 app.include_router(pdf_ingest.router, tags=["pdf"])
+
+# Voeg de redistribution router toe onder /api prefix
+# Alle endpoints in redistribution.py zijn bereikbaar via /api/redistribution
+app.include_router(redistribution.router, prefix="/api", tags=["redistribution"])
 
 @app.get("/")
 async def root():

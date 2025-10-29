@@ -19,8 +19,8 @@ Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen ver
 
 ## 🎯 Project Status
 
-**Versie:** 1.1  
-**Status:** ✅ Batch Systeem Operationeel
+**Versie:** 1.3.0  
+**Status:** ✅ Herverdelingsalgoritme Compleet! 🎉
 
 ### Wat Werkt
 - ✅ Backend API (FastAPI) met SQLite database
@@ -29,11 +29,21 @@ Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen ver
 - ✅ PDF parsing (pdfplumber) met artikelnummer extractie
 - ✅ CRUD operaties voor articles en batches
 - ✅ Swagger API documentation
+- ✅ **Herverdelingsalgoritme** (NIEUW! 🎉)
+  - BV consolidatie logica
+  - Demand-based allocation
+  - Move scoring & optimization
+  - Size sequence detection
+- ✅ **Proposal Detail & Edit UI** (NIEUW! 🎉)
+  - Complete read/write views
+  - Live balance validation
+  - Visual feedback systeem
 
-### In Development
-- ⏳ Proposals generatie (rules engine)
-- ⏳ Frontend batch management UI
-- ⏳ Feedback systeem
+### In Development (Quick Wins - 1-2 uur)
+- ⏳ Proposals API router (backend/routers/proposals.py)
+- ⏳ Database Proposals table
+- ⏳ Frontend-backend integratie voor updates
+- ⏳ "Genereer Voorstellen" knop in batch view
 
 ### Roadmap
 - 🔜 Rules engine voor herverdelingsvoorstellen

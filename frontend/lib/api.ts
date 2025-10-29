@@ -7,6 +7,67 @@
 const API_BASE_URL = 'http://localhost:8000';
 
 /**
+ * PDF Batch interface
+ */
+export interface PDFBatch {
+  id: number;
+  naam: string;
+  status: string;
+  pdf_count: number;
+  processed_count: number;
+  created_at: string;
+}
+
+/**
+ * Proposal interface
+ */
+export interface Proposal {
+  id: number;
+  artikelnummer: string;
+  article_name: string;
+  total_moves: number;
+  total_quantity: number;
+  status: 'pending' | 'approved' | 'rejected' | 'edited';
+  reason: string;
+  applied_rules: string[];
+  optimization_applied: string;
+  stores_affected: string[];
+  created_at: string | null;
+  reviewed_at: string | null;
+  moves: ProposalMove[];
+}
+
+/**
+ * Proposal Move interface
+ */
+export interface ProposalMove {
+  size: string;
+  from_store: string;
+  from_store_name: string;
+  to_store: string;
+  to_store_name: string;
+  qty: number;
+  score: number;
+  reason: string;
+  from_bv: string;
+  to_bv: string;
+}
+
+/**
+ * Batch with proposals
+ */
+export interface BatchWithProposals extends PDFBatch {
+  total_proposals: number;
+  status_counts: {
+    pending: number;
+    approved: number;
+    rejected: number;
+    edited: number;
+  };
+  proposals: Proposal[];
+}
+
+/**
  * Article interface matching backend model
  */
 export interface Article {
@@ -85,7 +146,7 @@ export const api = {
   },
 
   /**
-   * Batch/Reeks endpoints
+   * Batch/Reeks endpoints (oude systeem)
    */
   batches: {
     /**
@@ -100,6 +161,131 @@ export const api = {
      */
     async getById(id: number) {
       return fetchAPI<BatchWithPDFs>(`/api/batches/${id}`);
+    },
+  },
+
+  /**
+   * PDF Batch endpoints (nieuw systeem)
+   */
+  pdf: {
+    /**
+     * Haal alle PDF batches op
+     */
+    async getBatches() {
+      return fetchAPI<PDFBatch[]>('/api/pdf/batches');
+    },
+
+    /**
+     * Haal specifieke PDF batch op met details
+     */
+    async getBatchById(id: number) {
+      return fetchAPI<any>(`/api/pdf/batches/${id}`);
+    },
+
+    /**
+     * Haal alle proposals voor een batch op
+     */
+    async getBatchProposals(batchId: number) {
+      return fetchAPI<BatchWithProposals>(`/api/pdf/batches/${batchId}/proposals`);
+    },
+
+    /**
+     * Upload PDF files
+     */
+    async uploadPDFs(files: File[], batchName?: string) {
+      const formData = new FormData();
+      files.forEach(file => {
+        formData.append('files', file);
+      });
+      if (batchName) {
+        formData.append('batch_name', batchName);
+      }
+
+      const response = await fetch(`${API_BASE_URL}/api/pdf/ingest`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Upload failed: ${response.status}`);
+      }
+
+      return response.json();
+    },
+  },
+
+  /**
+   * Proposal endpoints
+   */
+  proposals: {
+    /**
+     * Haal specifieke proposal op
+     */
+    async getById(proposalId: number) {
+      return fetchAPI<Proposal>(`/api/pdf/proposals/${proposalId}`);
+    },
+
+    /**
+     * Haal specifieke proposal op met volledige voorraad data
+     */
+    async getByIdFull(proposalId: number) {
+      return fetchAPI<any>(`/api/pdf/proposals/${proposalId}/full`);
+    },
+
+    /**
+     * Keur een proposal goed
+     */
+    async approve(proposalId: number) {
+      const response = await fetch(`${API_BASE_URL}/api/pdf/proposals/${proposalId}/approve`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Approve failed: ${response.status}`);
+      }
+
+      return response.json();
+    },
+
+    /**
+     * Keur een proposal af
+     */
+    async reject(proposalId: number, reason?: string) {
+      const response = await fetch(`${API_BASE_URL}/api/pdf/proposals/${proposalId}/reject`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ reason }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Reject failed: ${response.status}`);
+      }
+
+      return response.json();
+    },
+
+    /**
+     * Update een proposal met aangepaste moves
+     */
+    async update(proposalId: number, moves: ProposalMove[]) {
+      const response = await fetch(`${API_BASE_URL}/api/pdf/proposals/${proposalId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ moves }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Update failed: ${response.status}`);
+      }
+
+      return response.json();
     },
   },
 };

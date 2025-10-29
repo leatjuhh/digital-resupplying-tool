@@ -1,6 +1,7 @@
 "use client"
 
 import { DialogFooter } from "@/components/ui/dialog"
+import { api } from "@/lib/api"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -35,7 +36,25 @@ export function ProposalActions({ id, batchId, totalInBatch = 0, completedInBatc
   const progressAfterApproval = totalInBatch > 0 ? Math.round(((completedInBatch + 1) / totalInBatch) * 100) : 0
   const progressIncrease = progressAfterApproval - currentProgress
 
-  const handleApprove = () => {
+  const handleApprove = async () => {
+    try {
+      // Call API to approve proposal
+      await api.proposals.approve(parseInt(id))
+      
+      toast({
+        title: "Voorstel goedgekeurd",
+        description: `Voorstel #${id} is succesvol goedgekeurd.`,
+      })
+    } catch (error) {
+      console.error('Failed to approve proposal:', error)
+      toast({
+        title: "Fout",
+        description: "Kon voorstel niet goedkeuren. Probeer het opnieuw.",
+        variant: "destructive",
+      })
+      return
+    }
+
     // Toon een tijdelijke overlay met checkmark
     const overlay = document.createElement("div")
     overlay.className =
@@ -84,12 +103,33 @@ export function ProposalActions({ id, batchId, totalInBatch = 0, completedInBatc
     }, 800) // Toon de checkmark voor 800ms
   }
 
-  const handleReject = () => {
-    toast({
-      title: "Voorstel afgekeurd",
-      description: `Voorstel #${id} is afgekeurd.`,
-    })
-    setRejectDialogOpen(false)
+  const handleReject = async () => {
+    try {
+      // Call API to reject proposal
+      await api.proposals.reject(parseInt(id), comment)
+      
+      toast({
+        title: "Voorstel afgekeurd",
+        description: `Voorstel #${id} is afgekeurd.`,
+      })
+      
+      setRejectDialogOpen(false)
+      setComment("")
+      
+      // Navigate back or to batch
+      if (batchId) {
+        router.push(`/proposals/batch/${batchId}`)
+      } else {
+        router.back()
+      }
+    } catch (error) {
+      console.error('Failed to reject proposal:', error)
+      toast({
+        title: "Fout",
+        description: "Kon voorstel niet afkeuren. Probeer het opnieuw.",
+        variant: "destructive",
+      })
+    }
   }
 
   const handleEdit = () => {

@@ -1,3 +1,7 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { api } from "@/lib/api"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -15,188 +19,110 @@ interface ProposalDetailProps {
 }
 
 export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) {
-  // Sample data based on the PDF example
-  const proposalData = {
-    id,
-    articleCode: "TC039-04",
-    description: "Brisia Peacock Top",
-    supplier: {
-      id: "70",
-      name: "NED",
-    },
-    color: {
-      id: "32",
-      name: "pink",
-    },
-    category: {
-      id: "149",
-      name: "D T-Shirt Diversen",
-    },
-    subcategory: {
-      id: "0",
-      name: "",
-    },
-    seasonYear: "2025",
-    collection: {
-      id: "10",
-      name: "Voorjaar Voorkoop",
-    },
-    orderCode: "TC039-04 Brisia475",
-    lastDeliveryDate: "",
-    totalSold: 14,
-    sizes: ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"],
-    stores: [
-      {
-        id: "0",
-        name: "Centraal M",
-        inventoryCurrent: [0, 0, 0, 0, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 0, 0, 0, 0, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "2",
-        name: "Lumitex",
-        inventoryCurrent: [0, 0, 0, 0, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 0, 0, 0, 0, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "3",
-        name: "Mag Part.",
-        inventoryCurrent: [0, 0, 0, 0, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 0, 0, 0, 0, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "5",
-        name: "Panningen",
-        inventoryCurrent: [0, 0, 1, 1, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 1, 0, 0, 0, 0, 0],
-        sold: 6,
-      },
-      {
-        id: "6",
-        name: "Echt",
-        inventoryCurrent: [0, 0, 0, 1, 1, 1, 1, 0],
-        inventoryProposed: [0, 0, 0, 1, 1, 1, 1, 0],
-        sold: 1,
-      },
-      {
-        id: "8",
-        name: "Weert",
-        inventoryCurrent: [0, 0, 1, 1, 1, 0, 1, 0],
-        inventoryProposed: [0, 0, 1, 1, 1, 0, 1, 0],
-        sold: 1,
-      },
-      {
-        id: "9",
-        name: "Stein",
-        inventoryCurrent: [0, 0, 1, 2, 1, 1, 0, 0],
-        inventoryProposed: [0, 0, 1, 2, 1, 1, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "11",
-        name: "Brunssum",
-        inventoryCurrent: [0, 0, 0, 1, 1, 1, 1, 0],
-        inventoryProposed: [0, 0, 0, 1, 1, 1, 1, 0],
-        sold: 1,
-      },
-      {
-        id: "12",
-        name: "Kerkrade",
-        inventoryCurrent: [0, 0, 0, 1, 1, 2, 1, 0],
-        inventoryProposed: [0, 0, 0, 1, 1, 2, 1, 0],
-        sold: 1,
-      },
-      {
-        id: "13",
-        name: "Budel",
-        inventoryCurrent: [0, 0, 1, 2, 1, 1, 0, 0],
-        inventoryProposed: [0, 0, 1, 2, 1, 1, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "14",
-        name: "OL Weert",
-        inventoryCurrent: [0, 0, 0, 0, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 0, 0, 0, 0, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "15",
-        name: "OL Sittard",
-        inventoryCurrent: [0, 0, 0, 0, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 0, 0, 0, 0, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "16",
-        name: "OL Roermon",
-        inventoryCurrent: [0, 0, 0, 0, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 0, 0, 0, 0, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "27",
-        name: "Klachten",
-        inventoryCurrent: [0, 0, 0, 0, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 0, 0, 0, 0, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "31",
-        name: "Tilburg",
-        inventoryCurrent: [0, 0, 0, 1, 1, 1, 1, 0],
-        inventoryProposed: [0, 0, 0, 1, 1, 1, 1, 0],
-        sold: 1,
-      },
-      {
-        id: "35",
-        name: "Etten-Leur",
-        inventoryCurrent: [0, 0, 1, 1, 1, 1, 0, 0],
-        inventoryProposed: [0, 0, 1, 2, 1, 1, 0, 0],
-        sold: 2,
-      },
-      {
-        id: "38",
-        name: "Tegelen",
-        inventoryCurrent: [0, 0, 1, 1, 1, 0, 0, 0],
-        inventoryProposed: [0, 0, 1, 1, 1, 0, 0, 0],
-        sold: 1,
-      },
-      {
-        id: "39",
-        name: "OL Blerick",
-        inventoryCurrent: [0, 0, 0, 0, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 0, 0, 0, 0, 0, 0],
-        sold: 0,
-      },
-      {
-        id: "99",
-        name: "Verschil",
-        inventoryCurrent: [0, 0, 0, 0, 0, 0, 0, 0],
-        inventoryProposed: [0, 0, 0, 0, 0, 0, 0, 0],
-        sold: 0,
-      },
-    ],
+  const [proposalData, setProposalData] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchProposalData() {
+      try {
+        setLoading(true)
+        const data = await api.proposals.getByIdFull(parseInt(id))
+        
+        // Map API response to V0 structure
+        const mappedData = {
+          id,
+          articleCode: data.artikelnummer,
+          description: data.article_name || 'Onbekend',
+          supplier: {
+            id: data.metadata?.Leverancier || '',
+            name: data.metadata?.Leverancier || 'Onbekend',
+          },
+          color: {
+            id: data.metadata?.Kleur || '',
+            name: data.metadata?.Kleur || 'Onbekend',
+          },
+          category: {
+            id: data.metadata?.Categorie || '',
+            name: data.metadata?.Categorie || 'Onbekend',
+          },
+          subcategory: {
+            id: '',
+            name: '',
+          },
+          seasonYear: data.metadata?.Seizoenjaar || 'Onbekend',
+          collection: {
+            id: data.metadata?.Collectiecode || '',
+            name: data.metadata?.Collectie || 'Onbekend',
+          },
+          orderCode: data.metadata?.Bestelcode || data.artikelnummer,
+          lastDeliveryDate: '',
+          totalSold: data.stores?.reduce((acc: number, store: any) => acc + store.sold, 0) || 0,
+          sizes: data.sizes || [],
+          stores: data.stores?.map((store: any) => ({
+            id: store.id,
+            name: store.name,
+            inventoryCurrent: store.inventory_current || [],
+            inventoryProposed: store.inventory_proposed || [],
+            sold: store.sold || 0,
+          })) || [],
+        }
+        
+        setProposalData(mappedData)
+        setError(null)
+      } catch (err) {
+        console.error('Failed to fetch proposal:', err)
+        setError('Kon voorstel niet ophalen')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProposalData()
+  }, [id])
+
+  if (loading) {
+    return (
+      <div className="grid gap-6">
+        <Card>
+          <CardContent className="pt-6">
+            <p className="text-center text-muted-foreground">Laden...</p>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  if (error || !proposalData) {
+    return (
+      <div className="grid gap-6">
+        <Card>
+          <CardContent className="pt-6">
+            <p className="text-center text-destructive">{error || 'Geen data beschikbaar'}</p>
+          </CardContent>
+        </Card>
+      </div>
+    )
   }
 
   // Calculate totals for each size
-  const totals = proposalData.sizes.map((_, sizeIndex) => {
-    return proposalData.stores.reduce((acc, store) => acc + store.inventoryCurrent[sizeIndex], 0)
+  const totals = proposalData.sizes.map((_: string, sizeIndex: number) => {
+    return proposalData.stores.reduce((acc: number, store: any) => 
+      acc + store.inventoryCurrent[sizeIndex], 0)
   })
 
-  const totalSold = proposalData.stores.reduce((acc, store) => acc + store.sold, 0)
+  const totalSold = proposalData.stores.reduce((acc: number, store: any) => 
+    acc + store.sold, 0)
 
   // Calculate totals for proposed
-  const totalsProposed = proposalData.sizes.map((_, sizeIndex) => {
-    return proposalData.stores.reduce((acc, store) => acc + store.inventoryProposed[sizeIndex], 0)
+  const totalsProposed = proposalData.sizes.map((_: string, sizeIndex: number) => {
+    return proposalData.stores.reduce((acc: number, store: any) => 
+      acc + store.inventoryProposed[sizeIndex], 0)
   })
 
   // Find differences between current and proposed
-  const hasDifferences = proposalData.stores.some((store, storeIndex) => {
-    return store.inventoryCurrent.some((current, sizeIndex) => {
+  const hasDifferences = proposalData.stores.some((store: any) => {
+    return store.inventoryCurrent.some((current: number, sizeIndex: number) => {
       return current !== store.inventoryProposed[sizeIndex]
     })
   })
@@ -256,11 +182,18 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                 <p className="font-medium">Kleur: {proposalData.color.name}</p>
                 <div
                   className="h-4 w-4 rounded-full border"
-                  style={{ backgroundColor: proposalData.color.name === "pink" ? "#f9a8d4" : "#cccccc" }}
+                  style={{ 
+                    backgroundColor: proposalData.color.name === "pink" ? "#f9a8d4" : 
+                                    proposalData.color.name === "blue" ? "#93c5fd" :
+                                    proposalData.color.name === "red" ? "#fca5a5" :
+                                    proposalData.color.name === "green" ? "#86efac" :
+                                    proposalData.color.name === "yellow" ? "#fde047" :
+                                    "#cccccc" 
+                  }}
                 />
               </div>
               <p className="text-sm">
-                Leverancier: {proposalData.supplier.name} ({proposalData.supplier.id})
+                Leverancier: {proposalData.supplier.name} {proposalData.supplier.id && `(${proposalData.supplier.id})`}
               </p>
               <p className="text-sm">Categorie: {proposalData.category.name}</p>
             </div>
@@ -289,7 +222,7 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                   <TableHeader>
                     <TableRow>
                       <TableHead className="w-[120px] font-bold">Filiaal</TableHead>
-                      {proposalData.sizes.map((size, i) => (
+                      {proposalData.sizes.map((size: string) => (
                         <TableHead key={size} className="text-center min-w-[50px]">
                           {size}
                         </TableHead>
@@ -300,18 +233,18 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                   <TableBody>
                     <TableRow className="font-bold bg-muted/50">
                       <TableCell>Totaal</TableCell>
-                      {totals.map((total, i) => (
+                      {totals.map((total: number, i: number) => (
                         <TableCell key={i} className="text-center">
                           {total}
                         </TableCell>
                       ))}
                       <TableCell className="text-center">{totalSold}</TableCell>
                     </TableRow>
-                    {proposalData.stores.map((store) => {
+                    {proposalData.stores.map((store: any) => {
                       // Skip rows with all zeros
                       const hasInventory =
-                        store.inventoryCurrent.some((val) => val > 0) ||
-                        store.inventoryProposed.some((val) => val > 0) ||
+                        store.inventoryCurrent.some((val: number) => val > 0) ||
+                        store.inventoryProposed.some((val: number) => val > 0) ||
                         store.sold > 0
                       if (!hasInventory && store.id !== "0") return null
 
@@ -320,7 +253,7 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                           <TableCell>
                             {store.id} {store.name}
                           </TableCell>
-                          {store.inventoryCurrent.map((qty, i) => {
+                          {store.inventoryCurrent.map((qty: number, i: number) => {
                             const proposed = store.inventoryProposed[i]
                             const hasDiff = qty !== proposed
 
@@ -367,7 +300,7 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                   <TableHeader>
                     <TableRow>
                       <TableHead className="w-[120px] font-bold">Filiaal</TableHead>
-                      {proposalData.sizes.map((size) => (
+                      {proposalData.sizes.map((size: string) => (
                         <TableHead key={size} className="text-center min-w-[50px]">
                           {size}
                         </TableHead>
@@ -378,16 +311,16 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                   <TableBody>
                     <TableRow className="font-bold bg-muted/50">
                       <TableCell>Totaal</TableCell>
-                      {totals.map((total, i) => (
+                      {totals.map((total: number, i: number) => (
                         <TableCell key={i} className="text-center">
                           {total}
                         </TableCell>
                       ))}
                       <TableCell className="text-center">{totalSold}</TableCell>
                     </TableRow>
-                    {proposalData.stores.map((store) => {
+                    {proposalData.stores.map((store: any) => {
                       // Skip rows with all zeros
-                      const hasInventory = store.inventoryCurrent.some((val) => val > 0) || store.sold > 0
+                      const hasInventory = store.inventoryCurrent.some((val: number) => val > 0) || store.sold > 0
                       if (!hasInventory && store.id !== "0") return null
 
                       return (
@@ -395,7 +328,7 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                           <TableCell>
                             {store.id} {store.name}
                           </TableCell>
-                          {store.inventoryCurrent.map((qty, i) => (
+                          {store.inventoryCurrent.map((qty: number, i: number) => (
                             <TableCell key={i} className="text-center">
                               {qty > 0 ? qty : "."}
                             </TableCell>
@@ -415,7 +348,7 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                   <TableHeader>
                     <TableRow>
                       <TableHead className="w-[120px] font-bold">Filiaal</TableHead>
-                      {proposalData.sizes.map((size) => (
+                      {proposalData.sizes.map((size: string) => (
                         <TableHead key={size} className="text-center min-w-[50px]">
                           {size}
                         </TableHead>
@@ -426,16 +359,16 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                   <TableBody>
                     <TableRow className="font-bold bg-muted/50">
                       <TableCell>Totaal</TableCell>
-                      {totalsProposed.map((total, i) => (
+                      {totalsProposed.map((total: number, i: number) => (
                         <TableCell key={i} className="text-center">
                           {total}
                         </TableCell>
                       ))}
                       <TableCell className="text-center">{totalSold}</TableCell>
                     </TableRow>
-                    {proposalData.stores.map((store) => {
+                    {proposalData.stores.map((store: any) => {
                       // Skip rows with all zeros
-                      const hasInventory = store.inventoryProposed.some((val) => val > 0) || store.sold > 0
+                      const hasInventory = store.inventoryProposed.some((val: number) => val > 0) || store.sold > 0
                       if (!hasInventory && store.id !== "0") return null
 
                       return (
@@ -443,7 +376,7 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
                           <TableCell>
                             {store.id} {store.name}
                           </TableCell>
-                          {store.inventoryProposed.map((qty, i) => {
+                          {store.inventoryProposed.map((qty: number, i: number) => {
                             const current = store.inventoryCurrent[i]
                             const hasDiff = qty !== current
 

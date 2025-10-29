@@ -26,18 +26,45 @@ export function ProposalBatches() {
   const [sortDirection, setSortDirection] = useState<SortDirection>("desc")
   const [convertDialogOpen, setConvertDialogOpen] = useState(false)
   const [selectedBatchId, setSelectedBatchId] = useState<string | null>(null)
-  const [batches, setBatches] = useState<Batch[]>([])
+  const [batches, setBatches] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const { toast } = useToast()
 
-  // Fetch batches from API
+  // Fetch PDF batches with proposals from API
   useEffect(() => {
     async function fetchBatches() {
       try {
         setLoading(true)
-        const data = await api.batches.getAll()
-        setBatches(data)
+        const data = await api.pdf.getBatches()
+        
+        // Fetch proposals for each batch
+        const batchesWithProposals = await Promise.all(
+          data.map(async (batch) => {
+            try {
+              const proposalsData = await api.pdf.getBatchProposals(batch.id)
+              return {
+                ...batch,
+                proposals: proposalsData.proposals || [],
+                status_counts: proposalsData.status_counts || {
+                  pending: 0,
+                  approved: 0,
+                  rejected: 0,
+                  edited: 0
+                }
+              }
+            } catch (err) {
+              console.error(`Failed to fetch proposals for batch ${batch.id}:`, err)
+              return {
+                ...batch,
+                proposals: [],
+                status_counts: { pending: 0, approved: 0, rejected: 0, edited: 0 }
+              }
+            }
+          })
+        )
+        
+        setBatches(batchesWithProposals)
         setError(null)
       } catch (err) {
         console.error('Failed to fetch batches:', err)
@@ -88,17 +115,31 @@ export function ProposalBatches() {
   }
 
   // Transform API data to component format
-  const transformedBatches = batches.map(batch => ({
-    id: batch.id.toString(),
-    date: formatDate(batch.created_at),
-    description: batch.name,
-    count: batch.pdf_count,
-    // TODO: Deze data komt later uit de proposals
-    approved: 0,
-    rejected: 0,
-    pending: batch.pdf_count,
-    type: "auto" as const,
-  }))
+  const transformedBatches = batches.map(batch => {
+    const totalProposals = batch.proposals?.length || 0
+    const statusCounts = batch.status_counts || {
+      pending: 0,
+      approved: 0,
+      rejected: 0,
+      edited: 0
+    }
+    
+    // Calculate actual totals from status counts (more reliable than proposals.length)
+    const actualTotal = statusCounts.approved + statusCounts.rejected + statusCounts.pending + statusCounts.edited
+    const count = actualTotal > 0 ? actualTotal : totalProposals
+    
+    return {
+      id: batch.id.toString(),
+      date: formatDate(batch.created_at),
+      description: batch.naam || batch.name,
+      count: count,
+      approved: statusCounts.approved,
+      rejected: statusCounts.rejected,
+      pending: statusCounts.pending,
+      edited: statusCounts.edited,
+      type: "auto" as const,
+    }
+  })
 
   return (
     <Card>
@@ -151,8 +192,12 @@ export function ProposalBatches() {
             </TableHeader>
             <TableBody>
               {transformedBatches.map((batch) => {
-                const progressPercentage = Math.round(((batch.approved + batch.rejected) / batch.count) * 100)
-                const isComplete = progressPercentage === 100
+                // Calculate progress percentage safely (avoid NaN)
+                const reviewed = batch.approved + batch.rejected
+                const progressPercentage = batch.count > 0 
+                  ? Math.round((reviewed / batch.count) * 100)
+                  : 0
+                const isComplete = progressPercentage === 100 && batch.count > 0
 
                 return (
                   <TableRow key={batch.id}>
@@ -175,23 +220,29 @@ export function ProposalBatches() {
                     </TableCell>
                     <TableCell className="text-center">{batch.count}</TableCell>
                     <TableCell>
-                      <div className="space-y-1">
-                        <div className="flex items-center justify-between text-xs">
-                          <span>
-                            {batch.approved} goedgekeurd, {batch.rejected} afgekeurd
-                            {batch.pending > 0 && `, ${batch.pending} wachtend`}
-                          </span>
-                          <span className="font-medium">{progressPercentage}%</span>
+                      {batch.count === 0 ? (
+                        <div className="text-xs text-muted-foreground">
+                          Nog geen voorstellen gegenereerd
                         </div>
-                        <div className="h-2 w-full rounded-full bg-secondary">
-                          <div
-                            className={`h-full rounded-full ${
-                              progressPercentage === 100 ? "bg-green-500" : "bg-blue-500"
-                            }`}
-                            style={{ width: `${progressPercentage}%` }}
-                          />
+                      ) : (
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span>
+                              {batch.approved} goedgekeurd, {batch.rejected} afgekeurd
+                              {batch.pending > 0 && `, ${batch.pending} wachtend`}
+                            </span>
+                            <span className="font-medium">{progressPercentage}%</span>
+                          </div>
+                          <div className="h-2 w-full rounded-full bg-secondary">
+                            <div
+                              className={`h-full rounded-full ${
+                                isComplete ? "bg-green-500" : "bg-blue-500"
+                              }`}
+                              style={{ width: `${progressPercentage}%` }}
+                            />
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
