@@ -1,0 +1,445 @@
+# Digital Resupplying Tool - Cline Rules
+
+Dit bestand bevat project-specifieke regels en richtlijnen voor Cline AI om effectief te werken aan het Digital Resupplying Tool project.
+
+## 📋 Project Overzicht
+
+**Project:** Digital Resupplying Tool
+**Versie:** 1.3.0
+**Doel:** Geautomatiseerde voorraadherverdelingen tussen winkellocaties
+**Taal:** Nederlands (documentatie) + Engels (code/comments)
+
+### Tech Stack
+- **Backend:** Python 3.11+, FastAPI, SQLAlchemy, pdfplumber, SQLite
+- **Frontend:** Next.js 14, TypeScript, Tailwind CSS, shadcn/ui
+- **Database:** SQLite (database.db)
+- **Development:** Windows 11, Cursor IDE, PowerShell
+
+### Belangrijke Directories
+```
+digital-resupplying-tool/
+├── backend/              # FastAPI backend (Python)
+│   ├── routers/         # API endpoints
+│   ├── redistribution/  # Herverdelingsalgoritme
+│   ├── pdf_extract/     # PDF parsing logica
+│   └── uploads/         # Geüploade PDF bestanden
+├── frontend/            # Next.js frontend (TypeScript)
+│   ├── app/            # Next.js pages (app router)
+│   ├── components/     # React components
+│   └── lib/            # Utilities en API client
+├── docs/               # Documentatie
+├── todo/               # Todo items en planning
+└── archive/            # Oude/verouderde documentatie
+```
+
+---
+
+## 🚀 Development Workflow
+
+### Opstarten van de Applicatie
+
+**ALTIJD gebruik dev.ps1 of npm run dev:**
+```powershell
+.\dev.ps1
+```
+
+Dit script:
+- Voert pre-flight checks uit (venv, database, dependencies, poorten)
+- Initialiseert database automatisch indien nodig
+- Start beide servers in dezelfde terminal
+- Toont logs met gekleurde prefixes
+
+**URLs na opstarten:**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- API Docs: http://localhost:8000/docs
+
+### Development Commando's
+
+**Backend:**
+```powershell
+cd backend
+.venv\Scripts\python.exe main.py              # Start backend
+.venv\Scripts\python.exe -m pytest            # Run tests
+.venv\Scripts\python.exe check_db.py          # Check database
+.venv\Scripts\python.exe seed_database.py     # Seed database
+```
+
+**Frontend:**
+```powershell
+cd frontend
+npm run dev        # Start dev server
+npm run build      # Build productie
+npm run lint       # Lint check
+```
+
+### Git Workflow
+
+1. **Pull laatste wijzigingen:**
+   ```bash
+   git pull origin main
+   ```
+
+2. **Maak wijzigingen en test lokaal**
+
+3. **Commit met duidelijke message:**
+   ```bash
+   git add .
+   git commit -m "type: beschrijving"
+   ```
+
+4. **Push naar GitHub:**
+   ```bash
+   git push origin main
+   ```
+
+**Commit Types:**
+- `feat:` - Nieuwe feature
+- `fix:` - Bug fix
+- `docs:` - Documentatie wijzigingen
+- `refactor:` - Code refactoring
+- `test:` - Tests toevoegen/wijzigen
+- `chore:` - Build/dependency updates
+
+---
+
+## 📝 Code Conventions
+
+### Python (Backend)
+
+**Style Guide:** PEP8 met type hints verplicht
+
+**Naming Conventions:**
+- Functions/variables: `snake_case`
+- Classes: `PascalCase`
+- Constants: `UPPER_SNAKE_CASE`
+- Private methods: `_leading_underscore`
+
+**Type Hints Voorbeeld:**
+```python
+def parse_pdf(file_path: str, extract_tables: bool = True) -> list[dict]:
+    """
+    Parse PDF en extract artikelnummers.
+    
+    Args:
+        file_path: Pad naar PDF bestand
+        extract_tables: Of tabellen geëxtraheerd moeten worden
+        
+    Returns:
+        List met geëxtraheerde artikelen
+        
+    Raises:
+        ValueError: Wanneer file_path ongeldig is
+    """
+    pass
+```
+
+**Import Order:**
+```python
+# 1. Standaard library
+import os
+from typing import Optional
+
+# 2. Third-party
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+# 3. Local imports
+from .models import Article
+from .database import get_db
+```
+
+### TypeScript/React (Frontend)
+
+**Formatting:** Prettier (automatisch in Cursor)
+
+**Naming Conventions:**
+- Components: `PascalCase`
+- Functions/variables: `camelCase`
+- Constants: `UPPER_SNAKE_CASE`
+- Files: `kebab-case.tsx`
+
+**Component Structure:**
+```typescript
+'use client';
+
+import React from 'react';
+import { ComponentProps } from '@/types';
+
+interface Props {
+  title: string;
+  items: Item[];
+  onSelect?: (id: string) => void;
+}
+
+export function MyComponent({ title, items, onSelect }: Props) {
+  // Component logic
+  
+  return (
+    <div>
+      {/* JSX */}
+    </div>
+  );
+}
+```
+
+---
+
+## 📚 Documentatie Regels
+
+### STRIKTE REGELS - ALTIJD VOLGEN!
+
+**REGEL 1: Maximaal 4 MD Bestanden in Root**
+
+Root level mag ALLEEN bevatten:
+1. `README.md` - Project overview
+2. `CHANGELOG.md` - Versiegeschiedenis
+3. `CONTRIBUTING.md` - Contributing guidelines
+4. `LICENSE` - License file
+
+**❌ VERBODEN in root:**
+- Feature documentatie
+- Technical reports
+- Getting started guides
+- Session logs
+- Analyses
+
+**✅ Deze gaan naar `docs/` folder!**
+
+### REGEL 2: Gebruik de Juiste Subfolder
+
+**docs/getting-started/** - Voor nieuwe gebruikers en eerste stappen
+- `quick-start.md`, `installation.md`, `troubleshooting.md`
+
+**docs/guides/** - User en developer guides voor specifieke features
+- `cursor-workflow.md`, `batch-system.md`, `database.md`
+
+**docs/technical/** - Technische documentatie, architectuur, analyses
+- `pdf-extraction-system.md`, `gui-overview.md`, `api-reference.md`
+
+**docs/sessions/** - Development session logs (dag logs)
+- Format: `YYYY-MM-DD.md` (bijv. `2025-10-31.md`)
+
+### REGEL 3: Bestandsnaming
+
+**Standaard Format:** `lowercase-with-dashes.md`
+
+**✅ Goed:**
+- `quick-start.md`
+- `batch-system.md`
+- `pdf-extraction-system.md`
+
+**❌ Fout:**
+- `QuickStart.md` (geen PascalCase)
+- `quick_start.md` (geen underscores)
+- `QUICK-START.md` (niet volledig uppercase)
+
+**Uitzonderingen in Root (UPPERCASE alleen voor deze):**
+- `README.md`, `CHANGELOG.md`, `CONTRIBUTING.md`, `LICENSE`
+
+### REGEL 4: Documentatie Template
+
+Gebruik altijd deze header voor nieuwe documentatie:
+
+```markdown
+---
+title: [Document Titel]
+category: [getting-started|guides|technical|sessions]
+tags: [tag1, tag2, tag3]
+last_updated: YYYY-MM-DD
+related:
+  - path/to/related/doc.md
+---
+
+# [Document Titel]
+
+[Korte beschrijving]
+
+## Inhoudsopgave
+- [Sectie 1](#sectie-1)
+- [Sectie 2](#sectie-2)
+
+---
+
+[Document inhoud]
+```
+
+### Voor Nieuwe Documentatie Checklist:
+
+- [ ] Is er al een bestaand document waar dit bij hoort?
+- [ ] Kan dit informatie toegevoegd worden aan een bestaand document?
+- [ ] Is dit echt nodig als apart document?
+- [ ] Heb ik de juiste categorie gekozen?
+- [ ] Gebruikt de bestandsnaam het juiste format?
+- [ ] Heb ik de template header gebruikt?
+- [ ] Moet README.md bijgewerkt worden met een link?
+
+---
+
+## 🗄️ Database Schema
+
+### Belangrijke Tabellen
+
+**Store** - Winkellocaties
+```python
+id: int (PK)
+name: str (unique)
+city: str
+code: str (unique)
+```
+
+**Article** - Artikelen
+```python
+id: int (PK)
+artikelnummer: str (unique)
+omschrijving: str
+voorraad_per_winkel: JSON  # {"store_code": quantity}
+```
+
+**PDFBatch** - Batch van PDF extracties
+```python
+id: int (PK)
+naam: str
+status: str  # 'PENDING', 'SUCCESS', 'FAILED', 'PARTIAL_SUCCESS'
+pdf_count: int
+processed_count: int
+created_at: DateTime
+```
+
+**ArtikelVoorraad** - Voorraad data uit PDF's
+```python
+id: int (PK)
+batch_id: int (FK -> pdf_batches.id)
+volgnummer: str (artikelnummer)
+omschrijving: str
+filiaal_code: str
+filiaal_naam: str
+maat: str
+voorraad: int
+verkocht: int
+pdf_metadata: JSON
+created_at: DateTime
+```
+
+**Proposal** - Herverdelingsvoorstellen
+```python
+id: int (PK)
+pdf_batch_id: int (FK -> pdf_batches.id)
+artikelnummer: str
+article_name: str
+moves: JSON  # [{"size": "M", "from_store": "001", "to_store": "002", "qty": 5}]
+total_moves: int
+total_quantity: int
+status: str  # 'pending', 'approved', 'rejected', 'edited'
+reason: Text
+applied_rules: JSON
+optimization_applied: str
+stores_affected: JSON
+created_at: DateTime
+reviewed_at: DateTime
+rejection_reason: Text
+```
+
+**User** - Gebruikers (nieuw!)
+```python
+id: int (PK)
+username: str (unique)
+email: str (unique)
+hashed_password: str
+full_name: str
+role_id: int (FK -> roles.id)
+is_active: bool
+last_login: DateTime
+created_at: DateTime
+```
+
+**Role** - Rollen
+```python
+id: int (PK)
+name: str (unique)  # 'admin', 'user', 'store'
+display_name: str
+description: Text
+is_system_role: bool
+created_at: DateTime
+```
+
+**Permission** - Permissies
+```python
+id: int (PK)
+name: str (unique)  # 'view_proposals', 'approve_proposals'
+display_name: str
+description: Text
+category: str  # 'proposals', 'users', 'settings'
+created_at: DateTime
+```
+
+**Settings** - Applicatie instellingen
+```python
+id: int (PK)
+key: str (unique)
+value: JSON
+category: str  # 'general', 'rules', 'api'
+description: Text
+updated_at: DateTime
+updated_by: int (FK -> users.id)
+```
+
+### Database Scripts
+
+**Check database:**
+```powershell
+cd backend
+.venv\Scripts\python.exe check_db.py
+```
+
+**Reset database:**
+```powershell
+cd backend
+.venv\Scripts\python.exe reset_database.py
+```
+
+**Seed met test data:**
+```powershell
+cd backend
+.venv\Scripts\python.exe seed_database.py
+```
+
+### Schema Updates
+
+Bij database wijzigingen:
+
+1. **Update model** in `backend/db_models.py`
+2. **Maak migratie script** (bijv. `migrate_add_field.py`)
+3. **Run migratie** met venv Python
+4. **Test** met `check_db.py`
+5. **Commit** met message: `feat: add field to table`
+
+---
+
+## 🔌 API Endpoints
+
+### Belangrijke Routes
+
+**Articles** (`/api/articles`)
+- `GET /api/articles` - List all articles
+- `POST /api/articles` - Create article
+- `GET /api/articles/{id}` - Get article by ID
+- `PUT /api/articles/{id}` - Update article
+- `DELETE /api/articles/{id}` - Delete article
+
+**Batches** (`/api/batches`)
+- `GET /api/batches` - List batches
+- `POST /api/batches` - Create batch
+- `POST /api/batches/{id}/upload` - Upload PDF to batch
+
+**PDF Ingest** (`/api/pdf-ingest`)
+- `POST /api/pdf-ingest/batch` - Create PDF batch
+- `POST /api/pdf-ingest/batch/{batch_id}/upload` - Upload PDF
+- `POST /api/pdf-ingest/batch/{batch_id}/finalize` - Finalize batch
+- `GET /api/pdf-ingest/batch/{batch_id}` - Get batch details
+- `GET /api/pdf-ingest/batches` - List all batches
+
+**Redistribution** (`/api/redistribution`)
+- `POST /api/redistribution/generate` - Generate proposals
+- `GET /api/redistribution/proposals` - List proposals
+- `PUT /api/redistribution/proposals/{id}` - Update proposal
