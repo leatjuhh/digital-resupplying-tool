@@ -2,7 +2,8 @@
 SQLAlchemy database models
 """
 # Importeer SQLAlchemy kolom types en de Base class
-from sqlalchemy import Column, Integer, String, JSON, DateTime, Text, ForeignKey
+from sqlalchemy import Column, Integer, String, JSON, DateTime, Text, ForeignKey, Boolean, Table
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from database import Base
 
@@ -265,3 +266,126 @@ class PDFParseLog(Base):
     
     # Tijdstip
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+
+# Many-to-many relationship table voor Role-Permission
+role_permissions = Table(
+    'role_permissions',
+    Base.metadata,
+    Column('role_id', Integer, ForeignKey('roles.id', ondelete='CASCADE'), primary_key=True),
+    Column('permission_id', Integer, ForeignKey('permissions.id', ondelete='CASCADE'), primary_key=True)
+)
+
+
+class User(Base):
+    """User authentication model"""
+    __tablename__ = "users"
+    
+    # Unieke ID voor elke gebruiker
+    id = Column(Integer, primary_key=True, index=True)
+    
+    # Username (uniek, geïndexeerd voor snelle lookups)
+    username = Column(String, unique=True, index=True, nullable=False)
+    
+    # Email adres (uniek, geïndexeerd)
+    email = Column(String, unique=True, index=True, nullable=False)
+    
+    # Hashed password (bcrypt)
+    hashed_password = Column(String, nullable=False)
+    
+    # Volledige naam
+    full_name = Column(String, nullable=False)
+    
+    # Verwijzing naar rol
+    role_id = Column(Integer, ForeignKey('roles.id'), nullable=False, index=True)
+    
+    # Account actief/inactief
+    is_active = Column(Boolean, default=True, nullable=False)
+    
+    # Laatste login tijdstip
+    last_login = Column(DateTime(timezone=True))
+    
+    # Aanmaak tijdstip
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    
+    # Relationships
+    role = relationship("Role", back_populates="users")
+
+
+class Role(Base):
+    """Role model voor rol-gebaseerde toegangscontrole"""
+    __tablename__ = "roles"
+    
+    # Unieke ID voor elke rol
+    id = Column(Integer, primary_key=True, index=True)
+    
+    # Rol naam (uniek, bijv. "admin", "user", "store")
+    name = Column(String, unique=True, nullable=False, index=True)
+    
+    # Display naam (voor UI, bijv. "Administrator")
+    display_name = Column(String, nullable=False)
+    
+    # Beschrijving van de rol
+    description = Column(Text)
+    
+    # Is dit een system rol (kan niet verwijderd worden)
+    is_system_role = Column(Boolean, default=False, nullable=False)
+    
+    # Aanmaak tijdstip
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    
+    # Relationships
+    users = relationship("User", back_populates="role")
+    permissions = relationship("Permission", secondary=role_permissions, back_populates="roles")
+
+
+class Permission(Base):
+    """Permission model voor granulaire toegangscontrole"""
+    __tablename__ = "permissions"
+    
+    # Unieke ID voor elke permission
+    id = Column(Integer, primary_key=True, index=True)
+    
+    # Permission naam (uniek, bijv. "view_proposals", "approve_proposals")
+    name = Column(String, unique=True, nullable=False, index=True)
+    
+    # Display naam (voor UI)
+    display_name = Column(String, nullable=False)
+    
+    # Beschrijving
+    description = Column(Text)
+    
+    # Categorie (bijv. "proposals", "users", "settings")
+    category = Column(String, nullable=False, index=True)
+    
+    # Aanmaak tijdstip
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    
+    # Relationships
+    roles = relationship("Role", secondary=role_permissions, back_populates="permissions")
+
+
+class Settings(Base):
+    """Settings model voor applicatie configuratie"""
+    __tablename__ = "settings"
+    
+    # Unieke ID voor elke setting
+    id = Column(Integer, primary_key=True, index=True)
+    
+    # Setting key (uniek, bijv. "app_name", "language")
+    key = Column(String, unique=True, nullable=False, index=True)
+    
+    # Setting value (opgeslagen als JSON voor flexibiliteit)
+    value = Column(JSON, nullable=False)
+    
+    # Categorie (bijv. "general", "rules", "api")
+    category = Column(String, nullable=False, index=True)
+    
+    # Beschrijving
+    description = Column(Text)
+    
+    # Laatst bijgewerkt
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    
+    # Bijgewerkt door gebruiker (optioneel)
+    updated_by = Column(Integer, ForeignKey('users.id'), nullable=True)

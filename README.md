@@ -12,6 +12,8 @@ Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen ver
 ## 📋 Snelle Links
 
 - **[[GETTING_STARTED]]** - ⭐ Start hier! App starten en testen
+- **[[CURSOR_WORKFLOW]]** - 🚀 Optimale Cursor workflow met AI (AANBEVOLEN!)
+- **[[DEV_MANAGEMENT]]** - 🆕 Development management console
 - **[[BATCH_SYSTEM]]** - Batch upload & PDF parsing systeem
 - **[[DATABASE]]** - Database setup en management
 - **[[INTEGRATION]]** - Frontend-backend integratie
@@ -53,18 +55,28 @@ Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen ver
 
 ## 🚀 Quick Start
 
-**Aanbevolen methode (Cursor):**
+**Aanbevolen: Gebruik dev.ps1 in Cursor terminal** ⭐
 ```powershell
-# Terminal 1 - Backend
-cd backend
-venv\Scripts\python.exe -m uvicorn main:app --reload --port 8000
+.\dev.ps1
+```
 
-# Terminal 2 - Frontend
-cd frontend
+**Dit script:**
+- ✅ Voert pre-flight checks uit (venv, database, dependencies, poorten)
+- ✅ Initialiseert database automatisch indien nodig
+- 🚀 Start beide servers in **dezelfde Cursor terminal**
+- 📊 Toont alle logs met gekleurde prefixes: `[BACKEND]` (cyan) en `[FRONTEND]` (groen)
+
+**Alternatief: Direct via npm:**
+```bash
 npm run dev
 ```
 
-📖 **Zie [[GETTING_STARTED]] voor alle start methodes**
+**URLs na starten:**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- API Docs: http://localhost:8000/docs
+
+📖 **Zie [[QUICK_START]] voor complete start gids & troubleshooting**
 
 ## 📊 Project Structuur
 

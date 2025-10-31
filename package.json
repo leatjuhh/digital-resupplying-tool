@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Digital Resupplying Tool - Full Stack Application",
   "scripts": {
-    "dev": "concurrently --names \"BACKEND,FRONTEND\" --prefix-colors \"cyan,green\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:console": "powershell -ExecutionPolicy Bypass -File dev.ps1",
     "dev:backend": "cd backend && .\\venv\\Scripts\\activate && uvicorn main:app --reload --port 8000",
     "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently --names \"BACKEND,FRONTEND\" --prefix-colors \"cyan,green\" \"npm run dev:backend\" \"npm run dev:frontend\"",
     "setup": "npm run setup:backend && npm run setup:frontend",
-    "setup:backend": "cd backend && python -m venv venv && .\\venv\\Scripts\\activate && pip install -r requirements.txt && python seed_database.py",
+    "setup:backend": "cd backend && python -m venv venv && .\\venv\\Scripts\\pip install -r requirements.txt && .\\venv\\Scripts\\python seed_database.py",
     "setup:frontend": "cd frontend && npm install"
   },
   "devDependencies": {

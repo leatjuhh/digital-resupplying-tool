@@ -14,64 +14,66 @@ Complete gids om de app te starten en te gebruiken.
 
 ## 📋 Snelle Index
 
-- [Voor Cursor Gebruikers](#cursor-method) ⭐ AANBEVOLEN
-- [PowerShell Script Method](#powershell-method)
-- [NPM Concurrently Method](#npm-method)
+- [Dev.ps1 Script (AANBEVOLEN)](#devps1-method) ⭐ NIEUW!
+- [NPM Direct Method](#npm-method)
+- [Handmatige Methode](#manual-method)
 - [URLs & Endpoints](#urls)
 - [Batch Systeem Testen](#testing)
 - [Troubleshooting](#troubleshooting)
 
 ---
 
-## <a id="cursor-method"></a>⭐ Voor Cursor Gebruikers (AANBEVOLEN)
+## <a id="devps1-method"></a>⭐ Dev.ps1 Script Method (AANBEVOLEN)
 
-Gebruik de **geïntegreerde terminal** van Cursor voor betere debugging en troubleshooting.
+De **nieuwe en aanbevolen manier** om de app te starten binnen Cursor.
 
 ### Voordelen
-✅ **Betere debugging** - Zie errors direct in Cursor  
-✅ **AI hulp** - Cline kan meekijken met errors  
-✅ **Overzichtelijk** - Tabs in plaats van losse vensters  
-✅ **Copy/paste** - Makkelijk errors delen  
+✅ **Pre-flight checks** - Valideert alles voor je start  
+✅ **Auto database init** - Maakt database aan indien nodig  
+✅ **Alle logs in Cursor** - Beide servers in 1 terminal  
+✅ **AI hulp** - Cline kan alle errors lezen en helpen  
+✅ **Gekleurde output** - `[BACKEND]` en `[FRONTEND]` prefixes  
 
-### Stap 1: Open 2 Terminals in Cursor
-- Klik op "+" in terminal panel (of Ctrl+Shift+`)
-- Je hebt nu 2 tabs in Cursor
+### Gebruik
 
-### Stap 2: Terminal 1 - Backend
+**Eenvoudig in Cursor terminal:**
 ```powershell
-cd backend
-venv\Scripts\python.exe -m uvicorn main:app --reload --port 8000
+.\dev.ps1
 ```
 
-**Je ziet:**
-```
-INFO: Started server process [...]
-INFO: Application startup complete.
-```
+### Wat gebeurt er:
 
-✅ Backend draait nu op **http://localhost:8000**
+**Pre-flight Checks:**
+1. ✅ Controleert backend virtual environment
+2. ✅ Controleert database (maakt aan indien nodig)
+3. ✅ Controleert frontend dependencies
+4. ✅ Controleert of poorten 8000 en 3000 vrij zijn
 
-### Stap 3: Terminal 2 - Frontend  
-```powershell
-cd frontend
-npm run dev
+**Als alles OK is:**
+- 🚀 Start beide servers via `npm run dev`
+- 📊 Toont alle logs in dezelfde terminal
+- 🎨 Gekleurde prefixes: `[BACKEND]` (cyan) en `[FRONTEND]` (groen)
+
+### Output Voorbeeld:
 ```
+  Digital Resupplying Tool - Dev Launcher
 
-**Je ziet:**
-```
-- Local:        http://localhost:3000
-```
+ Pre-flight Checks
 
-✅ Frontend draait nu op **http://localhost:3000**
+  [1] Backend Virtual Environment: OK
+  [2] Database: OK
+  [3] Frontend Dependencies: OK
+  [4] Port Availability: OK
 
-### Stap 4: Test (Optioneel - Terminal 3)
-```powershell
-cd backend
-venv\Scripts\python.exe test_batch_api.py
+ All checks passed! Starting servers...
+
+[BACKEND] INFO: Uvicorn running on http://127.0.0.1:8000
+[FRONTEND] ▲ Next.js 14.2.16
+[FRONTEND]   - Local:        http://localhost:3000
 ```
 
 ### Stoppen
-In elke terminal: **Ctrl+C**
+**Ctrl+C** in de terminal (stopt beide servers)
 
 ---
 

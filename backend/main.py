@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 # Importeer de routers voor verschillende endpoints
-from routers import articles, batches, pdf_ingest, redistribution
+from routers import articles, batches, pdf_ingest, redistribution, auth, users, roles, settings
 
 # Laad omgevingsvariabelen uit .env bestand
 load_dotenv()
@@ -44,6 +44,22 @@ app.include_router(pdf_ingest.router, tags=["pdf"])
 # Voeg de redistribution router toe onder /api prefix
 # Alle endpoints in redistribution.py zijn bereikbaar via /api/redistribution
 app.include_router(redistribution.router, prefix="/api", tags=["redistribution"])
+
+# Voeg de authentication router toe
+# Alle endpoints in auth.py zijn bereikbaar via /api/auth
+app.include_router(auth.router, tags=["authentication"])
+
+# Voeg de users router toe
+# Alle endpoints in users.py zijn bereikbaar via /api/users
+app.include_router(users.router, tags=["users"])
+
+# Voeg de roles router toe
+# Alle endpoints in roles.py zijn bereikbaar via /api/roles
+app.include_router(roles.router, tags=["roles"])
+
+# Voeg de settings router toe
+# Alle endpoints in settings.py zijn bereikbaar via /api/settings
+app.include_router(settings.router, tags=["settings"])
 
 @app.get("/")
 async def root():
