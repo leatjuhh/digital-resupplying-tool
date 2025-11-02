@@ -90,16 +90,16 @@ async def login(
     user.last_login = datetime.utcnow()
     db.commit()
     
-    # Creëer tokens
+    # Creëer tokens (sub moet een string zijn volgens JWT spec)
     token_data = {
-        "sub": user.id,
+        "sub": str(user.id),
         "username": user.username,
         "role": role.name,
         "permissions": permissions
     }
     
     access_token = create_access_token(data=token_data)
-    refresh_token = create_refresh_token(data={"sub": user.id}, remember_me=remember_me)
+    refresh_token = create_refresh_token(data={"sub": str(user.id)}, remember_me=remember_me)
     
     return {
         "access_token": access_token,
@@ -151,9 +151,9 @@ async def refresh_token(
         
         permissions = [perm.name for perm in role.permissions]
         
-        # Creëer nieuwe tokens
+        # Creëer nieuwe tokens (sub moet een string zijn volgens JWT spec)
         token_payload = {
-            "sub": user.id,
+            "sub": str(user.id),
             "username": user.username,
             "role": role.name,
             "permissions": permissions

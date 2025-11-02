@@ -11,13 +11,19 @@ Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen ver
 
 ## 📋 Snelle Links
 
-- **[[GETTING_STARTED]]** - ⭐ Start hier! App starten en testen
-- **[[CURSOR_WORKFLOW]]** - 🚀 Optimale Cursor workflow met AI (AANBEVOLEN!)
-- **[[DEV_MANAGEMENT]]** - 🆕 Development management console
-- **[[BATCH_SYSTEM]]** - Batch upload & PDF parsing systeem
-- **[[DATABASE]]** - Database setup en management
-- **[[INTEGRATION]]** - Frontend-backend integratie
-- **[[TROUBLESHOOTING]]** - Troubleshooting hulp
+### Getting Started
+- ⭐ **[Quick Start](docs/getting-started/quick-start.md)** - Snel aan de slag
+- 📖 **[Installation Guide](docs/getting-started/installation.md)** - Complete setup instructies
+- 📱 **[Mobile Network Access](docs/getting-started/mobile-network-access.md)** - iOS/Android testing setup (NIEUW!)
+- 🔧 **[Troubleshooting](docs/getting-started/troubleshooting.md)** - Hulp bij problemen
+
+### Guides
+- 🚀 **[Cursor Workflow](docs/guides/cursor-workflow.md)** - Optimale AI workflow (AANBEVOLEN!)
+- 🔐 **[Authentication Testing](docs/guides/authentication-testing.md)** - Complete test guide (NIEUW!)
+- 📦 **[Batch System](docs/guides/batch-system.md)** - PDF upload & parsing
+- 🗄️ **[Database Guide](docs/guides/database.md)** - Database management
+- 🔗 **[Integration](docs/guides/integration.md)** - Frontend-backend koppeling
+- 🎯 **[Redistribution Algorithm](docs/guides/redistribution-algorithm.md)** - Herverdelingslogica
 
 ## 🎯 Project Status
 
@@ -76,7 +82,7 @@ npm run dev
 - Backend API: http://localhost:8000
 - API Docs: http://localhost:8000/docs
 
-📖 **Zie [[QUICK_START]] voor complete start gids & troubleshooting**
+📖 **Zie [Quick Start Guide](docs/getting-started/quick-start.md) voor complete start gids & troubleshooting**
 
 ## 📊 Project Structuur
 
@@ -142,25 +148,38 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 
 ## 📚 Documentatie
 
-### Hoofd Documentatie
-- **[[GETTING_STARTED]]** - Complete start gids
-- **[[BATCH_SYSTEM]]** - Batch systeem features & API
-- **[[DATABASE]]** - Database setup & schema
-- **[[INTEGRATION]]** - Frontend-backend integratie
-- **[[TROUBLESHOOTING]]** - Veelvoorkomende problemen
+### Getting Started
+- [Quick Start](docs/getting-started/quick-start.md) - Snel beginnen
+- [Installation Guide](docs/getting-started/installation.md) - Complete setup
+- [Troubleshooting](docs/getting-started/troubleshooting.md) - Problemen oplossen
 
-### Specifieke Docs
+### User & Developer Guides
+- [Cursor Workflow](docs/guides/cursor-workflow.md) - AI-powered development
+- [Batch System](docs/guides/batch-system.md) - PDF upload & parsing
+- [Database](docs/guides/database.md) - Database management
+- [Integration](docs/guides/integration.md) - Frontend-backend koppeling
+- [Redistribution Algorithm](docs/guides/redistribution-algorithm.md) - Herverdelingslogica
+
+### Technical Documentation
+- [PDF Extraction System](docs/technical/pdf-extraction-system.md) - PDF parsing details
+- [GUI Overview](docs/technical/gui-overview.md) - Frontend architectuur
+- [Frontend Consolidation](docs/technical/frontend-consolidation.md) - Frontend refactoring
 - Backend API: http://localhost:8000/docs (Swagger UI)
 - Frontend: `frontend/PROJECT-OVERVIEW.md`
 - Backend: `backend/README.md`
 
+### Contributing
+- [Contributing Guidelines](CONTRIBUTING.md) - Hoe bij te dragen
+- [Documentation Guidelines](docs/DOCUMENTATION_GUIDELINES.md) - Documentatie regels
+- [Changelog](CHANGELOG.md) - Versiegeschiedenis
+
 ### Archive
-Oude documentatie (voor referentie): `archive/`
+Oude documentatie (referentie): `archive/`
 
 ## 🎯 Voor Ontwikkelaars
 
 ### Database Schema
-Zie [[DATABASE]] voor complete schema en CRUD operaties.
+Zie [Database Guide](docs/guides/database.md) voor complete schema en CRUD operaties.
 
 **Models:**
 - Store, Article (basis)
@@ -168,7 +187,7 @@ Zie [[DATABASE]] voor complete schema en CRUD operaties.
 - Proposal, Feedback (workflow)
 
 ### API Endpoints
-Zie [[BATCH_SYSTEM]] voor API documentatie.
+Zie [Batch System Guide](docs/guides/batch-system.md) voor API documentatie.
 
 **Routes:**
 - `/api/articles` - Articles CRUD
@@ -189,11 +208,12 @@ Dit project wordt actief onderhouden op GitHub met volledige versiebeheer en bac
 
 **Repository:** Digital Resupplying Tool  
 **Branch:** `main` (stabiele code)  
-**Workflow:** Zie [[DEVELOPMENT_GUIDE]] voor complete Git workflow
+**Workflow:** Zie [Contributing Guidelines](CONTRIBUTING.md) voor complete Git workflow
 
 ### Belangrijke Links
-- **[[CHANGELOG.md]]** - Versiegeschiedenis en wijzigingen
-- **[[DEVELOPMENT_GUIDE.md]]** - Development workflow en conventies
+- **[Changelog](CHANGELOG.md)** - Versiegeschiedenis en wijzigingen
+- **[Contributing Guidelines](CONTRIBUTING.md)** - Development workflow en conventies
+- **[Documentation Guidelines](docs/DOCUMENTATION_GUIDELINES.md)** - Documentatie regels
 - **GitHub Issues** - Bug reports en feature requests
 
 ## 🤝 Contributing
@@ -201,7 +221,7 @@ Dit project wordt actief onderhouden op GitHub met volledige versiebeheer en bac
 Wij verwelkomen bijdragen aan dit project! Volg deze stappen:
 
 1. **Setup Development Environment**
-   - Zie [[GETTING_STARTED]] voor complete setup
+   - Zie [Installation Guide](docs/getting-started/installation.md) voor complete setup
    - Installeer Git, Python 3.11+, Node.js 18+
 
 2. **Development Workflow**
@@ -214,7 +234,7 @@ Wij verwelkomen bijdragen aan dit project! Volg deze stappen:
 3. **Code Standards**
    - Python: PEP8, type hints verplicht
    - TypeScript: Prettier formatting
-   - Zie [[DEVELOPMENT_GUIDE]] voor complete conventies
+   - Zie [Contributing Guidelines](CONTRIBUTING.md) voor complete conventies
 
 4. **Pull Requests**
    - Beschrijf wat je hebt veranderd
@@ -225,6 +245,6 @@ Voor vragen of suggesties, neem contact op met het development team.
 
 ## 📝 License
 
-MIT License - Zie [[LICENSE]] voor details
+MIT License - Zie [LICENSE](LICENSE) voor details
 
 Copyright (c) 2025 Digital Resupplying Automation Team

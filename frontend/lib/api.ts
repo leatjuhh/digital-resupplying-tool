@@ -3,6 +3,8 @@
  * Connects Next.js frontend with FastAPI backend
  */
 
+import { User, LoginCredentials, TokenResponse } from '@/types/auth';
+
 // Base URL van de FastAPI backend (localhost tijdens development)
 const API_BASE_URL = 'http://localhost:8000';
 
@@ -287,5 +289,92 @@ export const api = {
 
       return response.json();
     },
+  },
+
+  /**
+   * Authentication endpoints
+   */
+  auth: {
+    /**
+     * Login met username en password
+     */
+    async login(credentials: LoginCredentials): Promise<TokenResponse> {
+      const formData = new URLSearchParams();
+      formData.append('username', credentials.username);
+      formData.append('password', credentials.password);
+      
+      const response = await fetch(
+        `${API_BASE_URL}/api/auth/login?remember_me=${credentials.remember_me || false}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.detail || 'Login failed');
+      }
+
+      return response.json();
+    },
+
+    /**
+     * Refresh access token
+     */
+    async refresh(refreshToken: string): Promise<TokenResponse> {
+      const response = await fetch(`${API_BASE_URL}/api/auth/refresh`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ refresh_token: refreshToken }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Token refresh failed');
+      }
+
+      return response.json();
+    },
+
+    /**
+     * Get current user info
+     */
+    async me(accessToken: string): Promise<User> {
+      const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get user info');
+      }
+
+      return response.json();
+    },
+
+    /**
+     * Logout (client-side cleanup)
+     */
+    async logout(accessToken: string): Promise<void> {
+      try {
+        await fetch(`${API_BASE_URL}/api/auth/logout`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+        });
+      } catch {
+        // Ignore errors, cleanup locally anyway
+      }
+    }
   },
 };

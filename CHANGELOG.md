@@ -5,6 +5,209 @@ Alle belangrijke wijzigingen aan dit project worden gedocumenteerd in dit bestan
 Het formaat is gebaseerd op [Keep a Changelog](https://keepachangelog.com/nl/1.0.0/),
 en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
+## [1.5.0] - 2025-11-02
+
+### Fixed - CRITICAL BUG 🔴
+- ✅ **JWT Authentication Bug** - Login flow nu volledig werkend
+  - **Probleem:** Login succesvol maar `/api/auth/me` gaf 401 "Token kon niet gevalideerd worden"
+  - **Oorzaak:** JWT "sub" claim was integer in plaats van string (RFC 7519 vereist string)
+  - **Oplossing:** Conversie naar string bij token creatie, terug naar int bij validatie
+  - **Bestanden:** `backend/routers/auth.py`, `backend/auth.py`
+  - **Impact:** Volledige auth flow werkt nu end-to-end (login → protected routes → logout)
+  - **Test Script:** `backend/test_complete_auth.py` voor validatie
+
+### Added - NEW FEATURES & DOCUMENTATION 📚
+- ✅ **Authentication Testing Guide** (`docs/guides/authentication-testing.md`)
+  - 60+ test scenarios met step-by-step instructies
+  - Test credentials voor admin/user/store roles
+  - Login/logout flow tests
+  - Session management tests (Remember Me, auto-refresh, expiry)
+  - Role-based access control tests
+  - Error handling en edge case tests
+  - Visual/UX tests (loading states, toasts, modals)
+  - Testing best practices en bug reporting guidelines
+  
+- ✅ **Mobile Network Access** (`docs/getting-started/mobile-network-access.md`)
+  - Complete guide voor iOS/Android toegang vanaf lokaal netwerk
+  - Handmatige en geautomatiseerde setup instructies
+  - Uitgebreide troubleshooting sectie
+  - Network security notes
+  - Tips voor stabiel IP address
+  - FAQ sectie
+  
+- ✅ **Mobile Setup Automation** (`setup-mobile.ps1`)
+  - PowerShell script voor automatische configuratie
+  - Detecteert lokaal IP address automatisch
+  - Update frontend `.env.local` met correcte API URL
+  - Color-coded output met duidelijke instructies
+  - Gebruiksvriendelijke setup in 3 stappen
+
+### Changed - TECHNICAL IMPROVEMENTS 🔧
+- 🔧 **Backend Host Binding** - Backend luistert nu op `0.0.0.0` (alle interfaces)
+  - File: `backend/.env` → `BACKEND_HOST=0.0.0.0`
+  - Maakt mobiele toegang mogelijk
+
+- 🔧 **CORS Configuration** - Uitgebreid voor lokale netwerk IP's
+  - Regex pattern: `http://(localhost|127\.0\.0\.1|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.\d+\.\d+\.\d+):3000`
+  - Support voor alle private network ranges (192.168.x.x, 10.x.x.x, 172.x.x.x)
+  
+- 🔧 **Frontend API Configuration** - Dynamische API URL via environment variable
+  - File: `frontend/lib/api-client.ts`
+  - Variable: `NEXT_PUBLIC_API_URL` (defaults to localhost:8000)
+  - Configureerbaar via `frontend/.env.local`
+
+### Testing
+- ✅ End-to-end auth flow gevalideerd met `test_complete_auth.py`
+- ✅ Mobile network access getest op iOS/Android devices
+- ✅ All test scenarios in authentication-testing.md gedocumenteerd
+
+### Documentation Structure
+**Nieuwe Documentatie:**
+```
+docs/
+├── guides/
+│   └── authentication-testing.md    (NEW - 600+ lines)
+└── getting-started/
+    └── mobile-network-access.md     (NEW - 400+ lines)
+    
+Root:
+└── setup-mobile.ps1                 (NEW - 80 lines)
+```
+
+### Impact
+🎊 **Production-Ready Authentication!**
+- Login/logout flow volledig functioneel
+- Session management met auto-refresh
+- Role-based access control werkend
+- Mobile/tablet testing nu mogelijk
+- Comprehensive testing documentatie
+
+### Security Notes
+⚠️ **Mobile Network Access:**
+- Development configuratie ALLEEN voor local testing
+- NIET geschikt voor productie zonder HTTPS/SSL
+- Backend luistert op alle interfaces (0.0.0.0)
+- CORS staat lokale netwerk origins toe
+- Voor productie: gebruik specifieke IP whitelisting + HTTPS
+
+### Related Files Changed
+**Backend:**
+- `backend/routers/auth.py` - JWT sub claim fix (3 locaties)
+- `backend/auth.py` - Token validation fix
+- `backend/test_complete_auth.py` - Nieuwe test suite
+- `backend/.env` - Host binding op 0.0.0.0
+- `backend/main.py` - CORS regex update
+
+**Frontend:**
+- `frontend/lib/api-client.ts` - Configureerbare API URL
+- `frontend/.env.local` - API URL configuratie (created by setup script)
+
+**Documentation:**
+- `docs/guides/authentication-testing.md` - Nieuwe testing guide
+- `docs/getting-started/mobile-network-access.md` - Nieuwe setup guide
+- `backend/AUTH_FIX_SUMMARY.md` - Technical write-up van JWT fix
+
+**Scripts:**
+- `setup-mobile.ps1` - Nieuwe automation script
+
+### Breaking Changes
+Geen breaking changes - backwards compatible
+
+### Migration Notes
+Voor mobile access:
+1. Run `.\setup-mobile.ps1` (automatisch)
+2. Of handmatig edit `frontend/.env.local` met je lokale IP
+3. Start servers met `.\dev.ps1`
+4. Toegang via `http://[JE-IP]:3000` op mobile device
+
+Om terug te gaan naar localhost:
+- Edit `frontend/.env.local`: `NEXT_PUBLIC_API_URL=http://localhost:8000`
+- Of verwijder het bestand
+
+---
+
+## [1.4.0] - 2025-10-31
+
+### Added - MAJOR DOCUMENTATION REORGANIZATION 📚
+- ✅ **Documentation Guidelines** (`docs/DOCUMENTATION_GUIDELINES.md`)
+  - Strikte regels om wildgroei te voorkomen
+  - Maximum 4 .md bestanden in root (README, CHANGELOG, CONTRIBUTING, LICENSE)
+  - Template voor nieuwe documentatie met YAML frontmatter
+  - Bestandsnaming conventies (lowercase-with-dashes.md)
+  - Periodic maintenance checklist
+
+- ✅ **Contributing Guidelines** (`CONTRIBUTING.md`)
+  - Samenvoeging van DEV_MANAGEMENT.md en DEVELOPMENT_GUIDE.md
+  - Code of Conduct
+  - Development workflow instructies
+  - Code conventions (Python & TypeScript)
+  - Commit guidelines met types
+  - Testing instructies
+  - Pull request proces
+  - Dependency management
+  - Database migratie instructies
+
+- ✅ **Gestructureerde docs/ folder**
+  - `docs/getting-started/` - Voor nieuwe gebruikers
+    - quick-start.md
+    - installation.md (was GETTING_STARTED.md)
+    - troubleshooting.md
+  - `docs/guides/` - User & developer guides
+    - cursor-workflow.md
+    - batch-system.md
+    - database.md
+    - integration.md
+    - redistribution-algorithm.md
+  - `docs/technical/` - Technische documentatie
+    - pdf-extraction-system.md
+    - gui-overview.md (was GUI-COMPLETE-OVERVIEW.md)
+    - frontend-consolidation.md (was FRONTEND_CONSOLIDATIE_RAPPORT.md)
+    - dummy-data-audit.md
+    - next-steps-analysis.md
+  - `docs/sessions/` - Development session logs
+    - 2025-10-20.md (was SESSION_20_OKT_2025.md)
+    - 2025-10-29.md (was SESSION_29_OKT_2025.md)
+
+### Changed
+- 📝 **README.md** - Volledig geüpdatet met nieuwe documentatie links
+  - Wiki-style [[links]] vervangen door relatieve markdown links
+  - Georganiseerd in secties (Getting Started, Guides, Technical, Contributing)
+  - Alle links verwijzen nu naar docs/ structuur
+  
+- 📁 **Root Directory** - Van 19 naar 4 .md bestanden
+  - Voor: 19 markdown bestanden verspreid over root
+  - Na: 4 markdown bestanden (README, CHANGELOG, CONTRIBUTING, LICENSE)
+  - 15 bestanden verplaatst naar gestructureerde docs/ folders
+
+- 🗂️ **Bestandsnaming** - Geconsistentiseerd naar lowercase-with-dashes
+  - GUI-COMPLETE-OVERVIEW.md → gui-overview.md
+  - FRONTEND_CONSOLIDATIE_RAPPORT.md → frontend-consolidation.md
+  - SESSION_20_OKT_2025.md → 2025-10-20.md
+  - GETTING_STARTED.md → installation.md
+
+### Removed
+- ❌ DEV_MANAGEMENT.md (geïntegreerd in CONTRIBUTING.md)
+- ❌ DEVELOPMENT_GUIDE.md (geïntegreerd in CONTRIBUTING.md)
+- ❌ Alle ongeorganiseerde .md bestanden uit root
+
+### Impact
+🎊 **Van Wildgroei → Professionele Structuur!**
+- Clean root directory (GitHub best practice)
+- Duidelijke categorisatie van documentatie
+- Gemakkelijker navigeren voor nieuwe developers
+- Schaalbare documentatie structuur
+- Preventie systeem tegen toekomstige wildgroei
+- Beter voor GitHub presentatie
+- Makkelijker te onderhouden
+
+### Preventie
+⚠️ **Belangrijk voor Toekomstige Wijzigingen:**
+- Lees ALTIJD `docs/DOCUMENTATION_GUIDELINES.md` VOOR je nieuwe documentatie toevoegt
+- Nieuwe .md bestanden NOOIT in root plaatsen (behalve de 4 toegestane)
+- Gebruik lowercase-with-dashes.md naming
+- Update README.md wanneer je nieuwe docs toevoegt
+- Volg de YAML frontmatter template
+
 ## [1.3.1] - 2025-10-29
 
 ### Added

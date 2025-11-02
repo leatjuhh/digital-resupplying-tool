@@ -17,12 +17,25 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { ModeToggle } from "@/components/mode-toggle"
+import { useAuth } from "@/contexts/auth-context"
 
 export function AppSidebar() {
   const pathname = usePathname()
+  const { user, logout, hasRole } = useAuth()
 
-  // Simuleer een winkelgebruiker (in een echte app zou dit uit de authenticatie komen)
-  const isStoreUser = false
+  // Check if user has store role
+  const isStoreUser = hasRole('store')
+
+  // Get user initials for avatar
+  const getUserInitials = () => {
+    if (!user?.full_name) return 'U'
+    return user.full_name
+      .split(' ')
+      .map(n => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2)
+  }
 
   return (
     <Sidebar collapsible="icon">
@@ -106,16 +119,16 @@ export function AppSidebar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-              <span className="text-xs font-medium">AB</span>
+              <span className="text-xs font-medium">{getUserInitials()}</span>
             </div>
-            <div>
-              <p className="text-sm font-medium">Admin Beheerder</p>
-              <p className="text-xs text-muted-foreground">admin@example.com</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium truncate">{user?.full_name || 'User'}</p>
+              <p className="text-xs text-muted-foreground truncate">{user?.email || ''}</p>
             </div>
           </div>
           <ModeToggle />
         </div>
-        <Button variant="outline" size="sm" className="mt-2">
+        <Button variant="outline" size="sm" className="mt-2" onClick={() => logout()}>
           <LogOut className="mr-2 h-4 w-4" />
           Uitloggen
         </Button>

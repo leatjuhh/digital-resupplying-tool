@@ -17,13 +17,25 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configureer CORS om frontend op localhost:3000 toegang te geven
-# De allowed_origins komen uit .env of gebruiken standaard localhost:3000
-allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+# Configureer CORS voor localhost EN lokale netwerk toegang (voor mobile testing)
+allowed_origins_str = os.getenv(
+    "ALLOWED_ORIGINS", 
+    "http://localhost:3000,http://127.0.0.1:3000"
+)
+
+# Parse CORS origins - support voor wildcards
+allowed_origins = []
+for origin in allowed_origins_str.split(","):
+    origin = origin.strip()
+    if "*" in origin:
+        # Voor wildcards, gebruik regex pattern
+        allowed_origins.append(origin)
+    else:
+        allowed_origins.append(origin)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,  # Welke origins zijn toegestaan
+    allow_origin_regex=r"http://(localhost|127\.0\.0\.1|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.\d+\.\d+\.\d+):3000",
     allow_credentials=True,          # Sta cookies en credentials toe
     allow_methods=["*"],             # Sta alle HTTP methods toe (GET, POST, PUT, DELETE, etc.)
     allow_headers=["*"],             # Sta alle headers toe
