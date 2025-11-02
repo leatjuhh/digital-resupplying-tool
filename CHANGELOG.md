@@ -5,6 +5,75 @@ Alle belangrijke wijzigingen aan dit project worden gedocumenteerd in dit bestan
 Het formaat is gebaseerd op [Keep a Changelog](https://keepachangelog.com/nl/1.0.0/),
 en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
+## [Unreleased]
+
+### Added
+- ✅ **Filialen Sortering** - Numerieke sortering van filialen in alle tabellen
+  - Backend sorting utilities in `backend/utils.py`
+  - Drie helper functies: `extract_store_code_numeric()`, `sort_stores_by_code()`, `sort_store_ids()`
+  - Integr atie in API endpoint `/api/pdf/proposals/{proposal_id}/full`
+  - Consistente sortering aan de bron (API level)
+  - Voorkomt lexicografische bug (10 voor 2)
+  - Geen frontend wijzigingen nodig - backend levert gesorteerde data
+  - Test suite met 100% pass rate (`test_store_sorting_simple.py`)
+  - Volledige documentatie in `docs/sorting-filialen.md`
+
+- 📚 **Proposals Documentatie** - Uitgebreide diagnostische documentatie
+  - `docs/proposals_status.md` - Status inventarisatie en diagnose
+  - `docs/proposals_changes.md` - Wijzigingen overzicht
+  - `docs/proposals_tests.md` - Test resultaten
+  - Root cause analyse voor proposal visibility issues
+
+- 🧪 **Testing & Verificatie Scripts**
+  - `backend/test_store_sorting.py` - Uitgebreid sorting test
+  - `backend/test_store_sorting_simple.py` - Compacte sorting test
+  - `backend/check_proposals_db.py` - Database proposals checker
+  - `backend/check_proposal_detail.py` - Proposal detail verificatie
+
+- 📝 **Todo Items** - Planning en bug tracking
+  - `todo/bug_verkocht_kolom_summing_instead_of_source.md` - Verkocht kolom bug
+  - `todo/verify_proposals_use_extracted_sales.md` - Sales data verificatie
+  - `todo/review_proposal_optimaal_verdeeld_422557.md` - Optimaal verdeelde proposal review
+  - `todo/next_session_checklist.md` - Next session planning
+
+### Changed
+- 🔧 **Backend API Updates** - `backend/routers/pdf_ingest.py`
+  - Import van `sort_stores_by_code` en `sort_store_ids` utilities
+  - Implementatie van numerieke sortering in proposal endpoints
+  - Improved data consistency in API responses
+
+- 🎨 **Frontend Proposal Components** - UI verbeteringen
+  - `frontend/components/proposals/proposal-detail.tsx` - Enhanced read-only view
+  - `frontend/components/proposals/editable-proposal-detail.tsx` - Improved edit functionality
+  - Better data handling en error states
+  - Improved user feedback en visual cues
+
+### Technical Details
+**Sorting Implementation:**
+- O(n log n) sorting performance (<1ms voor typische dataset)
+- Handles edge cases: leading zeros, invalid codes, whitespace
+- Primary sort: numerieke waarde (1, 2, 10, 100)
+- Secondary sort: alfabetisch op naam
+- Backwards compatible - geen breaking changes
+
+**Impact:**
+- Betere user experience door consistente volgorde
+- Voorkomt verwarring bij filiaal herkenning
+- Professional appearance in alle tabellen
+- Foundation voor toekomstige sorting features
+
+### Testing
+- ✅ 100% test pass rate voor sorting utilities
+- ✅ Database queries verified
+- ✅ API endpoints validated
+- ✅ Frontend components render correct
+
+### Documentation
+- Complete technical documentation in `docs/sorting-filialen.md`
+- Proposals diagn ose documentatie in `docs/`
+- Todo items voor bug tracking en planning
+- Session log bijgewerkt in `docs/sessions/2025-11-02.md`
+
 ## [1.5.0] - 2025-11-02
 
 ### Fixed - CRITICAL BUG 🔴

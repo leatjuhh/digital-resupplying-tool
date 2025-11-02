@@ -1,13 +1,32 @@
----
-tags: [project, overview, main]
-type: index
-version: 1.1
-status: active
----
-
 # Digital Resupplying Tool
 
 Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen verschillende winkellocaties.
+
+---
+
+## 📢 Recent Updates
+
+**Latest Version: v1.5.0** (2025-11-02) 
+
+### ✨ What's New
+
+**🔴 CRITICAL FIX - Authentication Working!**
+- ✅ JWT Authentication bug resolved
+- ✅ Complete login → protected routes → logout flow functional
+- ✅ Mobile network access support added
+
+**📚 New Documentation**
+- ✅ Authentication Testing Guide (60+ test scenarios)
+- ✅ Mobile Network Access Guide (iOS/Android setup)
+
+**🔧 Latest Improvements** (Since v1.5.0)
+- ✅ Filialen sorting fixes - Numerieke sortering in alle tabellen
+- ✅ Proposals detail/edit UI verbeteringen
+- ✅ Backend sorting utilities geïmplementeerd
+
+[📖 View Full Changelog →](CHANGELOG.md)
+
+---
 
 ## 📋 Snelle Links
 

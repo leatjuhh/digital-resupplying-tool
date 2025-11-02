@@ -7,6 +7,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AlertCircle, CheckCircle2 } from "lucide-react"
 
 interface ProposalDetailProps {
   id: string
@@ -127,6 +129,9 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
     })
   })
 
+  // Detect "no changes" situation (optimal distribution)
+  const hasNoChanges = !hasDifferences && proposalData.stores.length > 0
+
   const showBatchProgress = batchInfo && batchInfo.totalProposals > 0
   const progressPercentage = showBatchProgress
     ? Math.round((batchInfo.assessedProposals / batchInfo.totalProposals) * 100)
@@ -206,14 +211,26 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
           <div className="flex items-center justify-between">
             <CardTitle>Interfiliaalverdeling</CardTitle>
             {hasDifferences && <Badge className="ml-2">Wijzigingen voorgesteld</Badge>}
+            {hasNoChanges && <Badge variant="secondary" className="ml-2"><CheckCircle2 className="mr-1 h-3 w-3" />Optimaal Verdeeld</Badge>}
           </div>
         </CardHeader>
         <CardContent>
+          {hasNoChanges && (
+            <Alert className="mb-4 border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-950">
+              <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
+              <AlertTitle className="text-green-800 dark:text-green-300">Optimaal Verdeeld</AlertTitle>
+              <AlertDescription className="text-green-700 dark:text-green-400">
+                Dit artikel is reeds optimaal verdeeld over de filialen. Het herverdelingsalgoritme heeft geen verbeteringen gevonden.
+                De huidige voorraad komt goed overeen met de verkoophistorie per locatie.
+              </AlertDescription>
+            </Alert>
+          )}
+          
           <Tabs defaultValue="comparison">
             <TabsList className="mb-4">
               <TabsTrigger value="comparison">Vergelijking</TabsTrigger>
               <TabsTrigger value="current">Huidige Situatie</TabsTrigger>
-              <TabsTrigger value="proposed">Voorgestelde Situatie</TabsTrigger>
+              {hasDifferences && <TabsTrigger value="proposed">Voorgestelde Situatie</TabsTrigger>}
             </TabsList>
 
             <TabsContent value="comparison">

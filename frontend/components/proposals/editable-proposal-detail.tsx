@@ -28,6 +28,7 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
   const [isBalanced, setIsBalanced] = useState(true)
   const [hasChanges, setHasChanges] = useState(false)
   const [totalDifference, setTotalDifference] = useState(0)
+  const [editingBasis, setEditingBasis] = useState<'current' | 'proposed'>('current')
 
   useEffect(() => {
     async function fetchProposalData() {
@@ -145,8 +146,25 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
     setProposalData(newProposalData)
   }
 
+  // Check if there are differences between current and proposed in initial data
+  const hasProposedDifferences = initialProposalData?.stores.some((store: any) => {
+    return store.inventoryCurrent.some((current: number, sizeIndex: number) => {
+      return current !== store.inventoryProposed[sizeIndex]
+    })
+  }) || false
+
+  const loadProposalAsBase = () => {
+    if (!initialProposalData) return
+    
+    // Start editing from proposed inventory instead of current
+    setEditingBasis('proposed')
+    setProposalData(initialProposalData)
+    setHasChanges(false)
+  }
+
   const resetProposal = () => {
     setProposalData(initialProposalData)
+    setEditingBasis('current')
     setHasChanges(false)
   }
 
@@ -253,8 +271,18 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
           <div className="flex items-center justify-between">
             <CardTitle>Bewerk Herverdeling</CardTitle>
             <div className="flex items-center gap-2">
+              <Badge variant={editingBasis === 'current' ? 'default' : 'secondary'}>
+                Basis: {editingBasis === 'current' ? 'Huidige Voorraad' : 'AI Voorstel'}
+              </Badge>
+              
+              {hasProposedDifferences && editingBasis === 'current' && (
+                <Button variant="outline" size="sm" onClick={loadProposalAsBase}>
+                  Laad AI Voorstel
+                </Button>
+              )}
+              
               <Button variant="outline" size="sm" onClick={resetProposal} disabled={!hasChanges}>
-                Resetten naar origineel
+                Resetten
               </Button>
               <Badge variant={isBalanced ? "outline" : "destructive"}>
                 {isBalanced ? "Gebalanceerd" : "Ongebalanceerd"}
@@ -269,7 +297,8 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li>Bewerk de aantallen direct door op de getallen te klikken</li>
               <li>De totale voorraad moet gelijk blijven (gebalanceerd zijn) om op te kunnen slaan</li>
-              <li>Gebruik de "Resetten naar origineel" knop om alle wijzigingen ongedaan te maken</li>
+              <li>Gebruik "Laad AI Voorstel" om te starten vanaf het gegenereerde voorstel</li>
+              <li>Gebruik "Resetten" om terug te gaan naar de {editingBasis === 'current' ? 'originele voorraad' : 'AI voorstel basis'}</li>
             </ul>
           </div>
 

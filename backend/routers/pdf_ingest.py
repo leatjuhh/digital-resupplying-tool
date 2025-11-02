@@ -16,6 +16,7 @@ from db_models import PDFBatch, ArtikelVoorraad, PDFParseLog, Proposal
 from pdf_extract import parse_pdf_to_records
 from redistribution.algorithm import generate_redistribution_proposals_for_batch
 from redistribution.constraints import DEFAULT_PARAMS
+from utils import sort_stores_by_code, sort_store_ids
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -579,6 +580,9 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
     from redistribution.constraints import get_size_order
     sorted_sizes = get_size_order(list(all_sizes))
     
+    # Sorteer store IDs numeriek (niet lexicografisch!)
+    sorted_store_ids = sort_store_ids(list(stores_inventory.keys()))
+    
     # Pas moves toe op voorraad om "proposed" situatie te krijgen
     proposed_inventory = {}
     for store_id, data in stores_inventory.items():
@@ -601,9 +605,9 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
                 proposed_inventory[to_store][size] = 0
             proposed_inventory[to_store][size] += qty
     
-    # Bouw stores array
+    # Bouw stores array (gebruik numeriek gesorteerde IDs)
     stores_data = []
-    for store_id in sorted(stores_inventory.keys()):
+    for store_id in sorted_store_ids:
         store = stores_inventory[store_id]
         
         # Bereken totale verkoop voor deze winkel
