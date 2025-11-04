@@ -7,6 +7,122 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - BASELINE HERVERDELINGSALGORITME PLANNING 🎯
+
+- 📋 **Baseline Implementatie Plan** - Complete roadmap voor geavanceerd algoritme
+  - 6-fase implementatie plan in `docs/technical/baseline-implementation-plan.md`
+  - Gap analyse tussen huidig en gewenst algoritme
+  - Gedetailleerde technische specificaties per fase
+  - Success criteria en testing strategie
+  - ~4 weken implementatie tijdlijn
+
+- 📝 **Fase 1: Situatie Classificatie** (2-3 dagen) ⭐ CRITICAL PATH
+  - Todo: `todo/baseline-phase-1-situation-classifier.md`
+  - Detecteert automatisch HIGH_STOCK (40-56), LOW_STOCK (<25), MEDIUM_STOCK, PARTIJ (>56)
+  - `SituationThresholds` configureerbaar per omgeving
+  - Basis voor situatie-specifieke strategieën
+  - Dependencies: Geen (kan direct starten)
+
+- 📝 **Fase 2: Strategieën Implementatie** (4-5 dagen) ⭐ CRITICAL PATH
+  - Todo: `todo/baseline-phase-2-strategies.md`
+  - Strategy Pattern architectuur met 4 strategieën:
+    - `HighStockStrategy` - Behoud series in veel winkels
+    - `LowStockStrategy` - Concentreer op top-X winkels
+    - `PartijStrategy` - Agressievere herverdeling
+    - `DefaultStrategy` - Fallback (huidig greedy)
+  - Dependencies: Fase 1 (situatie classificatie)
+
+- 📝 **Fase 3: Artikel Categorie System** (2-3 dagen)
+  - Todo: `todo/baseline-phase-3-categories.md`
+  - Keyword-based detectie (jassen, broeken, jurken, shirts, etc.)
+  - Categorie-specifiek beleid (jassen blijven in meer winkels)
+  - `CategoryPolicy` per artikel type
+  - Dependencies: Fase 2 (strategies moeten category-aware zijn)
+
+- 📝 **Fase 4: Intelligente Prioritering** (2-3 dagen)
+  - Todo: `todo/baseline-phase-4-priority.md`
+  - Multi-factor priority scoring:
+    - Verkoop ratio (40%) - klasieke demand
+    - Absolute verkoop (25%) - top sellers voorkeur
+    - Serie compleetheid (20%) - bijna-complete serie bonus
+    - Categorie modifier (10%) - jassen vs shirts
+    - BV relatief (5%) - prestatie binnen BV
+  - BV-level priority ranking
+  - Dependencies: Fase 3 (gebruikt category policies)
+
+- 📝 **Fase 5: Maat Compensatie** (1-2 dagen)
+  - Todo: `todo/baseline-phase-5-compensation.md`
+  - Compensatie voor ontbrekende maten in LOW_STOCK situaties
+  - Voorkeur volgorde:
+    1. Dubbele toewijzing naburige maat
+    2. Buitenliggende maat (S/XXL)
+    3. Één maat verder
+  - Alleen voor top-X winkels met incomplete series
+  - Dependencies: Fase 4 (gebruikt priority ranking)
+
+- 📝 **Fase 6: Feedback & Iteratie System** (3-4 dagen) 🔴 HIGH PRIORITY
+  - Todo: `todo/baseline-phase-6-feedback.md`
+  - Human-in-the-loop feedback systeem
+  - Database schema: `ProposalFeedback`, `AlgorithmConfig` tables
+  - Config versioning en activation systeem
+  - Manuele analyse en parameter tuning (minimale AI)
+  - Admin UI voor feedback review en config management
+  - Dependencies: Fase 5 (complete baseline eerst)
+
+### Baseline Architecture
+**Nieuwe Modules:**
+```
+backend/redistribution/
+├── situation_classifier.py      # Fase 1
+├── article_categories.py        # Fase 3
+├── size_compensation.py         # Fase 5
+├── feedback_analyzer.py         # Fase 6
+└── strategies/                  # Fase 2
+    ├── base.py
+    ├── high_stock.py
+    ├── low_stock.py
+    ├── partij.py
+    └── default.py
+```
+
+**Updates:**
+- `algorithm.py` - Strategy pattern integration
+- `constraints.py` - Nieuwe thresholds en params
+- `scoring.py` - Enhanced multi-factor scoring
+- `domain.py` - Priority score tracking
+
+### Success Criteria
+**Baseline V1.0 (Na Fase 1-2):** ⭐ MVP - 2 weken
+- Algoritme detecteert situaties correct
+- HIGH_STOCK: behoudt series in veel winkels
+- LOW_STOCK: concentreert op top-X
+- Output vergelijkbaar met manuele beslissingen
+
+**Baseline V2.0 (Na Fase 3-4):** +1 week
+- Jassen worden anders behandeld dan shirts
+- Multi-factor priority scoring
+- Categorie beleid configureerbaar
+
+**Baseline V3.0 (Na Fase 5-6):** +1 week
+- Maat compensatie werkend
+- Feedback capture operationeel
+- Iteratieve verbetering framework
+
+**Total: ~4 weken voor volledige baseline**
+
+### Design Principles
+- 🎯 **Manuele werkwijze als referentie** - Algoritme volgt ervaren gebruiker
+- 🔧 **Configureerbaar** - Parameters aanpasbaar via settings
+- 📊 **Testbaar** - Elke fase met unit en integration tests
+- 🔄 **Iteratief** - Verbetering via user feedback
+- 🏗️ **Modulair** - Strategy pattern voor flexibiliteit
+
+### Test Strategy
+- Unit tests per module (>80% coverage)
+- Integration tests met `/dummyinfo/*.pdf` data
+- User acceptance testing per fase
+- Performance benchmarks (geen regressies)
+
 ### Added
 - ✅ **Filialen Sortering** - Numerieke sortering van filialen in alle tabellen
   - Backend sorting utilities in `backend/utils.py`
