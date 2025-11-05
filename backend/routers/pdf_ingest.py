@@ -215,9 +215,13 @@ def save_to_database(db: Session, batch_id: int, parsed, filename: str) -> int:
         voorraad_per_maat = row.get("voorraad_per_maat", {})
         verkocht = row.get("verkocht", 0)
         
+        # Track if we've saved verkocht for this filiaal yet
+        # Only save verkocht value in the FIRST record per filiaal to avoid duplication
+        first_record_for_filiaal = True
+        
         # Create a record for each size with voorraad > 0
         for maat, voorraad in voorraad_per_maat.items():
-            if voorraad > 0 or verkocht > 0:  # Only save if there's meaningful data
+            if voorraad > 0 or (verkocht > 0 and first_record_for_filiaal):  # Only save if there's meaningful data
                 record = ArtikelVoorraad(
                     batch_id=batch_id,
                     volgnummer=volgnummer,
@@ -226,11 +230,12 @@ def save_to_database(db: Session, batch_id: int, parsed, filename: str) -> int:
                     filiaal_naam=filiaal_naam,
                     maat=maat,
                     voorraad=voorraad,
-                    verkocht=verkocht,
+                    verkocht=verkocht if first_record_for_filiaal else 0,  # Only store verkocht in first record
                     pdf_metadata=parsed.meta
                 )
                 db.add(record)
                 count += 1
+                first_record_for_filiaal = False  # Subsequent records get verkocht=0
     
     db.commit()
     
