@@ -178,6 +178,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 - [Database](docs/guides/database.md) - Database management
 - [Integration](docs/guides/integration.md) - Frontend-backend koppeling
 - [Redistribution Algorithm](docs/guides/redistribution-algorithm.md) - Herverdelingslogica
+- [SQL-Based Generation Plan](todo/sql_connection_and_sizedisplay_logic-old-CHATGPT_logic.md) - Automatische generatie uit EasyVoras SQL ⭐ NEW!
 
 ### Technical Documentation
 - [PDF Extraction System](docs/technical/pdf-extraction-system.md) - PDF parsing details

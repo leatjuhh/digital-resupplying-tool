@@ -7,6 +7,131 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - SQL-BASED GENERATION DOCUMENTATION 📚
+
+- 📋 **SQL-Based Generation Specificatie** - Complete implementatie plan voor automatische generatie
+  - Document: `todo/sql_connection_and_sizedisplay_logic-old-CHATGPT_logic.md`
+  - 50+ pagina's uitgebreide technische specificatie
+  - Bridge tussen oude GPT-4o inzichten en huidige implementatie
+  - Complete architectuur voor SQL → ArtikelVoorraad transformatie
+  - Maatbalk systeem met learning via PDF uploads
+  - 7-fase implementatie roadmap (~9 weken)
+
+- 🗄️ **Database Schema Planning**
+  - Nieuwe tabel: `maatbalk_mappings` met 13 positie kolommen
+  - Seed data voor 7 bekende maatbalken (1, 2, 7, 9, 10, 20, 21)
+  - ArtikelVoorraad uitbreidingen: `source` ('pdf'/'sql') en `maatbalk_id`
+  - PDF learning systeem voor auto-detectie nieuwe maatbalken
+
+- 🔌 **Backend Services Specificatie**
+  - `backend/sql_extract/evoras_connector.py` - SSH + MySQL connector
+  - `backend/sql_extract/transformer.py` - VOORRAAD1-13 → maat labels
+  - `backend/routers/sql_ingest.py` - `/api/sql-ingest/generate` endpoint
+  - Complete SQL queries met alle Interfiliaalverdeling velden
+
+- 🎨 **Frontend Implementation Plan**
+  - Update `generate-proposals.tsx` met echte API calls
+  - Tekstinvoer voor artikelnummers (newline-separated)
+  - Progress tracking via polling
+  - Error handling voor onbekende maatbalken
+
+- 🔐 **Security Architecture**
+  - Intern netwerk: Read-only SQL user setup scripts
+  - Toekomstige internet deployment: VPN + API gateway architectuur
+  - Connection pooling en query sanitization
+  - Audit logging voor SQL operations
+
+- 🧪 **Testing Strategie**
+  - Unit tests voor maatbalk mappings en transformers
+  - Integration tests voor end-to-end SQL flow
+  - Validation tests: SQL vs PDF output vergelijking
+  - Performance benchmarks voor batch operations
+
+### Implementation Phases
+**Fase 1: Foundation** (Week 1-2)
+- Create `maatbalk_mappings` tabel + seed data
+- Migrate `ArtikelVoorraad` schema
+- Setup read-only SQL user
+- Test SSH + MySQL connectie
+
+**Fase 2: Backend Core** (Week 3-4)
+- Implementeer `EvorasConnector` class
+- Implementeer `SQLDataTransformer` class
+- Test met bekende artikelen (423423, 54448)
+- Unit tests voor transformer
+
+**Fase 3: API Integration** (Week 5)
+- Implementeer `/api/sql-ingest/generate` endpoint
+- Error handling voor onbekende maatbalken
+- Logging en monitoring
+- Integration tests
+
+**Fase 4: Frontend** (Week 6)
+- Update `generate-proposals.tsx` met API call
+- Tekstinvoer UI voor artikelnummers
+- Progress tracking (real-time)
+- Error weergave
+
+**Fase 5: Maatbalk Learning** (Week 7)
+- Extract maat labels uit PDF header
+- Auto-create maatbalk mappings
+- UI waarschuwing bij onbekende maatbalk
+
+**Fase 6: Testing & Validation** (Week 8)
+- Test 20+ artikelen SQL vs PDF
+- Edge cases testing
+- Performance optimalisatie
+- Security audit
+
+**Fase 7: Deployment** (Week 9)
+- Production deployment
+- Monitor eerste SQL generations
+- User training
+- Feedback verzameling
+
+### Key Architecture Decisions
+| Beslissing | Rationale |
+|-----------|-----------|
+| **Parallel systems (PDF + SQL)** | Beide blijven beschikbaar voor flexibiliteit |
+| **Dezelfde ArtikelVoorraad structuur** | Algoritme blijft ongewijzigd, minimale impact |
+| **Maatbalk learning via PDF** | Automatisch nieuwe maatbalken "trainen" |
+| **Error bij onbekende maatbalk** | Gebruiker moet eerst PDF uploaden |
+| **Source kolom in UI** | Transparantie over databron (PDF/SQL) |
+| **Read-only SQL user** | Security best practice |
+| **Tekstinvoer artikelnummers** | Eenvoudig kopiëren uit Excel/tekst |
+
+### SQL Query Specification
+- Volledige query met ALLE Interfiliaalverdeling velden
+- JOIN van evlgfil + efiliaal + eplu tabellen
+- Fallback strategie voor lege `eplu` tabel
+- Parameterized queries met PyMySQL
+- MAATBALK veld KRITIEK voor maat interpretatie
+
+### Data Flow
+```
+[EasyVoras SQL] → [SQL Connector] → [Maatbalk Mapping] 
+    → [Data Transformer] → [ArtikelVoorraad + source='sql'] 
+    → [Bestaand Algoritme] → [Proposals] → [Zelfde UI]
+```
+
+### Historical Context
+- Oude GPT-4o gesprekken over SQL connectie behouden
+- Basis SQL queries gedocumenteerd (evlgfil + efiliaal)
+- BV-grenzen en maatbalk logica uitgebreid beschreven
+- SSH → MySQL workflow gedocumenteerd
+
+### Open Questions
+- [ ] Maatbalk fallback als `eplu` leeg blijft?
+- [ ] Batch size limit voor SQL generatie?
+- [ ] Caching strategie voor herhaalde artikelen?
+- [ ] Sync frequency tussen EasyVoras en DRT?
+- [ ] Top 40 integratie in v2.1?
+
+### Document Status
+**Van:** Oude chatgeschiedenis (historisch, 15 pagina's)  
+**Naar:** Complete v2.0 implementatie spec (50+ pagina's)  
+**Status:** ✅ Compleet en klaar voor implementatie
+
 ### Added - BASELINE HERVERDELINGSALGORITME PLANNING 🎯
 
 - 📋 **Baseline Implementatie Plan** - Complete roadmap voor geavanceerd algoritme
