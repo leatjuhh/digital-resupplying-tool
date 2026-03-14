@@ -139,7 +139,7 @@ def load_article_data(
     # Groepeer per winkel
     stores_data: Dict[str, Dict] = defaultdict(lambda: {
         'inventory': {},
-        'sales': {},
+        'sales_total': 0,
         'store_name': '',
         'bv_name': None
     })
@@ -151,7 +151,10 @@ def load_article_data(
         size = record.maat
         
         stores_data[store_code]['inventory'][size] = record.voorraad
-        stores_data[store_code]['sales'][size] = record.verkocht
+        stores_data[store_code]['sales_total'] = max(
+            stores_data[store_code]['sales_total'],
+            record.verkocht,
+        )
         stores_data[store_code]['store_name'] = record.filiaal_naam
         stores_data[store_code]['bv_name'] = bv_config.get_bv(store_code)
         
@@ -169,7 +172,8 @@ def load_article_data(
             store_name=data['store_name'],
             bv_name=data['bv_name'],
             inventory=data['inventory'],
-            sales=data['sales']
+            # PDF verkoop is per winkel totaal, niet per maat.
+            sales={"TOTAL": data['sales_total']} if data['sales_total'] > 0 else {}
         )
         store_inv.calculate_metrics()
         article.stores[store_code] = store_inv

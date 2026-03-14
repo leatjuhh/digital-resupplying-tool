@@ -9,9 +9,13 @@
     "dev": "concurrently --names \"BACKEND,FRONTEND\" --prefix-colors \"cyan,green\" \"npm run dev:backend\" \"npm run dev:frontend\"",
     "setup": "npm run setup:backend && npm run setup:frontend",
     "setup:backend": "cd backend && python -m venv venv && .\\venv\\Scripts\\pip install -r requirements.txt && .\\venv\\Scripts\\python seed_database.py",
-    "setup:frontend": "cd frontend && npm install"
+    "setup:frontend": "cd frontend && npm install",
+    "browser:debug": "powershell -ExecutionPolicy Bypass -File scripts/start-debug-browser.ps1",
+    "browser:watch": "node scripts/watch-browser.mjs",
+    "browser:smoke": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.53.1",
     "concurrently": "^8.2.2"
   }
 }

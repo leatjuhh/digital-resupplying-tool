@@ -50,9 +50,9 @@ export function AppSidebar() {
             <Image 
               src="/mc-company-logo.png" 
               alt="MC Company Logo" 
-              width={48} 
-              height={48}
-              className="object-contain"
+              width={150}
+              height={118}
+              className="h-auto w-12 object-contain"
             />
           </div>
           <div className="flex flex-col">

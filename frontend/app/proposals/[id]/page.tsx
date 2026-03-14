@@ -1,14 +1,16 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard/dashboard-header"
 import { DashboardShell } from "@/components/dashboard/dashboard-shell"
 import { ProposalDetail } from "@/components/proposals/proposal-detail"
 import { ProposalActions } from "@/components/proposals/proposal-actions"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
-// Verwijder de useSearchParams import, want die werkt alleen in client components
-// import { useSearchParams } from "next/navigation"
+import { api, type BatchWithProposals } from "@/lib/api"
+import { buildBatchFlowInfo, type BatchFlowInfo } from "@/lib/proposal-flow"
 
-// Update de component om de batch informatie door te geven
 export default function ProposalDetailPage({
   params,
   searchParams,
@@ -16,18 +18,27 @@ export default function ProposalDetailPage({
   params: { id: string }
   searchParams: { batchId?: string }
 }) {
-  // In een echte applicatie zou deze data van een API komen
-  // Voor nu simuleren we het met hardcoded data
   const batchId = searchParams.batchId
+  const [batchFlow, setBatchFlow] = useState<BatchFlowInfo | undefined>(undefined)
 
-  // Simuleer batch informatie (in een echte app zou dit van de API komen)
-  const batchInfo = batchId
-    ? {
-        totalProposals: 42,
-        assessedProposals: 11, // We nemen aan dat dit voorstel #12 is (0-indexed)
-        name: "Herverdeling voor week 12 2025",
+  useEffect(() => {
+    async function fetchBatchFlow() {
+      if (!batchId) {
+        setBatchFlow(undefined)
+        return
       }
-    : undefined
+
+      try {
+        const batchData: BatchWithProposals = await api.pdf.getBatchProposals(parseInt(batchId))
+        setBatchFlow(buildBatchFlowInfo(batchData.batch_name, batchData.proposals || [], parseInt(params.id)))
+      } catch (error) {
+        console.error("Failed to fetch batch flow:", error)
+        setBatchFlow(undefined)
+      }
+    }
+
+    fetchBatchFlow()
+  }, [batchId, params.id])
 
   return (
     <DashboardShell>
@@ -42,12 +53,13 @@ export default function ProposalDetailPage({
           <ProposalActions
             id={params.id}
             batchId={batchId}
-            totalInBatch={batchInfo?.totalProposals}
-            completedInBatch={batchInfo?.assessedProposals}
+            totalInBatch={batchFlow?.totalProposals}
+            completedInBatch={batchFlow?.assessedProposals}
+            nextProposalId={batchFlow?.nextProposalId}
           />
         </DashboardHeader>
       </div>
-      <ProposalDetail id={params.id} batchId={batchId} batchInfo={batchInfo} />
+      <ProposalDetail id={params.id} batchId={batchId} batchInfo={batchFlow} />
     </DashboardShell>
   )
 }

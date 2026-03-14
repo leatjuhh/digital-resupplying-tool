@@ -33,8 +33,10 @@ Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen ver
 ### Getting Started
 - ⭐ **[Quick Start](docs/getting-started/quick-start.md)** - Snel aan de slag
 - 📖 **[Installation Guide](docs/getting-started/installation.md)** - Complete setup instructies
+- 🧪 **[Browser Debugging](docs/getting-started/browser-debugging.md)** - Live browser troubleshooting setup
 - 📱 **[Mobile Network Access](docs/getting-started/mobile-network-access.md)** - iOS/Android testing setup (NIEUW!)
 - 🔧 **[Troubleshooting](docs/getting-started/troubleshooting.md)** - Hulp bij problemen
+- 🗺️ **[Project Context Index](docs/PROJECT_CONTEXT_INDEX.md)** - Waar welke Markdown-informatie staat
 
 ### Guides
 - 🚀 **[Cursor Workflow](docs/guides/cursor-workflow.md)** - Optimale AI workflow (AANBEVOLEN!)
@@ -191,6 +193,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 ### Contributing
 - [Contributing Guidelines](CONTRIBUTING.md) - Hoe bij te dragen
 - [Documentation Guidelines](docs/DOCUMENTATION_GUIDELINES.md) - Documentatie regels
+- [Project Context Index](docs/PROJECT_CONTEXT_INDEX.md) - Navigatie voor toekomstige prompts en documentatiegebruik
 - [Changelog](CHANGELOG.md) - Versiegeschiedenis
 
 ### Archive

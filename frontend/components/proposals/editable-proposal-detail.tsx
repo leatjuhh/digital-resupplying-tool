@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { api } from "@/lib/api"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -18,9 +18,10 @@ interface EditableProposalDetailProps {
     assessedProposals: number
     name: string
   }
+  onProposalDataChange?: (data: any) => void
 }
 
-export function EditableProposalDetail({ id, batchId, batchInfo }: EditableProposalDetailProps) {
+export function EditableProposalDetail({ id, batchId, batchInfo, onProposalDataChange }: EditableProposalDetailProps) {
   const [initialProposalData, setInitialProposalData] = useState<any>(null)
   const [proposalData, setProposalData] = useState<any>(null)
   const [loading, setLoading] = useState(true)
@@ -29,6 +30,22 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
   const [hasChanges, setHasChanges] = useState(false)
   const [totalDifference, setTotalDifference] = useState(0)
   const [editingBasis, setEditingBasis] = useState<'current' | 'proposed'>('current')
+  const lastReportedProposalData = useRef<string | null>(null)
+
+  const cloneProposalData = (data: any) => ({
+    ...data,
+    supplier: { ...data.supplier },
+    color: { ...data.color },
+    category: { ...data.category },
+    subcategory: { ...data.subcategory },
+    collection: { ...data.collection },
+    sizes: [...data.sizes],
+    stores: data.stores.map((store: any) => ({
+      ...store,
+      inventoryCurrent: [...store.inventoryCurrent],
+      inventoryProposed: [...store.inventoryProposed],
+    })),
+  })
 
   useEffect(() => {
     async function fetchProposalData() {
@@ -41,6 +58,10 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
           id,
           articleCode: data.artikelnummer,
           description: data.article_name || 'Onbekend',
+          proposalReason: data.reason || '',
+          appliedRules: data.applied_rules || [],
+          isOptimalDistribution: Boolean(data.is_optimal_distribution),
+          optimalDistributionReason: data.optimal_distribution_reason || '',
           supplier: {
             id: data.metadata?.Leverancier || '',
             name: data.metadata?.Leverancier || 'Onbekend',
@@ -75,8 +96,14 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
           })) || [],
         }
         
-        setInitialProposalData(mappedData)
-        setProposalData(mappedData)
+        const initialData = cloneProposalData(mappedData)
+        const editableData = cloneProposalData(mappedData)
+
+        setInitialProposalData(initialData)
+        setProposalData(editableData)
+        const clonedEditableData = cloneProposalData(editableData)
+        lastReportedProposalData.current = JSON.stringify(clonedEditableData)
+        onProposalDataChange?.(clonedEditableData)
         setError(null)
       } catch (err) {
         console.error('Failed to fetch proposal:', err)
@@ -121,11 +148,6 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
     setHasChanges(hasAnyChanges)
 
     // Enable or disable the save button
-    const saveButton = document.getElementById("save-button") as HTMLButtonElement
-    if (saveButton) {
-      saveButton.disabled = !isBalanced || !hasAnyChanges
-    }
-
     // Dispatch custom event to share state with parent component
     const event = new CustomEvent("proposalStateChange", {
       detail: {
@@ -134,13 +156,22 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
       },
     })
     window.dispatchEvent(event)
-  }, [proposalData, totalsCurrent, totalsProposed, initialProposalData])
+    if (onProposalDataChange) {
+      const clonedProposalData = cloneProposalData(proposalData)
+      const serializedProposalData = JSON.stringify(clonedProposalData)
+
+      if (lastReportedProposalData.current !== serializedProposalData) {
+        lastReportedProposalData.current = serializedProposalData
+        onProposalDataChange(clonedProposalData)
+      }
+    }
+  }, [proposalData, totalsCurrent, totalsProposed, initialProposalData, onProposalDataChange])
 
   const handleInventoryChange = (storeIndex: number, sizeIndex: number, value: string) => {
     const numValue = Number.parseInt(value) || 0
 
     // Update the proposed inventory
-    const newProposalData = { ...proposalData }
+    const newProposalData = cloneProposalData(proposalData)
     newProposalData.stores[storeIndex].inventoryProposed[sizeIndex] = numValue
 
     setProposalData(newProposalData)
@@ -158,12 +189,12 @@ export function EditableProposalDetail({ id, batchId, batchInfo }: EditablePropo
     
     // Start editing from proposed inventory instead of current
     setEditingBasis('proposed')
-    setProposalData(initialProposalData)
+    setProposalData(cloneProposalData(initialProposalData))
     setHasChanges(false)
   }
 
   const resetProposal = () => {
-    setProposalData(initialProposalData)
+    setProposalData(cloneProposalData(initialProposalData))
     setEditingBasis('current')
     setHasChanges(false)
   }

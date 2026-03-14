@@ -36,6 +36,10 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
           id,
           articleCode: data.artikelnummer,
           description: data.article_name || 'Onbekend',
+          proposalReason: data.reason || '',
+          appliedRules: data.applied_rules || [],
+          isOptimalDistribution: Boolean(data.is_optimal_distribution),
+          optimalDistributionReason: data.optimal_distribution_reason || '',
           supplier: {
             id: data.metadata?.Leverancier || '',
             name: data.metadata?.Leverancier || 'Onbekend',
@@ -129,8 +133,8 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
     })
   })
 
-  // Detect "no changes" situation (optimal distribution)
-  const hasNoChanges = !hasDifferences && proposalData.stores.length > 0
+  // Prefer expliciete backend-status voor optimale verdeling.
+  const hasNoChanges = proposalData.isOptimalDistribution || (!hasDifferences && proposalData.stores.length > 0)
 
   const showBatchProgress = batchInfo && batchInfo.totalProposals > 0
   const progressPercentage = showBatchProgress
@@ -220,8 +224,8 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
               <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
               <AlertTitle className="text-green-800 dark:text-green-300">Optimaal Verdeeld</AlertTitle>
               <AlertDescription className="text-green-700 dark:text-green-400">
-                Dit artikel is reeds optimaal verdeeld over de filialen. Het herverdelingsalgoritme heeft geen verbeteringen gevonden.
-                De huidige voorraad komt goed overeen met de verkoophistorie per locatie.
+                {proposalData.optimalDistributionReason ||
+                  "Dit artikel is reeds optimaal verdeeld over de filialen. Het herverdelingsalgoritme heeft geen verbeteringen gevonden."}
               </AlertDescription>
             </Alert>
           )}

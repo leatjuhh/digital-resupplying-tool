@@ -1,7 +1,7 @@
 # 📚 Documentation Guidelines
 
-**Versie:** 1.0  
-**Laatst bijgewerkt:** 31 oktober 2025
+**Versie:** 1.1  
+**Laatst bijgewerkt:** 14 maart 2026
 
 > ⚠️ **BELANGRIJK**: Dit document bevat strikte regels voor het toevoegen en beheren van documentatie. Volg deze regels om wildgroei te voorkomen!
 
@@ -24,6 +24,7 @@ project-root/
 ├── README.md                    # ✅ Project overview & entry point
 ├── CHANGELOG.md                 # ✅ Versiegeschiedenis
 ├── CONTRIBUTING.md              # ✅ Contributing guidelines
+├── AGENTS.md                    # ✅ Agent context & prompt-ingang
 ├── LICENSE                      # ✅ License file
 │
 ├── docs/                        # 📁 ALLE overige documentatie gaat hier
@@ -39,14 +40,15 @@ project-root/
 
 ---
 
-## ✅ REGEL 1: Maximaal 4 MD Bestanden in Root
+## ✅ REGEL 1: Maximaal 5 MD Bestanden in Root
 
 **Root level mag ALLEEN bevatten:**
 
 1. `README.md` - Project overview en entry point
 2. `CHANGELOG.md` - Versiegeschiedenis
 3. `CONTRIBUTING.md` - Contributing guidelines
-4. `LICENSE` - License file
+4. `AGENTS.md` - Korte agent-instructies en context-ingang voor toekomstige prompts
+5. `LICENSE` - License file
 
 **❌ VERBODEN in root:**
 - Feature documentatie

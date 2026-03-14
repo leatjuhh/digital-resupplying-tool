@@ -69,3 +69,10 @@ Thumbs.db
 
 # Development process tracking
 .dev-processes.json
+
+# Browser debugging
+.tooling/
+.browser-debug-profile/
+playwright-report/
+test-results/
+browser-artifacts/

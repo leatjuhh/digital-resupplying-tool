@@ -115,10 +115,10 @@ export default function LoginPage() {
               <Image
                 src="/mc-company-logo.png"
                 alt="MC Company"
-                width={60}
-                height={60}
+                width={150}
+                height={118}
                 priority
-                className="object-contain"
+                className="h-auto w-[60px] object-contain"
               />
             </div>
             <CardTitle className="text-xl font-bold text-center">

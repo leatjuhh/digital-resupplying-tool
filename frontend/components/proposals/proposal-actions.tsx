@@ -24,9 +24,16 @@ interface ProposalActionsProps {
   batchId?: string
   totalInBatch?: number
   completedInBatch?: number
+  nextProposalId?: string
 }
 
-export function ProposalActions({ id, batchId, totalInBatch = 0, completedInBatch = 0 }: ProposalActionsProps) {
+export function ProposalActions({
+  id,
+  batchId,
+  totalInBatch = 0,
+  completedInBatch = 0,
+  nextProposalId,
+}: ProposalActionsProps) {
   const [rejectDialogOpen, setRejectDialogOpen] = useState(false)
   const [comment, setComment] = useState("")
   const { toast } = useToast()
@@ -88,10 +95,7 @@ export function ProposalActions({ id, batchId, totalInBatch = 0, completedInBatc
 
         // Navigeer naar het volgende voorstel
         if (batchId) {
-          const nextProposalId = (Number.parseInt(id) + 1).toString()
-          const hasNextProposal = completedInBatch < totalInBatch - 1
-
-          if (hasNextProposal) {
+          if (nextProposalId) {
             router.push(`/proposals/${nextProposalId}?batchId=${batchId}`)
           } else {
             router.push(`/proposals/batch/${batchId}`)

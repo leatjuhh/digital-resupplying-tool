@@ -7,6 +7,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from datetime import datetime
+from pydantic import BaseModel
 import os
 import shutil
 import logging
@@ -27,6 +28,61 @@ router = APIRouter(prefix="/api/pdf", tags=["pdf"])
 # Upload directory
 UPLOAD_DIR = "backend/uploads/pdf_batches"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+OPTIMAL_DISTRIBUTION_RULE = "Optimal Distribution Analysis"
+
+
+def is_optimal_distribution_proposal(proposal: Proposal) -> bool:
+    """Markeer expliciet wanneer het algoritme geen moves nodig vond."""
+    if proposal.moves:
+        return False
+
+    applied_rules = proposal.applied_rules or []
+    reason = (proposal.reason or "").lower()
+
+    return (
+        OPTIMAL_DISTRIBUTION_RULE in applied_rules
+        or "optimaal verdeeld" in reason
+    )
+
+
+def collect_store_inventory(voorraad_records: List[ArtikelVoorraad]) -> tuple[dict, List[str]]:
+    """
+    Groepeer voorraad per winkel.
+
+    `verkocht` komt uit de PDF als totaal per filiaal, niet per maat. Daarom
+    bewaren we hier expliciet `sold_total` per winkel in plaats van verkoop
+    kunstmatig aan een maat te koppelen.
+    """
+    stores_inventory = {}
+    all_sizes = set()
+
+    for record in voorraad_records:
+        store_key = record.filiaal_code
+        if store_key not in stores_inventory:
+            stores_inventory[store_key] = {
+                "store_id": record.filiaal_code,
+                "store_name": record.filiaal_naam,
+                "sizes": {},
+                "sold_total": 0,
+            }
+
+        stores_inventory[store_key]["sizes"][record.maat] = record.voorraad
+        stores_inventory[store_key]["sold_total"] = max(
+            stores_inventory[store_key]["sold_total"],
+            record.verkocht,
+        )
+        all_sizes.add(record.maat)
+
+    return stores_inventory, list(all_sizes)
+
+
+class RejectProposalRequest(BaseModel):
+    reason: Optional[str] = None
+
+
+class UpdateProposalRequest(BaseModel):
+    moves: List[dict]
 
 
 @router.post("/ingest")
@@ -564,22 +620,7 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
     metadata = first_record.pdf_metadata or {}
     
     # Groepeer voorraad per winkel en maat
-    stores_inventory = {}
-    all_sizes = set()
-    
-    for record in voorraad_records:
-        store_key = record.filiaal_code
-        if store_key not in stores_inventory:
-            stores_inventory[store_key] = {
-                "store_id": record.filiaal_code,
-                "store_name": record.filiaal_naam,
-                "sizes": {},
-                "sales": {}
-            }
-        
-        stores_inventory[store_key]["sizes"][record.maat] = record.voorraad
-        stores_inventory[store_key]["sales"][record.maat] = record.verkocht
-        all_sizes.add(record.maat)
+    stores_inventory, all_sizes = collect_store_inventory(voorraad_records)
     
     # Sorteer maten
     from redistribution.constraints import get_size_order
@@ -615,9 +656,6 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
     for store_id in sorted_store_ids:
         store = stores_inventory[store_id]
         
-        # Bereken totale verkoop voor deze winkel
-        total_sales = sum(store["sales"].values())
-        
         # Bouw current en proposed arrays
         current_inventory = [store["sizes"].get(size, 0) for size in sorted_sizes]
         proposed_inv = [proposed_inventory[store_id].get(size, 0) for size in sorted_sizes]
@@ -627,8 +665,10 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
             "name": store["store_name"],
             "inventory_current": current_inventory,
             "inventory_proposed": proposed_inv,
-            "sold": total_sales
+            "sold": store["sold_total"]
         })
+
+    is_optimal_distribution = is_optimal_distribution_proposal(proposal)
     
     return {
         "id": proposal.id,
@@ -647,7 +687,9 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
         "rejection_reason": proposal.rejection_reason,
         "metadata": metadata,
         "sizes": sorted_sizes,
-        "stores": stores_data
+        "stores": stores_data,
+        "is_optimal_distribution": is_optimal_distribution,
+        "optimal_distribution_reason": proposal.reason if is_optimal_distribution else None,
     }
 
 
@@ -685,7 +727,7 @@ async def approve_proposal(proposal_id: int, db: Session = Depends(get_db)):
 @router.post("/proposals/{proposal_id}/reject")
 async def reject_proposal(
     proposal_id: int,
-    reason: Optional[str] = None,
+    payload: Optional[RejectProposalRequest] = None,
     db: Session = Depends(get_db)
 ):
     """
@@ -705,7 +747,7 @@ async def reject_proposal(
     
     proposal.status = 'rejected'
     proposal.reviewed_at = datetime.now()
-    proposal.rejection_reason = reason
+    proposal.rejection_reason = payload.reason if payload else None
     
     db.commit()
     db.refresh(proposal)
@@ -722,7 +764,7 @@ async def reject_proposal(
 @router.put("/proposals/{proposal_id}")
 async def update_proposal(
     proposal_id: int,
-    moves: List[dict],
+    payload: UpdateProposalRequest,
     db: Session = Depends(get_db)
 ):
     """
@@ -741,16 +783,16 @@ async def update_proposal(
         raise HTTPException(status_code=404, detail="Proposal not found")
     
     # Update moves
-    proposal.moves = moves
+    proposal.moves = payload.moves
     proposal.status = 'edited'
     
     # Recalculate totals
-    proposal.total_moves = len(moves)
-    proposal.total_quantity = sum(move.get('qty', 0) for move in moves)
+    proposal.total_moves = len(payload.moves)
+    proposal.total_quantity = sum(move.get('qty', 0) for move in payload.moves)
     
     # Update stores affected
     stores = set()
-    for move in moves:
+    for move in payload.moves:
         stores.add(move.get('from_store'))
         stores.add(move.get('to_store'))
     proposal.stores_affected = list(stores)
