@@ -2,6 +2,10 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.17 <23",
+    "npm": ">=9"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",

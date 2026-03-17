@@ -1,123 +1,74 @@
-# Quick Start Guide
+---
+title: Quick Start
+category: getting-started
+tags: [quick-start, setup, development]
+last_updated: 2026-03-17
+related:
+  - installation.md
+  - troubleshooting.md
+  - gui-testing-and-debugging.md
+  - ../../README.md
+---
 
-## Starting the Development Servers
+# Quick Start
 
-### Method 1: Using dev.ps1 (Recommended)
+De standaardmanier om de app lokaal te starten is nu bewust simpel gehouden: gebruik altijd dezelfde launcher vanuit de project-root.
 
-Simply run in your Cursor terminal:
+## Starten
+
+Aanbevolen:
 
 ```powershell
 .\dev.ps1
 ```
 
-**What it does:**
-1. ✅ Checks if backend virtual environment exists
-2. ✅ Checks if database is initialized (auto-initializes if needed)
-3. ✅ Checks if frontend dependencies are installed
-4. ✅ Checks if ports 8000 and 3000 are available
-5. 🚀 Starts both servers in the **current Cursor terminal**
+Alternatief:
 
-**Output:**
-- All logs appear in the same terminal with color-coded prefixes:
-  - `[BACKEND]` (cyan) - Backend server logs
-  - `[FRONTEND]` (green) - Frontend server logs
-
-### Method 2: Using npm (Alternative)
-
-```bash
+```powershell
 npm run dev
 ```
 
-This skips the pre-flight checks and directly starts both servers.
+`npm run dev` is nu alleen een wrapper rond `.\dev.ps1`. Er is dus nog maar één echte startflow.
 
-### Method 3: Manual Split (Advanced)
+## Wat `.\dev.ps1` doet
 
-If you want completely separate terminals for each server:
+1. Controleert of de backend virtual environment bestaat.
+2. Controleert of de database bestaat en initialiseert die indien nodig.
+3. Controleert of frontend dependencies aanwezig zijn.
+4. Controleert of poorten `3000` en `8000` vrij zijn.
+5. Start backend en frontend met kleurgecodeerde logs in dezelfde terminal.
 
-**Terminal 1 (Backend):**
-```bash
+## URLs
+
+- Frontend: `http://127.0.0.1:3000`
+- Login: `http://127.0.0.1:3000/login`
+- Backend API: `http://127.0.0.1:8000`
+- Swagger: `http://127.0.0.1:8000/docs`
+
+## Losse startopties
+
+Alleen backend:
+
+```powershell
 npm run dev:backend
 ```
 
-**Terminal 2 (Frontend):**
-```bash
+Alleen frontend:
+
+```powershell
 npm run dev:frontend
 ```
 
-## Access URLs
+Setup eenmalig of na een verse pull:
 
-After servers start:
-
-- **Frontend Application:** http://localhost:3000
-- **Backend API:** http://localhost:8000
-- **API Documentation:** http://localhost:8000/docs
-
-## Stopping Servers
-
-Press `Ctrl+C` in the terminal where servers are running.
-
-## First-Time Setup
-
-If you haven't set up the project yet:
-
-```bash
-# Install all dependencies and initialize database
-npm run setup
-
-# Or step by step:
-npm run setup:backend
-npm run setup:frontend
-```
-
-## Troubleshooting
-
-### "Port already in use"
-
-**Problem:** Ports 8000 or 3000 are already occupied.
-
-**Solution:**
 ```powershell
-# Kill processes on port 8000
-Get-Process -Id (Get-NetTCPConnection -LocalPort 8000).OwningProcess | Stop-Process -Force
-
-# Kill processes on port 3000
-Get-Process -Id (Get-NetTCPConnection -LocalPort 3000).OwningProcess | Stop-Process -Force
+npm run setup
 ```
 
-### "Virtual environment not found"
+## Stoppen
 
-**Problem:** Backend virtual environment is missing.
+Druk `Ctrl+C` in de terminal waar de servers draaien.
 
-**Solution:**
-```bash
-npm run setup:backend
-```
+## Opmerking over `start-dev.ps1`
 
-### "Database not found"
-
-**Problem:** Database hasn't been initialized.
-
-**Solution:**
-The dev.ps1 script will automatically initialize it, or run manually:
-```bash
-cd backend
-.\venv\Scripts\python.exe seed_database.py
-```
-
-### Backend fails to start with "call is not recognized"
-
-**Problem:** Old scripts trying to use CMD syntax in PowerShell.
-
-**Solution:** This has been fixed in the latest version. Make sure you're using:
-- `.\dev.ps1` (uses npm run dev internally)
-- `npm run dev` (fixed scripts)
-
-## Why This Setup?
-
-✅ **All logs visible in Cursor** - Both backend and frontend logs appear in your terminal, so Cline (AI assistant) can read error messages and help debug.
-
-✅ **Pre-flight checks** - dev.ps1 validates everything before starting, preventing common startup issues.
-
-✅ **Easy to use** - One command starts everything with proper initialization.
-
-✅ **Color-coded output** - Easy to distinguish between backend and frontend logs.
+`.\start-dev.ps1` bestaat nog, maar opent alleen een nieuw PowerShell-venster dat `.\dev.ps1` start. Gebruik voor normale development direct `.\dev.ps1`.

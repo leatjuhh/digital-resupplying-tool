@@ -68,6 +68,8 @@ Deze index maakt snel duidelijk welke Markdown-bestanden relevant zijn voor toek
 
 - `docs/getting-started/quick-start.md`
   Snelste route om het project lokaal te starten.
+- `docs/getting-started/gui-testing-and-debugging.md`
+  Korte workflow voor GUI testen, browserdebugging en Playwright smoke tests.
 - `docs/getting-started/installation.md`
   Volledige installatie-instructies.
 - `docs/getting-started/troubleshooting.md`

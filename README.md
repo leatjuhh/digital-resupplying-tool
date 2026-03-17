@@ -33,6 +33,7 @@ Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen ver
 ### Getting Started
 - ⭐ **[Quick Start](docs/getting-started/quick-start.md)** - Snel aan de slag
 - 📖 **[Installation Guide](docs/getting-started/installation.md)** - Complete setup instructies
+- 🖥️ **[GUI Testing & Debugging](docs/getting-started/gui-testing-and-debugging.md)** - Simpele run-, test- en debugstappen via browser
 - 🧪 **[Browser Debugging](docs/getting-started/browser-debugging.md)** - Live browser troubleshooting setup
 - 📱 **[Mobile Network Access](docs/getting-started/mobile-network-access.md)** - iOS/Android testing setup (NIEUW!)
 - 🔧 **[Troubleshooting](docs/getting-started/troubleshooting.md)** - Hulp bij problemen
@@ -82,7 +83,7 @@ Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen ver
 
 ## 🚀 Quick Start
 
-**Aanbevolen: Gebruik dev.ps1 in Cursor terminal** ⭐
+**Aanbevolen: gebruik altijd `.\dev.ps1` vanuit de project-root** ⭐
 ```powershell
 .\dev.ps1
 ```
@@ -93,10 +94,12 @@ Een geautomatiseerde tool voor het beheren van voorraadherverdelingen tussen ver
 - 🚀 Start beide servers in **dezelfde Cursor terminal**
 - 📊 Toont alle logs met gekleurde prefixes: `[BACKEND]` (cyan) en `[FRONTEND]` (groen)
 
-**Alternatief: Direct via npm:**
-```bash
+**Alternatief: via npm, zelfde flow**
+```powershell
 npm run dev
 ```
+
+`npm run dev` roept nu dezelfde centrale launcher aan.
 
 **URLs na starten:**
 - Frontend: http://localhost:3000
@@ -172,6 +175,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 ### Getting Started
 - [Quick Start](docs/getting-started/quick-start.md) - Snel beginnen
 - [Installation Guide](docs/getting-started/installation.md) - Complete setup
+- [GUI Testing & Debugging](docs/getting-started/gui-testing-and-debugging.md) - Browser-based testen en debuggen
 - [Troubleshooting](docs/getting-started/troubleshooting.md) - Problemen oplossen
 
 ### User & Developer Guides

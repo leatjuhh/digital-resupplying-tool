@@ -2,6 +2,7 @@
 # Runs pre-flight checks then starts servers in current terminal
 
 $ErrorActionPreference = "Stop"
+. (Join-Path $PSScriptRoot "scripts\common.ps1")
 
 # Colors
 function Write-Color {
@@ -74,7 +75,7 @@ function Show-PreflightChecks {
     
     # Check 3: Frontend node_modules
     Write-Color "  [3] Frontend Dependencies: " 'White' -NoNewline
-    if (Test-Path "frontend/node_modules") {
+    if (Test-Path "frontend/node_modules/next/dist/bin/next") {
         Write-Color "OK" 'Green'
     }
     else {
@@ -82,6 +83,19 @@ function Show-PreflightChecks {
         Write-Host ""
         Write-Color "     Run: " 'Yellow' -NoNewline
         Write-Color "npm run setup:frontend" 'Cyan'
+        return $false
+    }
+
+    # Check 3b: Node executable
+    Write-Color "  [3b] Node.js Runtime: " 'White' -NoNewline
+    try {
+        $script:NodeExe = Resolve-NodeExecutable
+        Write-Color "OK" 'Green'
+    }
+    catch {
+        Write-Color "MISSING" 'Red'
+        Write-Host ""
+        Write-Color "     $_" 'Yellow'
         return $false
     }
     
@@ -152,5 +166,18 @@ Show-ServerInfo
 Write-Color " Starting in 2 seconds..." 'Gray'
 Start-Sleep -Seconds 2
 
-# Start the servers using npm run dev (concurrently)
-npm run dev
+# Start the servers using the local concurrently binary and PowerShell launchers
+$concurrentlyCli = Join-Path $PSScriptRoot "node_modules\concurrently\dist\bin\concurrently.js"
+if (-not (Test-Path $concurrentlyCli)) {
+    Write-Host ""
+    Write-Color " Missing dependency: node_modules/concurrently" 'Red'
+    Write-Host ""
+    Write-Color " Run: npm run setup:frontend" 'Yellow'
+    exit 1
+}
+
+& $NodeExe $concurrentlyCli `
+    "--names" "BACKEND,FRONTEND" `
+    "--prefix-colors" "cyan,green" `
+    "powershell -NoProfile -ExecutionPolicy Bypass -File `"$PSScriptRoot\scripts\dev-backend.ps1`"" `
+    "powershell -NoProfile -ExecutionPolicy Bypass -File `"$PSScriptRoot\scripts\dev-frontend.ps1`""
