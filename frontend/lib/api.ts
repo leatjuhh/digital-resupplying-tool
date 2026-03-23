@@ -4,6 +4,7 @@
  */
 
 import { User, LoginCredentials, TokenResponse } from '@/types/auth';
+import { apiClient } from '@/lib/api-client';
 
 // Base URL van de FastAPI backend (localhost tijdens development)
 const API_BASE_URL = 'http://localhost:8000';
@@ -53,6 +54,216 @@ export interface ProposalMove {
   reason: string;
   from_bv: string;
   to_bv: string;
+}
+
+export interface AssignmentSizeQuantity {
+  size: string;
+  qty: number;
+}
+
+export interface AssignmentSeriesSummary {
+  id: number;
+  batch_id: number;
+  batch_name: string;
+  store_code: string;
+  store_name: string;
+  description: string;
+  count: number;
+  completed: number;
+  failed: number;
+  pending: number;
+  status: 'open' | 'in_progress' | 'attention' | 'completed';
+  created_at: string | null;
+  updated_at: string | null;
+}
+
+export interface AssignmentItemSummary {
+  id: number;
+  proposal_id: number;
+  artikelnummer: string;
+  article_name: string;
+  from_store_code: string;
+  from_store_name: string;
+  to_store_code: string;
+  to_store_name: string;
+  size_quantities: AssignmentSizeQuantity[];
+  total_quantity: number;
+  status: 'open' | 'completed' | 'failed';
+  failure_reason?: string | null;
+  failure_size?: string | null;
+  failure_notes?: string | null;
+  completed_at?: string | null;
+}
+
+export interface AssignmentSeriesDetail extends AssignmentSeriesSummary {
+  items: AssignmentItemSummary[];
+}
+
+export interface AssignmentItemDetail {
+  assignment_id: number;
+  proposal_id: number;
+  batch_id: number;
+  artikelnummer: string;
+  article_name: string;
+  status: 'open' | 'completed' | 'failed';
+  size_quantities: AssignmentSizeQuantity[];
+  total_quantity: number;
+  failure_reason?: string | null;
+  failure_size?: string | null;
+  failure_notes?: string | null;
+  metadata: Record<string, string>;
+  sizes: string[];
+  stores: Array<{
+    id: string;
+    name: string;
+    inventory_current: number[];
+    inventory_proposed: number[];
+    sold: number;
+  }>;
+  from_store_code: string;
+  from_store_name: string;
+  to_store_code: string;
+  to_store_name: string;
+  completed_at?: string | null;
+}
+
+export interface DashboardStatsSummary {
+  total_proposals: number;
+  pending_proposals: number;
+  approved_proposals: number;
+  rejected_proposals: number;
+  edited_proposals: number;
+  open_assignment_items: number;
+  completed_assignment_items: number;
+  failed_assignment_items: number;
+  active_store_count: number;
+  total_batches: number;
+  assignment_series_count: number;
+}
+
+export interface DashboardPendingBatch {
+  batch_id: number;
+  batch_name: string;
+  created_at: string | null;
+  total_proposals: number;
+  pending_proposals: number;
+  reviewed_proposals: number;
+  next_proposal_id: number | null;
+}
+
+export interface DashboardEvent {
+  id: string;
+  kind: "proposal" | "batch" | "assignment" | "parse_log";
+  title: string;
+  description: string;
+  created_at: string | null;
+  href: string | null;
+}
+
+export interface DashboardAttentionItem {
+  id: string;
+  severity: "info" | "warning";
+  title: string;
+  description: string;
+  href: string | null;
+}
+
+export interface DashboardSummary {
+  generated_at: string | null;
+  period_note: string;
+  stats: DashboardStatsSummary;
+  pending_batches: DashboardPendingBatch[];
+  recent_activity: DashboardEvent[];
+  attention_items: DashboardAttentionItem[];
+}
+
+export interface GeneralSettings {
+  app_name: string;
+  language: string;
+  timezone: string;
+  email_notifications: boolean;
+}
+
+export interface RulesSettings {
+  min_stock_per_store: number;
+  max_stock_per_store: number;
+  min_stores_per_article: number;
+  sales_period_days: number;
+}
+
+export interface ApiKeyStatus {
+  configured: boolean;
+  masked_key: string | null;
+  updated_at: string | null;
+}
+
+export interface SettingsUpdateResponse {
+  message: string;
+  updated_count: number;
+  errors?: string[] | null;
+}
+
+export interface ManagedUser {
+  id: number;
+  username: string;
+  email: string;
+  full_name: string;
+  role_id: number;
+  role_name: string;
+  role_display_name: string;
+  is_active: boolean;
+  last_login: string | null;
+  created_at: string;
+  store_code?: string | null;
+  store_name?: string | null;
+}
+
+export interface UserRoleOption {
+  id: number;
+  name: string;
+  display_name: string;
+  description?: string | null;
+  is_system_role: boolean;
+}
+
+export interface ManagedUserCreateInput {
+  username: string;
+  email: string;
+  full_name: string;
+  password: string;
+  role_id: number;
+  is_active: boolean;
+  store_code?: string | null;
+  store_name?: string | null;
+}
+
+export interface ManagedUserUpdateInput {
+  username?: string;
+  email?: string;
+  full_name?: string;
+  role_id?: number;
+  is_active?: boolean;
+  store_code?: string | null;
+  store_name?: string | null;
+}
+
+export interface RolePermission {
+  id: number;
+  name: string;
+  display_name: string;
+  description?: string | null;
+  category: string;
+}
+
+export interface ManagedRole {
+  id: number;
+  name: string;
+  display_name: string;
+  description?: string | null;
+  is_system_role: boolean;
+  permissions: RolePermission[];
+  user_count: number;
+  created_at: string;
 }
 
 /**
@@ -288,6 +499,113 @@ export const api = {
       }
 
       return response.json();
+    },
+  },
+
+  assignments: {
+    async list() {
+      return apiClient.get<{ series: AssignmentSeriesSummary[] }>('/api/assignments');
+    },
+
+    async getSeries(seriesId: number) {
+      return apiClient.get<AssignmentSeriesDetail>(`/api/assignments/${seriesId}`);
+    },
+
+    async getItem(seriesId: number, itemId: number) {
+      return apiClient.get<{ series: AssignmentSeriesSummary; item: AssignmentItemDetail }>(
+        `/api/assignments/${seriesId}/items/${itemId}`
+      );
+    },
+
+    async complete(itemId: number, notes?: string) {
+      return apiClient.post(`/api/assignments/items/${itemId}/complete`, { notes });
+    },
+
+    async fail(itemId: number, reason: string, size: string, notes?: string) {
+      return apiClient.post(`/api/assignments/items/${itemId}/fail`, { reason, size, notes });
+    },
+  },
+
+  dashboard: {
+    async getSummary() {
+      return apiClient.get<DashboardSummary>("/api/dashboard/summary");
+    },
+  },
+
+  settings: {
+    async getGeneral() {
+      return apiClient.get<GeneralSettings>("/api/settings/general/all");
+    },
+
+    async updateGeneral(settings: GeneralSettings) {
+      return apiClient.put<SettingsUpdateResponse>("/api/settings", {
+        settings,
+      });
+    },
+
+    async getRules() {
+      return apiClient.get<RulesSettings>("/api/settings/rules/all");
+    },
+
+    async updateRules(settings: RulesSettings) {
+      return apiClient.put<SettingsUpdateResponse>("/api/settings", {
+        settings,
+      });
+    },
+
+    async getApiKeyStatus() {
+      return apiClient.get<ApiKeyStatus>("/api/settings/api/openai-key/status");
+    },
+
+    async validateApiKey(apiKey: string) {
+      return apiClient.post<{ valid: boolean; message: string }>("/api/settings/validate-api-key", {
+        api_key: apiKey,
+      });
+    },
+
+    async updateOpenAiKey(apiKey: string) {
+      return apiClient.put<{ message: string; masked_key: string }>("/api/settings/api/openai-key", {
+        api_key: apiKey,
+      });
+    },
+  },
+
+  users: {
+    async list() {
+      return apiClient.get<ManagedUser[]>("/api/users");
+    },
+
+    async getRoleOptions() {
+      return apiClient.get<UserRoleOption[]>("/api/users/role-options");
+    },
+
+    async create(data: ManagedUserCreateInput) {
+      return apiClient.post<ManagedUser>("/api/users", data);
+    },
+
+    async update(userId: number, data: ManagedUserUpdateInput) {
+      return apiClient.put<ManagedUser>(`/api/users/${userId}`, data);
+    },
+
+    async delete(userId: number) {
+      return apiClient.delete<void>(`/api/users/${userId}`);
+    },
+  },
+
+  roles: {
+    async list() {
+      return apiClient.get<ManagedRole[]>("/api/roles");
+    },
+
+    async getAllPermissions() {
+      return apiClient.get<RolePermission[]>("/api/roles/permissions/all");
+    },
+
+    async updatePermissions(roleId: number, permissionIds: number[]) {
+      return apiClient.put<{ message: string; role_id: number; permission_count: number }>(
+        `/api/roles/${roleId}/permissions`,
+        { permission_ids: permissionIds }
+      );
     },
   },
 

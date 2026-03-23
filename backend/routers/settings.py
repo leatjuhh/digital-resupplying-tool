@@ -34,6 +34,46 @@ class SettingsUpdate(BaseModel):
     settings: dict[str, Any]
 
 
+class ApiKeyPayload(BaseModel):
+    api_key: str
+
+
+def _mask_api_key(raw_value: Any) -> dict[str, Any]:
+    api_key = None
+
+    if isinstance(raw_value, dict):
+        api_key = raw_value.get("key")
+    elif isinstance(raw_value, str):
+        api_key = raw_value
+
+    if not api_key:
+        return {"configured": False, "masked_key": None}
+
+    if len(api_key) <= 11:
+        masked_key = "configured"
+    else:
+        masked_key = f"{api_key[:7]}...{api_key[-4:]}"
+
+    return {
+        "configured": True,
+        "masked_key": masked_key,
+    }
+
+
+def _serialize_setting(setting: db_models.Settings) -> dict[str, Any]:
+    value = setting.value
+    if setting.category == "api" or setting.key == "openai_api_key":
+        value = _mask_api_key(setting.value)
+
+    return {
+        "key": setting.key,
+        "value": value,
+        "category": setting.category,
+        "description": setting.description,
+        "updated_at": setting.updated_at,
+    }
+
+
 @router.get("", response_model=list[SettingResponse])
 async def get_all_settings(
     category: Optional[str] = None,
@@ -50,16 +90,7 @@ async def get_all_settings(
     
     settings = query.all()
     
-    return [
-        {
-            "key": setting.key,
-            "value": setting.value,
-            "category": setting.category,
-            "description": setting.description,
-            "updated_at": setting.updated_at
-        }
-        for setting in settings
-    ]
+    return [_serialize_setting(setting) for setting in settings]
 
 
 @router.get("/{key}", response_model=SettingResponse)
@@ -81,13 +112,7 @@ async def get_setting(
             detail=f"Instelling '{key}' niet gevonden"
         )
     
-    return {
-        "key": setting.key,
-        "value": setting.value,
-        "category": setting.category,
-        "description": setting.description,
-        "updated_at": setting.updated_at
-    }
+    return _serialize_setting(setting)
 
 
 @router.put("/{key}", response_model=SettingResponse)
@@ -168,13 +193,7 @@ async def update_setting(
     db.commit()
     db.refresh(setting)
     
-    return {
-        "key": setting.key,
-        "value": setting.value,
-        "category": setting.category,
-        "description": setting.description,
-        "updated_at": setting.updated_at
-    }
+    return _serialize_setting(setting)
 
 
 @router.put("", response_model=dict)
@@ -272,11 +291,35 @@ async def get_rules_settings(
     return result
 
 
-@router.post("/validate-api-key")
-async def validate_api_key(
-    api_key: str,
+@router.get("/api/openai-key/status")
+async def get_openai_key_status(
     current_user: db_models.User = Depends(require_permission("manage_api_settings")),
     db: Session = Depends(get_db)
+):
+    """
+    Geef alleen masked metadata terug voor de OpenAI API key.
+    """
+    setting = db.query(db_models.Settings).filter(
+        db_models.Settings.key == "openai_api_key"
+    ).first()
+
+    if not setting:
+        return {
+            "configured": False,
+            "masked_key": None,
+            "updated_at": None,
+        }
+
+    return {
+        **_mask_api_key(setting.value),
+        "updated_at": setting.updated_at,
+    }
+
+
+@router.post("/validate-api-key")
+async def validate_api_key(
+    payload: ApiKeyPayload,
+    current_user: db_models.User = Depends(require_permission("manage_api_settings")),
 ):
     """
     Valideer een OpenAI API key
@@ -284,6 +327,8 @@ async def validate_api_key(
     TODO: Implementeer echte OpenAI API validatie
     """
     # Basic validation
+    api_key = payload.api_key.strip()
+
     if not api_key.startswith("sk-"):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -314,7 +359,7 @@ async def validate_api_key(
 
 @router.put("/api/openai-key")
 async def update_openai_key(
-    api_key: str,
+    payload: ApiKeyPayload,
     current_user: db_models.User = Depends(require_permission("manage_api_settings")),
     db: Session = Depends(get_db)
 ):
@@ -322,6 +367,8 @@ async def update_openai_key(
     Update de OpenAI API key
     """
     # Valideer eerst de key
+    api_key = payload.api_key.strip()
+
     if not api_key.startswith("sk-"):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,

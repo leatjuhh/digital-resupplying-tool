@@ -14,6 +14,8 @@ export interface User {
   permissions: string[];
   is_active: boolean;
   last_login: string | null;
+  store_code?: string | null;
+  store_name?: string | null;
 }
 
 // Auth state

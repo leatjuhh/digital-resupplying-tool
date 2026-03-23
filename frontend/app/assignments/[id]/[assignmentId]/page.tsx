@@ -2,6 +2,7 @@ import { DashboardHeader } from "@/components/dashboard/dashboard-header"
 import { DashboardShell } from "@/components/dashboard/dashboard-shell"
 import { AssignmentItemDetail } from "@/components/assignments/assignment-item-detail"
 import { Button } from "@/components/ui/button"
+import { FeatureStatusBanner } from "@/components/ui/feature-status-banner"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
@@ -17,6 +18,7 @@ export default function AssignmentItemPage({ params }: { params: { id: string; a
         </Button>
         <DashboardHeader heading={`Artikel Opdracht`} text="Details van de herverdelingsopdracht voor dit artikel" />
       </div>
+      <FeatureStatusBanner description="Deze detailweergave gebruikt echte assignment- en voorraaddata, maar blijft tijdens de consolidatie buiten de leidende productkern." />
       <AssignmentItemDetail id={params.id} assignmentId={params.assignmentId} />
     </DashboardShell>
   )

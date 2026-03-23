@@ -2,12 +2,15 @@
 Database configuration and session management
 """
 # Importeer SQLAlchemy componenten voor database connectie en ORM
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from pathlib import Path
 
-# SQLite database bestand locatie (wordt aangemaakt in de root van backend)
-SQLALCHEMY_DATABASE_URL = "sqlite:///./database.db"
+# SQLite database bestand locatie, expliciet gekoppeld aan de backend-map
+BACKEND_DIR = Path(__file__).resolve().parent
+DATABASE_PATH = BACKEND_DIR / "database.db"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{DATABASE_PATH.as_posix()}"
 
 # Maak database engine aan
 # check_same_thread=False is nodig voor SQLite om meerdere threads toe te staan
@@ -23,6 +26,34 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Base class waar alle database models van erven
 Base = declarative_base()
+
+
+def ensure_runtime_schema():
+    """
+    Kleine runtime-migraties voor SQLite zodat bestaande lokale databases bruikbaar blijven.
+    """
+    with engine.begin() as connection:
+        inspector = inspect(connection)
+        table_names = set(inspector.get_table_names())
+
+        if "users" in table_names:
+            user_columns = {column["name"] for column in inspector.get_columns("users")}
+            if "store_code" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN store_code VARCHAR"))
+            if "store_name" not in user_columns:
+                connection.execute(text("ALTER TABLE users ADD COLUMN store_name VARCHAR"))
+
+            # Geef de seeded store-gebruiker een concrete winkel zodat de assignments-flow direct werkt.
+            connection.execute(
+                text(
+                    """
+                    UPDATE users
+                    SET store_code = COALESCE(store_code, '9'),
+                        store_name = COALESCE(store_name, 'Stein')
+                    WHERE username = 'store'
+                    """
+                )
+            )
 
 # Dependency functie voor FastAPI endpoints
 def get_db():

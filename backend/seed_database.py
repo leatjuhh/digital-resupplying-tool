@@ -188,12 +188,12 @@ def seed_users(db):
     store_role = db.query(Role).filter(Role.name == "store").first()
     
     users_data = [
-        ("admin", "admin@lumitex.nl", "Admin User", "Admin123!", admin_role.id),
-        ("user", "user@lumitex.nl", "Test User", "User123!", user_role.id),
-        ("store", "store@lumitex.nl", "Store User", "Store123!", store_role.id),
+        ("admin", "admin@lumitex.nl", "Admin User", "Admin123!", admin_role.id, None, None),
+        ("user", "user@lumitex.nl", "Test User", "User123!", user_role.id, None, None),
+        ("store", "store@lumitex.nl", "Store User", "Store123!", store_role.id, "9", "Stein"),
     ]
     
-    for username, email, full_name, password, role_id in users_data:
+    for username, email, full_name, password, role_id, store_code, store_name in users_data:
         existing = db.query(User).filter(User.username == username).first()
         if not existing:
             hashed_password = get_password_hash(password)
@@ -203,7 +203,9 @@ def seed_users(db):
                 full_name=full_name,
                 hashed_password=hashed_password,
                 role_id=role_id,
-                is_active=True
+                is_active=True,
+                store_code=store_code,
+                store_name=store_name,
             )
             db.add(user)
             print(f"✓ Added user: {username} ({email}) - Password: {password}")

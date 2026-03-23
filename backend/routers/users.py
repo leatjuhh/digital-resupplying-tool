@@ -27,6 +27,8 @@ class UserCreate(BaseModel):
     password: str
     role_id: int
     is_active: bool = True
+    store_code: Optional[str] = None
+    store_name: Optional[str] = None
 
 
 class UserUpdate(BaseModel):
@@ -35,6 +37,8 @@ class UserUpdate(BaseModel):
     full_name: Optional[str] = None
     role_id: Optional[int] = None
     is_active: Optional[bool] = None
+    store_code: Optional[str] = None
+    store_name: Optional[str] = None
 
 
 class PasswordChange(BaseModel):
@@ -53,16 +57,85 @@ class UserResponse(BaseModel):
     is_active: bool
     last_login: Optional[datetime]
     created_at: datetime
+    store_code: Optional[str] = None
+    store_name: Optional[str] = None
     
     class Config:
         from_attributes = True
+
+
+class RoleOptionResponse(BaseModel):
+    id: int
+    name: str
+    display_name: str
+    description: Optional[str] = None
+    is_system_role: bool
+
+    class Config:
+        from_attributes = True
+
+
+def _get_fields_set(model: BaseModel) -> set[str]:
+    """Compatibele manier om expliciet aangeleverde velden op te halen."""
+    fields = getattr(model, "model_fields_set", None)
+    if fields is None:
+        fields = getattr(model, "__fields_set__", set())
+    return set(fields)
+
+
+def _normalize_optional_store_value(value: Optional[str]) -> Optional[str]:
+    if value is None:
+        return None
+
+    normalized = value.strip()
+    return normalized or None
+
+
+def _role_has_any_permission(role: Optional[db_models.Role], *permission_names: str) -> bool:
+    if not role:
+        return False
+
+    allowed = set(permission_names)
+    return any(permission.name in allowed for permission in role.permissions)
+
+
+async def require_user_visibility(
+    current_user: db_models.User = Depends(get_current_active_user),
+    db: Session = Depends(get_db)
+) -> db_models.User:
+    """
+    Sta user-overzicht toe voor read-only én beheerrollen.
+    """
+    role = db.query(db_models.Role).filter(
+        db_models.Role.id == current_user.role_id
+    ).first()
+
+    if not _role_has_any_permission(role, "view_users", "manage_users"):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Je hebt geen toegang tot gebruikersbeheer"
+        )
+
+    return current_user
+
+
+@router.get("/role-options", response_model=list[RoleOptionResponse])
+async def get_user_role_options(
+    current_user: db_models.User = Depends(require_permission("manage_users")),
+    db: Session = Depends(get_db)
+):
+    """
+    Haal rolopties op die nodig zijn voor users CRUD zonder manage_roles te vereisen.
+    """
+    roles = db.query(db_models.Role).order_by(db_models.Role.display_name).all()
+    return roles
 
 
 @router.get("", response_model=list[UserResponse])
 async def get_users(
     skip: int = 0,
     limit: int = 100,
-    current_user: db_models.User = Depends(require_permission("view_users")),
+    current_user: db_models.User = Depends(require_user_visibility),
     db: Session = Depends(get_db)
 ):
     """
@@ -87,7 +160,9 @@ async def get_users(
             "role_display_name": role.display_name if role else "Unknown",
             "is_active": user.is_active,
             "last_login": user.last_login,
-            "created_at": user.created_at
+            "created_at": user.created_at,
+            "store_code": user.store_code,
+            "store_name": user.store_name,
         }
         result.append(user_data)
     
@@ -97,7 +172,7 @@ async def get_users(
 @router.get("/{user_id}", response_model=UserResponse)
 async def get_user(
     user_id: int,
-    current_user: db_models.User = Depends(require_permission("view_users")),
+    current_user: db_models.User = Depends(require_user_visibility),
     db: Session = Depends(get_db)
 ):
     """
@@ -125,7 +200,9 @@ async def get_user(
         "role_display_name": role.display_name if role else "Unknown",
         "is_active": user.is_active,
         "last_login": user.last_login,
-        "created_at": user.created_at
+        "created_at": user.created_at,
+        "store_code": user.store_code,
+        "store_name": user.store_name,
     }
 
 
@@ -181,6 +258,19 @@ async def create_user(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Rol niet gevonden"
         )
+
+    store_code = _normalize_optional_store_value(user_data.store_code)
+    store_name = _normalize_optional_store_value(user_data.store_name)
+
+    if role.name == "store":
+        if not store_code or not store_name:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Store-gebruikers vereisen zowel store_code als store_name"
+            )
+    else:
+        store_code = None
+        store_name = None
     
     # Maak gebruiker aan
     hashed_password = get_password_hash(user_data.password)
@@ -191,7 +281,9 @@ async def create_user(
         full_name=user_data.full_name,
         hashed_password=hashed_password,
         role_id=user_data.role_id,
-        is_active=user_data.is_active
+        is_active=user_data.is_active,
+        store_code=store_code,
+        store_name=store_name,
     )
     
     db.add(new_user)
@@ -208,7 +300,9 @@ async def create_user(
         "role_display_name": role.display_name,
         "is_active": new_user.is_active,
         "last_login": new_user.last_login,
-        "created_at": new_user.created_at
+        "created_at": new_user.created_at,
+        "store_code": new_user.store_code,
+        "store_name": new_user.store_name,
     }
 
 
@@ -252,6 +346,8 @@ async def update_user(
                 )
     
     # Update velden
+    provided_fields = _get_fields_set(user_data)
+
     if user_data.username is not None:
         # Check of nieuwe username al bestaat
         existing = db.query(db_models.User).filter(
@@ -280,21 +376,45 @@ async def update_user(
     
     if user_data.full_name is not None:
         user.full_name = user_data.full_name
-    
+
+    target_role = db.query(db_models.Role).filter(
+        db_models.Role.id == (user_data.role_id if user_data.role_id is not None else user.role_id)
+    ).first()
+    if not target_role:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Rol niet gevonden"
+        )
+
     if user_data.role_id is not None:
-        # Check of rol bestaat
-        role = db.query(db_models.Role).filter(
-            db_models.Role.id == user_data.role_id
-        ).first()
-        if not role:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="Rol niet gevonden"
-            )
         user.role_id = user_data.role_id
     
     if user_data.is_active is not None:
         user.is_active = user_data.is_active
+
+    if target_role.name == "store":
+        next_store_code = (
+            _normalize_optional_store_value(user_data.store_code)
+            if "store_code" in provided_fields
+            else user.store_code
+        )
+        next_store_name = (
+            _normalize_optional_store_value(user_data.store_name)
+            if "store_name" in provided_fields
+            else user.store_name
+        )
+
+        if not next_store_code or not next_store_name:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Store-gebruikers vereisen zowel store_code als store_name"
+            )
+
+        user.store_code = next_store_code
+        user.store_name = next_store_name
+    else:
+        user.store_code = None
+        user.store_name = None
     
     db.commit()
     db.refresh(user)
@@ -314,7 +434,9 @@ async def update_user(
         "role_display_name": role.display_name if role else "Unknown",
         "is_active": user.is_active,
         "last_login": user.last_login,
-        "created_at": user.created_at
+        "created_at": user.created_at,
+        "store_code": user.store_code,
+        "store_name": user.store_name,
     }
 
 

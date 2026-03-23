@@ -1,41 +1,124 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Button } from "@/components/ui/button"
-import { useToast } from "@/hooks/use-toast"
+import { useEffect, useState } from "react";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useToast } from "@/hooks/use-toast";
+import { api, GeneralSettings } from "@/lib/api";
 
-export function SettingsGeneral() {
-  const { toast } = useToast()
-  const [appName, setAppName] = useState("Digital Resupplying")
-  const [language, setLanguage] = useState("nl")
-  const [timezone, setTimezone] = useState("Europe/Amsterdam")
-  const [emailNotifications, setEmailNotifications] = useState(true)
-  const [isLoading, setIsLoading] = useState(false)
+const defaultSettings: GeneralSettings = {
+  app_name: "Digital Resupplying",
+  language: "nl",
+  timezone: "Europe/Amsterdam",
+  email_notifications: true,
+};
+
+type SettingsGeneralProps = {
+  canManage: boolean;
+};
+
+export function SettingsGeneral({ canManage }: SettingsGeneralProps) {
+  const { toast } = useToast();
+  const [settings, setSettings] = useState<GeneralSettings>(defaultSettings);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadSettings = async () => {
+      try {
+        const response = await api.settings.getGeneral();
+        if (!active) {
+          return;
+        }
+
+        setSettings({
+          app_name: response.app_name ?? defaultSettings.app_name,
+          language: response.language ?? defaultSettings.language,
+          timezone: response.timezone ?? defaultSettings.timezone,
+          email_notifications:
+            typeof response.email_notifications === "boolean"
+              ? response.email_notifications
+              : defaultSettings.email_notifications,
+        });
+      } catch (error) {
+        if (!active) {
+          return;
+        }
+
+        toast({
+          title: "Instellingen laden mislukt",
+          description:
+            error instanceof Error
+              ? error.message
+              : "De algemene instellingen konden niet worden geladen.",
+          variant: "destructive",
+        });
+      } finally {
+        if (active) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadSettings();
+
+    return () => {
+      active = false;
+    };
+  }, [toast]);
+
+  const updateSetting = <K extends keyof GeneralSettings>(key: K, value: GeneralSettings[K]) => {
+    setSettings((current) => ({ ...current, [key]: value }));
+  };
 
   const handleSave = async () => {
-    setIsLoading(true)
+    if (!canManage) {
+      return;
+    }
+
+    setIsSaving(true);
     try {
-      // TODO: Implement API call to PUT /api/settings
-      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate API call
-      
+      await api.settings.updateGeneral(settings);
       toast({
         title: "Instellingen opgeslagen",
         description: "De algemene instellingen zijn succesvol bijgewerkt.",
-      })
+      });
     } catch (error) {
       toast({
         title: "Fout bij opslaan",
-        description: "Er is een fout opgetreden bij het opslaan van de instellingen.",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Er is een fout opgetreden bij het opslaan van de instellingen.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsLoading(false)
+      setIsSaving(false);
     }
+  };
+
+  if (isLoading) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Applicatie Instellingen</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-16 w-full" />
+        </CardContent>
+      </Card>
+    );
   }
 
   return (
@@ -44,19 +127,32 @@ export function SettingsGeneral() {
         <CardTitle>Applicatie Instellingen</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
+        {!canManage && (
+          <Alert>
+            <AlertDescription>
+              Je hebt alleen leesrechten voor algemene instellingen. Wijzigingen opslaan is uitgeschakeld.
+            </AlertDescription>
+          </Alert>
+        )}
+
         <div className="space-y-2">
           <Label htmlFor="app-name">Applicatie Naam</Label>
-          <Input 
-            id="app-name" 
-            value={appName}
-            onChange={(e) => setAppName(e.target.value)}
+          <Input
+            id="app-name"
+            value={settings.app_name}
+            onChange={(event) => updateSetting("app_name", event.target.value)}
             placeholder="Digital Resupplying"
+            disabled={!canManage || isSaving}
           />
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="language">Taal</Label>
-          <Select value={language} onValueChange={setLanguage}>
+          <Select
+            value={settings.language}
+            onValueChange={(value) => updateSetting("language", value)}
+            disabled={!canManage || isSaving}
+          >
             <SelectTrigger id="language">
               <SelectValue placeholder="Selecteer taal" />
             </SelectTrigger>
@@ -69,7 +165,11 @@ export function SettingsGeneral() {
 
         <div className="space-y-2">
           <Label htmlFor="timezone">Tijdzone</Label>
-          <Select value={timezone} onValueChange={setTimezone}>
+          <Select
+            value={settings.timezone}
+            onValueChange={(value) => updateSetting("timezone", value)}
+            disabled={!canManage || isSaving}
+          >
             <SelectTrigger id="timezone">
               <SelectValue placeholder="Selecteer tijdzone" />
             </SelectTrigger>
@@ -85,13 +185,14 @@ export function SettingsGeneral() {
         </div>
 
         <div className="flex items-center space-x-2">
-          <Checkbox 
+          <Checkbox
             id="email-notifications"
-            checked={emailNotifications}
-            onCheckedChange={(checked) => setEmailNotifications(checked as boolean)}
+            checked={settings.email_notifications}
+            onCheckedChange={(checked) => updateSetting("email_notifications", checked === true)}
+            disabled={!canManage || isSaving}
           />
           <div className="space-y-1">
-            <Label 
+            <Label
               htmlFor="email-notifications"
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
@@ -104,10 +205,10 @@ export function SettingsGeneral() {
         </div>
       </CardContent>
       <CardFooter>
-        <Button onClick={handleSave} disabled={isLoading}>
-          {isLoading ? "Bezig met opslaan..." : "Instellingen Opslaan"}
+        <Button onClick={handleSave} disabled={!canManage || isSaving}>
+          {isSaving ? "Bezig met opslaan..." : "Instellingen Opslaan"}
         </Button>
       </CardFooter>
     </Card>
-  )
+  );
 }

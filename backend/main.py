@@ -5,7 +5,9 @@ from dotenv import load_dotenv
 import os
 
 # Importeer de routers voor verschillende endpoints
-from routers import articles, batches, pdf_ingest, redistribution, auth, users, roles, settings
+import db_models  # noqa: F401 - nodig zodat SQLAlchemy alle modellen kent
+from database import Base, engine, ensure_runtime_schema
+from routers import articles, batches, pdf_ingest, redistribution, auth, users, roles, settings, assignments, dashboard
 
 # Laad omgevingsvariabelen uit .env bestand
 load_dotenv()
@@ -16,6 +18,10 @@ app = FastAPI(
     description="Backend API for the Digital Resupplying Tool",
     version="1.0.0"
 )
+
+# Zorg dat nieuwe tabellen en lichte schema-aanpassingen beschikbaar zijn op bestaande lokale DB's.
+Base.metadata.create_all(bind=engine)
+ensure_runtime_schema()
 
 # Configureer CORS voor localhost EN lokale netwerk toegang (voor mobile testing)
 allowed_origins_str = os.getenv(
@@ -72,6 +78,14 @@ app.include_router(roles.router, tags=["roles"])
 # Voeg de settings router toe
 # Alle endpoints in settings.py zijn bereikbaar via /api/settings
 app.include_router(settings.router, tags=["settings"])
+
+# Voeg de assignments router toe
+# Alle endpoints in assignments.py zijn bereikbaar via /api/assignments
+app.include_router(assignments.router, tags=["assignments"])
+
+# Voeg de dashboard router toe
+# Alle endpoints in dashboard.py zijn bereikbaar via /api/dashboard
+app.include_router(dashboard.router, tags=["dashboard"])
 
 @app.get("/")
 async def root():

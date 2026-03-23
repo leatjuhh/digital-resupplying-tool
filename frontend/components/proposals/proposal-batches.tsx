@@ -2,21 +2,11 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { api, type Batch } from "@/lib/api"
+import { api } from "@/lib/api"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { BarChart, Box, Calendar, ChevronDown, ChevronUp, ClipboardList, Eye } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 
 type SortDirection = "asc" | "desc" | null
 type SortField = "id" | "date" | "count" | "progress" | null
@@ -24,12 +14,9 @@ type SortField = "id" | "date" | "count" | "progress" | null
 export function ProposalBatches() {
   const [sortField, setSortField] = useState<SortField>("date")
   const [sortDirection, setSortDirection] = useState<SortDirection>("desc")
-  const [convertDialogOpen, setConvertDialogOpen] = useState(false)
-  const [selectedBatchId, setSelectedBatchId] = useState<string | null>(null)
   const [batches, setBatches] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const { toast } = useToast()
 
   // Fetch PDF batches with proposals from API
   useEffect(() => {
@@ -96,14 +83,6 @@ export function ProposalBatches() {
     return sortDirection === "asc" ? <ChevronUp className="ml-1 h-4 w-4" /> : <ChevronDown className="ml-1 h-4 w-4" />
   }
 
-  const handleConvertToAssignments = () => {
-    toast({
-      title: "Reeks geconverteerd naar opdrachten",
-      description: `Reeks #${selectedBatchId} is succesvol geconverteerd naar opdrachten voor de winkels.`,
-    })
-    setConvertDialogOpen(false)
-  }
-
   // Format date from ISO string to readable format
   const formatDate = (isoDate: string) => {
     const date = new Date(isoDate)
@@ -130,6 +109,7 @@ export function ProposalBatches() {
     
     return {
       id: batch.id.toString(),
+      createdAt: batch.created_at,
       date: formatDate(batch.created_at),
       description: batch.naam || batch.name,
       count: count,
@@ -138,6 +118,30 @@ export function ProposalBatches() {
       pending: statusCounts.pending,
       edited: statusCounts.edited,
       type: "auto" as const,
+    }
+  })
+
+  const sortedBatches = [...transformedBatches].sort((left, right) => {
+    if (!sortField || !sortDirection) {
+      return 0
+    }
+
+    const direction = sortDirection === "asc" ? 1 : -1
+
+    switch (sortField) {
+      case "id":
+        return (Number(left.id) - Number(right.id)) * direction
+      case "date":
+        return (new Date(left.createdAt).getTime() - new Date(right.createdAt).getTime()) * direction
+      case "count":
+        return (left.count - right.count) * direction
+      case "progress": {
+        const leftProgress = Math.round(((left.approved + left.rejected) / Math.max(left.count, 1)) * 100)
+        const rightProgress = Math.round(((right.approved + right.rejected) / Math.max(right.count, 1)) * 100)
+        return (leftProgress - rightProgress) * direction
+      }
+      default:
+        return 0
     }
   })
 
@@ -163,13 +167,13 @@ export function ProposalBatches() {
           </div>
         )}
 
-        {!loading && !error && transformedBatches.length === 0 && (
+        {!loading && !error && sortedBatches.length === 0 && (
           <div className="text-center py-8">
             <p className="text-muted-foreground">Nog geen batches aangemaakt</p>
           </div>
         )}
 
-        {!loading && !error && transformedBatches.length > 0 && (
+        {!loading && !error && sortedBatches.length > 0 && (
           <div className="rounded-md border">
           <Table>
             <TableHeader>
@@ -191,7 +195,7 @@ export function ProposalBatches() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {transformedBatches.map((batch) => {
+              {sortedBatches.map((batch) => {
                 // Calculate progress percentage safely (avoid NaN)
                 const reviewed = batch.approved + batch.rejected
                 const progressPercentage = batch.count > 0 
@@ -254,46 +258,12 @@ export function ProposalBatches() {
                         </Button>
 
                         {isComplete && (
-                          <Dialog
-                            open={convertDialogOpen && selectedBatchId === batch.id}
-                            onOpenChange={(open) => {
-                              setConvertDialogOpen(open)
-                              if (!open) setSelectedBatchId(null)
-                            }}
-                          >
-                            <DialogTrigger asChild>
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                className="text-green-600"
-                                onClick={() => setSelectedBatchId(batch.id)}
-                              >
-                                <ClipboardList className="mr-2 h-4 w-4" />
-                                Naar Opdrachten
-                              </Button>
-                            </DialogTrigger>
-                            <DialogContent>
-                              <DialogHeader>
-                                <DialogTitle>Converteer naar Opdrachten</DialogTitle>
-                                <DialogDescription>
-                                  Weet u zeker dat u deze reeks wilt converteren naar opdrachten voor de winkels? Dit
-                                  zal de goedgekeurde voorstellen omzetten in concrete opdrachten die de winkels kunnen
-                                  uitvoeren.
-                                </DialogDescription>
-                              </DialogHeader>
-                              <DialogFooter className="mt-4">
-                                <Button variant="outline" onClick={() => setConvertDialogOpen(false)}>
-                                  Annuleren
-                                </Button>
-                                <Button
-                                  onClick={handleConvertToAssignments}
-                                  className="bg-green-600 hover:bg-green-700"
-                                >
-                                  Converteer naar Opdrachten
-                                </Button>
-                              </DialogFooter>
-                            </DialogContent>
-                          </Dialog>
+                          <Button asChild variant="outline" size="sm" className="text-green-600">
+                            <Link href="/assignments">
+                              <ClipboardList className="mr-2 h-4 w-4" />
+                              Opdrachten
+                            </Link>
+                          </Button>
                         )}
                       </div>
                     </TableCell>

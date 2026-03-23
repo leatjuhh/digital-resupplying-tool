@@ -1,3 +1,7 @@
+param(
+    [switch]$Restart
+)
+
 # Digital Resupplying Tool - Smart Dev Launcher for Cursor
 # Runs pre-flight checks then starts servers in current terminal
 
@@ -13,7 +17,7 @@ function Write-Color {
 function Show-Header {
     Clear-Host
     $width = 60
-    
+
     Write-Color ("=" * $width) 'Cyan'
     Write-Host ""
     Write-Color "  Digital Resupplying Tool - Dev Launcher" 'Cyan'
@@ -22,19 +26,94 @@ function Show-Header {
     Write-Host ""
 }
 
+function Get-PortListeners {
+    param([int]$Port)
+
+    try {
+        return @(Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue)
+    }
+    catch {
+        return @()
+    }
+}
+
 function Test-PortInUse {
     param([int]$Port)
-    try {
-        $connection = Get-NetTCPConnection -LocalPort $Port -ErrorAction SilentlyContinue
-        return $null -ne $connection
+    return (Get-PortListeners -Port $Port).Count -gt 0
+}
+
+function Get-ProcessesForPorts {
+    param([int[]]$Ports)
+
+    $processIds = New-Object System.Collections.Generic.HashSet[int]
+
+    foreach ($port in $Ports) {
+        foreach ($listener in (Get-PortListeners -Port $port)) {
+            if ($listener.OwningProcess -gt 0) {
+                [void]$processIds.Add([int]$listener.OwningProcess)
+            }
+        }
     }
-    catch { return $false }
+
+    return @($processIds)
+}
+
+function Stop-ProcessesForPorts {
+    param([int[]]$Ports)
+
+    $processIds = Get-ProcessesForPorts -Ports $Ports
+
+    if ($processIds.Count -eq 0) {
+        return $true
+    }
+
+    Write-Host ""
+    Write-Color " Restart requested: stopping processes on dev ports..." 'Yellow'
+
+    foreach ($processId in $processIds) {
+        try {
+            $process = Get-CimInstance Win32_Process -Filter "ProcessId = $processId" -ErrorAction SilentlyContinue
+            if ($null -ne $process) {
+                Write-Color "     Stopping PID " 'Yellow' -NoNewline
+                Write-Color "$processId" 'Cyan' -NoNewline
+                if ($process.Name) {
+                    Write-Color " ($($process.Name))" 'Gray'
+                }
+                else {
+                    Write-Host ""
+                }
+            }
+
+            cmd /c "taskkill /PID $processId /T /F" | Out-Null
+        }
+        catch {
+            Write-Color "     Failed to stop PID ${processId}: $($_.Exception.Message)" 'Red'
+            return $false
+        }
+    }
+
+    Start-Sleep -Seconds 2
+
+    $remaining = Get-ProcessesForPorts -Ports $Ports
+    if ($remaining.Count -gt 0) {
+        Write-Color "     One or more dev ports are still in use after restart attempt." 'Red'
+        return $false
+    }
+
+    Write-Color "     Existing dev servers stopped." 'Green'
+    return $true
+}
+
+function Show-RestartHint {
+    Write-Host ""
+    Write-Color "     Tip: herstart direct vanuit dit script met " 'Yellow' -NoNewline
+    Write-Color ".\dev.ps1 -Restart" 'Cyan'
 }
 
 function Show-PreflightChecks {
     Write-Color " Pre-flight Checks" 'Yellow'
     Write-Host ""
-    
+
     # Check 1: Backend venv
     Write-Color "  [1] Backend Virtual Environment: " 'White' -NoNewline
     if (Test-Path "backend/venv/Scripts/activate.ps1") {
@@ -47,7 +126,7 @@ function Show-PreflightChecks {
         Write-Color "npm run setup:backend" 'Cyan'
         return $false
     }
-    
+
     # Check 2: Database
     Write-Color "  [2] Database: " 'White' -NoNewline
     if (Test-Path "backend/database.db") {
@@ -58,7 +137,7 @@ function Show-PreflightChecks {
         Write-Host ""
         Write-Color "     Initializing database..." 'Yellow'
         Write-Host ""
-        
+
         Push-Location backend
         try {
             & .\venv\Scripts\python.exe seed_database.py
@@ -72,7 +151,7 @@ function Show-PreflightChecks {
         Pop-Location
         Write-Host ""
     }
-    
+
     # Check 3: Frontend node_modules
     Write-Color "  [3] Frontend Dependencies: " 'White' -NoNewline
     if (Test-Path "frontend/node_modules/next/dist/bin/next") {
@@ -98,29 +177,49 @@ function Show-PreflightChecks {
         Write-Color "     $_" 'Yellow'
         return $false
     }
-    
+
     # Check 4: Ports
     Write-Color "  [4] Port Availability: " 'White' -NoNewline
-    $backend_port = Test-PortInUse -Port 8000
-    $frontend_port = Test-PortInUse -Port 3000
-    
-    if ($backend_port -or $frontend_port) {
-        Write-Color "IN USE" 'Red'
-        Write-Host ""
-        if ($backend_port) {
-            Write-Color "     Port 8000 (Backend) is already in use" 'Red'
+    $backendPort = Test-PortInUse -Port 8000
+    $frontendPort = Test-PortInUse -Port 3000
+
+    if ($backendPort -or $frontendPort) {
+        if ($Restart) {
+            Write-Color "RESTARTING" 'Yellow'
+            $stopped = Stop-ProcessesForPorts -Ports @(8000, 3000)
+            if (-not $stopped) {
+                return $false
+            }
+
+            Write-Color "     Re-checking ports..." 'Yellow'
+            $backendPort = Test-PortInUse -Port 8000
+            $frontendPort = Test-PortInUse -Port 3000
+            if ($backendPort -or $frontendPort) {
+                Write-Color "     Ports are still in use" 'Red'
+                return $false
+            }
+
+            Write-Color "     Ports cleared" 'Green'
         }
-        if ($frontend_port) {
-            Write-Color "     Port 3000 (Frontend) is already in use" 'Red'
+        else {
+            Write-Color "IN USE" 'Red'
+            Write-Host ""
+            if ($backendPort) {
+                Write-Color "     Port 8000 (Backend) is already in use" 'Red'
+            }
+            if ($frontendPort) {
+                Write-Color "     Port 3000 (Frontend) is already in use" 'Red'
+            }
+            Write-Host ""
+            Write-Color "     Stop running servers first" 'Yellow'
+            Show-RestartHint
+            return $false
         }
-        Write-Host ""
-        Write-Color "     Stop running servers first" 'Yellow'
-        return $false
     }
     else {
         Write-Color "OK" 'Green'
     }
-    
+
     Write-Host ""
     return $true
 }
@@ -160,7 +259,12 @@ if (-not $checksOk) {
 }
 
 Write-Host ""
-Write-Color " All checks passed! Starting servers..." 'Green'
+if ($Restart) {
+    Write-Color " Restart completed. Starting fresh servers..." 'Green'
+}
+else {
+    Write-Color " All checks passed! Starting servers..." 'Green'
+}
 Show-ServerInfo
 
 Write-Color " Starting in 2 seconds..." 'Gray'

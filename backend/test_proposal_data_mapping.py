@@ -26,7 +26,7 @@ class ProposalDataMappingTests(unittest.TestCase):
     def test_optimal_distribution_requires_explicit_backend_signal(self):
         optimal = SimpleNamespace(
             moves=[],
-            applied_rules=[OPTIMAL_DISTRIBUTION_RULE],
+            applied_rules=["Situation: MEDIUM_STOCK", OPTIMAL_DISTRIBUTION_RULE],
             reason="Dit artikel is reeds optimaal verdeeld.",
         )
         no_moves_without_signal = SimpleNamespace(

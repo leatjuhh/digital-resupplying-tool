@@ -2,7 +2,7 @@
 SQLAlchemy database models
 """
 # Importeer SQLAlchemy kolom types en de Base class
-from sqlalchemy import Column, Integer, String, JSON, DateTime, Text, ForeignKey, Boolean, Table
+from sqlalchemy import Column, Integer, String, JSON, DateTime, Text, ForeignKey, Boolean, Table, UniqueConstraint
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from database import Base
@@ -155,6 +155,61 @@ class Proposal(Base):
     rejection_reason = Column(Text)
 
 
+class AssignmentSeries(Base):
+    """Store-facing assignment series, grouped per batch and source store."""
+    __tablename__ = "assignment_series"
+
+    id = Column(Integer, primary_key=True, index=True)
+    pdf_batch_id = Column(Integer, ForeignKey('pdf_batches.id'), nullable=False, index=True)
+    batch_name = Column(String, nullable=False)
+    store_code = Column(String, nullable=False, index=True)
+    store_name = Column(String, nullable=False)
+    description = Column(String, nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+    items = relationship("AssignmentItem", back_populates="series", cascade="all, delete-orphan")
+
+    __table_args__ = (
+        UniqueConstraint("pdf_batch_id", "store_code", name="uq_assignment_series_batch_store"),
+    )
+
+
+class AssignmentItem(Base):
+    """Concrete assignment for one proposal route from one store to another."""
+    __tablename__ = "assignment_items"
+
+    id = Column(Integer, primary_key=True, index=True)
+    series_id = Column(Integer, ForeignKey('assignment_series.id', ondelete='CASCADE'), nullable=False, index=True)
+    proposal_id = Column(Integer, ForeignKey('proposals.id'), nullable=False, index=True)
+    artikelnummer = Column(String, nullable=False, index=True)
+    article_name = Column(String, nullable=False)
+    from_store_code = Column(String, nullable=False, index=True)
+    from_store_name = Column(String, nullable=False)
+    to_store_code = Column(String, nullable=False, index=True)
+    to_store_name = Column(String, nullable=False)
+    size_quantities = Column(JSON, default=[])
+    total_quantity = Column(Integer, default=0, nullable=False)
+    status = Column(String, default="open", nullable=False)
+    failure_reason = Column(Text)
+    failure_size = Column(String)
+    failure_notes = Column(Text)
+    completed_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+    series = relationship("AssignmentSeries", back_populates="items")
+
+    __table_args__ = (
+        UniqueConstraint(
+            "proposal_id",
+            "from_store_code",
+            "to_store_code",
+            name="uq_assignment_item_proposal_route",
+        ),
+    )
+
+
 class Feedback(Base):
     """Gebruiker feedback op voorstellen"""
     __tablename__ = "feedback"
@@ -295,6 +350,10 @@ class User(Base):
     
     # Volledige naam
     full_name = Column(String, nullable=False)
+
+    # Optionele winkelkoppeling voor store-facing flows
+    store_code = Column(String, nullable=True, index=True)
+    store_name = Column(String, nullable=True)
     
     # Verwijzing naar rol
     role_id = Column(Integer, ForeignKey('roles.id'), nullable=False, index=True)

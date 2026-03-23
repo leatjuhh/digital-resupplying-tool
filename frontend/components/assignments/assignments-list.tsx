@@ -1,172 +1,184 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import { Calendar, ClipboardCheck, Eye } from "lucide-react"
+
+import { api, type AssignmentSeriesSummary } from "@/lib/api"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, ChevronDown, ChevronUp, ClipboardCheck, Eye } from "lucide-react"
 
-type SortDirection = "asc" | "desc" | null
-type SortField = "id" | "date" | "count" | "progress" | null
+function formatDate(dateValue: string | null) {
+  if (!dateValue) return "Onbekend"
+
+  return new Intl.DateTimeFormat("nl-NL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(dateValue))
+}
+
+function statusLabel(status: AssignmentSeriesSummary["status"]) {
+  switch (status) {
+    case "completed":
+      return "Voltooid"
+    case "in_progress":
+      return "In behandeling"
+    case "attention":
+      return "Actie nodig"
+    default:
+      return "Open"
+  }
+}
+
+function statusVariant(status: AssignmentSeriesSummary["status"]): "default" | "outline" | "destructive" | "secondary" {
+  switch (status) {
+    case "completed":
+      return "default"
+    case "attention":
+      return "destructive"
+    case "in_progress":
+      return "outline"
+    default:
+      return "secondary"
+  }
+}
 
 export function AssignmentsList() {
-  const [sortField, setSortField] = useState<SortField>("date")
-  const [sortDirection, setSortDirection] = useState<SortDirection>("desc")
+  const [series, setSeries] = useState<AssignmentSeriesSummary[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSort = (field: SortField) => {
-    if (sortField === field) {
-      if (sortDirection === "asc") {
-        setSortDirection("desc")
-      } else if (sortDirection === "desc") {
-        setSortField(null)
-        setSortDirection(null)
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadAssignments() {
+      try {
+        setLoading(true)
+        const response = await api.assignments.list()
+
+        if (!cancelled) {
+          setSeries(response.series)
+          setError(null)
+        }
+      } catch (err) {
+        if (!cancelled) {
+          console.error("Failed to load assignments:", err)
+          setError(err instanceof Error ? err.message : "Kon opdrachten niet laden")
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false)
+        }
       }
-    } else {
-      setSortField(field)
-      setSortDirection("asc")
     }
-  }
 
-  const getSortIcon = (field: SortField) => {
-    if (sortField !== field) return null
-    return sortDirection === "asc" ? <ChevronUp className="ml-1 h-4 w-4" /> : <ChevronDown className="ml-1 h-4 w-4" />
-  }
-
-  // Sample data for assignments
-  const assignments = [
-    {
-      id: "2025031501",
-      date: "15 maart 2025",
-      description: "Herverdeling voor week 11 2025",
-      count: 12,
-      completed: 5,
-      pending: 7,
-      status: "In behandeling",
-    },
-    {
-      id: "2025030201",
-      date: "2 maart 2025",
-      description: "Restpartijen week 9 2025",
-      count: 8,
-      completed: 8,
-      pending: 0,
-      status: "Voltooid",
-    },
-    {
-      id: "2025021501",
-      date: "15 februari 2025",
-      description: "Herverdeling voor week 7 2025",
-      count: 15,
-      completed: 15,
-      pending: 0,
-      status: "Voltooid",
-    },
-    {
-      id: "2025020101",
-      date: "1 februari 2025",
-      description: "Herverdeling voor week 5 2025",
-      count: 10,
-      completed: 10,
-      pending: 0,
-      status: "Voltooid",
-    },
-  ]
+    loadAssignments()
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>Herverdelingsopdrachten</CardTitle>
-        <CardDescription>Overzicht van alle opdrachten voor uw winkel</CardDescription>
+        <CardDescription>Echte store-opdrachten op basis van goedgekeurde proposals</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="rounded-md border">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[100px] cursor-pointer" onClick={() => handleSort("id")}>
-                  <div className="flex items-center">Reeks ID {getSortIcon("id")}</div>
-                </TableHead>
-                <TableHead className="min-w-[180px]">Beschrijving</TableHead>
-                <TableHead className="cursor-pointer" onClick={() => handleSort("date")}>
-                  <div className="flex items-center">Datum {getSortIcon("date")}</div>
-                </TableHead>
-                <TableHead className="cursor-pointer text-center" onClick={() => handleSort("count")}>
-                  <div className="flex items-center justify-center">Aantal {getSortIcon("count")}</div>
-                </TableHead>
-                <TableHead className="cursor-pointer" onClick={() => handleSort("progress")}>
-                  <div className="flex items-center">Voortgang {getSortIcon("progress")}</div>
-                </TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Acties</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {assignments.map((assignment) => {
-                const progressPercentage = Math.round((assignment.completed / assignment.count) * 100)
+        {loading ? (
+          <p className="text-sm text-muted-foreground">Opdrachten laden...</p>
+        ) : error ? (
+          <p className="text-sm text-destructive">{error}</p>
+        ) : series.length === 0 ? (
+          <div className="rounded-md border border-dashed p-6 text-sm text-muted-foreground">
+            Er zijn momenteel geen opdrachten voor uw winkel.
+          </div>
+        ) : (
+          <div className="rounded-md border">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[110px]">Reeks ID</TableHead>
+                  <TableHead>Beschrijving</TableHead>
+                  <TableHead>Datum</TableHead>
+                  <TableHead className="text-center">Aantal</TableHead>
+                  <TableHead>Voortgang</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead className="text-right">Acties</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {series.map((assignmentSeries) => {
+                  const progressPercentage =
+                    assignmentSeries.count > 0
+                      ? Math.round((assignmentSeries.completed / assignmentSeries.count) * 100)
+                      : 0
 
-                return (
-                  <TableRow key={assignment.id}>
-                    <TableCell className="font-medium">#{assignment.id}</TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <ClipboardCheck className="h-4 w-4 text-blue-500" />
-                        <span>{assignment.description}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4 text-muted-foreground" />
-                        {assignment.date}
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-center">{assignment.count}</TableCell>
-                    <TableCell>
-                      <div className="space-y-1">
-                        <div className="flex items-center justify-between text-xs">
-                          <span>
-                            {assignment.completed} verwerkt, {assignment.pending} openstaand
-                          </span>
-                          <span className="font-medium">{progressPercentage}%</span>
+                  return (
+                    <TableRow key={assignmentSeries.id}>
+                      <TableCell className="font-medium">#{assignmentSeries.id}</TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <ClipboardCheck className="h-4 w-4 text-blue-500" />
+                          <div>
+                            <p>{assignmentSeries.description}</p>
+                            <p className="text-xs text-muted-foreground">
+                              Batch: {assignmentSeries.batch_name} • Winkel: {assignmentSeries.store_name}
+                            </p>
+                          </div>
                         </div>
-                        <div className="h-2 w-full rounded-full bg-secondary">
-                          <div
-                            className={`h-full rounded-full ${
-                              progressPercentage === 100 ? "bg-green-500" : "bg-blue-500"
-                            }`}
-                            style={{ width: `${progressPercentage}%` }}
-                          />
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="h-4 w-4 text-muted-foreground" />
+                          {formatDate(assignmentSeries.created_at)}
                         </div>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge
-                        variant={
-                          assignment.status === "Voltooid"
-                            ? "default"
-                            : assignment.status === "In behandeling"
-                              ? "outline"
-                              : "secondary"
-                        }
-                      >
-                        {assignment.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <Button asChild variant="ghost" size="sm">
-                        <Link href={`/assignments/${assignment.id}`}>
-                          <Eye className="mr-2 h-4 w-4" />
-                          Bekijken
-                        </Link>
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
-        </div>
+                      </TableCell>
+                      <TableCell className="text-center">{assignmentSeries.count}</TableCell>
+                      <TableCell>
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span>
+                              {assignmentSeries.completed} voltooid, {assignmentSeries.pending} open
+                              {assignmentSeries.failed > 0 ? `, ${assignmentSeries.failed} geblokkeerd` : ""}
+                            </span>
+                            <span className="font-medium">{progressPercentage}%</span>
+                          </div>
+                          <div className="h-2 w-full rounded-full bg-secondary">
+                            <div
+                              className={`h-full rounded-full ${
+                                assignmentSeries.status === "completed"
+                                  ? "bg-green-500"
+                                  : assignmentSeries.status === "attention"
+                                    ? "bg-red-500"
+                                    : "bg-blue-500"
+                              }`}
+                              style={{ width: `${progressPercentage}%` }}
+                            />
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant={statusVariant(assignmentSeries.status)}>{statusLabel(assignmentSeries.status)}</Badge>
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <Button asChild variant="ghost" size="sm">
+                          <Link href={`/assignments/${assignmentSeries.id}`}>
+                            <Eye className="mr-2 h-4 w-4" />
+                            Bekijken
+                          </Link>
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  )
+                })}
+              </TableBody>
+            </Table>
+          </div>
+        )}
       </CardContent>
     </Card>
   )

@@ -64,7 +64,11 @@ export async function apiFetch<T>(
           if (!retryResponse.ok && retryResponse.status !== 401) {
             throw new Error(`API Error: ${retryResponse.status}`);
           }
-          
+
+          if (retryResponse.status === 204) {
+            return undefined as T;
+          }
+
           return retryResponse.json();
         }
       }
@@ -76,6 +80,10 @@ export async function apiFetch<T>(
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new Error(errorData.detail || `API Error: ${response.status}`);
+    }
+
+    if (response.status === 204) {
+      return undefined as T;
     }
 
     return response.json();

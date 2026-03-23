@@ -16,6 +16,14 @@ class SizeType(Enum):
     CUSTOM = "custom"        # Onbekende/custom maat reeks
 
 
+class ArticleSituation(Enum):
+    """Globale voorraadpositie van een artikel in shadow mode."""
+    LOW_STOCK = "LOW_STOCK"
+    MEDIUM_STOCK = "MEDIUM_STOCK"
+    HIGH_STOCK = "HIGH_STOCK"
+    PARTIJ = "PARTIJ"
+
+
 @dataclass
 class StoreInventory:
     """Voorraad informatie voor één winkel"""

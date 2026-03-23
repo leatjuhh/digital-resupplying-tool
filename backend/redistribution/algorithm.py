@@ -18,6 +18,7 @@ from .constraints import (
 )
 from .bv_config import get_bv_config, validate_bv_move
 from .scoring import calculate_move_score
+from .situation import classify_article_situation, format_situation_rule
 from db_models import ArtikelVoorraad
 
 
@@ -507,8 +508,9 @@ def generate_redistribution_proposals_for_article(
         # Kan niet herverdelen met minder dan 2 winkels
         logger.info(f"[PROPOSAL_DEBUG] Article {volgnummer} has {len(article.stores) if article.stores else 0} stores, need at least 2")
         return None
-    
+
     # === STAP 2-3: Analyse gebeurt al in load_article_data ===
+    situation_rule = format_situation_rule(classify_article_situation(article, params))
     
     # === STAP 3B: Check BV Consolidatie (prioriteit) ===
     consolidation_moves, consolidation_rules = check_and_consolidate_fragmented_bv(article, params)
@@ -517,11 +519,11 @@ def generate_redistribution_proposals_for_article(
     if consolidation_moves:
         logger.info(f"[PROPOSAL_DEBUG] Article {volgnummer}: Using {len(consolidation_moves)} BV consolidation moves")
         all_moves = consolidation_moves
-        applied_rules = consolidation_rules
+        applied_rules = [situation_rule, *consolidation_rules]
     else:
         # === STAP 4: Normale Move Generatie per maat ===
         all_moves = []
-        applied_rules = []
+        applied_rules = [situation_rule]
         
         logger.info(f"[PROPOSAL_DEBUG] Article {volgnummer}: Generating moves for {len(article.all_sizes)} sizes across {len(article.stores)} stores")
         
@@ -569,7 +571,7 @@ def generate_redistribution_proposals_for_article(
     if not filtered_moves:
         # Geen moves = artikel is optimaal verdeeld
         reason = "Dit artikel is reeds optimaal verdeeld. Er hoeven geen wijzigingen aangebracht te worden."
-        applied_rules = ["Optimal Distribution Analysis"]
+        applied_rules = [situation_rule, "Optimal Distribution Analysis"]
         logger.info(f"[PROPOSAL_DEBUG] Article {volgnummer}: No moves needed, creating 'optimal distribution' proposal")
     else:
         reason = f"Herverdeling voor {len(filtered_moves)} moves over {len(article.stores)} winkels"

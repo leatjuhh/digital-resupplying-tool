@@ -1,0 +1,16 @@
+{
+  "store_to_bv": {
+    "AMS": "Lumitex B.V.",
+    "ROT": "Lumitex B.V.",
+    "UTR": "Lumitex B.V.",
+    "DEN": "Lumitex B.V.",
+    "EIN": "MC Company Partners B.V.",
+    "GRO": "MC Company Partners B.V.",
+    "MAA": "MC Company Partners B.V.",
+    "BRE": "MC Company Partners B.V."
+  },
+  "bv_names": [
+    "Lumitex B.V.",
+    "MC Company Partners B.V."
+  ]
+}

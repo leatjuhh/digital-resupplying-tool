@@ -14,6 +14,7 @@ import logging
 
 from database import get_db
 from db_models import PDFBatch, ArtikelVoorraad, PDFParseLog, Proposal
+from assignment_service import sync_assignments_for_proposal
 from pdf_extract import parse_pdf_to_records
 from redistribution.algorithm import generate_redistribution_proposals_for_batch
 from redistribution.constraints import DEFAULT_PARAMS
@@ -712,7 +713,8 @@ async def approve_proposal(proposal_id: int, db: Session = Depends(get_db)):
     proposal.status = 'approved'
     proposal.reviewed_at = datetime.now()
     proposal.rejection_reason = None
-    
+
+    sync_assignments_for_proposal(db, proposal)
     db.commit()
     db.refresh(proposal)
     

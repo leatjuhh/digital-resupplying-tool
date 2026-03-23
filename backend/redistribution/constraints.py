@@ -67,6 +67,22 @@ class RedistributionParams:
     
     # Low demand threshold
     low_demand_threshold: float = 0.2  # 20% van voorraad verkocht = low demand
+
+    # ===== SITUATIECLASSIFICATIE (SHADOW MODE) =====
+
+    # Artikel heeft structureel weinig voorraad over alle winkels heen
+    low_stock_total_inventory_threshold: int = 6
+    low_stock_units_per_store_threshold: float = 1.5
+
+    # Artikel heeft voldoende diepte om herverdeling interessant te maken
+    high_stock_total_inventory_threshold: int = 18
+    high_stock_units_per_store_threshold: float = 3.0
+    high_stock_stock_to_sales_ratio_threshold: float = 2.5
+
+    # Partij-artikel: diepe voorraad met relatief lage vraag
+    partij_total_inventory_threshold: int = 24
+    partij_units_per_store_threshold: float = 4.0
+    partij_stock_to_sales_ratio_threshold: float = 4.0
     
     # ===== OPTIMALISATIE =====
     
@@ -85,7 +101,23 @@ class RedistributionParams:
             return False
         if not (0 <= self.efficiency_weight <= 1):
             return False
-        
+        if self.low_stock_total_inventory_threshold < 0:
+            return False
+        if self.high_stock_total_inventory_threshold <= self.low_stock_total_inventory_threshold:
+            return False
+        if self.partij_total_inventory_threshold < self.high_stock_total_inventory_threshold:
+            return False
+        if self.low_stock_units_per_store_threshold <= 0:
+            return False
+        if self.high_stock_units_per_store_threshold < self.low_stock_units_per_store_threshold:
+            return False
+        if self.partij_units_per_store_threshold < self.high_stock_units_per_store_threshold:
+            return False
+        if self.high_stock_stock_to_sales_ratio_threshold <= 0:
+            return False
+        if self.partij_stock_to_sales_ratio_threshold < self.high_stock_stock_to_sales_ratio_threshold:
+            return False
+
         # Check dat wegingen optellen tot ~1.0
         total_weight = self.demand_weight + self.series_weight + self.efficiency_weight
         if not (0.99 <= total_weight <= 1.01):
@@ -174,6 +206,14 @@ DEFAULT_PARAMS = RedistributionParams(
     enable_bv_consolidation=True,
     high_demand_threshold=0.8,
     low_demand_threshold=0.2,
+    low_stock_total_inventory_threshold=6,
+    low_stock_units_per_store_threshold=1.5,
+    high_stock_total_inventory_threshold=18,
+    high_stock_units_per_store_threshold=3.0,
+    high_stock_stock_to_sales_ratio_threshold=2.5,
+    partij_total_inventory_threshold=24,
+    partij_units_per_store_threshold=4.0,
+    partij_stock_to_sales_ratio_threshold=4.0,
     enable_optimization=True
 )
 

@@ -42,6 +42,8 @@ class UserResponse(BaseModel):
     permissions: list[str]
     is_active: bool
     last_login: Optional[datetime]
+    store_code: Optional[str] = None
+    store_name: Optional[str] = None
     
     class Config:
         from_attributes = True
@@ -205,7 +207,9 @@ async def get_current_user_info(
         "role_display_name": role.display_name,
         "permissions": permissions,
         "is_active": current_user.is_active,
-        "last_login": current_user.last_login
+        "last_login": current_user.last_login,
+        "store_code": current_user.store_code,
+        "store_name": current_user.store_name,
     }
 
 

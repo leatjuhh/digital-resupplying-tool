@@ -5,6 +5,7 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { BarChart3, FileUp, LayoutDashboard, LogOut, Settings, ClipboardList } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import {
   Sidebar,
   SidebarContent,
@@ -21,10 +22,12 @@ import { useAuth } from "@/contexts/auth-context"
 
 export function AppSidebar() {
   const pathname = usePathname()
-  const { user, logout, hasRole } = useAuth()
+  const { user, logout, hasPermission, hasRole } = useAuth()
 
   // Check if user has store role
   const isStoreUser = hasRole('store')
+  const canViewDashboard = hasPermission("view_dashboard")
+  const canViewSettings = hasPermission("view_settings")
 
   // Get user initials for avatar
   const getUserInitials = () => {
@@ -64,14 +67,16 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={pathname === "/"}>
-              <Link href="/">
-                <LayoutDashboard className="mr-2 h-4 w-4" />
-                <span>Dashboard</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          {canViewDashboard && (
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild isActive={pathname === "/"}>
+                <Link href="/">
+                  <LayoutDashboard className="mr-2 h-4 w-4" />
+                  <span>Dashboard</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          )}
 
           {!isStoreUser && (
             <>
@@ -100,19 +105,24 @@ export function AppSidebar() {
                 <Link href="/assignments">
                   <ClipboardList className="mr-2 h-4 w-4" />
                   <span>Opdrachten</span>
+                  <Badge variant="outline" className="ml-auto text-[9px] uppercase tracking-wide">
+                    Niet leidend
+                  </Badge>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           )}
 
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={pathname === "/settings"}>
-              <Link href="/settings">
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Instellingen</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          {canViewSettings && (
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild isActive={pathname === "/settings"}>
+                <Link href="/settings">
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Instellingen</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          )}
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter className="p-4 flex flex-col gap-2">
