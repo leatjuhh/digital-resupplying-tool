@@ -22,6 +22,12 @@ Aanbevolen:
 .\dev.ps1
 ```
 
+Als frontend of backend nog draait en je vanuit dezelfde launcher schoon wilt herstarten:
+
+```powershell
+.\dev.ps1 -Restart
+```
+
 Alternatief:
 
 ```powershell
@@ -37,6 +43,10 @@ npm run dev
 3. Controleert of frontend dependencies aanwezig zijn.
 4. Controleert of poorten `3000` en `8000` vrij zijn.
 5. Start backend en frontend met kleurgecodeerde logs in dezelfde terminal.
+
+Met `-Restart` doet hetzelfde script nog een extra stap:
+
+6. Stopt eerst de processen die `3000` en `8000` bezet houden, inclusief child processes, en start daarna beide servers opnieuw.
 
 ## URLs
 
@@ -68,6 +78,12 @@ npm run setup
 ## Stoppen
 
 Druk `Ctrl+C` in de terminal waar de servers draaien.
+
+Als een vorige sessie niet netjes is afgesloten en poorten bezet blijven, gebruik:
+
+```powershell
+.\dev.ps1 -Restart
+```
 
 ## Opmerking over `start-dev.ps1`
 

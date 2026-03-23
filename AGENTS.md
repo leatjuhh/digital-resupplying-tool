@@ -5,36 +5,41 @@ Gebruik deze repository-structuur als vaste ingang voor toekomstige prompts.
 ## Eerste documenten om te lezen
 
 1. `README.md`
-   Projectoverzicht, startcommando's, hoofdmodules en links naar documentatie.
-2. `docs/PROJECT_CONTEXT_INDEX.md`
-   Snelle kaart van de relevante `.md` bestanden: wat actueel is, wat leidend is en waar specifieke onderwerpen staan.
-3. `docs/DOCUMENTATION_GUIDELINES.md`
-   Regels voor waar nieuwe documentatie hoort en welke naamgeving gebruikt moet worden.
+   Projectoverzicht, leidende kernflow en startcommando's.
+2. `docs/technical/current-state.md`
+   Enige actuele status- en roadmapbron tijdens de consolidatie.
+3. `todo/master-backlog.md`
+   Enige actieve backlog met prioriteiten, afhankelijkheden en acceptatiecriteria.
+
+Lees `docs/PROJECT_CONTEXT_INDEX.md` alleen als routekaart naar aanvullende of historische documentatie.
 
 ## Documenthiërarchie
 
 - `README.md`
-  Gebruik als algemene entry point.
+  Algemene entry point.
+- `docs/technical/current-state.md`
+  Leidende actuele status.
+- `todo/master-backlog.md`
+  Leidende werkbacklog.
 - `docs/getting-started/`
-  Gebruik voor setup, opstarten en troubleshooting.
+  Setup, opstarten en troubleshooting.
 - `docs/guides/`
-  Gebruik voor functionele workflows en feature-uitleg.
+  Functionele workflows en feature-uitleg.
 - `docs/technical/`
-  Gebruik voor architectuur, analyses en technische beslissingen.
+  Technische achtergrond die niet leidend is voor planning tenzij expliciet genoemd.
 - `docs/sessions/`
-  Gebruik voor tijdgebonden sessielogs.
-- `todo/`
-  Gebruik voor open werk, losse analyses en prompt-handoffs; informatief maar niet automatisch leidend.
+  Tijdgebonden sessielogs; historisch.
 - `archive/`
-  Alleen als historische referentie gebruiken; niet als primaire bron als dezelfde informatie ook in `docs/` of `README.md` staat.
+  Historische referentie; niet als primaire bron gebruiken als dezelfde informatie actueel elders bestaat.
 - `frontend/PROJECT-OVERVIEW.md`
-  Brede productschets en UX/functionele scope; nuttig voor intentie en gewenste eindtoestand.
+  Productschets en intentie, niet de actuele statusbron.
 - `backend/README.md`
-  Backend-start en API-basis; controleer tegen actuele code als implementatiedetails belangrijk zijn.
+  Backend-start en basis-API-info; controleer tegen actuele code.
 
 ## Werkwijze voor toekomstige prompts
 
-- Begin bij `README.md` en `docs/PROJECT_CONTEXT_INDEX.md`.
-- Geef voorrang aan bestanden in `docs/` boven `archive/` en oude handoff-notities.
-- Behandel `todo/NEW_CHAT_PROMPT.md` en vergelijkbare bestanden als tijdsgebonden context, niet als blijvende waarheid.
-- Als je nieuwe projectkennis toevoegt, werk dan bij voorkeur een bestaand document bij en houd je aan `docs/DOCUMENTATION_GUIDELINES.md`.
+- Begin bij `README.md`, `docs/technical/current-state.md` en `todo/master-backlog.md`.
+- Geef voorrang aan actuele code boven documentatie.
+- Gebruik `docs/PROJECT_CONTEXT_INDEX.md` om aanvullende of historische bestanden bewust op te zoeken, niet als primaire statusbron.
+- Behandel `archive/` en sessielogs als historische context.
+- Werk bij nieuwe projectkennis bij voorkeur een bestaand leidend document bij.
