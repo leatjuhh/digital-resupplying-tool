@@ -24,17 +24,19 @@ Deze flow is leidend tijdens de consolidatie. Routepaden en payloadvormen van de
 
 - Backend API voor PDF ingest en proposal-opslag
 - Frontend proposal detail- en editflow
+- Assignments-flow vanaf goedgekeurde proposals
+- Settings/RBAC op echte backenddata
+- Dashboard summary op echte backenddata
 - Lokale startflow via `.\dev.ps1`
 - De drie startdocumenten hierboven
 
 ## Wat Bewust Niet Leidend Is
 
-Deze onderdelen blijven voorlopig bereikbaar, maar horen niet bij de stabiele kern:
+Deze onderdelen zijn aanwezig, maar blijven voorlopig secundair ten opzichte van de kernflow:
 
-- Assignments UI
-- Settings-varianten met placeholder- of mockgedrag
-- Dashboardbreedte buiten de proposal-kern
-- Verdere baseline-uitbouw van het algoritme
+- Verdere baseline-uitbouw van het algoritme buiten fase 1 shadow mode
+- Geavanceerde dashboardvergelijkingen en periodetrends
+- Volledige backendfiltering/search op proposals-overzichten
 
 Niet-leidende schermen worden tijdens consolidatie expliciet als zodanig gemarkeerd.
 
