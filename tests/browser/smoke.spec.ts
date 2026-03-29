@@ -53,6 +53,7 @@ test("admin dashboard shows live summary and links to proposals", async ({ page,
   await page.getByRole("link", { name: "Alle bekijken" }).click();
   await page.waitForURL(`${baseURL}/proposals`, { timeout: 15_000 });
   await expect(page.getByRole("heading", { name: "Herverdelingsvoorstellen" })).toBeVisible();
+  await expect(page.getByText("Externe Algoritmestatus")).toBeVisible();
 });
 
 test("admin sees all settings tabs on real settings page", async ({ page, baseURL, context }) => {

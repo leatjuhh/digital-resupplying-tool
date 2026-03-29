@@ -266,6 +266,153 @@ export interface ManagedRole {
   created_at: string;
 }
 
+export interface ExternalAlgorithmLineage {
+  source_path: string;
+  size_bytes: number;
+  modified_at: string | null;
+  sha256: string;
+}
+
+export interface ExternalAlgorithmWeekSummary {
+  year: number;
+  week: number;
+  proposal_count: number;
+  observed_move_count: number;
+  model_opportunity_count: number;
+  overlap_move_count: number;
+  observed_opportunity_recall: number;
+  model_overlap_ratio: number;
+  lineage?: ExternalAlgorithmLineage | null;
+}
+
+export interface ExternalAlgorithmModelSummary {
+  data_available: boolean;
+  average_precision_test?: number | null;
+  top_k_recall_test?: number | null;
+  top_k_precision_test?: number | null;
+  binary_precision_test?: number | null;
+  binary_recall_test?: number | null;
+  feature_importance: Array<{
+    feature: string;
+    weight: number;
+    abs_weight: number;
+  }>;
+  lineage?: ExternalAlgorithmLineage | null;
+}
+
+export interface ExternalAlgorithmDatasetStatus {
+  data_available: boolean;
+  assist_mode: "off" | "shadow" | "rank_assist" | string;
+  dataset_root: string;
+  latest_year?: number | null;
+  latest_week?: number | null;
+  processed_week_count: number;
+  weeks_available: ExternalAlgorithmWeekSummary[];
+  aggregate_training_summary?: {
+    total_example_count: number;
+    total_positive_count: number;
+    total_negative_count: number;
+    positive_rate: number;
+    weeks_included: number[];
+  } | null;
+  aggregate_model_summary: ExternalAlgorithmModelSummary;
+  refresh_state_lineage?: ExternalAlgorithmLineage | null;
+  errors: string[];
+}
+
+export interface ExternalAlgorithmMove {
+  article_id: string;
+  from_store: string;
+  to_store: string;
+  size: string;
+  qty: number;
+  score?: number;
+}
+
+export interface ExternalAlgorithmProposalComparison {
+  available: boolean;
+  proposal_id: number;
+  artikelnummer: string;
+  article_name: string;
+  current_proposal: {
+    move_count: number;
+    moves: ExternalAlgorithmMove[];
+  };
+  matched_weeks: Array<{
+    year: number;
+    week: number;
+  }>;
+  latest_matching_week?: {
+    year: number;
+    week: number;
+  } | null;
+  comparison?: {
+    year: number;
+    week: number;
+    article_context: {
+      size_count: number;
+      store_count: number;
+      total_inventory: number;
+      total_sales: number;
+    };
+    manual_observed: {
+      move_count: number;
+      moves: ExternalAlgorithmMove[];
+    };
+    baseline: {
+      available: boolean;
+      move_count: number;
+      moves: ExternalAlgorithmMove[];
+    };
+    model: {
+      available: boolean;
+      selection_size: number;
+      total_candidate_count: number;
+      selected_moves: ExternalAlgorithmMove[];
+      top_candidates: ExternalAlgorithmMove[];
+      average_precision_test?: number | null;
+      top_k_recall_test?: number | null;
+    };
+    drt_vs_manual: {
+      overlap_count: number;
+      left_only_count: number;
+      right_only_count: number;
+      overlap_moves: ExternalAlgorithmMove[];
+      left_only_moves: ExternalAlgorithmMove[];
+      right_only_moves: ExternalAlgorithmMove[];
+    };
+    drt_vs_baseline?: {
+      overlap_count: number;
+      left_only_count: number;
+      right_only_count: number;
+      overlap_moves: ExternalAlgorithmMove[];
+      left_only_moves: ExternalAlgorithmMove[];
+      right_only_moves: ExternalAlgorithmMove[];
+    } | null;
+    drt_vs_model?: {
+      overlap_count: number;
+      left_only_count: number;
+      right_only_count: number;
+      overlap_moves: ExternalAlgorithmMove[];
+      left_only_moves: ExternalAlgorithmMove[];
+      right_only_moves: ExternalAlgorithmMove[];
+    } | null;
+    manual_vs_model?: {
+      overlap_count: number;
+      left_only_count: number;
+      right_only_count: number;
+      overlap_moves: ExternalAlgorithmMove[];
+      left_only_moves: ExternalAlgorithmMove[];
+      right_only_moves: ExternalAlgorithmMove[];
+    } | null;
+    lineage: {
+      combined?: ExternalAlgorithmLineage | null;
+      baseline_proposals?: ExternalAlgorithmLineage | null;
+      model_artifacts?: ExternalAlgorithmLineage | null;
+    };
+  } | null;
+}
+
 /**
  * Batch with proposals
  */
@@ -529,6 +676,22 @@ export const api = {
   dashboard: {
     async getSummary() {
       return apiClient.get<DashboardSummary>("/api/dashboard/summary");
+    },
+  },
+
+  externalAlgorithm: {
+    async getStatus() {
+      return apiClient.get<ExternalAlgorithmDatasetStatus>("/api/algorithm-import/status");
+    },
+
+    async getWeekEvaluation(year: number, week: number) {
+      return apiClient.get(`/api/algorithm-import/weeks/${year}/${week}`);
+    },
+
+    async getProposalComparison(proposalId: number) {
+      return apiClient.get<ExternalAlgorithmProposalComparison>(
+        `/api/algorithm-import/proposals/${proposalId}/comparison`
+      );
     },
   },
 

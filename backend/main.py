@@ -7,7 +7,19 @@ import os
 # Importeer de routers voor verschillende endpoints
 import db_models  # noqa: F401 - nodig zodat SQLAlchemy alle modellen kent
 from database import Base, engine, ensure_runtime_schema
-from routers import articles, batches, pdf_ingest, redistribution, auth, users, roles, settings, assignments, dashboard
+from routers import (
+    algorithm_import,
+    articles,
+    assignments,
+    auth,
+    batches,
+    dashboard,
+    pdf_ingest,
+    redistribution,
+    roles,
+    settings,
+    users,
+)
 
 # Laad omgevingsvariabelen uit .env bestand
 load_dotenv()
@@ -86,6 +98,10 @@ app.include_router(assignments.router, tags=["assignments"])
 # Voeg de dashboard router toe
 # Alle endpoints in dashboard.py zijn bereikbaar via /api/dashboard
 app.include_router(dashboard.router, tags=["dashboard"])
+
+# Voeg de externe algoritme import router toe
+# Alle endpoints in algorithm_import.py zijn bereikbaar via /api/algorithm-import
+app.include_router(algorithm_import.router, tags=["algorithm-import"])
 
 @app.get("/")
 async def root():

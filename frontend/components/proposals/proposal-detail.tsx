@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle, CheckCircle2 } from "lucide-react"
+import { ExternalAlgorithmComparison } from "@/components/proposals/external-algorithm-comparison"
 
 interface ProposalDetailProps {
   id: string
@@ -209,6 +210,8 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
           </div>
         </CardContent>
       </Card>
+
+      <ExternalAlgorithmComparison proposalId={id} />
 
       <Card>
         <CardHeader>
