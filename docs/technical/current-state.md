@@ -2,7 +2,7 @@
 title: Current State
 category: technical
 tags: [status, roadmap, consolidation]
-last_updated: 2026-03-23
+last_updated: 2026-03-29
 related:
   - ../../README.md
   - ../PROJECT_CONTEXT_INDEX.md
@@ -34,6 +34,9 @@ Deze flow moet intact blijven tijdens opschoning van documentatie, backlog en ni
 - Settings draait nu permission-driven op echte backenddata voor algemeen, regels, users, rollen en write-only API-key beheer.
 - Het herverdelingsalgoritme annoteert proposals nu in shadow mode met een stabiele situatie-marker via `applied_rules` (`LOW_STOCK`, `MEDIUM_STOCK`, `HIGH_STOCK`, `PARTIJ`) zonder move-generatiegedrag te wijzigen.
 - Er is een lokale offline evaluatiehaak voor situatieclassificatie tegen geïmporteerde weekbestanden en handmatige redistributies.
+- DRT heeft nu een aparte read-only importerlaag voor externe algoritme-artefacten uit `Herverdelingsalgoritme`, inclusief aggregate datasetstatus, weekevaluaties en lineage per artefact.
+- De proposals-overview toont nu externe leersignalen zoals verwerkte weken, trainingssamenvatting en modelmetrics.
+- Proposal detail toont nu explainability-context voor hetzelfde artikel: huidig DRT-voorstel tegenover handmatige moves, externe baseline en externe modelhints.
 - `.\dev.ps1 -Restart` is nu de officiële lokale restartflow wanneer poort `3000` of `8000` nog bezet is door een vorige sessie.
 - De frontend production build slaagt weer.
 - Er is een browser smoke voor login, backend health, admin settings-tabs, user settingsrechten en store redirect naar assignments.
@@ -51,6 +54,7 @@ Deze onderdelen mogen zichtbaar blijven, maar zijn niet leidend voor planning of
 - Assignments blijven buiten de leidende kernflow, ook nu de store-uitvoering op echte data draait.
 - Settings blijft buiten de leidende kernflow; API-key beheer is bewust write-only en toont alleen masked metadata terug aan de UI.
 - De situatieclassificatie draait bewust in shadow mode; thresholds zijn heuristisch en gebaseerd op de huidige lokale dataset van 2 weken / 2 manuele herverdelingen.
+- De externe algoritmekoppeling is bewust read-only; `algorithm_assist_mode` staat standaard op `off` en stuurt de DRT-proposalgeneratie nog niet aan.
 - Browser smoke is stabiel gevalideerd op een schone frontendstart; een vervuilde Next dev-cache kan lokaal nog steeds rare `.next` chunkfouten geven totdat de frontend opnieuw schoon is gestart.
 - Historische roadmap- en analysebestanden zijn verplaatst naar `archive/2026-03-consolidation/`.
 

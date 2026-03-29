@@ -24,6 +24,7 @@ Deze flow is leidend tijdens de consolidatie. Routepaden en payloadvormen van de
 
 - Backend API voor PDF ingest en proposal-opslag
 - Frontend proposal detail- en editflow
+- Proposal review kan nu externe read-only algoritmesignalen tonen op overview- en detailniveau
 - Assignments-flow vanaf goedgekeurde proposals
 - Settings/RBAC op echte backenddata
 - Dashboard summary op echte backenddata
@@ -35,6 +36,8 @@ Deze flow is leidend tijdens de consolidatie. Routepaden en payloadvormen van de
 Deze onderdelen zijn aanwezig, maar blijven voorlopig secundair ten opzichte van de kernflow:
 
 - Verdere baseline-uitbouw van het algoritme buiten fase 1 shadow mode
+- Ranking assist of andere modelgestuurde herordening van voorstellen
+- Externe modelsignalen buiten read-only explainability/shadow context
 - Geavanceerde dashboardvergelijkingen en periodetrends
 - Volledige backendfiltering/search op proposals-overzichten
 

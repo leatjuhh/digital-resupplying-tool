@@ -2,7 +2,7 @@
 title: Quick Start
 category: getting-started
 tags: [quick-start, setup, development]
-last_updated: 2026-03-17
+last_updated: 2026-03-30
 related:
   - installation.md
   - troubleshooting.md
@@ -54,6 +54,11 @@ Met `-Restart` doet hetzelfde script nog een extra stap:
 - Login: `http://127.0.0.1:3000/login`
 - Backend API: `http://127.0.0.1:8000`
 - Swagger: `http://127.0.0.1:8000/docs`
+
+Extra sanity check na een correcte start:
+
+- open `http://127.0.0.1:3000/proposals`
+- bevestig dat de kaart `Externe Algoritmestatus` zichtbaar is
 
 ## Losse startopties
 

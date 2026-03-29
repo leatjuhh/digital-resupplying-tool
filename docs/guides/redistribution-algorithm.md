@@ -1,5 +1,21 @@
 # Herverdelingsalgoritme - Technische Documentatie
 
+Statusnoot: dit document beschrijft vooral de historische kernlogica van het redistributie-algoritme. De actuele baseline-roadmap en de huidige actieve slices worden leidend vastgelegd in `docs/technical/current-state.md`, `todo/master-backlog.md` en `docs/technical/baseline-algorithm-phase-1.md`.
+
+## Huidige aanvullende laag
+
+Naast de hieronder beschreven kernlogica draait momenteel ook:
+
+- situatieclassificatie fase 1 in shadow mode via `LOW_STOCK`, `MEDIUM_STOCK`, `HIGH_STOCK` en `PARTIJ`
+- read-only externe artefactimport vanuit het aparte project `Herverdelingsalgoritme`
+- proposal explainability in DRT via vergelijking tussen huidig voorstel, handmatige moves, baseline-output en modelhints
+
+Wat bewust nog niet actief is:
+
+- geen rank assist
+- geen modelgestuurde proposalgenerator
+- geen write-back van DRT-reviewuitkomsten naar trainingslabels
+
 **Versie**: 1.0  
 **Datum**: 28 oktober 2025  
 **Status**: Eerste implementatie compleet

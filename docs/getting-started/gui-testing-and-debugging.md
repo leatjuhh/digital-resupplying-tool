@@ -2,7 +2,7 @@
 title: GUI Testing and Debugging
 category: getting-started
 tags: [gui, testing, debugging, playwright, browser]
-last_updated: 2026-03-23
+last_updated: 2026-03-29
 related:
   - quick-start.md
   - browser-debugging.md
@@ -20,6 +20,7 @@ Korte handleiding om de app lokaal te starten, via de GUI te testen en browserpr
 - [Leidende Kernflow Regressiecheck](#leidende-kernflow-regressiecheck)
 - [Settings en RBAC Regressiecheck](#settings-en-rbac-regressiecheck)
 - [Dashboard Sanity Check](#dashboard-sanity-check)
+- [Externe Algoritme Check](#externe-algoritme-check)
 - [Debuggen in een echte browser](#debuggen-in-een-echte-browser)
 - [Snelle browsertest](#snelle-browsertest)
 - [Belangrijke paden](#belangrijke-paden)
@@ -114,6 +115,28 @@ Gebruik deze check na wijzigingen aan het dashboard, de samenvatting of de overz
 6. Controleer dat de periodeselectie alleen meldt dat er nog geen historische vergelijking beschikbaar is.
 7. Open een voorstel, batch en assignment-link vanuit de dashboardoverzichten en bevestig dat de navigatie klopt.
 
+## Externe Algoritme Check
+
+Gebruik deze check na wijzigingen aan de read-only koppeling met `Herverdelingsalgoritme`.
+
+1. Start de app bij voorkeur schoon met `.\dev.ps1 -Restart`.
+2. Log in als `admin / Admin123!`.
+3. Open `/proposals`.
+4. Bevestig dat de kaart `Externe Algoritmestatus` zichtbaar is.
+5. Controleer dat je ten minste deze signalen ziet:
+   - aantal verwerkte weken
+   - trainingsvoorbeelden en positive rate
+   - model top-k recall
+   - overzichtstabel per week
+6. Open daarna een voorstel-detailpagina van een artikel dat ook in de externe dataset voorkomt.
+7. Bevestig dat de kaart `Externe Algoritmecontext` zichtbaar is.
+8. Controleer dat je kunt zien:
+   - wat DRT nu voorstelt
+   - wat handmatig gebeurd is
+   - wat de externe baseline deed
+   - wat het externe model als top-k hints geeft
+9. Bevestig dat deze context read-only is en de bestaande proposalacties niet verandert.
+
 ## Debuggen in een echte browser
 
 Voor live browserdebugging gebruik je drie terminals.
@@ -161,6 +184,7 @@ Er is een bestaande Playwright smoke test voor:
 - user settingsrechten (`Algemeen` read-only, `Regels` bewerkbaar)
 - store redirect weg van `/settings` en assignments-toegang
 - dashboardweergave met echte summary cards, pending reeksen, systeemevents en aandachtspunten
+- proposals-overview met `Externe Algoritmestatus`
 
 Run:
 

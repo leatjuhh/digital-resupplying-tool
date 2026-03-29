@@ -2,7 +2,7 @@
 title: Project Context Index
 category: technical
 tags: [documentation, context, navigation]
-last_updated: 2026-03-23
+last_updated: 2026-03-30
 related:
   - DOCUMENTATION_GUIDELINES.md
   - technical/current-state.md
@@ -38,6 +38,7 @@ Deze index onderscheidt expliciet tussen leidende, aanvullende en historische br
 - `docs/guides/batch-system.md`
 - `docs/guides/integration.md`
 - `docs/guides/redistribution-algorithm.md`
+- `docs/technical/baseline-algorithm-phase-1.md`
 - `docs/guides/database.md`
 - `docs/guides/authentication-testing.md`
 - `docs/guides/cursor-workflow.md`
@@ -46,6 +47,11 @@ Deze index onderscheidt expliciet tussen leidende, aanvullende en historische br
 - `frontend/PROJECT-OVERVIEW.md`
 
 Gebruik deze bronnen alleen als aanvulling op de leidende documenten.
+
+Specifiek voor de huidige baseline-slice geldt:
+
+- `docs/technical/baseline-algorithm-phase-1.md` beschrijft de actieve shadow-mode classificatie
+- externe algoritme-import is aanvullende technische context, geen leidende planning- of roadmapbron
 
 ## Historisch
 

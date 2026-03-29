@@ -2,7 +2,7 @@
 title: Baseline Algorithm Phase 1
 category: technical
 tags: [baseline, redistribution, evaluation, shadow-mode]
-last_updated: 2026-03-23
+last_updated: 2026-03-30
 related:
   - ../../todo/master-backlog.md
   - ./current-state.md
@@ -52,6 +52,22 @@ De output groepeert per week:
 - aantal handmatig herverdeelde artikelen per situatie
 - aantal handmatige moves per situatie
 - per artikel de basismetrics waarop de classifier draait
+
+## Read-only externe artefactimport
+
+DRT leest nu daarnaast ook read-only artefacten in uit het aparte project `Herverdelingsalgoritme`.
+
+Die koppeling gebruikt een expliciete importerlaag voor:
+
+- datasetstatus en aggregate modelmetrics
+- weekevaluaties per beschikbare week
+- proposalvergelijking per artikel tussen DRT, handmatig, baseline en modelhints
+
+Belangrijk:
+
+- deze import verandert de bestaande generator niet
+- `algorithm_assist_mode` blijft standaard `off`
+- de getoonde model- en baselinecontext is explainability/shadow, geen actieve voorstelsturing
 
 ## Datasetstatus bij implementatie
 
