@@ -114,7 +114,10 @@ Werk situatieclassificatie, strategieën, categoriebeleid, prioritering, compens
 Fase 1 is afgerond: situatieclassificatie in shadow mode (`LOW_STOCK`, `MEDIUM_STOCK`, `HIGH_STOCK`, `PARTIJ`) draait nu mee in proposalgeneratie via `applied_rules`, inclusief een lokale offline evaluatiehaak tegen de 2 momenteel geïmporteerde weken / 2 manuele herverdelingen. Verdere strategie-, categorie-, prioriterings-, compensatie- en feedbackfasen blijven onder dit umbrella-item open.
 
 **Fase-update 2026-03-29**
-De read-only importslice naar het externe project `Herverdelingsalgoritme` is nu geland. DRT kan datasetstatus, weekevaluaties en proposalvergelijking per artikel inlezen en tonen, zodat handmatige beslissingen, baseline-output en modelhints zichtbaar zijn in de reviewflow zonder de bestaande proposalgenerator te veranderen. De volgende uitvoerbare stap onder dit umbrella-item is daarmee een eerste echte strategie- of ranking-assistfase kiezen en toetsen op deze vergelijkdata.
+De read-only importslice naar het externe project `Herverdelingsalgoritme` is nu geland. DRT kan datasetstatus, weekevaluaties en proposalvergelijking per artikel inlezen en tonen, zodat handmatige beslissingen, baseline-output en modelhints zichtbaar zijn in de reviewflow zonder de bestaande proposalgenerator te veranderen.
+
+**Fase-update 2026-03-30**
+Het algoritme is vereenvoudigd van ~2.800 naar ~1.400 LOC. Multi-factor scoring (series/efficiency), de move-consolidatie-optimizer en size sequence detectie zijn verwijderd. Scoring is nu puur demand-gebaseerd. Dit vereenvoudigde algoritme is het vertrekpunt voor toekomstige iteraties. Eerstvolgende stap: valideren tegen 3-5 eerdere handmatige herverdelingen en demand-drempels bijstellen op basis van resultaten.
 
 **Afhankelijkheden**  
 Stabiele leidende kernflow.

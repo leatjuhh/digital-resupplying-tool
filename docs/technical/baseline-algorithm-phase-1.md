@@ -15,7 +15,7 @@ Fase 1 voegt situatieclassificatie toe aan de bestaande redistributielaag in **s
 Dat betekent:
 
 - proposals krijgen een stabiele marker in `applied_rules` als `Situation: LOW_STOCK|MEDIUM_STOCK|HIGH_STOCK|PARTIJ`
-- de bestaande move-generatie, scoring en optimalisatie blijven ongewijzigd
+- de move-generatie gebruikt greedy matching met demand-gebaseerde scoring (vereenvoudigd op 2026-03-30; de eerdere multi-factor scoring en move-consolidatie-optimizer zijn verwijderd)
 - de classificatie wordt alleen zichtbaar gemaakt en offline geëvalueerd
 
 ## Huidige thresholds

@@ -24,33 +24,27 @@ async def generate_proposals(
     batch_id: int,
     enforce_bv_separation: bool = Query(default=True, description="Enforce BV separation constraint"),
     min_move_quantity: int = Query(default=1, description="Minimum quantity per move"),
-    enable_optimization: bool = Query(default=True, description="Enable move consolidation optimization"),
     db: Session = Depends(get_db)
 ):
     """
     Genereer herverdelingsvoorstellen voor een hele batch
-    
+
     Parameters kunnen aangepast worden om het algoritme te configureren.
     """
     # Check of batch bestaat
     batch = db.query(Batch).filter(Batch.id == batch_id).first()
     if not batch:
         raise HTTPException(status_code=404, detail="Batch not found")
-    
+
     # Check of er voorraad data is
     count = db.query(ArtikelVoorraad).filter(ArtikelVoorraad.batch_id == batch_id).count()
     if count == 0:
         raise HTTPException(status_code=400, detail="No inventory data found for this batch")
-    
+
     # Configureer parameters
     params = RedistributionParams(
         enforce_bv_separation=enforce_bv_separation,
         min_move_quantity=min_move_quantity,
-        enable_optimization=enable_optimization,
-        oversupply_threshold=DEFAULT_PARAMS.oversupply_threshold,
-        undersupply_threshold=DEFAULT_PARAMS.undersupply_threshold,
-        max_move_quantity=DEFAULT_PARAMS.max_move_quantity,
-        min_sequence_width=DEFAULT_PARAMS.min_sequence_width
     )
     
     # Genereer voorstellen
@@ -103,7 +97,6 @@ async def generate_proposals(
         "parameters": {
             "enforce_bv_separation": enforce_bv_separation,
             "min_move_quantity": min_move_quantity,
-            "enable_optimization": enable_optimization
         },
         "proposals": proposals_data
     }

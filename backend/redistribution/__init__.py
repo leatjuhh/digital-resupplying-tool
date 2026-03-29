@@ -9,19 +9,15 @@ from .domain import (
     Move,
     Proposal,
     StoreInventory,
-    SizeSequence,
-    ConsolidationMetrics,
-    OptimizationExplanation
 )
 
 from .constraints import (
     RedistributionParams,
-    OptimizationParams,
-    DEFAULT_PARAMS
+    DEFAULT_PARAMS,
 )
 
 from .algorithm import (
-    generate_redistribution_proposals_for_article
+    generate_redistribution_proposals_for_article,
 )
 
 from .situation import (
@@ -36,11 +32,7 @@ __all__ = [
     'Move',
     'Proposal',
     'StoreInventory',
-    'SizeSequence',
-    'ConsolidationMetrics',
-    'OptimizationExplanation',
     'RedistributionParams',
-    'OptimizationParams',
     'DEFAULT_PARAMS',
     'generate_redistribution_proposals_for_article',
     'SITUATION_RULE_PREFIX',

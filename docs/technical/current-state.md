@@ -2,7 +2,7 @@
 title: Current State
 category: technical
 tags: [status, roadmap, consolidation]
-last_updated: 2026-03-29
+last_updated: 2026-03-30
 related:
   - ../../README.md
   - ../PROJECT_CONTEXT_INDEX.md
@@ -32,7 +32,8 @@ Deze flow moet intact blijven tijdens opschoning van documentatie, backlog en ni
 - Assignments list, reeksdetail en itemdetail draaien op echte backenddata met statusupdates voor winkelgebruikers.
 - Dashboard draait nu data-gedreven op een auth-beschermde summary endpoint met echte KPI's, pending batches, systeemevents en aandachtspunten.
 - Settings draait nu permission-driven op echte backenddata voor algemeen, regels, users, rollen en write-only API-key beheer.
-- Het herverdelingsalgoritme annoteert proposals nu in shadow mode met een stabiele situatie-marker via `applied_rules` (`LOW_STOCK`, `MEDIUM_STOCK`, `HIGH_STOCK`, `PARTIJ`) zonder move-generatiegedrag te wijzigen.
+- Het herverdelingsalgoritme is vereenvoudigd (2026-03-30): multi-factor scoring (series/efficiency) en de move-consolidatie-optimizer zijn verwijderd. Scoring is nu puur demand-gebaseerd. De kernflow (greedy matching, BV-constraint, BV-consolidatie) en de volledige API-compatibiliteit zijn behouden.
+- Het algoritme annoteert proposals in shadow mode met een stabiele situatie-marker via `applied_rules` (`LOW_STOCK`, `MEDIUM_STOCK`, `HIGH_STOCK`, `PARTIJ`).
 - Er is een lokale offline evaluatiehaak voor situatieclassificatie tegen geïmporteerde weekbestanden en handmatige redistributies.
 - DRT heeft nu een aparte read-only importerlaag voor externe algoritme-artefacten uit `Herverdelingsalgoritme`, inclusief aggregate datasetstatus, weekevaluaties en lineage per artefact.
 - De proposals-overview toont nu externe leersignalen zoals verwerkte weken, trainingssamenvatting en modelmetrics.
@@ -44,7 +45,7 @@ Deze flow moet intact blijven tijdens opschoning van documentatie, backlog en ni
 
 ## Wat Bewust Geparkeerd Is
 
-- Verdere baseline-uitbouw van het herverdelingsalgoritme voorbij fase 1 situatieclassificatie
+- Verdere baseline-uitbouw van het herverdelingsalgoritme voorbij fase 1 situatieclassificatie (het vereenvoudigde algoritme is nu het vertrekpunt voor toekomstige iteraties)
 - SQL-first of andere brontransitie
 
 Deze onderdelen mogen zichtbaar blijven, maar zijn niet leidend voor planning of productclaim.

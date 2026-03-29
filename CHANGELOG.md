@@ -7,6 +7,24 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Changed - ALGORITME VEREENVOUDIGD (2026-03-30)
+
+- **Herverdelingsalgoritme vereenvoudigd** van ~2.800 naar ~1.400 LOC
+  - `optimizer.py` verwijderd (339 LOC) — move-consolidatie via swap-iteraties is overkill bij 8 filialen
+  - Multi-factor scoring (demand 70% / series 20% / efficiency 10%) vervangen door puur demand-gebaseerde scoring
+  - Size sequence detectie en penalties/bonussen verwijderd (onbewezen waarde)
+  - `OptimizationParams` en 20+ ongebruikte configuratieparameters verwijderd
+  - `ConsolidationMetrics`, `OptimizationExplanation`, `SwapDetail`, `SizeSequence` domain types verwijderd
+  - `/front/` directory verwijderd (1 bestand, volledig dood)
+
+- **Behouden kernlogica:**
+  - Greedy matching per maat (surplus → shortage, gesorteerd op demand)
+  - BV-constraint en BV-consolidatie
+  - Situatieclassificatie shadow mode (LOW/MEDIUM/HIGH/PARTIJ)
+  - Volledige API-compatibiliteit (alle endpoints en response-velden werken)
+
+- **Motivatie:** De codebase was nodeloos complex gegroeid voor de huidige schaal (8 filialen, 2 BV's). Het vereenvoudigde algoritme is transparanter, makkelijker te valideren tegen echte herverdeeldata, en vormt een betere basis voor toekomstige iteraties.
+
 ### Added - SQL-BASED GENERATION DOCUMENTATION 📚
 
 - 📋 **SQL-Based Generation Specificatie** - Complete implementatie plan voor automatische generatie

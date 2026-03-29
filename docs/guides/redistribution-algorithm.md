@@ -1,6 +1,6 @@
 # Herverdelingsalgoritme - Technische Documentatie
 
-Statusnoot: dit document beschrijft vooral de historische kernlogica van het redistributie-algoritme. De actuele baseline-roadmap en de huidige actieve slices worden leidend vastgelegd in `docs/technical/current-state.md`, `todo/master-backlog.md` en `docs/technical/baseline-algorithm-phase-1.md`.
+Statusnoot: dit document beschrijft de kernlogica van het redistributie-algoritme na de vereenvoudiging van 2026-03-30. De actuele status wordt leidend vastgelegd in `docs/technical/current-state.md` en `todo/master-backlog.md`.
 
 ## Huidige aanvullende laag
 
@@ -10,27 +10,20 @@ Naast de hieronder beschreven kernlogica draait momenteel ook:
 - read-only externe artefactimport vanuit het aparte project `Herverdelingsalgoritme`
 - proposal explainability in DRT via vergelijking tussen huidig voorstel, handmatige moves, baseline-output en modelhints
 
-Wat bewust nog niet actief is:
-
-- geen rank assist
-- geen modelgestuurde proposalgenerator
-- geen write-back van DRT-reviewuitkomsten naar trainingslabels
-
-**Versie**: 1.0  
-**Datum**: 28 oktober 2025  
-**Status**: Eerste implementatie compleet
+**Versie**: 2.0
+**Datum**: 30 maart 2026
+**Status**: Vereenvoudigd naar demand-gebaseerd algoritme
 
 ---
 
-## 📋 Overzicht
+## Overzicht
 
-Het herverdelingsalgoritme genereert slimme herverdelingsvoorstellen voor artikelen tussen winkels op basis van:
+Het herverdelingsalgoritme genereert herverdelingsvoorstellen voor artikelen tussen winkels op basis van:
 - Actuele voorraad per winkel per maat
 - Verkoopcijfers (demand)
 - BV-constraints (Lumitex B.V. vs MC Company Partners B.V.)
-- Maatserie integriteit (minimaal 3 opeenvolgende maten)
 
-## 🏗️ Architectuur
+## Architectuur
 
 ### Componentenoverzicht
 
@@ -40,9 +33,11 @@ backend/redistribution/
 ├── domain.py             # Dataclasses (ArticleStock, Move, Proposal)
 ├── constraints.py        # Parameters en drempelwaarden
 ├── bv_config.py          # BV-winkel mapping (configureerbaar)
-├── scoring.py            # Demand/series/efficiency scoring
+├── scoring.py            # Demand-gebaseerde scoring
 ├── algorithm.py          # Hoofdlogica (greedy per maat)
-└── optimizer.py          # Move consolidation optimalisatie
+├── situation.py          # Shadow-mode situatieclassificatie
+├── adapter.py            # Weekbestand → domainmodel conversie
+└── offline_evaluation.py # Offline evaluatie tegen weekdata
 ```
 
 ### Data Flow
@@ -56,12 +51,13 @@ backend/redistribution/
            ▼
 ┌─────────────────────┐
 │  Load Article Data  │  ← Haal voorraad + verkoop op
+│  Calculate Metrics  │  ← Bereken demand scores
 └──────────┬──────────┘
            │
            ▼
 ┌─────────────────────┐
-│  Detect Sequences   │  ← Analyseer maatreeksen
-│  Calculate Metrics  │  ← Bereken demand scores
+│  BV Consolidatie    │  ← Gefragmenteerde BV's consolideren
+│  (Prioriteit)       │  ← ≤6 items → best verkopende winkel
 └──────────┬──────────┘
            │
            ▼
@@ -72,13 +68,7 @@ backend/redistribution/
            │
            ▼
 ┌─────────────────────┐
-│  Score & Filter     │  ← Weeg demand, series, efficiency
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│  Optimize           │  ← Move consolidation (optioneel)
-│  (Consolidation)    │  ← Minimaliseer verzendbestemmingen
+│  Score & Filter     │  ← Demand-gebaseerde score
 └──────────┬──────────┘
            │
            ▼
@@ -89,22 +79,13 @@ backend/redistribution/
 
 ---
 
-## 🎯 Kernfunctionaliteit
+## Kernfunctionaliteit
 
 ### 1. BV Constraint (Cross-BV Blokkering)
 
 **Doel**: Voorkom herverdeling tussen verschillende bedrijfsvennootschappen.
 
-**Implementatie**:
 ```python
-# bv_config.py
-bv_config = {
-    'AMS': 'Lumitex B.V.',
-    'ROT': 'Lumitex B.V.',
-    'EIN': 'MC Company Partners B.V.',
-    'GRO': 'MC Company Partners B.V.',
-}
-
 # Check in algorithm.py
 if params.enforce_bv_separation:
     is_valid, reason = validate_bv_move(from_store, to_store)
@@ -117,7 +98,13 @@ if params.enforce_bv_separation:
 - Via API instelbaar per winkel
 - Regel kan aan/uit gezet worden in settings
 
-### 2. Vraaggestuurde Herverdeling
+### 2. BV Consolidatie
+
+**Doel**: Voorkom fragmentatie binnen een BV.
+
+Als een BV in totaal ≤6 stuks heeft van een artikel, worden alle stuks geconsolideerd naar de best verkopende winkel binnen die BV. Dit voorkomt dat kleine hoeveelheden over meerdere winkels verspreid liggen.
+
+### 3. Vraaggestuurde Herverdeling
 
 **Doel**: Verplaats voorraad van lage demand naar hoge demand winkels.
 
@@ -135,135 +122,20 @@ demand_score = verkocht / voorraad
 1. **Overschotten**: Lage demand winkels leveren eerst
 2. **Tekorten**: Hoge demand winkels krijgen eerst
 
-**Scoring**:
-- Demand score weegt 70% mee in totale score
-- Negatieve moves (hoge → lage demand) worden afgestraft
+### 4. Scoring
 
-### 3. Maatseriebehoud
+Elke move krijgt een score tussen 0.0 en 1.0, puur gebaseerd op het demand-verschil tussen bron- en doelwinkel:
 
-**Doel**: Behoud minimaal 3 opeenvolgende maten per winkel.
-
-**Detectie**:
-```python
-# Voorbeeld: Winkel heeft maten 36, 38, 40, 42
-# Dit is een serie van 4 opeenvolgende maten
-# Verwijderen van 38 of 40 zou serie breken (penalty)
-# Verwijderen van 36 of 42 is OK (eindpunt)
-```
-
-**Rules**:
-- Minimaal 3 opeenvolgende maten = 1 serie
-- Penalty voor moves die serie breken (score -50%)
-- Bonus voor moves die serie creëren (+30%)
-- Detecteert automatisch numerieke (32-48) en letter (XS-XXL) maten
-
-### 4. Volledige Maatserieverdeling
-
-**Doel**: Verdeel voorraad over zoveel mogelijk winkels zonder gaten.
-
-**Implementatie**:
-- Greedy matching: overschotten → tekorten
-- Prioriteer moves die series compleet maken
-- Vermijd dubbele maten per winkel waar mogelijk
-
----
-
-## 🔢 Scoring Systeem
-
-### Move Score Berekening
-
-Elke move krijgt een score tussen 0.0 en 1.0:
-
-```
-Total Score = 
-    (Demand Score × 0.7) + 
-    (Series Score × 0.2) + 
-    (Efficiency Score × 0.1)
-```
-
-#### Demand Score (0.7 weight)
 ```python
 demand_diff = to_demand - from_demand
-
-if demand_diff > 0:
-    score = 0.5 + (demand_diff / 2.0)  # 0.5 - 1.0
-else:
-    score = 0.5 + (demand_diff / 2.0)  # 0.0 - 0.5
+score = 0.5 + (demand_diff / 2.0)  # Range: 0.0 - 1.0
 ```
 
-#### Series Score (0.2 weight)
-```python
-score = 0.5  # Neutral
-
-if breaks_source_sequence:
-    score -= 0.5  # Penalty
-
-if creates_or_extends_sequence:
-    score += 0.3  # Bonus
-```
-
-#### Efficiency Score (0.1 weight)
-```python
-# Lineair schalen tussen min en max quantity
-score = (qty - min_qty) / (max_qty - min_qty)
-```
+Moves met score < 0.2 worden gefilterd.
 
 ---
 
-## 🔄 Move Consolidation Optimalisatie
-
-### Probleem
-
-Bij greedy per-maat aanpak kan je eindigen met inefficiënte verzendstructuur:
-
-**Voor optimalisatie:**
-```
-Winkel A → Winkel C: 5× maat 38
-Winkel A → Winkel D: 3× maat 38
-Winkel B → Winkel C: 2× maat 40
-```
-- Winkel A verstuurt naar 2 bestemmingen
-- **Totaal: 3 verzendingen**
-
-**Na optimalisatie (swap):**
-```
-Winkel A → Winkel C: 5× maat 38
-Winkel B → Winkel D: 3× maat 38  ← Swapped
-Winkel B → Winkel C: 2× maat 40
-```
-- Winkel A verstuurt naar 1 bestemming
-- Winkel B verstuurt naar 2 bestemmingen (maar had al verzending naar C)
-- **Efficiënter: minder complexiteit**
-
-### Algoritme
-
-1. **Identificeer** bronnen met meerdere bestemmingen
-2. **Zoek** swap kandidaten (zelfde maat, vergelijkbare hoeveelheid)
-3. **Evalueer** of swap verbetering oplevert
-4. **Voer uit** indien voordeel ≥ drempelwaarde
-5. **Herhaal** tot geen verbeteringen meer mogelijk
-
-### Swap Criteria
-
-Een goede swap voldoet aan:
-- ✅ Zelfde maat
-- ✅ Quantity verschil ≤ 20%
-- ✅ Reduceert aantal bestemmingen
-- ✅ Behoud BV constraints
-- ✅ Breekt geen series
-
-### Consolidation Score
-
-```python
-score = 
-    (destinations_reduced × 0.7) +
-    (quantity_match × 0.1) +
-    (series_preserved × 0.2)
-```
-
----
-
-## 📊 Parameters
+## Parameters
 
 ### Overschot/Tekort Drempelwaarden
 
@@ -277,35 +149,25 @@ undersupply_threshold = 0.5   # 50% van gemiddelde
 - Winkel met >15 stuks = overschot (levert)
 - Winkel met <5 stuks = tekort (ontvangt)
 
-### Maatserie Parameters
+### BV Parameters
 
 ```python
-min_sequence_width = 3          # Minimaal 3 maten
-sequence_break_penalty = 0.5    # 50% penalty
-sequence_creation_bonus = 0.3   # 30% bonus
+enforce_bv_separation = True   # Cross-BV moves blokkeren
+enable_bv_consolidation = True # Gefragmenteerde BV's consolideren
+min_items_per_store = 6        # Drempel voor BV consolidatie
 ```
 
-### Scoring Wegingen
+### Move Limieten
 
 ```python
-demand_weight = 0.7      # 70% demand-driven
-series_weight = 0.2      # 20% series preservation
-efficiency_weight = 0.1  # 10% quantity efficiency
-```
-
-### Optimalisatie Parameters
-
-```python
-enable_consolidation = True
-max_swap_quantity_diff = 0.2      # 20% verschil toegestaan
-min_consolidation_benefit = 1      # Min 1 verzending bespaard
-max_swap_iterations = 10           # Max 10 iteraties
-max_swaps_per_article = 50         # Max 50 swaps
+min_move_quantity = 1          # Minimaal 1 stuk per move
+max_move_quantity = 100        # Maximaal 100 stuks per move
+min_move_score = 0.2           # Minimale score om te behouden
 ```
 
 ---
 
-## 💻 Gebruik
+## Gebruik
 
 ### Basis Gebruik
 
@@ -313,7 +175,6 @@ max_swaps_per_article = 50         # Max 50 swaps
 from redistribution import generate_redistribution_proposals_for_article
 from database import get_db
 
-# Voor één artikel
 db = get_db()
 proposal = generate_redistribution_proposals_for_article(
     db=db,
@@ -323,8 +184,6 @@ proposal = generate_redistribution_proposals_for_article(
 
 if proposal:
     print(f"Gegenereerd: {proposal.total_moves} moves")
-    print(f"Toegepaste regels: {proposal.applied_rules}")
-    
     for move in proposal.moves:
         print(f"{move.from_store} → {move.to_store}: {move.qty}× {move.size}")
         print(f"  Score: {move.score:.2f} - {move.reason}")
@@ -335,11 +194,9 @@ if proposal:
 ```python
 from redistribution import RedistributionParams
 
-# Custom parameters
 params = RedistributionParams(
-    oversupply_threshold=2.0,  # Strengere drempelwaarde
-    enforce_bv_separation=False,  # BV constraint uit
-    enable_optimization=True
+    oversupply_threshold=2.0,        # Strengere drempelwaarde
+    enforce_bv_separation=False,     # BV constraint uit
 )
 
 proposal = generate_redistribution_proposals_for_article(
@@ -353,20 +210,15 @@ proposal = generate_redistribution_proposals_for_article(
 ### Batch Processing
 
 ```python
-from redistribution import generate_redistribution_proposals_for_batch
+from redistribution.algorithm import generate_redistribution_proposals_for_batch
 
-# Alle artikelen in een batch
-proposals = generate_redistribution_proposals_for_batch(
-    db=db,
-    batch_id=1
-)
-
+proposals = generate_redistribution_proposals_for_batch(db=db, batch_id=1)
 print(f"Gegenereerd: {len(proposals)} voorstellen")
 ```
 
 ---
 
-## 🔧 Configuratie
+## Configuratie
 
 ### BV Mapping
 
@@ -377,20 +229,10 @@ Bewerk `bv_mapping.json`:
   "store_to_bv": {
     "AMS": "Lumitex B.V.",
     "ROT": "Lumitex B.V.",
-    "UTR": "Lumitex B.V.",
     "EIN": "MC Company Partners B.V.",
     "GRO": "MC Company Partners B.V."
   }
 }
-```
-
-Of via code:
-
-```python
-from redistribution.bv_config import get_bv_config
-
-config = get_bv_config()
-config.set_bv_for_store("MAA", "MC Company Partners B.V.")
 ```
 
 ### Custom Maat Reeksen
@@ -398,7 +240,6 @@ config.set_bv_for_store("MAA", "MC Company Partners B.V.")
 ```python
 from redistribution.constraints import register_custom_size_order
 
-# Voor custom maat reeks
 register_custom_size_order(
     "shoe_sizes",
     ["35", "35.5", "36", "36.5", "37", "37.5", "38"]
@@ -407,7 +248,7 @@ register_custom_size_order(
 
 ---
 
-## 📈 Output
+## Output
 
 ### Proposal Object
 
@@ -427,129 +268,30 @@ register_custom_size_order(
         }
     ],
     "status": "pending",
-    "applied_rules": ["BV Separation", "Demand-based Allocation"],
-    "optimization_applied": true,
+    "applied_rules": ["Situation: HIGH_STOCK", "BV Separation", "Demand-based Allocation"],
     "total_moves": 12,
     "total_quantity": 48
 }
 ```
 
-### Optimization Explanation
-
-Als optimalisatie is toegepast:
-
-```python
-{
-    "optimization_type": "move_consolidation",
-    "metrics": {
-        "shipments_saved": 3,
-        "consolidation_improvement_pct": 25.0,
-        "swaps_performed": 5
-    },
-    "summary": "Optimalisatie toegepast: 3 verzendingen bespaard (25.0% verbetering). 5 swaps uitgevoerd.",
-    "swaps": [
-        {
-            "move_a_before": "AMS → ROT: 5× 38",
-            "move_a_after": "AMS → UTR: 5× 38",
-            "reason": "Reduced AMS's destinations from 3 to 2"
-        }
-    ]
-}
-```
-
 ---
 
-## 🧪 Testing
+## Vereenvoudiging 2026-03-30
 
-### Unit Tests
+Het algoritme is vereenvoudigd van ~2.800 naar ~1.400 LOC. Verwijderd:
 
-```python
-# Test surplus/shortage identification
-def test_identify_surplus():
-    article = load_article_data(db, "423264", 1)
-    surplus, shortage = identify_surplus_and_shortage(
-        article, "38", DEFAULT_PARAMS
-    )
-    assert len(surplus) > 0
-    assert len(shortage) > 0
+- **Move consolidation optimizer** (339 LOC) — swap-iteraties om bestemmingen te reduceren, overkill bij 8 filialen
+- **Size sequence detectie** — detectie van opeenvolgende maten met penalties/bonussen (onbewezen waarde)
+- **Series-score** (was 20% van totale score) — vervangen door puur demand-gebaseerde scoring
+- **Efficiency-score** (was 10% van totale score) — lineaire schaling op qty, weinig toevoegend
+- **20+ configuratieparameters** — teruggebracht naar essentiële set
 
-# Test BV constraint
-def test_bv_blocking():
-    moves = generate_moves_for_size(article, "38", params)
-    # Check geen cross-BV moves
-    for move in moves:
-        assert move.from_bv == move.to_bv
-```
+Behouden:
+- Greedy matching per maat (surplus → shortage)
+- Demand-gebaseerde prioritering en scoring
+- BV-constraint en BV-consolidatie
+- Situatieclassificatie (shadow mode)
+- Volledige API-compatibiliteit
 
-### Integration Test
-
-```python
-# Test volledige flow
-def test_full_algorithm():
-    proposal = generate_redistribution_proposals_for_article(
-        db, "423264", 1
-    )
-    
-    assert proposal is not None
-    assert proposal.total_moves > 0
-    assert all(m.score > 0 for m in proposal.moves)
-    
-    if proposal.optimization_applied:
-        assert proposal.optimization_explanation is not None
-```
-
----
-
-## 🚀 Volgende Stappen
-
-### Implementatie Status
-
-- [x] Domain models (domain.py)
-- [x] Constraints en parameters (constraints.py)
-- [x] BV configuratie (bv_config.py)
-- [x] Scoring systeem (scoring.py)
-- [x] Kern algoritme (algorithm.py)
-- [x] Move consolidation optimalisatie (optimizer.py)
-- [ ] API endpoints (redistribution.py router)
-- [ ] Database integratie (proposals opslaan)
-- [ ] Export functionaliteit (CSV/XLSX)
-- [ ] Frontend UI voor settings
-- [ ] Testing suite
-
-### Geplande Verbeteringen
-
-1. **Min-cost flow optimalisatie** (v2.0)
-   - Vervang greedy door network flow
-   - Globaal optimale oplossing
-
-2. **Geographic awareness** (v2.0)
-   - Voorkeurt nabije winkels
-   - Transport kosten meewegen
-
-3. **Historical learning** (v3.0)
-   - Leer van eerdere voorstellen
-   - Voorspel seizoenspatronen
-
-4. **Multi-objective optimization** (v3.0)
-   - Balanceer meerdere doelen
-   - Pareto-optimale oplossingen
-
----
-
-## 📚 Referenties
-
-- **Greedy Algorithm**: Basis matching strategie
-- **Network Flow**: Toekomstige optimalisatie
-- **Multi-objective Optimization**: Voor complexere trade-offs
-
----
-
-## 📞 Support
-
-Voor vragen of problemen:
-1. Check TROUBLESHOOTING.md
-2. Review code comments in algorithm.py
-3. Run tests om gedrag te verifiëren
-
-**Versie**: 1.0  
-**Laatste update**: 28 oktober 2025
+**Versie**: 2.0
+**Laatste update**: 30 maart 2026
