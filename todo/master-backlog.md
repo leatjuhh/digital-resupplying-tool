@@ -128,6 +128,9 @@ Het herverdelingsalgoritme is fundamenteel herschreven van gemiddelde-drempel lo
 **Fase-update 2026-04-18**
 Store-niveau capaciteitsprofielen geland (`store_profiles.py`): vloeroppervlak en max-capaciteit per filiaal als tiebreaker bij gelijke demand-score. Maatreekslogica toegevoegd aan het algoritme: moves die een aaneengesloten maatreeks bij de donor breken worden geblokkeerd. Feedback-router en uitgebreid `ProposalFeedback` DB-model zijn de basis voor de ML-feedbackloop (batchmatige AI-analyse van approve/edit/reject-acties). Architectuurdocument `fase1-ml-feedback-loop.md` vastgelegd.
 
+**Fase-update 2026-04-18 (sessie 2)**
+De externe sibling-map `Herverdelingsalgoritme/` is niet langer vereist voor een werkende DRT-setup. De algoritmedata (4 weken JSON + aggregate, ~37MB) staat nu intern in `backend/algorithm_data/` en de historische baseline-pipeline is als bevroren tooling opgenomen in `tools/baseline-pipeline/` inclusief `legacy_redistribution/` (niet verwarren met het actieve `backend/redistribution/`). `algorithm_import/config.py` wijst standaard naar de interne locatie; `EXTERNAL_ALGORITHM_DATA_ROOT` blijft beschikbaar voor overrides. Dit maakt hybride werken op meerdere machines wrijvingsloos: `git pull` + setup-scripts volstaat.
+
 **Afhankelijkheden**  
 Stabiele leidende kernflow.
 

@@ -2,7 +2,7 @@
 title: Current State
 category: technical
 tags: [status, roadmap, consolidation]
-last_updated: 2026-04-18
+last_updated: 2026-04-18 (sessie 2)
 related:
   - ../../README.md
   - ../PROJECT_CONTEXT_INDEX.md
@@ -53,6 +53,8 @@ Deze flow moet intact blijven tijdens opschoning van documentatie, backlog en ni
 - Feedback-router toegevoegd (`backend/routers/feedback.py`): legt gebruikersacties (approved/edited/rejected/removed/added) met reden-code, feature-snapshot en model-score vast per proposal of individuele move (move_index). Vereiste basis voor de ML-feedbackloop.
 - `ProposalFeedback` DB-model uitgebreid met `action_taken`, `reason_code`, `move_index`, `feature_snapshot` en `model_score_at_time` voor retroactieve ML-analyse.
 - Architectuurdocument ML-feedbackloop toegevoegd (`docs/technical/fase1-ml-feedback-loop.md`): beschrijft de beoogde batchmatige AI-laag als adviserende aanvulling op het deterministische algoritme, zonder realtime LLM-calls in de proposalflow.
+- De externe algoritmedata (4 weken JSON + aggregate, ~37MB) staat nu binnen de repo in `backend/algorithm_data/`. De sibling-map `Herverdelingsalgoritme/` is geen vereiste meer voor een werkende DRT-setup — `git pull` + setup-scripts is voldoende.
+- De historische baseline-pipeline (week-verwerking, training-scripts, oud redistribution-pakket) staat bevroren in `tools/baseline-pipeline/` inclusief README. Deze tooling is niet actief in de DRT-runtime maar blijft bruikbaar voor handmatige verwerking van nieuwe weken zolang DRT de manuele flow nog niet volledig vervangt.
 
 ## Wat Bewust Geparkeerd Is
 
