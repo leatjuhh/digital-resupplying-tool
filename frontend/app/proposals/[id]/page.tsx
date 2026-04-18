@@ -8,6 +8,7 @@ import { DashboardShell } from "@/components/dashboard/dashboard-shell"
 import { ProposalDetail } from "@/components/proposals/proposal-detail"
 import { ProposalActions } from "@/components/proposals/proposal-actions"
 import { Button } from "@/components/ui/button"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { api, type BatchWithProposals } from "@/lib/api"
 import { buildBatchFlowInfo, type BatchFlowInfo } from "@/lib/proposal-flow"
 
@@ -42,24 +43,32 @@ export default function ProposalDetailPage({
 
   return (
     <DashboardShell>
-      <div className="flex items-center">
-        <Button variant="ghost" size="sm" asChild className="mr-4">
-          <Link href={batchId ? `/proposals/batch/${batchId}` : "/proposals"}>
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Terug
-          </Link>
-        </Button>
-        <DashboardHeader heading={`Voorstel #${params.id}`} text="Interfiliaalverdeling voorstel">
-          <ProposalActions
-            id={params.id}
-            batchId={batchId}
-            totalInBatch={batchFlow?.totalProposals}
-            completedInBatch={batchFlow?.assessedProposals}
-            nextProposalId={batchFlow?.nextProposalId}
-          />
-        </DashboardHeader>
-      </div>
-      <ProposalDetail id={params.id} batchId={batchId} batchInfo={batchFlow} />
+      <Tabs defaultValue="voorstel">
+        <div className="flex items-center">
+          <Button variant="ghost" size="sm" asChild className="mr-4">
+            <Link href={batchId ? `/proposals/batch/${batchId}` : "/proposals"}>
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Terug
+            </Link>
+          </Button>
+          <DashboardHeader heading={`Voorstel #${params.id}`}>
+            <div className="flex items-center gap-3">
+              <TabsList>
+                <TabsTrigger value="voorstel">Voorstel</TabsTrigger>
+                <TabsTrigger value="analyse">Analyse</TabsTrigger>
+              </TabsList>
+              <ProposalActions
+                id={params.id}
+                batchId={batchId}
+                totalInBatch={batchFlow?.totalProposals}
+                completedInBatch={batchFlow?.assessedProposals}
+                nextProposalId={batchFlow?.nextProposalId}
+              />
+            </div>
+          </DashboardHeader>
+        </div>
+        <ProposalDetail id={params.id} batchId={batchId} batchInfo={batchFlow} />
+      </Tabs>
     </DashboardShell>
   )
 }

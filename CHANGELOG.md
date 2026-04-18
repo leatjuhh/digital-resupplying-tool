@@ -7,6 +7,43 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - STORE-EXCLUSIELIJST & UI-POLISH (2026-04-18)
+
+- **`backend/redistribution/store_config.py`** (nieuw) — centrale exclusielijst voor niet-herverdeelbare filialen:
+  - `NON_REDISTRIBUTION_STORES`: outlet-filialen (14, 15, 16, 39), administratieve filialen (0, 2, 3, 27, 99) en gesloten filiaal (35)
+  - `is_redistribution_candidate(store_code)` als enkelvoudige toegangspoort voor het algoritme
+  - Filialen in deze lijst worden volledig uitgesloten als bron én bestemming; hun voorraad telt niet mee in batch-totalen
+
+- **`backend/redistribution/algorithm.py`** — integreert `is_redistribution_candidate()`:
+  - `calculate_batch_store_totals`: filtert niet-kandidaten uit bij groeperen van batch-voorraad
+  - `load_article_data`: slaat records van uitgesloten filialen over bij het opbouwen van store-data
+
+- **`frontend/components/proposals/proposal-detail.tsx`** — rijkere metadataweergave:
+  - `parseHoofdgroep()`: strippt `Artikelgroep : X` suffix uit ruwe Hoofdgroep-string
+  - `parseSeizoenjaarInfo()`: splitst seizoenjaar-veld in jaar, collectie en bestelcode
+  - `getColorSwatch()`: vertaalt kleurnaam naar hex-achtergrond voor visueel kleurindicatortje
+  - `MetaField` component: consistent label+waarde blokje met truncatie
+  - Bestelcode-resolutie: eigen veld → parsed seizoenjaar → artikelnummer als fallback
+
+- **`frontend/app/proposals/[id]/page.tsx`** — Tabs in proposal-header:
+  - Voorstel / Analyse tabs naast de actieknoppen in de header
+  - `DashboardHeader` ontvangt nu de tabs en acties als één gegroepeerde kindcomponent
+
+- **`frontend/app/login/login-page-client.tsx`** — LiveStat widget op loginpagina:
+  - `LiveStat` component met flash-animatie bij update
+  - Toont live telling van verdelingen, filialen en trends
+
+- **`frontend/components/auth/network-background.tsx`** — achtergrondanimatie herschreven:
+  - Magazijn + artikel-nodes vervangen door algoritme-node + winkelknopen
+  - Herverdelingsflows gevisualiseerd als oranje balken (surplus → shortage)
+  - Surplus en shortage als gekleurde ringindicatoren per winkelknoop
+
+### Fixed - DB SCHEMA MISMATCH FEEDBACK (2026-04-18)
+
+- **`feedback.rating` en `feedback.comment`** waren `NOT NULL` in de database maar `nullable=True` in het SQLAlchemy-model — dit blokkeerde proposal-approval met een 500-fout
+  - Database gemigreerd via eenmalig script (tabel gerecreëerd, bestaande data behouden)
+  - Fout: `sqlite3.IntegrityError: NOT NULL constraint failed: feedback.rating` bij `POST /api/pdf/proposals/{id}/approve`
+
 ### Changed - ALGORITME VEREENVOUDIGD (2026-03-30)
 
 - **Herverdelingsalgoritme vereenvoudigd** van ~2.800 naar ~1.400 LOC

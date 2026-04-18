@@ -2,7 +2,7 @@
 title: Current State
 category: technical
 tags: [status, roadmap, consolidation]
-last_updated: 2026-04-18 (sessie 2)
+last_updated: 2026-04-18 (sessie 3)
 related:
   - ../../README.md
   - ../PROJECT_CONTEXT_INDEX.md
@@ -55,6 +55,11 @@ Deze flow moet intact blijven tijdens opschoning van documentatie, backlog en ni
 - Architectuurdocument ML-feedbackloop toegevoegd (`docs/technical/fase1-ml-feedback-loop.md`): beschrijft de beoogde batchmatige AI-laag als adviserende aanvulling op het deterministische algoritme, zonder realtime LLM-calls in de proposalflow.
 - De externe algoritmedata (4 weken JSON + aggregate, ~37MB) staat nu binnen de repo in `backend/algorithm_data/`. De sibling-map `Herverdelingsalgoritme/` is geen vereiste meer voor een werkende DRT-setup — `git pull` + setup-scripts is voldoende.
 - De historische baseline-pipeline (week-verwerking, training-scripts, oud redistribution-pakket) staat bevroren in `tools/baseline-pipeline/` inclusief README. Deze tooling is niet actief in de DRT-runtime maar blijft bruikbaar voor handmatige verwerking van nieuwe weken zolang DRT de manuele flow nog niet volledig vervangt.
+- **Store-exclusielijst** ingevoerd (2026-04-18): `backend/redistribution/store_config.py` definieert `NON_REDISTRIBUTION_STORES` met outlet-, administratieve en gesloten filialen. Het algoritme roept `is_redistribution_candidate()` aan in `calculate_batch_store_totals` en `load_article_data`; deze filialen verschijnen nooit als bron of bestemming.
+- **Proposal detail UI** uitgebreid (2026-04-18): Hoofdgroep-parsing, seizoenjaar/bestelcode-splitsing, kleurswatches en MetaField-component. Voorstel/Analyse tabs toegevoegd aan de detailheader.
+- **Loginpagina** toont nu live statistieken via een `LiveStat` widget met flash-animatie bij update.
+- **Achtergrondanimatie** herschreven: algoritme-node + winkelknopen met oranje herverdelingsflows en surplus/shortage-ringindicatoren.
+- **DB-bugfix**: `feedback.rating` en `feedback.comment` waren `NOT NULL` in de database maar `nullable=True` in het model — blokkeerde proposal-approval. Database gemigreerd, beide kolommen zijn nu nullable.
 
 ## Wat Bewust Geparkeerd Is
 

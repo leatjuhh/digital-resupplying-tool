@@ -15,6 +15,7 @@ from .constraints import (
 )
 from .bv_config import get_bv_config, validate_bv_move
 from .scoring import calculate_move_score, filter_low_quality_moves
+from .store_config import is_redistribution_candidate
 from .situation import classify_article_situation, format_situation_rule
 from .store_profiles import get_store_profile
 from db_models import ArtikelVoorraad
@@ -31,7 +32,11 @@ def calculate_batch_store_totals(db: Session, batch_id: int) -> Dict[str, int]:
         .group_by(ArtikelVoorraad.filiaal_code)
         .all()
     )
-    return {code: int(total or 0) for code, total in rows}
+    return {
+        code: int(total or 0)
+        for code, total in rows
+        if is_redistribution_candidate(code)
+    }
 
 
 def detect_size_type(sizes: List[str]) -> SizeType:
@@ -79,6 +84,10 @@ def load_article_data(
 
     for record in records:
         store_code = record.filiaal_code
+
+        if not is_redistribution_candidate(store_code):
+            continue
+
         size = record.maat
 
         stores_data[store_code]['inventory'][size] = record.voorraad
