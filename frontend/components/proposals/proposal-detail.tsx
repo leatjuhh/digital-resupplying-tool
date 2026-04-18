@@ -65,6 +65,7 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
           orderCode: data.metadata?.Bestelcode || data.artikelnummer,
           lastDeliveryDate: '',
           totalSold: data.stores?.reduce((acc: number, store: any) => acc + store.sold, 0) || 0,
+          moves: data.moves || [],
           sizes: data.sizes || [],
           stores: data.stores?.map((store: any) => ({
             id: store.id,
@@ -212,6 +213,78 @@ export function ProposalDetail({ id, batchId, batchInfo }: ProposalDetailProps) 
       </Card>
 
       <ExternalAlgorithmComparison proposalId={id} />
+
+      {proposalData.moves && proposalData.moves.length > 0 && (
+        <Card>
+          <CardHeader className="pb-3">
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-base">Geplande moves ({proposalData.moves.length})</CardTitle>
+              {proposalData.moves.some((m: any) => m.model_score !== null && m.model_score !== undefined) && (
+                <Badge variant="outline" className="text-xs font-normal">
+                  🤖 Model-scores actief (shadow)
+                </Badge>
+              )}
+            </div>
+          </CardHeader>
+          <CardContent className="p-0">
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Van</TableHead>
+                    <TableHead>Naar</TableHead>
+                    <TableHead className="text-center">Maat</TableHead>
+                    <TableHead className="text-center">Aantal</TableHead>
+                    <TableHead className="text-center">Demand</TableHead>
+                    <TableHead className="text-center">Model</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {proposalData.moves.map((move: any, idx: number) => {
+                    const demandScore = move.score ?? null
+                    const modelScore = move.model_score ?? null
+                    return (
+                      <TableRow key={idx}>
+                        <TableCell className="text-sm">
+                          {move.from_store_name || move.from_store}
+                        </TableCell>
+                        <TableCell className="text-sm">
+                          {move.to_store_name || move.to_store}
+                        </TableCell>
+                        <TableCell className="text-center font-mono text-sm">{move.size}</TableCell>
+                        <TableCell className="text-center">{move.qty}</TableCell>
+                        <TableCell className="text-center">
+                          {demandScore !== null ? (
+                            <Badge
+                              variant="secondary"
+                              className={`text-xs tabular-nums ${demandScore >= 0.7 ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : demandScore >= 0.4 ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'}`}
+                            >
+                              {demandScore.toFixed(2)}
+                            </Badge>
+                          ) : <span className="text-muted-foreground text-xs">—</span>}
+                        </TableCell>
+                        <TableCell className="text-center">
+                          {modelScore !== null ? (
+                            <Badge
+                              variant="outline"
+                              className={`text-xs tabular-nums ${modelScore >= 0.7 ? 'border-green-400 text-green-700 dark:text-green-400' : modelScore >= 0.4 ? 'border-yellow-400 text-yellow-700 dark:text-yellow-400' : 'border-red-400 text-red-700 dark:text-red-400'}`}
+                            >
+                              {modelScore.toFixed(2)}
+                            </Badge>
+                          ) : <span className="text-muted-foreground text-xs">—</span>}
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+            </div>
+            <p className="px-4 pb-3 pt-2 text-xs text-muted-foreground">
+              Demand = algoritme-score (0–1). Model = ML-score (0–1, shadow mode). Groen ≥ 0.7 · Geel 0.4–0.7 · Rood &lt; 0.4
+            </p>
+          </CardContent>
+        </Card>
+      )}
 
       <Card>
         <CardHeader>

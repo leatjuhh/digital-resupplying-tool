@@ -13,11 +13,13 @@ import shutil
 import logging
 
 from database import get_db
-from db_models import PDFBatch, ArtikelVoorraad, PDFParseLog, Proposal
+from db_models import PDFBatch, ArtikelVoorraad, PDFParseLog, Proposal, Feedback
 from assignment_service import sync_assignments_for_proposal
 from pdf_extract import parse_pdf_to_records
 from redistribution.algorithm import generate_redistribution_proposals_for_batch
 from redistribution.constraints import DEFAULT_PARAMS
+from algorithm_import.config import get_algorithm_assist_mode
+from algorithm_import.service import enrich_moves_with_model_scores
 from utils import sort_stores_by_code, sort_store_ids
 
 # Configure logging
@@ -80,10 +82,13 @@ def collect_store_inventory(voorraad_records: List[ArtikelVoorraad]) -> tuple[di
 
 class RejectProposalRequest(BaseModel):
     reason: Optional[str] = None
+    reason_code: Optional[str] = None  # Reden-code uit feedback dropdown
 
 
 class UpdateProposalRequest(BaseModel):
     moves: List[dict]
+    reason_code: Optional[str] = None  # Reden voor de edit
+    comment: Optional[str] = None      # Optionele toelichting
 
 
 @router.post("/ingest")
@@ -331,34 +336,71 @@ def generate_and_save_proposals(db: Session, batch_id: int) -> int:
     if not proposals:
         return 0
     
+    # Controleer of model-scoring actief is
+    assist_mode = get_algorithm_assist_mode()
+    use_model_scoring = assist_mode in {"shadow", "rank_assist"}
+
     # Save each proposal to database
     saved_count = 0
     for proposal in proposals:
-        # Convert proposal to database model
+        # Serialiseer moves naar dict-formaat
+        raw_moves = [
+            {
+                "size": move.size,
+                "from_store": move.from_store,
+                "from_store_name": move.from_store_name,
+                "to_store": move.to_store,
+                "to_store_name": move.to_store_name,
+                "qty": move.qty,
+                "score": round(move.score, 2),
+                "reason": move.reason,
+                "from_bv": move.from_bv,
+                "to_bv": move.to_bv,
+                "model_score": None,
+                "feature_snapshot": None,
+            }
+            for move in proposal.moves
+        ]
+
+        applied_rules = list(proposal.applied_rules)
+
+        # Shadow/rank_assist: verrijk moves met model-score + feature_snapshot
+        if use_model_scoring and raw_moves:
+            try:
+                raw_moves, model_meta = enrich_moves_with_model_scores(
+                    proposal.volgnummer, raw_moves
+                )
+                if model_meta.get("model_score_applied"):
+                    applied_rules.append({
+                        "model_version": model_meta.get("model_version"),
+                        "assist_mode": assist_mode,
+                        "source_week": model_meta.get("week"),
+                        "source_year": model_meta.get("year"),
+                    })
+            except Exception as exc:
+                logger.warning(
+                    f"[MODEL_SCORING] Skipped voor {proposal.volgnummer}: {exc}"
+                )
+                applied_rules.append("fallback:rule_only")
+
+        # Bij rank_assist: hersorteer op combined_score (0.4 demand + 0.6 model)
+        if assist_mode == "rank_assist" and raw_moves:
+            def combined_score(m: dict) -> float:
+                demand = float(m.get("score") or 0.0)
+                model = float(m.get("model_score") or demand)
+                return 0.4 * demand + 0.6 * model
+            raw_moves = sorted(raw_moves, key=combined_score, reverse=True)
+
         db_proposal = Proposal(
             pdf_batch_id=batch_id,
             artikelnummer=proposal.volgnummer,
             article_name=proposal.article_name,
-            moves=[
-                {
-                    "size": move.size,
-                    "from_store": move.from_store,
-                    "from_store_name": move.from_store_name,
-                    "to_store": move.to_store,
-                    "to_store_name": move.to_store_name,
-                    "qty": move.qty,
-                    "score": round(move.score, 2),
-                    "reason": move.reason,
-                    "from_bv": move.from_bv,
-                    "to_bv": move.to_bv
-                }
-                for move in proposal.moves
-            ],
+            moves=raw_moves,
             total_moves=proposal.total_moves,
             total_quantity=proposal.total_quantity,
             status='pending',
             reason=proposal.reason,
-            applied_rules=proposal.applied_rules,
+            applied_rules=applied_rules,
             optimization_applied=str(proposal.optimization_applied).lower(),
             stores_affected=list(proposal.stores_affected)
         )
@@ -714,10 +756,22 @@ async def approve_proposal(proposal_id: int, db: Session = Depends(get_db)):
     proposal.reviewed_at = datetime.now()
     proposal.rejection_reason = None
 
+    # Automatisch feedback-record aanmaken per move (geen dialog nodig bij approve)
+    for idx, move in enumerate(proposal.moves or []):
+        fb = Feedback(
+            proposal_id=proposal.id,
+            category="approval",
+            action_taken="approved",
+            move_index=idx,
+            feature_snapshot=move.get("feature_snapshot"),
+            model_score_at_time=move.get("model_score"),
+        )
+        db.add(fb)
+
     sync_assignments_for_proposal(db, proposal)
     db.commit()
     db.refresh(proposal)
-    
+
     return {
         "id": proposal.id,
         "status": proposal.status,
@@ -747,13 +801,26 @@ async def reject_proposal(
     if not proposal:
         raise HTTPException(status_code=404, detail="Proposal not found")
     
+    rejection_reason = payload.reason if payload else None
+    reason_code = payload.reason_code if payload and hasattr(payload, "reason_code") else None
+
     proposal.status = 'rejected'
     proposal.reviewed_at = datetime.now()
-    proposal.rejection_reason = payload.reason if payload else None
-    
+    proposal.rejection_reason = rejection_reason
+
+    # Feedback-record op proposal-niveau bij reject
+    fb = Feedback(
+        proposal_id=proposal.id,
+        category="rejection",
+        action_taken="rejected",
+        reason_code=reason_code,
+        comment=rejection_reason,
+    )
+    db.add(fb)
+
     db.commit()
     db.refresh(proposal)
-    
+
     return {
         "id": proposal.id,
         "status": proposal.status,
@@ -787,21 +854,31 @@ async def update_proposal(
     # Update moves
     proposal.moves = payload.moves
     proposal.status = 'edited'
-    
+
     # Recalculate totals
     proposal.total_moves = len(payload.moves)
     proposal.total_quantity = sum(move.get('qty', 0) for move in payload.moves)
-    
+
     # Update stores affected
     stores = set()
     for move in payload.moves:
         stores.add(move.get('from_store'))
         stores.add(move.get('to_store'))
     proposal.stores_affected = list(stores)
-    
+
+    # Feedback-record op proposal-niveau bij edit
+    fb = Feedback(
+        proposal_id=proposal.id,
+        category="edit",
+        action_taken="edited",
+        reason_code=payload.reason_code,
+        comment=payload.comment,
+    )
+    db.add(fb)
+
     db.commit()
     db.refresh(proposal)
-    
+
     return {
         "id": proposal.id,
         "status": proposal.status,

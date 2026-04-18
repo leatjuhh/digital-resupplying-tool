@@ -26,6 +26,13 @@ from .situation import (
     format_situation_rule,
 )
 
+from .store_profiles import (
+    StoreProfile,
+    get_store_profile,
+    get_all_profiles,
+    set_store_profiles,
+)
+
 __all__ = [
     'ArticleStock',
     'ArticleSituation',
@@ -38,4 +45,8 @@ __all__ = [
     'SITUATION_RULE_PREFIX',
     'classify_article_situation',
     'format_situation_rule',
+    'StoreProfile',
+    'get_store_profile',
+    'get_all_profiles',
+    'set_store_profiles',
 ]

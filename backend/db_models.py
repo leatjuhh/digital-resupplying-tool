@@ -2,7 +2,7 @@
 SQLAlchemy database models
 """
 # Importeer SQLAlchemy kolom types en de Base class
-from sqlalchemy import Column, Integer, String, JSON, DateTime, Text, ForeignKey, Boolean, Table, UniqueConstraint
+from sqlalchemy import Column, Integer, String, JSON, DateTime, Text, ForeignKey, Boolean, Float, Table, UniqueConstraint
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from database import Base
@@ -211,27 +211,45 @@ class AssignmentItem(Base):
 
 
 class Feedback(Base):
-    """Gebruiker feedback op voorstellen"""
+    """Gebruiker feedback op voorstellen — gevuld bij elke approve/reject/edit actie."""
     __tablename__ = "feedback"
-    
+
     # Unieke ID
     id = Column(Integer, primary_key=True, index=True)
-    
+
     # Verwijzing naar het voorstel
     proposal_id = Column(Integer, ForeignKey('proposals.id'), nullable=False)
-    
-    # Categorie: 'quantity', 'timing', 'location', 'other'
+
+    # Categorie: 'approval', 'rejection', 'edit', 'removal', 'manual_add'
     category = Column(String, nullable=False)
-    
-    # Rating 1-5
-    rating = Column(Integer, nullable=False)
-    
-    # Feedback tekst
-    comment = Column(Text, nullable=False)
-    
+
+    # Rating 1-5 (optioneel, niet verplicht bij approve/reject)
+    rating = Column(Integer, nullable=True)
+
+    # Feedback tekst (optioneel)
+    comment = Column(Text, nullable=True)
+
     # Sentiment: 'positive', 'negative', 'neutral' (door AI bepaald, optioneel)
-    sentiment = Column(String)
-    
+    sentiment = Column(String, nullable=True)
+
+    # === Uitbreidingen voor ML-feedback loop ===
+
+    # Welke actie is uitgevoerd: approved / edited / rejected / removed / added
+    action_taken = Column(String, nullable=True)
+
+    # Reden-code (v1 dropdown): stock_mismatch / wrong_store_size / external_destination /
+    # seasonal_hold / customer_profile / sequence_break / other_text
+    reason_code = Column(String, nullable=True)
+
+    # Index van de move binnen proposal.moves (0-based), NULL = proposal-niveau feedback
+    move_index = Column(Integer, nullable=True)
+
+    # Feature-snapshot van de move op het moment van het voorstel (voor retroactieve analyse)
+    feature_snapshot = Column(JSON, nullable=True)
+
+    # Model-score op het moment van het voorstel
+    model_score_at_time = Column(Float, nullable=True)
+
     # Aanmaak tijdstip
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 

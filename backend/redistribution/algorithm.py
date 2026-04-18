@@ -16,9 +16,22 @@ from .constraints import (
 from .bv_config import get_bv_config, validate_bv_move
 from .scoring import calculate_move_score, filter_low_quality_moves
 from .situation import classify_article_situation, format_situation_rule
+from .store_profiles import get_store_profile
 from db_models import ArtikelVoorraad
 
 logger = logging.getLogger(__name__)
+
+
+def calculate_batch_store_totals(db: Session, batch_id: int) -> Dict[str, int]:
+    """Berekent totaalvoorraad per filiaal over alle artikelen in een batch."""
+    from sqlalchemy import func as sa_func
+    rows = (
+        db.query(ArtikelVoorraad.filiaal_code, sa_func.sum(ArtikelVoorraad.voorraad))
+        .filter(ArtikelVoorraad.batch_id == batch_id)
+        .group_by(ArtikelVoorraad.filiaal_code)
+        .all()
+    )
+    return {code: int(total or 0) for code, total in rows}
 
 
 def detect_size_type(sizes: List[str]) -> SizeType:
@@ -36,6 +49,7 @@ def load_article_data(
     db: Session,
     volgnummer: str,
     batch_id: int,
+    batch_store_totals: Optional[Dict[str, int]] = None,
 ) -> Optional[ArticleStock]:
     """Laad artikel voorraad data uit database"""
     records = db.query(ArtikelVoorraad).filter(
@@ -89,74 +103,179 @@ def load_article_data(
             inventory=data['inventory'],
             sales={"TOTAL": data['sales_total']} if data['sales_total'] > 0 else {},
         )
-        store_inv.calculate_metrics()
+        batch_total = batch_store_totals.get(store_code, 0) if batch_store_totals else 0
+        profile = get_store_profile(store_code)
+        max_capacity = profile.max_capacity if profile else 0
+        store_inv.calculate_metrics(batch_total=batch_total, max_capacity=max_capacity)
         article.stores[store_code] = store_inv
 
     article.calculate_aggregates()
     return article
 
 
-def identify_surplus_and_shortage(
-    article: ArticleStock,
+def _series_width(inventory: Dict[str, int], all_sizes: List[str]) -> int:
+    """Bereken breedte van de langste aaneengesloten maatreeks met voorraad."""
+    best = 0
+    current = 0
+    for size in all_sizes:
+        if inventory.get(size, 0) > 0:
+            current += 1
+            best = max(best, current)
+        else:
+            current = 0
+    return best
+
+
+def _would_break_sequence(inventory: Dict[str, int], size: str, all_sizes: List[str]) -> bool:
+    """Check of het weghalen van de laatste stuk van een maat een aaneengesloten reeks breekt."""
+    if inventory.get(size, 0) != 1:
+        return False
+    before = _series_width(inventory, all_sizes)
+    hyp = dict(inventory)
+    hyp[size] = 0
+    return _series_width(hyp, all_sizes) < before
+
+
+def _would_improve_sequence(inventory: Dict[str, int], size: str, all_sizes: List[str]) -> bool:
+    """Check of toevoeging van een maat de aaneengesloten reeks verbetert."""
+    before = _series_width(inventory, all_sizes)
+    hyp = dict(inventory)
+    hyp[size] = hyp.get(size, 0) + 1
+    return _series_width(hyp, all_sizes) > before
+
+
+def _score_as_donor(
+    store: StoreInventory,
     size: str,
     params: RedistributionParams,
-) -> Tuple[List[Tuple[str, int]], List[Tuple[str, int]]]:
+    all_sizes: List[str],
+    working_inv: Dict[str, int],
+) -> Optional[Tuple[float, int]]:
     """
-    Identificeer overschotten en tekorten voor een specifieke maat.
-
-    Surplus-winkels met lage demand leveren eerst.
-    Shortage-winkels met hoge demand ontvangen eerst.
+    Evalueer donorgeschiktheid voor een maat op basis van werkende voorraad.
+    Geeft (score, beschikbaar) of None als niet geschikt.
     """
-    surplus = []
-    shortage = []
+    qty = working_inv.get(size, 0)
+    if qty <= 0:
+        return None
 
-    avg_inventory = article.average_inventory_per_size.get(size, 0)
-    if avg_inventory == 0:
-        return surplus, shortage
+    score = 0.0
 
-    oversupply_threshold = avg_inventory * params.oversupply_threshold
-    undersupply_threshold = avg_inventory * params.undersupply_threshold
+    if qty >= 3:
+        score += 2.0
+    elif qty == 2:
+        score += 1.0
+    # qty == 1: geen bonus of penalty — demand bepaalt of donatie zin heeft
 
-    for store_code, store_inv in article.stores.items():
-        qty = store_inv.inventory.get(size, 0)
-        if qty == 0:
-            continue
+    if store.total_sales == 0:
+        score += 2.0
+    else:
+        score += max(0.0, 1.5 - store.demand_score * 2)
 
-        if qty > oversupply_threshold:
-            excess_qty = int(qty - avg_inventory)
-            if excess_qty >= params.min_move_quantity:
-                priority = 1.0 - store_inv.demand_score
-                surplus.append((store_code, excess_qty, priority))
+    if _would_break_sequence(working_inv, size, all_sizes):
+        # Niet-verkopende winkels: serie-behoud minder relevant
+        score -= 0.5 if store.total_sales == 0 else 2.5
 
-        elif qty < undersupply_threshold:
-            needed_qty = int(avg_inventory - qty)
-            if needed_qty >= params.min_move_quantity:
-                priority = store_inv.demand_score
-                shortage.append((store_code, needed_qty, priority))
+    # Capaciteitspositie: volle winkel is eerder donor (tiebreaker ±0.75)
+    if store.capacity_ratio > 0:
+        score += (store.capacity_ratio - 0.5) * 1.5
 
-    surplus.sort(key=lambda x: x[2], reverse=True)
-    shortage.sort(key=lambda x: x[2], reverse=True)
+    if score <= 0:
+        return None
 
-    return [(s[0], s[1]) for s in surplus], [(s[0], s[1]) for s in shortage]
+    return (score, max(1, qty - 1))
+
+
+def _score_as_receiver(
+    store: StoreInventory,
+    size: str,
+    all_sizes: List[str],
+    working_inv: Dict[str, int],
+) -> Optional[float]:
+    """
+    Evalueer ontvangergeschiktheid voor een maat op basis van werkende voorraad.
+    Geeft score of None als niet geschikt.
+    """
+    if working_inv.get(size, 0) > 0:
+        return None
+
+    score = 0.0
+
+    if store.total_sales > 0:
+        score += min(3.0, store.total_sales / 2)
+
+    if _would_improve_sequence(working_inv, size, all_sizes):
+        score += 2.0
+
+    current_total = sum(v for v in working_inv.values() if v > 0)
+    if current_total < 3:
+        score += 1.5
+
+    size_idx = all_sizes.index(size) if size in all_sizes else -1
+    if 0 < size_idx < len(all_sizes) - 1:
+        score += 0.5
+
+    # Capaciteitspositie: lege winkel ontvangt eerder, volle winkel minder (tiebreaker ±0.75)
+    if store.capacity_ratio > 0:
+        score += (0.5 - store.capacity_ratio) * 1.5
+
+    if score <= 0:
+        return None
+
+    return score
 
 
 def generate_moves_for_size(
     article: ArticleStock,
     size: str,
     params: RedistributionParams,
+    working_inventory: Dict[str, Dict[str, int]],
 ) -> List[Move]:
-    """Genereer moves voor één specifieke maat (greedy matching)"""
-    moves = []
+    """
+    Genereer moves voor één specifieke maat (demand-gedreven, baseline-stijl).
 
-    surplus_stores, shortage_stores = identify_surplus_and_shortage(article, size, params)
-    if not surplus_stores or not shortage_stores:
-        return moves
+    Donors: winkel met >= 2 stuks, voldoende totaalvoorraad, lage demand.
+    Ontvangers: winkel met 0 stuks, hoge demand of serie-verbetering.
+    Elke ontvanger krijgt maximaal 1 stuk per maat per pass.
+    Werkende voorraad wordt direct bijgehouden zodat latere maten dit meenemen.
+    """
+    donors: List[Tuple[str, int, float]] = []
+    receivers: List[Tuple[str, float]] = []
 
-    for from_store, available_qty in surplus_stores:
+    for store_code, store_inv in article.stores.items():
+        wk_inv = working_inventory[store_code]
+
+        donor_result = _score_as_donor(store_inv, size, params, article.all_sizes, wk_inv)
+        if donor_result:
+            score, available = donor_result
+            donors.append((store_code, available, score))
+
+        recv_score = _score_as_receiver(store_inv, size, article.all_sizes, wk_inv)
+        if recv_score is not None:
+            receivers.append((store_code, recv_score))
+
+    donors.sort(key=lambda x: x[2], reverse=True)
+    receivers.sort(key=lambda x: x[1], reverse=True)
+
+    if not donors or not receivers:
+        return []
+
+    moves: List[Move] = []
+    used_receivers: set = set()
+
+    for from_store, _available, _donor_score in donors:
         from_store_inv = article.stores[from_store]
 
-        for to_store, needed_qty in shortage_stores[:]:
-            to_store_inv = article.stores[to_store]
+        for to_store, _recv_score in receivers:
+            if to_store in used_receivers:
+                continue
+            if from_store == to_store:
+                continue
+            # Niet-verkopende donor mag zijn laatste stuk weggeven;
+            # verkopende donor behoudt altijd minstens 1.
+            min_keep = 0 if from_store_inv.total_sales == 0 else 1
+            if working_inventory[from_store].get(size, 0) <= min_keep:
+                break
 
             if params.enforce_bv_separation:
                 is_valid, _reason = validate_bv_move(
@@ -165,9 +284,7 @@ def generate_moves_for_size(
                 if not is_valid:
                     continue
 
-            move_qty = min(available_qty, needed_qty, params.max_move_quantity)
-            if move_qty < params.min_move_quantity:
-                continue
+            to_store_inv = article.stores[to_store]
 
             move = Move(
                 volgnummer=article.volgnummer,
@@ -176,7 +293,7 @@ def generate_moves_for_size(
                 from_store_name=from_store_inv.store_name,
                 to_store=to_store,
                 to_store_name=to_store_inv.store_name,
-                qty=move_qty,
+                qty=1,
                 from_bv=from_store_inv.bv_name,
                 to_bv=to_store_inv.bv_name,
             )
@@ -184,17 +301,11 @@ def generate_moves_for_size(
             calculate_move_score(move, from_store_inv, to_store_inv, article, params)
             moves.append(move)
 
-            available_qty -= move_qty
-            needed_qty -= move_qty
-
-            if needed_qty <= 0:
-                shortage_stores.remove((to_store, needed_qty + move_qty))
-            else:
-                idx = shortage_stores.index((to_store, needed_qty + move_qty))
-                shortage_stores[idx] = (to_store, needed_qty)
-
-            if available_qty <= 0:
-                break
+            working_inventory[from_store][size] -= 1
+            working_inventory[to_store][size] = working_inventory[to_store].get(size, 0) + 1
+            used_receivers.add(to_store)
+            # Geen break — donor mag meerdere receivers bedienen zolang hij
+            # genoeg voorraad heeft (check bovenaan inner loop via working_inv)
 
     return moves
 
@@ -299,6 +410,7 @@ def generate_redistribution_proposals_for_article(
     volgnummer: str,
     batch_id: int,
     params: Optional[RedistributionParams] = None,
+    batch_store_totals: Optional[Dict[str, int]] = None,
 ) -> Optional[Proposal]:
     """
     Genereer herverdelingsvoorstel voor één artikel.
@@ -315,7 +427,7 @@ def generate_redistribution_proposals_for_article(
         params = DEFAULT_PARAMS
 
     # === STAP 1: Data ophalen ===
-    article = load_article_data(db, volgnummer, batch_id)
+    article = load_article_data(db, volgnummer, batch_id, batch_store_totals)
 
     if article is None:
         logger.info(f"Article {volgnummer} not found in database")
@@ -336,23 +448,33 @@ def generate_redistribution_proposals_for_article(
         applied_rules = [situation_rule, *consolidation_rules]
     else:
         # === STAP 4: Normale move generatie per maat ===
+        # Werkende voorraad bijgehouden over alle maten: donaties in eerdere
+        # maten tellen mee zodat een winkel niet te veel geeft.
+        working_inventory: Dict[str, Dict[str, int]] = {
+            store_code: dict(store_inv.inventory)
+            for store_code, store_inv in article.stores.items()
+        }
+
         all_moves = []
         applied_rules = [situation_rule]
 
         for size in article.all_sizes:
-            all_moves.extend(generate_moves_for_size(article, size, params))
+            all_moves.extend(generate_moves_for_size(article, size, params, working_inventory))
 
         if params.enforce_bv_separation:
             applied_rules.append("BV Separation")
-        applied_rules.append("Demand-based Allocation")
+        applied_rules.append("Sales-first Allocation")
 
     # === STAP 5: Filter ===
     filtered_moves = filter_low_quality_moves(all_moves, min_score=params.min_move_score) if all_moves else []
 
     # === STAP 6: Proposal (altijd, ook als geen moves) ===
     if not filtered_moves:
-        reason = "Dit artikel is reeds optimaal verdeeld. Er hoeven geen wijzigingen aangebracht te worden."
-        applied_rules = [situation_rule, "Optimal Distribution Analysis"]
+        reason = (
+            "Geen herverdelingsvoorstel op basis van de huidige regels. "
+            "Dit betekent niet automatisch dat het artikel optimaal verdeeld is."
+        )
+        applied_rules = [situation_rule, "Manual Review Required"]
     else:
         reason = f"Herverdeling voor {len(filtered_moves)} moves over {len(article.stores)} winkels"
 
@@ -381,11 +503,14 @@ def generate_redistribution_proposals_for_batch(
     ).distinct().all()
 
     volgnummers = [r[0] for r in records]
-    proposals = []
 
+    # Eenmalig totaalvoorraad per filiaal berekenen voor capacity scoring
+    batch_store_totals = calculate_batch_store_totals(db, batch_id)
+
+    proposals = []
     for volgnummer in volgnummers:
         proposal = generate_redistribution_proposals_for_article(
-            db, volgnummer, batch_id, params
+            db, volgnummer, batch_id, params, batch_store_totals
         )
         if proposal:
             proposals.append(proposal)

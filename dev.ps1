@@ -15,7 +15,13 @@ function Write-Color {
 }
 
 function Show-Header {
-    Clear-Host
+    try {
+        Clear-Host
+    }
+    catch {
+        # Some terminals expose a host UI that rejects cursor resets during Clear-Host.
+        # Skipping the clear keeps the launcher usable without changing runtime behavior.
+    }
     $width = 60
 
     Write-Color ("=" * $width) 'Cyan'
@@ -116,8 +122,18 @@ function Show-PreflightChecks {
 
     # Check 1: Backend venv
     Write-Color "  [1] Backend Virtual Environment: " 'White' -NoNewline
-    if (Test-Path "backend/venv/Scripts/activate.ps1") {
-        Write-Color "OK" 'Green'
+    if ((Test-Path "backend/venv/Scripts/activate.ps1") -and (Test-Path "backend/venv/Scripts/python.exe")) {
+        try {
+            & "backend/venv/Scripts/python.exe" -c "import sys; print(sys.version)" | Out-Null
+            Write-Color "OK" 'Green'
+        }
+        catch {
+            Write-Color "BROKEN" 'Red'
+            Write-Host ""
+            Write-Color "     Run: " 'Yellow' -NoNewline
+            Write-Color "npm run setup:backend" 'Cyan'
+            return $false
+        }
     }
     else {
         Write-Color "MISSING" 'Red'
@@ -140,6 +156,8 @@ function Show-PreflightChecks {
 
         Push-Location backend
         try {
+            $previousPythonIoEncoding = $env:PYTHONIOENCODING
+            $env:PYTHONIOENCODING = "utf-8"
             & .\venv\Scripts\python.exe seed_database.py
             Write-Color "     Database initialized!" 'Green'
         }
@@ -147,6 +165,9 @@ function Show-PreflightChecks {
             Write-Color "     Failed to initialize database!" 'Red'
             Pop-Location
             return $false
+        }
+        finally {
+            $env:PYTHONIOENCODING = $previousPythonIoEncoding
         }
         Pop-Location
         Write-Host ""
@@ -283,5 +304,5 @@ if (-not (Test-Path $concurrentlyCli)) {
 & $NodeExe $concurrentlyCli `
     "--names" "BACKEND,FRONTEND" `
     "--prefix-colors" "cyan,green" `
-    "powershell -NoProfile -ExecutionPolicy Bypass -File `"$PSScriptRoot\scripts\dev-backend.ps1`"" `
-    "powershell -NoProfile -ExecutionPolicy Bypass -File `"$PSScriptRoot\scripts\dev-frontend.ps1`""
+    "npm run dev:backend" `
+    "npm run dev:frontend"

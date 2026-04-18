@@ -6,11 +6,20 @@ from sqlalchemy.orm import Session
 import db_models
 from algorithm_import.reader import ArtifactReadError
 from algorithm_import.schemas import ExternalAlgorithmDatasetStatus
-from algorithm_import.service import build_dataset_status, build_proposal_comparison, build_week_evaluation
+from algorithm_import.service import build_config_status, build_dataset_status, build_proposal_comparison, build_week_evaluation
 from auth import require_permission
 from database import get_db
 
 router = APIRouter(prefix="/api/algorithm-import", tags=["algorithm-import"])
+
+
+@router.get("/config")
+async def get_algorithm_config(
+    current_user: db_models.User = Depends(require_permission("view_proposals")),
+):
+    """Huidig actieve assist_mode + model-versie — voor UI-badge en debugging."""
+    _ = current_user
+    return build_config_status()
 
 
 @router.get("/status", response_model=ExternalAlgorithmDatasetStatus)

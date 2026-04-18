@@ -3,7 +3,7 @@
 import { DialogFooter } from "@/components/ui/dialog"
 import { api } from "@/lib/api"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Check, Download, Edit, Mail, X } from "lucide-react"
 import {
@@ -15,6 +15,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -36,8 +37,16 @@ export function ProposalActions({
 }: ProposalActionsProps) {
   const [rejectDialogOpen, setRejectDialogOpen] = useState(false)
   const [comment, setComment] = useState("")
+  const [reasonCode, setReasonCode] = useState<string>("")
+  const [reasonCodes, setReasonCodes] = useState<{ code: string; label: string }[]>([])
   const { toast } = useToast()
   const router = useRouter()
+
+  useEffect(() => {
+    api.feedback.getReasonCodes().then((data) => {
+      setReasonCodes(data.reason_codes)
+    }).catch(() => {/* negeer — dropdown toont dan alleen tekstveld */})
+  }, [])
 
   const currentProgress = totalInBatch > 0 ? Math.round((completedInBatch / totalInBatch) * 100) : 0
   const progressAfterApproval = totalInBatch > 0 ? Math.round(((completedInBatch + 1) / totalInBatch) * 100) : 0
@@ -109,16 +118,17 @@ export function ProposalActions({
 
   const handleReject = async () => {
     try {
-      // Call API to reject proposal
-      await api.proposals.reject(parseInt(id), comment)
-      
+      // Call API to reject proposal (met optionele reden-code)
+      await api.proposals.reject(parseInt(id), comment || undefined, reasonCode || undefined)
+
       toast({
         title: "Voorstel afgekeurd",
         description: `Voorstel #${id} is afgekeurd.`,
       })
-      
+
       setRejectDialogOpen(false)
       setComment("")
+      setReasonCode("")
       
       // Navigate back or to batch
       if (batchId) {
@@ -193,17 +203,41 @@ export function ProposalActions({
             <DialogHeader>
               <DialogTitle>Voorstel Afwijzen</DialogTitle>
               <DialogDescription>
-                Weet u zeker dat u dit voorstel wilt afwijzen? Geef een reden op voor de afwijzing.
+                Weet u zeker dat u dit voorstel wilt afwijzen? Geef een reden op — dit helpt het model verbeteren.
               </DialogDescription>
             </DialogHeader>
-            <div className="py-4">
-              <Textarea
-                placeholder="Reden voor afwijzing..."
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                className="min-h-[100px]"
-                required
-              />
+            <div className="py-4 space-y-4">
+              {reasonCodes.length > 0 && (
+                <div className="space-y-1.5">
+                  <Label htmlFor="reason-code">Reden</Label>
+                  <select
+                    id="reason-code"
+                    value={reasonCode}
+                    onChange={(e) => setReasonCode(e.target.value)}
+                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  >
+                    <option value="">Kies reden (optioneel)...</option>
+                    {reasonCodes.map((rc) => (
+                      <option key={rc.code} value={rc.code}>
+                        {rc.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              <div className="space-y-1.5">
+                <Label htmlFor="reject-comment">
+                  Toelichting{reasonCode === "other_text" ? " (verplicht)" : " (optioneel)"}
+                </Label>
+                <Textarea
+                  id="reject-comment"
+                  placeholder="Aanvullende toelichting..."
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  className="min-h-[80px]"
+                  required={reasonCode === "other_text"}
+                />
+              </div>
             </div>
             <DialogFooter className="flex flex-col sm:flex-row gap-2">
               <Button variant="outline" onClick={() => setRejectDialogOpen(false)}>

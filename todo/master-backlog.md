@@ -108,7 +108,7 @@ Baseline-algoritme verder uitbouwen
 De huidige algoritmelaag werkt technisch, maar volgt nog niet volledig de gewenste manuele werkwijze.
 
 **Concrete ingreep**  
-Werk situatieclassificatie, strategieën, categoriebeleid, prioritering, compensatie en feedbackloop gefaseerd uit.
+Werk situatieclassificatie, strategieën, categoriebeleid, prioritering, compensatie en de feedbackloop gefaseerd uit, met de eerstvolgende nadruk op voorstel- en feedbacklogging, feature-snapshots per beslissing, periodieke AI-analyse en gecontroleerde regelverfijning bovenop het bestaande algoritme.
 
 **Fase-update 2026-03-23**  
 Fase 1 is afgerond: situatieclassificatie in shadow mode (`LOW_STOCK`, `MEDIUM_STOCK`, `HIGH_STOCK`, `PARTIJ`) draait nu mee in proposalgeneratie via `applied_rules`, inclusief een lokale offline evaluatiehaak tegen de 2 momenteel geïmporteerde weken / 2 manuele herverdelingen. Verdere strategie-, categorie-, prioriterings-, compensatie- en feedbackfasen blijven onder dit umbrella-item open.
@@ -119,11 +119,20 @@ De read-only importslice naar het externe project `Herverdelingsalgoritme` is nu
 **Fase-update 2026-03-30**
 Het algoritme is vereenvoudigd van ~2.800 naar ~1.400 LOC. Multi-factor scoring (series/efficiency), de move-consolidatie-optimizer en size sequence detectie zijn verwijderd. Scoring is nu puur demand-gebaseerd. Dit vereenvoudigde algoritme is het vertrekpunt voor toekomstige iteraties. Eerstvolgende stap: valideren tegen 3-5 eerdere handmatige herverdelingen en demand-drempels bijstellen op basis van resultaten.
 
+**Fase-update 2026-04-17**
+De AI-richting is aangescherpt als feedbackgedreven verfijning van het bestaande deterministische algoritme. De eerstvolgende feedback-slice richt zich op voorstel- en feedbacklogging, feature-snapshots per beslissing, periodieke AI-analyse via OpenAI en gecontroleerde omzetting van verbetervoorstellen naar versioneerde regels. Realtime AI-sturing of modelgestuurde herordening van proposals is hierbij expliciet niet de eerstvolgende stap.
+
+**Fase-update 2026-04-17 (sessie 2)**
+Het herverdelingsalgoritme is fundamenteel herschreven van gemiddelde-drempel logica naar demand-gedreven donor/ontvanger scoring (baseline-stijl uit `Herverdelingsalgoritme`). Gevalideerd op weken 12, 13, 14 en 16: van 0 moves naar ~1100 moves over 241 artikelen (27% precisie, 16% recall op exact match basis). BV-configuratie bijgewerkt: alle 8 MC-winkels onder Lumitex B.V., filiaal 5 (Panningen) apart. Eerstvolgende stap: store-niveau metrics toevoegen (totale voorraadpositie winkel, verkoopvloer m²/capaciteit) als tiebreaker bij gelijke demand score.
+
+**Fase-update 2026-04-18**
+Store-niveau capaciteitsprofielen geland (`store_profiles.py`): vloeroppervlak en max-capaciteit per filiaal als tiebreaker bij gelijke demand-score. Maatreekslogica toegevoegd aan het algoritme: moves die een aaneengesloten maatreeks bij de donor breken worden geblokkeerd. Feedback-router en uitgebreid `ProposalFeedback` DB-model zijn de basis voor de ML-feedbackloop (batchmatige AI-analyse van approve/edit/reject-acties). Architectuurdocument `fase1-ml-feedback-loop.md` vastgelegd.
+
 **Afhankelijkheden**  
 Stabiele leidende kernflow.
 
 **Acceptatiecriteria**  
-De volgende baselinefase is gekozen, gespecificeerd en aantoonbaar getest tegen bestaande data.
+De volgende baselinefase is gekozen, gespecificeerd en aantoonbaar getest tegen bestaande data, inclusief een expliciete opzet voor decision logging, feedback capture, batchmatige AI-analyse en versioneerde regelverfijning zonder realtime AI-besluitvorming.
 
 **Status**  
 todo

@@ -14,6 +14,7 @@ from routers import (
     auth,
     batches,
     dashboard,
+    feedback,
     pdf_ingest,
     redistribution,
     roles,
@@ -102,6 +103,10 @@ app.include_router(dashboard.router, tags=["dashboard"])
 # Voeg de externe algoritme import router toe
 # Alle endpoints in algorithm_import.py zijn bereikbaar via /api/algorithm-import
 app.include_router(algorithm_import.router, tags=["algorithm-import"])
+
+# Voeg de feedback router toe
+# Alle endpoints in feedback.py zijn bereikbaar via /api/feedback
+app.include_router(feedback.router, tags=["feedback"])
 
 @app.get("/")
 async def root():

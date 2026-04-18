@@ -37,6 +37,13 @@ class RedistributionParams:
     # Enable BV consolidation rule
     enable_bv_consolidation: bool = True
 
+    # ===== DONOR GUARDS =====
+
+    # Donor moet na give-away nog minstens dit aantal stuks totaal hebben
+    min_donor_remaining_total: int = 1
+    # Donor moet na give-away nog minstens dit aantal maten hebben
+    min_donor_remaining_sizes: int = 1
+
     # ===== DEMAND THRESHOLDS =====
 
     high_demand_threshold: float = 0.8  # 80% van voorraad verkocht = high demand

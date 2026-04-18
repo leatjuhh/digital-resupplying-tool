@@ -70,6 +70,13 @@ Thumbs.db
 # Development process tracking
 .dev-processes.json
 
+# Claude Code local config
+.claude/
+
+# Debug / seed scripts
+backend/_check.py
+backend/_seed_test.py
+
 # Browser debugging
 .tooling/
 .browser-debug-profile/

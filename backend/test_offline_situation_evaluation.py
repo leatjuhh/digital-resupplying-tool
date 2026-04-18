@@ -2,11 +2,10 @@ from pathlib import Path
 
 import pytest
 
+from algorithm_import.config import get_external_algorithm_data_root
 from redistribution.offline_evaluation import evaluate_dataset_weeks
 
-EXTERNAL_DATA_ROOT = Path(
-    r"C:\Users\Alain\OneDrive\Werk\.codex projecten\Herverdelingsalgoritme\data"
-)
+EXTERNAL_DATA_ROOT = get_external_algorithm_data_root()
 
 
 @pytest.mark.skipif(

@@ -94,6 +94,10 @@ def sync_assignments_for_proposal(
     if not route_groups:
         return 0
 
+    # Geen batch → geen assignments aanmaken (bv. testvoorstellen zonder batch)
+    if proposal.pdf_batch_id is None:
+        return 0
+
     if batch_name is None and proposal.pdf_batch_id:
         batch = db.query(db_models.PDFBatch).filter(db_models.PDFBatch.id == proposal.pdf_batch_id).first()
         batch_name = batch.naam if batch else f"Batch {proposal.pdf_batch_id}"

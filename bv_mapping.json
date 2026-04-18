@@ -1,16 +1,17 @@
 {
   "store_to_bv": {
-    "AMS": "Lumitex B.V.",
-    "ROT": "Lumitex B.V.",
-    "UTR": "Lumitex B.V.",
-    "DEN": "Lumitex B.V.",
-    "EIN": "MC Company Partners B.V.",
-    "GRO": "MC Company Partners B.V.",
-    "MAA": "MC Company Partners B.V.",
-    "BRE": "MC Company Partners B.V."
+    "6": "Lumitex B.V.",
+    "8": "Lumitex B.V.",
+    "9": "Lumitex B.V.",
+    "11": "Lumitex B.V.",
+    "12": "Lumitex B.V.",
+    "13": "Lumitex B.V.",
+    "31": "Lumitex B.V.",
+    "38": "Lumitex B.V.",
+    "5": "Panningen B.V."
   },
   "bv_names": [
     "Lumitex B.V.",
-    "MC Company Partners B.V."
+    "Panningen B.V."
   ]
 }

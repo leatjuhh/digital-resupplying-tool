@@ -55,6 +55,23 @@ def ensure_runtime_schema():
                 )
             )
 
+        # Feedback-tabel: uitbreidingen voor ML-feedback loop
+        if "feedback" in table_names:
+            feedback_columns = {col["name"] for col in inspector.get_columns("feedback")}
+            migrations = {
+                "action_taken": "VARCHAR",
+                "reason_code": "VARCHAR",
+                "move_index": "INTEGER",
+                "feature_snapshot": "JSON",
+                "model_score_at_time": "FLOAT",
+            }
+            for col_name, col_type in migrations.items():
+                if col_name not in feedback_columns:
+                    connection.execute(text(f"ALTER TABLE feedback ADD COLUMN {col_name} {col_type}"))
+
+            # rating en comment mogen NULL zijn (bestaande NOT NULL constraint verwijderen
+            # kan niet in SQLite zonder tabel herbouwen; nieuwe records slaan NULL correct op)
+
 # Dependency functie voor FastAPI endpoints
 def get_db():
     """

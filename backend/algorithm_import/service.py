@@ -17,6 +17,31 @@ from .reader import (
 )
 
 
+def build_config_status(data_root: Path | None = None) -> dict[str, Any]:
+    """Geeft huidig actieve assist_mode en model-versie terug voor UI-badge."""
+    data_root = data_root or get_external_algorithm_data_root()
+    assist_mode = get_algorithm_assist_mode()
+
+    model_version: str | None = None
+    model_available = False
+
+    if data_root.exists():
+        years = list_available_years(data_root)
+        if years:
+            agg = aggregate_dir(data_root, years[-1])
+            artifacts, _ = read_json_artifact(agg / "model_artifacts.json", required=False)
+            if isinstance(artifacts, dict):
+                model_available = True
+                model_version = artifacts.get("model_version") or f"v1_{years[-1]}"
+
+    return {
+        "assist_mode": assist_mode,
+        "model_available": model_available,
+        "model_version": model_version,
+        "data_root": str(data_root),
+    }
+
+
 def _latest_year(data_root: Path) -> int | None:
     years = list_available_years(data_root)
     return years[-1] if years else None
@@ -239,6 +264,94 @@ def _find_matching_records(article_id: str, data_root: Path) -> list[dict[str, A
                 }
             )
     return matches
+
+
+def enrich_moves_with_model_scores(
+    volgnummer: str,
+    proposal_moves: list[dict[str, Any]],
+    data_root: Path | None = None,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Voeg model_score en feature_snapshot toe aan proposal moves (shadow mode).
+
+    Zoekt het artikel op in de Herverdelingsalgoritme combined.json bestanden.
+    Scoort alle kandidaten met het model en matcht de DRT-moves op
+    (from_store, to_store, size, qty). Bij niet-gevonden move of missing model:
+    model_score=None, feature_snapshot=None.
+
+    Returns:
+        (enriched_moves, model_meta) — model_meta bevat versie-info voor applied_rules.
+    """
+    data_root = data_root or get_external_algorithm_data_root()
+    article_id = str(volgnummer)
+
+    no_model_meta: dict[str, Any] = {"model_score_applied": False}
+
+    if not data_root.exists():
+        return proposal_moves, no_model_meta
+
+    # Laad model artifacts
+    years = list_available_years(data_root)
+    if not years:
+        return proposal_moves, no_model_meta
+
+    agg = aggregate_dir(data_root, years[-1])
+    model_artifacts, _ = read_json_artifact(agg / "model_artifacts.json", required=False)
+    if not isinstance(model_artifacts, dict):
+        return proposal_moves, no_model_meta
+
+    # Vind meest recente record voor dit artikel
+    matches = _find_matching_records(article_id, data_root)
+    if not matches:
+        return proposal_moves, no_model_meta
+
+    latest = matches[0]
+    record = latest["record"]
+    week_records = latest["week_records"]
+
+    # Scoor alle kandidaten
+    try:
+        scored_candidates = generate_scored_candidates_for_record(record, week_records, model_artifacts)
+    except Exception:
+        return proposal_moves, no_model_meta
+
+    # Bouw lookup: (from_store, to_store, size, qty) → {score, features}
+    score_lookup: dict[tuple[str, str, str, int], dict[str, Any]] = {}
+    for candidate in scored_candidates:
+        move = candidate["move"]
+        key = (
+            str(move.get("from_store", "")),
+            str(move.get("to_store", "")),
+            str(move.get("size", "")).upper(),
+            int(move.get("qty", 0)),
+        )
+        score_lookup[key] = {
+            "score": float(candidate["score"]),
+            "features": candidate.get("features", {}),
+        }
+
+    model_version = model_artifacts.get("model_version") or f"v1_{years[-1]}"
+    enriched: list[dict[str, Any]] = []
+    for move in proposal_moves:
+        key = (
+            str(move.get("from_store", "")),
+            str(move.get("to_store", "")),
+            str(move.get("size", "")).upper(),
+            int(move.get("qty", 0)),
+        )
+        match = score_lookup.get(key)
+        enriched.append({
+            **move,
+            "model_score": round(match["score"], 4) if match else None,
+            "feature_snapshot": match["features"] if match else None,
+        })
+
+    model_meta = {
+        "model_score_applied": True,
+        "model_version": model_version,
+        "week": latest["week"],
+        "year": latest["year"],
+    }
+    return enriched, model_meta
 
 
 def build_proposal_comparison(proposal: db_models.Proposal, data_root: Path | None = None) -> dict[str, Any]:

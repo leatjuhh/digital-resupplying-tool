@@ -21,6 +21,26 @@ export interface PDFBatch {
   created_at: string;
 }
 
+export interface PDFUploadIngestResult {
+  filename: string;
+  status: string;
+  artikel_count?: number;
+  volgnummer?: string;
+  omschrijving?: string;
+  errors?: string[];
+}
+
+export interface PDFUploadIngestResponse {
+  batch_id: number;
+  batch_name: string;
+  status: string;
+  total_files: number;
+  success_count: number;
+  failed_count: number;
+  proposals_generated: number;
+  results: PDFUploadIngestResult[];
+}
+
 /**
  * Proposal interface
  */
@@ -570,7 +590,7 @@ export const api = {
         throw new Error(`Upload failed: ${response.status}`);
       }
 
-      return response.json();
+      return response.json() as Promise<PDFUploadIngestResponse>;
     },
   },
 
@@ -613,13 +633,13 @@ export const api = {
     /**
      * Keur een proposal af
      */
-    async reject(proposalId: number, reason?: string) {
+    async reject(proposalId: number, reason?: string, reasonCode?: string) {
       const response = await fetch(`${API_BASE_URL}/api/pdf/proposals/${proposalId}/reject`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ reason }),
+        body: JSON.stringify({ reason, reason_code: reasonCode }),
       });
 
       if (!response.ok) {
@@ -632,13 +652,13 @@ export const api = {
     /**
      * Update een proposal met aangepaste moves
      */
-    async update(proposalId: number, moves: ProposalMove[]) {
+    async update(proposalId: number, moves: ProposalMove[], reasonCode?: string, comment?: string) {
       const response = await fetch(`${API_BASE_URL}/api/pdf/proposals/${proposalId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ moves }),
+        body: JSON.stringify({ moves, reason_code: reasonCode, comment }),
       });
 
       if (!response.ok) {
@@ -684,6 +704,10 @@ export const api = {
       return apiClient.get<ExternalAlgorithmDatasetStatus>("/api/algorithm-import/status");
     },
 
+    async getConfig() {
+      return apiClient.get<{ assist_mode: string; model_available: boolean; model_version: string | null }>("/api/algorithm-import/config");
+    },
+
     async getWeekEvaluation(year: number, week: number) {
       return apiClient.get(`/api/algorithm-import/weeks/${year}/${week}`);
     },
@@ -692,6 +716,32 @@ export const api = {
       return apiClient.get<ExternalAlgorithmProposalComparison>(
         `/api/algorithm-import/proposals/${proposalId}/comparison`
       );
+    },
+  },
+
+  feedback: {
+    async getReasonCodes() {
+      return apiClient.get<{ reason_codes: { code: string; label: string }[] }>("/api/feedback/reason-codes");
+    },
+
+    async create(payload: {
+      proposal_id: number;
+      action_taken: string;
+      category: string;
+      reason_code?: string;
+      comment?: string;
+      move_index?: number;
+      feature_snapshot?: Record<string, unknown>;
+      model_score_at_time?: number;
+    }) {
+      return apiClient.post("/api/feedback/", payload);
+    },
+
+    async export(fromDate?: string, toDate?: string) {
+      const params = new URLSearchParams();
+      if (fromDate) params.append("from_date", fromDate);
+      if (toDate) params.append("to_date", toDate);
+      return apiClient.get(`/api/feedback/export${params.toString() ? `?${params}` : ""}`);
     },
   },
 

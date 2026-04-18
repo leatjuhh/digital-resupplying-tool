@@ -42,8 +42,8 @@ De evaluator leest read-only geïmporteerde weekbestanden via `combined.json` en
 Entrypoint:
 
 ```powershell
-cd C:\Codex\DRT\backend
-.\venv\Scripts\python.exe -m redistribution.offline_evaluation --data-root "C:\Users\Alain\OneDrive\Werk\.codex projecten\Herverdelingsalgoritme\data" --year 2026 --weeks 12 13
+cd <drt-root>\backend
+.\venv\Scripts\python.exe -m redistribution.offline_evaluation --data-root "..\..\Herverdelingsalgoritme\data" --year 2026 --weeks 12 13
 ```
 
 De output groepeert per week:
