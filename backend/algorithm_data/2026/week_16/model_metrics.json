@@ -1,0 +1,746 @@
+{
+  "split": {
+    "train_article_count": 63,
+    "test_article_count": 20,
+    "train_example_count": 1842,
+    "test_example_count": 855,
+    "train_articles": [
+      "2026-16-55524",
+      "2026-16-55806",
+      "2026-16-56719",
+      "2026-16-423007",
+      "2026-16-424904",
+      "2026-16-424971",
+      "2026-16-424982",
+      "2026-16-425012",
+      "2026-16-425013",
+      "2026-16-425019",
+      "2026-16-425033",
+      "2026-16-425040",
+      "2026-16-425041",
+      "2026-16-425043",
+      "2026-16-425044",
+      "2026-16-425110",
+      "2026-16-425111",
+      "2026-16-425128",
+      "2026-16-425257",
+      "2026-16-425265",
+      "2026-16-425269",
+      "2026-16-425274",
+      "2026-16-425280",
+      "2026-16-425281",
+      "2026-16-425288",
+      "2026-16-425292",
+      "2026-16-425297",
+      "2026-16-425311",
+      "2026-16-425312",
+      "2026-16-425313",
+      "2026-16-425314",
+      "2026-16-425315",
+      "2026-16-425319",
+      "2026-16-425320",
+      "2026-16-425321",
+      "2026-16-425322",
+      "2026-16-425325",
+      "2026-16-425415",
+      "2026-16-425416",
+      "2026-16-425417",
+      "2026-16-425419",
+      "2026-16-425420",
+      "2026-16-425421",
+      "2026-16-425422",
+      "2026-16-425424",
+      "2026-16-425425",
+      "2026-16-425427",
+      "2026-16-425428",
+      "2026-16-425429",
+      "2026-16-425432",
+      "2026-16-425433",
+      "2026-16-425434",
+      "2026-16-425436",
+      "2026-16-425438",
+      "2026-16-425439",
+      "2026-16-425463",
+      "2026-16-425464",
+      "2026-16-425468",
+      "2026-16-425470",
+      "2026-16-425471",
+      "2026-16-425571",
+      "2026-16-425587",
+      "2026-16-425700"
+    ],
+    "test_articles": [
+      "2026-16-425726",
+      "2026-16-425728",
+      "2026-16-425729",
+      "2026-16-425730",
+      "2026-16-425741",
+      "2026-16-425742",
+      "2026-16-425751",
+      "2026-16-425752",
+      "2026-16-425764",
+      "2026-16-425829",
+      "2026-16-425830",
+      "2026-16-425831",
+      "2026-16-425832",
+      "2026-16-425833",
+      "2026-16-425836",
+      "2026-16-425837",
+      "2026-16-425838",
+      "2026-16-425839",
+      "2026-16-426304",
+      "2026-16-426307"
+    ]
+  },
+  "train_metrics": {
+    "average_precision": 0.9268014770989874,
+    "binary": {
+      "threshold": 0.5,
+      "tp": 349,
+      "fp": 15,
+      "tn": 1334,
+      "fn": 144,
+      "precision": 0.9587912087912088,
+      "recall": 0.7079107505070994,
+      "accuracy": 0.9136807817589576,
+      "f1": 0.8144690781796967
+    },
+    "top_k": {
+      "observed_count": 493,
+      "selected_count": 493,
+      "overlap_count": 415,
+      "top_k_recall": 0.8417849898580122,
+      "top_k_precision": 0.8417849898580122,
+      "per_article": [
+        {
+          "article_id": "55524",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "55806",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "56719",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 10
+        },
+        {
+          "article_id": "423007",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "424904",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "424971",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 10
+        },
+        {
+          "article_id": "424982",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425012",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425013",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "425019",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425033",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425040",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425041",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425043",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425044",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425110",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425111",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425128",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "425257",
+          "observed_count": 6,
+          "selected_count": 6,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "425265",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "425269",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425274",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425280",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "425281",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425288",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "425292",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425297",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425311",
+          "observed_count": 6,
+          "selected_count": 6,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "425312",
+          "observed_count": 12,
+          "selected_count": 12,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "425313",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "425314",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425315",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "425319",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "425320",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "425321",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 2
+        },
+        {
+          "article_id": "425322",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425325",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425415",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425416",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "425417",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "425419",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 1
+        },
+        {
+          "article_id": "425420",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425421",
+          "observed_count": 4,
+          "selected_count": 4,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425422",
+          "observed_count": 4,
+          "selected_count": 4,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "425424",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425425",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425427",
+          "observed_count": 14,
+          "selected_count": 14,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425428",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425429",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425432",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "425433",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "425434",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "425436",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "425438",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "425439",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425463",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "425464",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425468",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425470",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "425471",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425571",
+          "observed_count": 4,
+          "selected_count": 4,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425587",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "425700",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 8
+        }
+      ]
+    }
+  },
+  "test_metrics": {
+    "average_precision": 0.8541424688269537,
+    "binary": {
+      "threshold": 0.5,
+      "tp": 84,
+      "fp": 4,
+      "tn": 705,
+      "fn": 62,
+      "precision": 0.9545454545454546,
+      "recall": 0.5753424657534246,
+      "accuracy": 0.9228070175438596,
+      "f1": 0.7179487179487178
+    },
+    "top_k": {
+      "observed_count": 146,
+      "selected_count": 146,
+      "overlap_count": 101,
+      "top_k_recall": 0.6917808219178082,
+      "top_k_precision": 0.6917808219178082,
+      "per_article": [
+        {
+          "article_id": "425726",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425728",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "425729",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "425730",
+          "observed_count": 12,
+          "selected_count": 12,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425741",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "425742",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "425751",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425752",
+          "observed_count": 6,
+          "selected_count": 6,
+          "top_k_overlap": 2
+        },
+        {
+          "article_id": "425764",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425829",
+          "observed_count": 6,
+          "selected_count": 6,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "425830",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 1
+        },
+        {
+          "article_id": "425831",
+          "observed_count": 4,
+          "selected_count": 4,
+          "top_k_overlap": 1
+        },
+        {
+          "article_id": "425832",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 1
+        },
+        {
+          "article_id": "425833",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "425836",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "425837",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425838",
+          "observed_count": 6,
+          "selected_count": 6,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425839",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "426304",
+          "observed_count": 4,
+          "selected_count": 4,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "426307",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 7
+        }
+      ]
+    }
+  },
+  "training": {
+    "epochs": 1200,
+    "initial_loss": 0.6931479861456212,
+    "final_loss": 0.20026984304366402
+  },
+  "feature_importance": [
+    {
+      "feature": "donor_stock_for_size",
+      "weight": -1.5029967215110556,
+      "abs_weight": 1.5029967215110556
+    },
+    {
+      "feature": "receiver_stock_for_size",
+      "weight": -1.046513066753093,
+      "abs_weight": 1.046513066753093
+    },
+    {
+      "feature": "donor_is_double_size",
+      "weight": -0.9766223773907512,
+      "abs_weight": 0.9766223773907512
+    },
+    {
+      "feature": "donor_would_hit_zero",
+      "weight": 0.5985768856341792,
+      "abs_weight": 0.5985768856341792
+    },
+    {
+      "feature": "sales_difference",
+      "weight": 0.4807070110950216,
+      "abs_weight": 0.4807070110950216
+    },
+    {
+      "feature": "receiver_missing_size_before",
+      "weight": 0.4362875061276473,
+      "abs_weight": 0.4362875061276473
+    },
+    {
+      "feature": "size_position=middle",
+      "weight": -0.42278048026103465,
+      "abs_weight": 0.42278048026103465
+    },
+    {
+      "feature": "donor_series_width_after",
+      "weight": -0.32175053856003066,
+      "abs_weight": 0.32175053856003066
+    },
+    {
+      "feature": "donor_would_break_sequence",
+      "weight": 0.3140344171471585,
+      "abs_weight": 0.3140344171471585
+    },
+    {
+      "feature": "receiver_sales",
+      "weight": 0.3031368785225995,
+      "abs_weight": 0.3031368785225995
+    },
+    {
+      "feature": "donor_sales",
+      "weight": -0.27693463942898466,
+      "abs_weight": 0.27693463942898466
+    },
+    {
+      "feature": "donor_store_size_class=groot",
+      "weight": -0.23513666000004657,
+      "abs_weight": 0.23513666000004657
+    },
+    {
+      "feature": "donor_size_count",
+      "weight": 0.23124619988833378,
+      "abs_weight": 0.23124619988833378
+    },
+    {
+      "feature": "receiver_store_size_class=groot",
+      "weight": -0.21889639435703187,
+      "abs_weight": 0.21889639435703187
+    },
+    {
+      "feature": "receiver_series_width_before",
+      "weight": -0.2040700283647474,
+      "abs_weight": 0.2040700283647474
+    },
+    {
+      "feature": "receiver_series_width_after",
+      "weight": 0.19865537095390326,
+      "abs_weight": 0.19865537095390326
+    },
+    {
+      "feature": "donor_series_width_before",
+      "weight": 0.19266032900168542,
+      "abs_weight": 0.19266032900168542
+    },
+    {
+      "feature": "donor_total_stock",
+      "weight": -0.1701793443268896,
+      "abs_weight": 0.1701793443268896
+    },
+    {
+      "feature": "donor_store_size_class=middel",
+      "weight": -0.1698020387437647,
+      "abs_weight": 0.1698020387437647
+    },
+    {
+      "feature": "donor_below_min_total_after",
+      "weight": -0.13394594903810267,
+      "abs_weight": 0.13394594903810267
+    }
+  ]
+}

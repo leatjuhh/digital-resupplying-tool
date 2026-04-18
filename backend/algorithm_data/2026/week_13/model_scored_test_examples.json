@@ -1,0 +1,7072 @@
+[
+  {
+    "article_id": "425717",
+    "candidate_move": {
+      "article_id": "425717",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.979189265792425
+  },
+  {
+    "article_id": "425717",
+    "candidate_move": {
+      "article_id": "425717",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.979189265792425
+  },
+  {
+    "article_id": "425717",
+    "candidate_move": {
+      "article_id": "425717",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9765466882765558
+  },
+  {
+    "article_id": "425717",
+    "candidate_move": {
+      "article_id": "425717",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9685330265007183
+  },
+  {
+    "article_id": "425717",
+    "candidate_move": {
+      "article_id": "425717",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9575693400634715
+  },
+  {
+    "article_id": "425717",
+    "candidate_move": {
+      "article_id": "425717",
+      "from_store": "9",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9558088458581826
+  },
+  {
+    "article_id": "425717",
+    "candidate_move": {
+      "article_id": "425717",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9555241033579729
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9485488504440379
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.1952105620115147
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.1454742647317974
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.141511353640162
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.1351402073786107
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.13077460348293576
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.12715254578887095
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "31",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.12090408143225816
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.10045038990116616
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.09267176831901582
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.09142722799289221
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.0882733891695378
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.08279068282787053
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "31",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.07852610076338035
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "38",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.07231820393540295
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "38",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.06563768264491499
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.058417852639846946
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.041514060110056705
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.035733567450576015
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.035733567450576015
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.025349432880179254
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.025349432880179254
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "38",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.025217902533439418
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.024061565176506938
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.022468801923110758
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.022468801923110758
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "31",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.021239472332860238
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.018186618525792248
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.017727688092966265
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.017727688092966265
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01575442662656002
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01575442662656002
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012833741679331304
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012833741679331304
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012508167613021773
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "38",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012442416017833528
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012173786528403865
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.01135877993499141
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01135877993499141
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.011109317958612029
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.011070203977143107
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "38",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.011050837396723126
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "31",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.010730637377907684
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.009830567917240374
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.006991132966700199
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.006398280693111593
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "38",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.006364439895771866
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.006304304358351778
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.005707081260753292
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.005658696675695282
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.004662158950318471
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.00443296448363124
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.00443296448363124
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0043478248849720255
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0043478248849720255
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.004203166837733055
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "31",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.004105779264350093
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003909629663695791
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003706859830456228
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "31",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0037013593429303395
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "6",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0034690185074648812
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0034567106643304895
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003066985839428296
+  },
+  {
+    "article_id": "425732",
+    "candidate_move": {
+      "article_id": "425732",
+      "from_store": "31",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0028960377756952283
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9791012068039917
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "12",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.977739248779742
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "9",
+      "to_store": "38",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9766211429073987
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9749180820137892
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9490608878153668
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9479263167366223
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.23129897962191065
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.17920533009767617
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.09941947390495656
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.07416241318985192
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.057350156913900496
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.04227887417532361
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03916082770205402
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02872393816158975
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.021480210883675376
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.020237897740166527
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01567855417370522
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.014766717641642153
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.014674449224528728
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "38",
+      "size": "M",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.011593747910728381
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0109171124953463
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "9",
+      "size": "M",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0109171124953463
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.007578660240541188
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "12",
+      "size": "M",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.007578660240541188
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.004206085715788338
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0032308104912022193
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0010509299901856652
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "6",
+      "size": "M",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0010509299901856652
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0009889550697471802
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "8",
+      "size": "M",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0009889550697471802
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0006904013210073243
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "13",
+      "size": "M",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0006904013210073243
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0006528446405102355
+  },
+  {
+    "article_id": "425733",
+    "candidate_move": {
+      "article_id": "425733",
+      "from_store": "31",
+      "to_store": "11",
+      "size": "M",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0006528446405102355
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "12",
+      "to_store": "9",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9515329140975559
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.04298252070216357
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03598501767568635
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "31",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0318100485514556
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.026288325523348612
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.021692502137444263
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.020455582280462164
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.018839810747004464
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.018839810747004464
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "9",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.018652331988963402
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "9",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.018245390232272705
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01809545316697592
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "12",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.018023813767802165
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "12",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01763033817095712
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01706006255369045
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "9",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.017014387280910256
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "12",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01644013742935794
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "9",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.016215454842600962
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.016010010972440186
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "31",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015961659310244965
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "12",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015667739843873974
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "31",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015046489789312906
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.014425319140989388
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.014425319140989388
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.014109273080315893
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.014109273080315893
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.013342381335882534
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.013153592018102466
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.013153592018102466
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012533636652147085
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012533636652147085
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012397396024106144
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "31",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.011762349922551695
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "12",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.010382133693250969
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.010302495604378134
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01007585353583489
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.009390770849511499
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.009390770849511499
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.008946557032506344
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.008848958545172153
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.008848958545172153
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "9",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.008675246010868786
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "12",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.00838004976167479
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.008296427532611533
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.00732318323024528
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.006908042815961962
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0066938292802123656
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.006500378709144914
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.00623165127345639
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.006094011287696879
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "31",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0054890020881892335
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "9",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.005025868108889524
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "31",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.004763530881461585
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "9",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003920186003765477
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003874707426704947
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "12",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003786174210553927
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0034617971376753936
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003215274355575204
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003144047034082246
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.002878866386767198
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0027894746144836204
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "31",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0025347619636536035
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0021508352903087057
+  },
+  {
+    "article_id": "425832",
+    "candidate_move": {
+      "article_id": "425832",
+      "from_store": "38",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.002083829864855679
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.969476029470555
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9665401479883324
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9579408051362467
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9272967300409883
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9160250092263185
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.8841350447611515
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "M",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.46526758943535146
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.24299291643878487
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.23715141883737523
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.20182410661205796
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.19671511866341887
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.17371290370822695
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.1691647067549875
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.13071357168011002
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.12711799572054103
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.12067265193957992
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.09755707743399177
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.08494131099938694
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.08246825665356562
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.060403718926110274
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.04346727076220135
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.042155222669201665
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.034983529758367174
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02690666464273669
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.019057705188686876
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.019057705188686876
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012911294887005223
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01230261710638731
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.010302495604378134
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.008947104962697995
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.00725410554013485
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003844831369976237
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0034617971376753936
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0033530706912653094
+  },
+  {
+    "article_id": "425833",
+    "candidate_move": {
+      "article_id": "425833",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.003215274355575204
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9907389367534033
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9907389367534033
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "9",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.989713710354701
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "31",
+      "to_store": "12",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9832490175026626
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9601418382635017
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "9",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9571193998991929
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "9",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9571002169061107
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9519156413447861
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "9",
+      "to_store": "13",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9502862522562732
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9370797480737949
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.44909455416242017
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "6",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.4230740935853836
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "31",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.40631112203425074
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "6",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.17028863538977573
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.16777648811300405
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.16117872479440684
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "31",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.16075074578278706
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.15903511040754284
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "31",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.15205757172187767
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.13339213225869678
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "31",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.12560796661214718
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05513879915521789
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05180442569927649
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03449592783423203
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03332388956781935
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "31",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03226801297953775
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.030077880714658722
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "31",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.028126992364581726
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.023458105367287267
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01027844652160765
+  },
+  {
+    "article_id": "425836",
+    "candidate_move": {
+      "article_id": "425836",
+      "from_store": "31",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.006210296276090022
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "12",
+      "to_store": "13",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9342957204363915
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.18802070828250472
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "9",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.1825528802240769
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "12",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.17225849456012302
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "38",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.1618124546974347
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.14545248637314853
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.12753053801473163
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.12753053801473163
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.12393330478862943
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "9",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.12122552810146947
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "9",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.1068467974928127
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.1036190510897703
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.08909319255967027
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.08281491697807707
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.08039833282629985
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0760271748173171
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.07517862183987623
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.07261565294415613
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.07178813684955407
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.07047382058879433
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.06400985669378177
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.047728112320654166
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.04734634085257954
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0399903158447445
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03482079307998442
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "12",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03140495168013326
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "38",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.029199192545314282
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02740730294914566
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "12",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02470009712142
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "6",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02385441593323157
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.023756030022567556
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "9",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.023477091716989824
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "38",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02295410027286661
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "12",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02149039850535598
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02109398718900497
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "38",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.019966643467260212
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.019823740598931272
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01759439903231334
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "9",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.017147229451610915
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015492300534996286
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "9",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015214211400544898
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.013680206825503432
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "12",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012311755536183902
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "38",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.011431200082535033
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01129039617433914
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01129039617433914
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.010410428277687773
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.010010897698309675
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.00998168234327199
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.007235377816270956
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "12",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0066770041859408194
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "38",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.006196926177384455
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "6",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.00539832211192796
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0047833199835677805
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.004504627303498465
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "12",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0043009566152983625
+  },
+  {
+    "article_id": "425837",
+    "candidate_move": {
+      "article_id": "425837",
+      "from_store": "9",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.004262545648329837
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9996228943558374
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9993479500249451
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9993479500249451
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9992885725154488
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9992885725154488
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "S",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9991738287292035
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "L",
+      "qty": 2
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9991738287292035
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9989291480384558
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9989291480384558
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.4303029915665081
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.42161317640464196
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.42161317640464196
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.4042194831299337
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.3894357696943649
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.38101928495815895
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.38101928495815895
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.37796123389986774
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.3642456323036316
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "12",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.3391061015111722
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.13697718238665008
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.1247796784722705
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.11818863020648916
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.11322417749863814
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.10829127628910029
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.10829127628910029
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.1074558871167956
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "12",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.09732629217457633
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.09301337329147598
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.09301337329147598
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.06197693508700857
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.06197693508700857
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05284589745299726
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05284589745299726
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01576103986544703
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01576103986544703
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "11",
+      "size": "S/M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015052440331957514
+  },
+  {
+    "article_id": "426308",
+    "candidate_move": {
+      "article_id": "426308",
+      "from_store": "6",
+      "to_store": "11",
+      "size": "L/XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015052440331957514
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.987413560326955
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9835202371677498
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9835202371677498
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9832311244801584
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9808198671228472
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9808198671228472
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "38",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9706706038259132
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.968408991779723
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "38",
+      "to_store": "31",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9648605632621956
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9428084640347738
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "38",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.8398328697428297
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.41470855790032923
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.37887077402397074
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.08093541197167037
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05985060037539314
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0323289894245115
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.026909051103522343
+  },
+  {
+    "article_id": "426309",
+    "candidate_move": {
+      "article_id": "426309",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.024487027238583977
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "31",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9705486492206713
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "38",
+      "to_store": "13",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9378612259899147
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.28870692985226004
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.22885191820585815
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "31",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.2238816871840025
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "9",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.1623370792161258
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "9",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.15658004816308366
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "9",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.12469157793995136
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.10812673652453925
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "31",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.10365987154494989
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.06577691766333683
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "9",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05439392105797491
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05125720014185061
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "31",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.048142481088228495
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "31",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.046211769508732056
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "31",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03584518894450543
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03207498848639973
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.024683953891134522
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "31",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.022295144093421496
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "9",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.021841980864931932
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "9",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01678243379868805
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "31",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.016170169991271008
+  },
+  {
+    "article_id": "426310",
+    "candidate_move": {
+      "article_id": "426310",
+      "from_store": "9",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015853048658283558
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9840777703301048
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9814670360470702
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "9",
+      "to_store": "6",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.979174957021921
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9725007383370392
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9547409403326999
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "9",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.8824110638333288
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.764130608855658
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "12",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.44049599613010143
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "9",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.37315226905455634
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "9",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.26771264196340794
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "9",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.15986390573665976
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "12",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0895657369479461
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "12",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.06952374728022753
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "12",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.06289507209244044
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "9",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05347435161356808
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "9",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.048296464776824276
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "12",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.04536843661678949
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "12",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.023675121502465774
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "12",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.022534303697226355
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "9",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01800497041864707
+  },
+  {
+    "article_id": "426311",
+    "candidate_move": {
+      "article_id": "426311",
+      "from_store": "9",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.017132581982995436
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9466725806665266
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9351053792501884
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9342636717648736
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "31",
+      "to_store": "13",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.8907181280539096
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.29478835996993613
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.2178808342288866
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "38",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.20576503356967876
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.18908174974414838
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.1671728446546774
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.134492647199641
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.11798865935893023
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03784571293661011
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "38",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03455368849771588
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.026909051103522343
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.025544031078834333
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.023922889332690267
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "38",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.023513006329524137
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "38",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.023060413899461236
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02160860330352814
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01809545316697592
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "38",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01632392081607382
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "38",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015556897006713808
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.014505197677008117
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.008217930671608031
+  },
+  {
+    "article_id": "426320",
+    "candidate_move": {
+      "article_id": "426320",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.008093795804399923
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9857033664774251
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9828185471765055
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9806277036344998
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.980005535834786
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9787420377652595
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9780606641366165
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9744888944992118
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9647873915178505
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9636753350546458
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9605610946680834
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9528956303256851
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "31",
+      "to_store": "11",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9277946114600257
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "38",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.4961416434504663
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "38",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.20921237387939212
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "38",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.1914017909275603
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "38",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.14755689438111333
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.13541430384481762
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.0802862573233113
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "38",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.07493281247940943
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "38",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03560039546006016
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "12",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.033044636706127575
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02291661417187403
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.01991426658796032
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "38",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01851182136150444
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.015334941508775148
+  },
+  {
+    "article_id": "426321",
+    "candidate_move": {
+      "article_id": "426321",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.014641162030136483
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.969189021560366
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9606886998049083
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "9",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9577518246557235
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "9",
+      "to_store": "13",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9510392447924652
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9479188982112975
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9468483964775406
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9458170006670222
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9378902208957491
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.32574321397787837
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "8",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.1758036824980784
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.16705246262691673
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.1327968936979632
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.11522525598732465
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.07309421663369957
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05710325314381282
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.056463908623907225
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03940580146250073
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03364581128315257
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03270366634634219
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.029677374636290985
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "8",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.026042575552713033
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "8",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.025741501232001387
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02530775953667636
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "8",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01778983326718347
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.017283743926642364
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.016042760352197392
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "8",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.013323894312259348
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "8",
+      "to_store": "13",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012344496428392549
+  },
+  {
+    "article_id": "426322",
+    "candidate_move": {
+      "article_id": "426322",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.011646684635373439
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9669907977989313
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9589139544336878
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "9",
+      "to_store": "38",
+      "size": "S",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9549899142344074
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "8",
+      "to_store": "38",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.9396045421154924
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "9",
+      "to_store": "12",
+      "size": "XXL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.895252673924624
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.8621043980111159
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "11",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.2713109946270578
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "13",
+      "to_store": "31",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.24774543608706776
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "11",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.22804226900675648
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "12",
+      "to_store": "31",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.20294446788837056
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "6",
+      "to_store": "31",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.1932424196542511
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "13",
+      "to_store": "9",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.18957600541267422
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "11",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.18175481585000466
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "13",
+      "to_store": "11",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.18065180270173706
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "11",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.16911844080392605
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "6",
+      "to_store": "38",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 1
+    },
+    "score": 0.15969552434937984
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "6",
+      "to_store": "12",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.12503393868830148
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "6",
+      "to_store": "8",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.11578303379732384
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "13",
+      "to_store": "38",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.058965856164522955
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "11",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.05106051257051103
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "12",
+      "to_store": "38",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.046205923392792496
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "11",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.043711476187255516
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "12",
+      "to_store": "11",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.041778592181770595
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "13",
+      "to_store": "12",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03612609229563654
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "12",
+      "to_store": "9",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03440341373357991
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "6",
+      "to_store": "9",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.033458122141990954
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "13",
+      "to_store": "8",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.03320359934623547
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "12",
+      "to_store": "13",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02937757972876362
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "6",
+      "to_store": "13",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.02856629600749356
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "13",
+      "to_store": "6",
+      "size": "XL",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.027963868697133253
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "12",
+      "to_store": "8",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.025865267457782
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "12",
+      "to_store": "6",
+      "size": "M",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.021757509120047
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "6",
+      "to_store": "11",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.012956155334038886
+  },
+  {
+    "article_id": "426323",
+    "candidate_move": {
+      "article_id": "426323",
+      "from_store": "11",
+      "to_store": "6",
+      "size": "L",
+      "qty": 1
+    },
+    "label": {
+      "accepted_by_human": 0
+    },
+    "score": 0.01030109225094265
+  }
+]

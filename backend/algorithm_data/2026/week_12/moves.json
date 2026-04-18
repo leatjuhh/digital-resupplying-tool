@@ -1,0 +1,2753 @@
+[
+  {
+    "article_id": "56015",
+    "from_store": "8",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "56015",
+    "from_store": "9",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "56015",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "56015",
+    "from_store": "9",
+    "to_store": "38",
+    "size": "3XL",
+    "qty": 1
+  },
+  {
+    "article_id": "56015",
+    "from_store": "11",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "56491",
+    "from_store": "6",
+    "to_store": "38",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "56491",
+    "from_store": "6",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "56491",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "56491",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "56491",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424548",
+    "from_store": "6",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424548",
+    "from_store": "6",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424548",
+    "from_store": "9",
+    "to_store": "11",
+    "size": "L",
+    "qty": 2
+  },
+  {
+    "article_id": "424548",
+    "from_store": "13",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424595",
+    "from_store": "8",
+    "to_store": "38",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424595",
+    "from_store": "9",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424595",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424920",
+    "from_store": "6",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424920",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424920",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424920",
+    "from_store": "31",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424920",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424920",
+    "from_store": "38",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424967",
+    "from_store": "8",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424967",
+    "from_store": "8",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424967",
+    "from_store": "13",
+    "to_store": "11",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424967",
+    "from_store": "31",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424967",
+    "from_store": "38",
+    "to_store": "6",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "424967",
+    "from_store": "38",
+    "to_store": "6",
+    "size": "M",
+    "qty": 2
+  },
+  {
+    "article_id": "424967",
+    "from_store": "38",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 2
+  },
+  {
+    "article_id": "424967",
+    "from_store": "38",
+    "to_store": "6",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424967",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "8",
+    "to_store": "9",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "8",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "8",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "8",
+    "to_store": "6",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "31",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "31",
+    "to_store": "12",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "31",
+    "to_store": "38",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "31",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "31",
+    "to_store": "13",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424968",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424976",
+    "from_store": "6",
+    "to_store": "12",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424976",
+    "from_store": "13",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424976",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "6",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "6",
+    "to_store": "12",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "6",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "9",
+    "to_store": "13",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "38",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "38",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424977",
+    "from_store": "38",
+    "to_store": "11",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "8",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "9",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "11",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "11",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "11",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "13",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "13",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "31",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "424979",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "9",
+    "to_store": "8",
+    "size": "XS",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "9",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "9",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "9",
+    "to_store": "6",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "11",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "13",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "13",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "13",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "13",
+    "to_store": "11",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "31",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "31",
+    "to_store": "8",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "XS",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "38",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425009",
+    "from_store": "38",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "L",
+    "qty": 2
+  },
+  {
+    "article_id": "425010",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "11",
+    "to_store": "6",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "12",
+    "to_store": "8",
+    "size": "XS",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "12",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "12",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "12",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "12",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "31",
+    "to_store": "9",
+    "size": "XS",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "38",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425010",
+    "from_store": "38",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "9",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "9",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "9",
+    "to_store": "13",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "11",
+    "to_store": "38",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "11",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "11",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425011",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "6",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "9",
+    "to_store": "38",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425014",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "6",
+    "to_store": "38",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "8",
+    "to_store": "31",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "8",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "8",
+    "to_store": "13",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "9",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "11",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425016",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "XS",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "6",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "9",
+    "to_store": "8",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "12",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "12",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "13",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "31",
+    "to_store": "11",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "31",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425018",
+    "from_store": "31",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 2
+  },
+  {
+    "article_id": "425028",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425028",
+    "from_store": "9",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425028",
+    "from_store": "9",
+    "to_store": "12",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425028",
+    "from_store": "11",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425028",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425028",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425028",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "11",
+    "to_store": "6",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "11",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "12",
+    "to_store": "6",
+    "size": "XS",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "12",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "12",
+    "to_store": "9",
+    "size": "XS",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "38",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425029",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "6",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "11",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "13",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "13",
+    "to_store": "8",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "38",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425031",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425032",
+    "from_store": "8",
+    "to_store": "6",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425032",
+    "from_store": "8",
+    "to_store": "31",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425032",
+    "from_store": "8",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425032",
+    "from_store": "8",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425032",
+    "from_store": "31",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425032",
+    "from_store": "38",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425032",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425032",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425038",
+    "from_store": "6",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425038",
+    "from_store": "6",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425038",
+    "from_store": "6",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425038",
+    "from_store": "6",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425038",
+    "from_store": "11",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425038",
+    "from_store": "12",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425038",
+    "from_store": "12",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 2
+  },
+  {
+    "article_id": "425038",
+    "from_store": "38",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425038",
+    "from_store": "38",
+    "to_store": "13",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425038",
+    "from_store": "38",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425046",
+    "from_store": "8",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425046",
+    "from_store": "11",
+    "to_store": "13",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425046",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425046",
+    "from_store": "31",
+    "to_store": "8",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425046",
+    "from_store": "31",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425046",
+    "from_store": "31",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425046",
+    "from_store": "31",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425046",
+    "from_store": "31",
+    "to_store": "13",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "9",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "8",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "12",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "12",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "12",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "13",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "13",
+    "to_store": "8",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "13",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425049",
+    "from_store": "38",
+    "to_store": "13",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "M",
+    "qty": 2
+  },
+  {
+    "article_id": "425052",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "13",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "13",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425052",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425137",
+    "from_store": "8",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425137",
+    "from_store": "13",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425137",
+    "from_store": "13",
+    "to_store": "11",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425137",
+    "from_store": "31",
+    "to_store": "8",
+    "size": "XS",
+    "qty": 1
+  },
+  {
+    "article_id": "425162",
+    "from_store": "6",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425162",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425162",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425162",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425162",
+    "from_store": "13",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425162",
+    "from_store": "31",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425162",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425162",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "8",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "9",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "9",
+    "to_store": "12",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "11",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "11",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "3XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "13",
+    "to_store": "12",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "13",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "31",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425165",
+    "from_store": "31",
+    "to_store": "38",
+    "size": "3XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "8",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "9",
+    "to_store": "38",
+    "size": "3XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "12",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "12",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "13",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "13",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "13",
+    "to_store": "11",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "31",
+    "to_store": "6",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "31",
+    "to_store": "6",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "31",
+    "to_store": "8",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "31",
+    "to_store": "8",
+    "size": "3XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425166",
+    "from_store": "31",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "8",
+    "to_store": "6",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "11",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "13",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "13",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "13",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "13",
+    "to_store": "6",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "31",
+    "to_store": "9",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "31",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "38",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "38",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425170",
+    "from_store": "38",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425569",
+    "from_store": "6",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425569",
+    "from_store": "6",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 2
+  },
+  {
+    "article_id": "425579",
+    "from_store": "8",
+    "to_store": "6",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425579",
+    "from_store": "9",
+    "to_store": "38",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425579",
+    "from_store": "11",
+    "to_store": "6",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425579",
+    "from_store": "11",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425579",
+    "from_store": "11",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425579",
+    "from_store": "11",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425579",
+    "from_store": "11",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425579",
+    "from_store": "13",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425579",
+    "from_store": "13",
+    "to_store": "12",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425583",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425584",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425584",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425584",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425584",
+    "from_store": "11",
+    "to_store": "38",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425584",
+    "from_store": "12",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425584",
+    "from_store": "12",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425584",
+    "from_store": "12",
+    "to_store": "13",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425584",
+    "from_store": "31",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425591",
+    "from_store": "8",
+    "to_store": "11",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425591",
+    "from_store": "13",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425690",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425690",
+    "from_store": "11",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425690",
+    "from_store": "31",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425690",
+    "from_store": "38",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425695",
+    "from_store": "12",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425696",
+    "from_store": "12",
+    "to_store": "9",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425696",
+    "from_store": "38",
+    "to_store": "8",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425696",
+    "from_store": "38",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425708",
+    "from_store": "8",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425708",
+    "from_store": "9",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425708",
+    "from_store": "9",
+    "to_store": "6",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425708",
+    "from_store": "11",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425708",
+    "from_store": "11",
+    "to_store": "13",
+    "size": "M",
+    "qty": 2
+  },
+  {
+    "article_id": "425708",
+    "from_store": "11",
+    "to_store": "13",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425708",
+    "from_store": "11",
+    "to_store": "13",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425708",
+    "from_store": "38",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "12",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "12",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "31",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425714",
+    "from_store": "38",
+    "to_store": "9",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "6",
+    "to_store": "11",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "6",
+    "to_store": "11",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "6",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "9",
+    "to_store": "8",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "9",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "9",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "12",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425723",
+    "from_store": "38",
+    "to_store": "11",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "6",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "11",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "12",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "13",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "13",
+    "to_store": "8",
+    "size": "L",
+    "qty": 2
+  },
+  {
+    "article_id": "425735",
+    "from_store": "38",
+    "to_store": "12",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425735",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425749",
+    "from_store": "6",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425749",
+    "from_store": "6",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425749",
+    "from_store": "11",
+    "to_store": "31",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425749",
+    "from_store": "12",
+    "to_store": "9",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425749",
+    "from_store": "13",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425749",
+    "from_store": "38",
+    "to_store": "8",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "6",
+    "to_store": "12",
+    "size": "XL",
+    "qty": 2
+  },
+  {
+    "article_id": "425750",
+    "from_store": "6",
+    "to_store": "12",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "8",
+    "to_store": "38",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "8",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "8",
+    "to_store": "9",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "9",
+    "to_store": "11",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "13",
+    "to_store": "38",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425750",
+    "from_store": "31",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425831",
+    "from_store": "6",
+    "to_store": "13",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "425831",
+    "from_store": "6",
+    "to_store": "12",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "425831",
+    "from_store": "9",
+    "to_store": "13",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425831",
+    "from_store": "31",
+    "to_store": "12",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "425831",
+    "from_store": "31",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "6",
+    "to_store": "8",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "11",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "11",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "11",
+    "to_store": "9",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "12",
+    "to_store": "6",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "12",
+    "to_store": "6",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "12",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "426316",
+    "from_store": "12",
+    "to_store": "6",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "426317",
+    "from_store": "9",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "426317",
+    "from_store": "9",
+    "to_store": "8",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "426317",
+    "from_store": "11",
+    "to_store": "6",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "426318",
+    "from_store": "8",
+    "to_store": "38",
+    "size": "XL",
+    "qty": 1
+  },
+  {
+    "article_id": "426318",
+    "from_store": "9",
+    "to_store": "31",
+    "size": "S",
+    "qty": 1
+  },
+  {
+    "article_id": "426318",
+    "from_store": "9",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "426318",
+    "from_store": "11",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  },
+  {
+    "article_id": "426318",
+    "from_store": "11",
+    "to_store": "12",
+    "size": "XXL",
+    "qty": 1
+  },
+  {
+    "article_id": "426318",
+    "from_store": "13",
+    "to_store": "12",
+    "size": "M",
+    "qty": 1
+  },
+  {
+    "article_id": "426318",
+    "from_store": "38",
+    "to_store": "31",
+    "size": "L",
+    "qty": 1
+  }
+]

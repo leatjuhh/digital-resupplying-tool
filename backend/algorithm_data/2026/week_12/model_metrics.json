@@ -1,0 +1,494 @@
+{
+  "split": {
+    "train_article_count": 36,
+    "test_article_count": 11,
+    "train_example_count": 1301,
+    "test_example_count": 433,
+    "train_articles": [
+      "2026-12-56015",
+      "2026-12-56491",
+      "2026-12-424548",
+      "2026-12-424595",
+      "2026-12-424920",
+      "2026-12-424967",
+      "2026-12-424968",
+      "2026-12-424976",
+      "2026-12-424977",
+      "2026-12-424979",
+      "2026-12-425009",
+      "2026-12-425010",
+      "2026-12-425011",
+      "2026-12-425014",
+      "2026-12-425016",
+      "2026-12-425018",
+      "2026-12-425028",
+      "2026-12-425029",
+      "2026-12-425031",
+      "2026-12-425032",
+      "2026-12-425038",
+      "2026-12-425046",
+      "2026-12-425049",
+      "2026-12-425052",
+      "2026-12-425137",
+      "2026-12-425162",
+      "2026-12-425165",
+      "2026-12-425166",
+      "2026-12-425170",
+      "2026-12-425425",
+      "2026-12-425569",
+      "2026-12-425579",
+      "2026-12-425583",
+      "2026-12-425584",
+      "2026-12-425591",
+      "2026-12-425695"
+    ],
+    "test_articles": [
+      "2026-12-425696",
+      "2026-12-425708",
+      "2026-12-425714",
+      "2026-12-425723",
+      "2026-12-425735",
+      "2026-12-425749",
+      "2026-12-425750",
+      "2026-12-425831",
+      "2026-12-426316",
+      "2026-12-426317",
+      "2026-12-426318"
+    ]
+  },
+  "train_metrics": {
+    "average_precision": 0.9503042405226793,
+    "binary": {
+      "threshold": 0.5,
+      "tp": 243,
+      "fp": 2,
+      "tn": 994,
+      "fn": 62,
+      "precision": 0.9918367346938776,
+      "recall": 0.7967213114754098,
+      "accuracy": 0.9508070714834742,
+      "f1": 0.8836363636363636
+    },
+    "top_k": {
+      "observed_count": 305,
+      "selected_count": 305,
+      "overlap_count": 271,
+      "top_k_recall": 0.8885245901639345,
+      "top_k_precision": 0.8885245901639345,
+      "per_article": [
+        {
+          "article_id": "56015",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "56491",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "424548",
+          "observed_count": 4,
+          "selected_count": 4,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "424595",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 2
+        },
+        {
+          "article_id": "424920",
+          "observed_count": 6,
+          "selected_count": 6,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "424967",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 6
+        },
+        {
+          "article_id": "424968",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "424976",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "424977",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "424979",
+          "observed_count": 13,
+          "selected_count": 13,
+          "top_k_overlap": 10
+        },
+        {
+          "article_id": "425009",
+          "observed_count": 16,
+          "selected_count": 16,
+          "top_k_overlap": 16
+        },
+        {
+          "article_id": "425010",
+          "observed_count": 14,
+          "selected_count": 14,
+          "top_k_overlap": 14
+        },
+        {
+          "article_id": "425011",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 10
+        },
+        {
+          "article_id": "425014",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425016",
+          "observed_count": 12,
+          "selected_count": 12,
+          "top_k_overlap": 12
+        },
+        {
+          "article_id": "425018",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425028",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425029",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 10
+        },
+        {
+          "article_id": "425031",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425032",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425038",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 10
+        },
+        {
+          "article_id": "425046",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425049",
+          "observed_count": 14,
+          "selected_count": 14,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "425052",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 10
+        },
+        {
+          "article_id": "425137",
+          "observed_count": 4,
+          "selected_count": 4,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "425162",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425165",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425166",
+          "observed_count": 12,
+          "selected_count": 12,
+          "top_k_overlap": 12
+        },
+        {
+          "article_id": "425170",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425569",
+          "observed_count": 2,
+          "selected_count": 2,
+          "top_k_overlap": 2
+        },
+        {
+          "article_id": "425579",
+          "observed_count": 9,
+          "selected_count": 9,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425583",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "425584",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 7
+        },
+        {
+          "article_id": "425591",
+          "observed_count": 2,
+          "selected_count": 2,
+          "top_k_overlap": 2
+        },
+        {
+          "article_id": "425425",
+          "observed_count": 4,
+          "selected_count": 4,
+          "top_k_overlap": 2
+        },
+        {
+          "article_id": "425695",
+          "observed_count": 1,
+          "selected_count": 1,
+          "top_k_overlap": 1
+        }
+      ]
+    }
+  },
+  "test_metrics": {
+    "average_precision": 0.9293715553916795,
+    "binary": {
+      "threshold": 0.5,
+      "tp": 60,
+      "fp": 0,
+      "tn": 345,
+      "fn": 28,
+      "precision": 1.0,
+      "recall": 0.6818181818181818,
+      "accuracy": 0.9353348729792148,
+      "f1": 0.8108108108108109
+    },
+    "top_k": {
+      "observed_count": 88,
+      "selected_count": 88,
+      "overlap_count": 74,
+      "top_k_recall": 0.8409090909090909,
+      "top_k_precision": 0.8409090909090909,
+      "per_article": [
+        {
+          "article_id": "425696",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 3
+        },
+        {
+          "article_id": "425708",
+          "observed_count": 8,
+          "selected_count": 8,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425714",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425723",
+          "observed_count": 13,
+          "selected_count": 13,
+          "top_k_overlap": 11
+        },
+        {
+          "article_id": "425735",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425749",
+          "observed_count": 6,
+          "selected_count": 6,
+          "top_k_overlap": 5
+        },
+        {
+          "article_id": "425750",
+          "observed_count": 11,
+          "selected_count": 11,
+          "top_k_overlap": 8
+        },
+        {
+          "article_id": "425831",
+          "observed_count": 5,
+          "selected_count": 5,
+          "top_k_overlap": 4
+        },
+        {
+          "article_id": "426316",
+          "observed_count": 10,
+          "selected_count": 10,
+          "top_k_overlap": 9
+        },
+        {
+          "article_id": "426317",
+          "observed_count": 3,
+          "selected_count": 3,
+          "top_k_overlap": 1
+        },
+        {
+          "article_id": "426318",
+          "observed_count": 7,
+          "selected_count": 7,
+          "top_k_overlap": 6
+        }
+      ]
+    }
+  },
+  "training": {
+    "epochs": 1200,
+    "initial_loss": 0.693148137230021,
+    "final_loss": 0.14392548348572007
+  },
+  "feature_importance": [
+    {
+      "feature": "donor_stock_for_size",
+      "weight": -1.5766241061566206,
+      "abs_weight": 1.5766241061566206
+    },
+    {
+      "feature": "donor_is_double_size",
+      "weight": -1.1312435956293214,
+      "abs_weight": 1.1312435956293214
+    },
+    {
+      "feature": "receiver_stock_for_size",
+      "weight": -0.9252243465688926,
+      "abs_weight": 0.9252243465688926
+    },
+    {
+      "feature": "donor_would_hit_zero",
+      "weight": 0.6294945528237975,
+      "abs_weight": 0.6294945528237975
+    },
+    {
+      "feature": "donor_would_break_sequence",
+      "weight": 0.586150916341404,
+      "abs_weight": 0.586150916341404
+    },
+    {
+      "feature": "size_position=middle",
+      "weight": -0.5093486457595499,
+      "abs_weight": 0.5093486457595499
+    },
+    {
+      "feature": "sales_difference",
+      "weight": 0.45382956924085155,
+      "abs_weight": 0.45382956924085155
+    },
+    {
+      "feature": "receiver_missing_size_before",
+      "weight": 0.41367043388707114,
+      "abs_weight": 0.41367043388707114
+    },
+    {
+      "feature": "receiver_store_size_class=groot",
+      "weight": -0.3253508797435789,
+      "abs_weight": 0.3253508797435789
+    },
+    {
+      "feature": "donor_sales",
+      "weight": -0.3166891815128967,
+      "abs_weight": 0.3166891815128967
+    },
+    {
+      "feature": "donor_series_width_after",
+      "weight": -0.30454791256155417,
+      "abs_weight": 0.30454791256155417
+    },
+    {
+      "feature": "donor_total_stock",
+      "weight": -0.2883150823792335,
+      "abs_weight": 0.2883150823792335
+    },
+    {
+      "feature": "receiver_sales",
+      "weight": 0.250720968600539,
+      "abs_weight": 0.250720968600539
+    },
+    {
+      "feature": "donor_series_width_before",
+      "weight": 0.22917184700574006,
+      "abs_weight": 0.22917184700574006
+    },
+    {
+      "feature": "size_position=unknown",
+      "weight": 0.1936609011609869,
+      "abs_weight": 0.1936609011609869
+    },
+    {
+      "feature": "receiver_series_width_after",
+      "weight": 0.1915096342875862,
+      "abs_weight": 0.1915096342875862
+    },
+    {
+      "feature": "donor_below_min_size_count_after",
+      "weight": -0.1808901904342391,
+      "abs_weight": 0.1808901904342391
+    },
+    {
+      "feature": "donor_size_count",
+      "weight": 0.15131771778903583,
+      "abs_weight": 0.15131771778903583
+    },
+    {
+      "feature": "donor_store_size_class=middel",
+      "weight": -0.14945810102154214,
+      "abs_weight": 0.14945810102154214
+    },
+    {
+      "feature": "donor_store_size_class=groot",
+      "weight": -0.14065696284060106,
+      "abs_weight": 0.14065696284060106
+    }
+  ]
+}

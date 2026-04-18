@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 
 DRT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_EXTERNAL_ALGORITHM_DATA_ROOT = DRT_ROOT.parent / "Herverdelingsalgoritme" / "data"
+DEFAULT_EXTERNAL_ALGORITHM_DATA_ROOT = DRT_ROOT / "backend" / "algorithm_data"
 SUPPORTED_ASSIST_MODES = {"off", "shadow", "rank_assist"}
 
 

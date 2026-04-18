@@ -1,0 +1,1734 @@
+[
+  {
+    "volgnummer": "56015",
+    "article_name": "Walker Stripe Blouse",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "12",
+      "13"
+    ],
+    "moves": [
+      {
+        "volgnummer": "56015",
+        "size": "M",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 5.619999999999999,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "56491",
+    "article_name": "Adina Abstract Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "13",
+      "31"
+    ],
+    "moves": [
+      {
+        "volgnummer": "56491",
+        "size": "XL",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "13",
+        "to_store_name": "Budel",
+        "qty": 1,
+        "score": 5.7717857142857145,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "56491",
+        "size": "L",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 5.548333333333333,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "424548",
+    "article_name": "Lexi Flower Blouse",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "424595",
+    "article_name": "Rio Flowy Pique Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "11",
+      "38",
+      "6"
+    ],
+    "moves": [
+      {
+        "volgnummer": "424595",
+        "size": "L",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "38",
+        "to_store_name": "Tegelen",
+        "qty": 1,
+        "score": 5.655833333333334,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "424595",
+        "size": "M",
+        "from_store": "6",
+        "from_store_name": "Echt",
+        "to_store": "11",
+        "to_store_name": "Brunssum",
+        "qty": 1,
+        "score": 5.619999999999999,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "424920",
+    "article_name": "Siham 48 Pant",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "12",
+      "13"
+    ],
+    "moves": [
+      {
+        "volgnummer": "424920",
+        "size": "M",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 5.61,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "424967",
+    "article_name": "Vada Stripe Cardigan",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 4 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 4,
+    "total_quantity": 4,
+    "stores_affected": [
+      "11",
+      "13",
+      "31",
+      "38",
+      "6",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "424967",
+        "size": "XL",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 8.81,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "424967",
+        "size": "M",
+        "from_store": "38",
+        "from_store_name": "Tegelen",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 7.71,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "424967",
+        "size": "XL",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "11",
+        "to_store_name": "Brunssum",
+        "qty": 1,
+        "score": 6.1075,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "424967",
+        "size": "XL",
+        "from_store": "38",
+        "from_store_name": "Tegelen",
+        "to_store": "9",
+        "to_store_name": "Stein",
+        "qty": 1,
+        "score": 4.71,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "424968",
+    "article_name": "Vesa Knitted Pull",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "11",
+      "31",
+      "8",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "424968",
+        "size": "M",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "11",
+        "to_store_name": "Brunssum",
+        "qty": 1,
+        "score": 6.8125,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "424968",
+        "size": "XL",
+        "from_store": "8",
+        "from_store_name": "Weert",
+        "to_store": "9",
+        "to_store_name": "Stein",
+        "qty": 1,
+        "score": 6.37,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "424976",
+    "article_name": "Salina Pull Dots",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "12",
+      "38"
+    ],
+    "moves": [
+      {
+        "volgnummer": "424976",
+        "size": "L",
+        "from_store": "38",
+        "from_store_name": "Tegelen",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 7.81,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "424977",
+    "article_name": "Salina Pull Dots",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "12",
+      "38",
+      "6",
+      "8"
+    ],
+    "moves": [
+      {
+        "volgnummer": "424977",
+        "size": "L",
+        "from_store": "6",
+        "from_store_name": "Echt",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 8.91,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "424977",
+        "size": "M",
+        "from_store": "38",
+        "from_store_name": "Tegelen",
+        "to_store": "8",
+        "to_store_name": "Weert",
+        "qty": 1,
+        "score": 8.31,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "424979",
+    "article_name": "Vienna Structure Cardigan",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "11",
+      "12",
+      "8",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "424979",
+        "size": "M",
+        "from_store": "9",
+        "from_store_name": "Stein",
+        "to_store": "8",
+        "to_store_name": "Weert",
+        "qty": 1,
+        "score": 8.31,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "424979",
+        "size": "L",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 6.71,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425009",
+    "article_name": "Tessy Jog Color Pant",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "31",
+      "8",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425009",
+        "size": "40",
+        "from_store": "9",
+        "from_store_name": "Stein",
+        "to_store": "8",
+        "to_store_name": "Weert",
+        "qty": 1,
+        "score": 9.41,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425009",
+        "size": "38",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "8",
+        "to_store_name": "Weert",
+        "qty": 1,
+        "score": 8.31,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425010",
+    "article_name": "Tessy Jog Color Pant",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 6 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 6,
+    "total_quantity": 6,
+    "stores_affected": [
+      "11",
+      "12",
+      "13",
+      "31",
+      "38",
+      "8",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425010",
+        "size": "40",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "9",
+        "to_store_name": "Stein",
+        "qty": 1,
+        "score": 8.91,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425010",
+        "size": "42",
+        "from_store": "38",
+        "from_store_name": "Tegelen",
+        "to_store": "9",
+        "to_store_name": "Stein",
+        "qty": 1,
+        "score": 7.31,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425010",
+        "size": "38",
+        "from_store": "12",
+        "from_store_name": "Kerkrade",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 6.7524999999999995,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425010",
+        "size": "40",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "8",
+        "to_store_name": "Weert",
+        "qty": 1,
+        "score": 6.516666666666667,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425010",
+        "size": "42",
+        "from_store": "8",
+        "from_store_name": "Weert",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 5.3725,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425010",
+        "size": "38",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "11",
+        "to_store_name": "Brunssum",
+        "qty": 1,
+        "score": 4.6975,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425011",
+    "article_name": "Colette Belt Jeans L31",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425014",
+    "article_name": "Brielle Flaire Jeans",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425016",
+    "article_name": "Conny Pressed Crease Jeans L26",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425018",
+    "article_name": "Sienna Zipper Jeans",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "31",
+      "8"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425018",
+        "size": "42",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "8",
+        "to_store_name": "Weert",
+        "qty": 1,
+        "score": 9.31,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425028",
+    "article_name": "Stella Scuba Pant",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425029",
+    "article_name": "Colette Punta Piping Pant",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "12",
+      "6",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425029",
+        "size": "34",
+        "from_store": "12",
+        "from_store_name": "Kerkrade",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 8.56,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425029",
+        "size": "42",
+        "from_store": "9",
+        "from_store_name": "Stein",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 5.285,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425031",
+    "article_name": "Terry Stripe Logo Pull",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "11",
+      "31"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425031",
+        "size": "L",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 7.86,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425032",
+    "article_name": "Terry Stripe Pull",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "8",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425032",
+        "size": "M",
+        "from_store": "8",
+        "from_store_name": "Weert",
+        "to_store": "9",
+        "to_store_name": "Stein",
+        "qty": 1,
+        "score": 9.81,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425038",
+    "article_name": "Terry Sweater Chestprint",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425046",
+    "article_name": "Top Ajour",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "11",
+      "12",
+      "13",
+      "38"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425046",
+        "size": "L",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "13",
+        "to_store_name": "Budel",
+        "qty": 1,
+        "score": 8.31,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425046",
+        "size": "M",
+        "from_store": "12",
+        "from_store_name": "Kerkrade",
+        "to_store": "38",
+        "to_store_name": "Tegelen",
+        "qty": 1,
+        "score": 7.81,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425049",
+    "article_name": "Sweet Ribbon Pull",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "13",
+      "31"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425049",
+        "size": "XXL",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 8.81,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425049",
+        "size": "M",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 7.01,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425052",
+    "article_name": "Cardigan Popcorn",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 3 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 3,
+    "total_quantity": 3,
+    "stores_affected": [
+      "11",
+      "13",
+      "31",
+      "38",
+      "6",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425052",
+        "size": "M",
+        "from_store": "6",
+        "from_store_name": "Echt",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 10.31,
+        "reason": "dubbele maat in donor; geen verkoop in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425052",
+        "size": "L",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "38",
+        "to_store_name": "Tegelen",
+        "qty": 1,
+        "score": 8.21,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425052",
+        "size": "M",
+        "from_store": "9",
+        "from_store_name": "Stein",
+        "to_store": "11",
+        "to_store_name": "Brunssum",
+        "qty": 1,
+        "score": 6.71,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425137",
+    "article_name": "Cassidy Knitted Pull",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "13",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425137",
+        "size": "M/L",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "9",
+        "to_store_name": "Stein",
+        "qty": 1,
+        "score": 7.989999999999999,
+        "reason": "ruime voorraad in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425162",
+    "article_name": "Eve Elastic Pant",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "12",
+      "13"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425162",
+        "size": "40",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 8.11,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425165",
+    "article_name": "Marigold Stepped Jack",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425166",
+    "article_name": "Marigold Stepped Jack",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "11",
+      "12",
+      "31",
+      "6"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425166",
+        "size": "44",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "11",
+        "to_store_name": "Brunssum",
+        "qty": 1,
+        "score": 8.51,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425166",
+        "size": "40",
+        "from_store": "12",
+        "from_store_name": "Kerkrade",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 8.31,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425170",
+    "article_name": "Magnolia Stepped Jack",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425569",
+    "article_name": "Blouse Falon",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425579",
+    "article_name": "Cardigan Marie",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "11",
+      "13",
+      "6"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425579",
+        "size": "L",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 7.21,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425579",
+        "size": "XL",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 5.71,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425583",
+    "article_name": "Cardigan Marieke",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "31",
+      "6",
+      "8"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425583",
+        "size": "XL",
+        "from_store": "6",
+        "from_store_name": "Echt",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 7.71,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425583",
+        "size": "M",
+        "from_store": "6",
+        "from_store_name": "Echt",
+        "to_store": "8",
+        "to_store_name": "Weert",
+        "qty": 1,
+        "score": 7.21,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425584",
+    "article_name": "Pullover Izzy",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 3 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 3,
+    "total_quantity": 3,
+    "stores_affected": [
+      "11",
+      "13",
+      "31",
+      "8",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425584",
+        "size": "M",
+        "from_store": "9",
+        "from_store_name": "Stein",
+        "to_store": "8",
+        "to_store_name": "Weert",
+        "qty": 1,
+        "score": 6.31,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425584",
+        "size": "L",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "8",
+        "to_store_name": "Weert",
+        "qty": 1,
+        "score": 5.71,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425584",
+        "size": "XL",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "13",
+        "to_store_name": "Budel",
+        "qty": 1,
+        "score": 5.5183333333333335,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425591",
+    "article_name": "Blouse Darcy",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "11",
+      "31"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425591",
+        "size": "42",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "11",
+        "to_store_name": "Brunssum",
+        "qty": 1,
+        "score": 5.637499999999999,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425425",
+    "article_name": "Ruan LS Electric Pulse Jacket",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 4 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 4,
+    "total_quantity": 4,
+    "stores_affected": [
+      "11",
+      "12",
+      "31",
+      "38",
+      "8"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425425",
+        "size": "M",
+        "from_store": "12",
+        "from_store_name": "Kerkrade",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 6.0475,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425425",
+        "size": "L",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "38",
+        "to_store_name": "Tegelen",
+        "qty": 1,
+        "score": 5.695,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425425",
+        "size": "XL",
+        "from_store": "8",
+        "from_store_name": "Weert",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 4.535,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425425",
+        "size": "L",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 3.9766666666666666,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425695",
+    "article_name": "Cartly Pant Straight",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "11",
+      "12"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425695",
+        "size": "38",
+        "from_store": "12",
+        "from_store_name": "Kerkrade",
+        "to_store": "11",
+        "to_store_name": "Brunssum",
+        "qty": 1,
+        "score": 7.46,
+        "reason": "dubbele maat in donor; geen verkoop in donor; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425696",
+    "article_name": "Skyler Palmwave Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425708",
+    "article_name": "Maxx Snake Foil Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "11",
+      "13"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425708",
+        "size": "38",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "13",
+        "to_store_name": "Budel",
+        "qty": 1,
+        "score": 7.71,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425714",
+    "article_name": "Bodhi Fantasie Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425723",
+    "article_name": "Lino Structuur Jasje",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "11",
+      "12"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425723",
+        "size": "L",
+        "from_store": "12",
+        "from_store_name": "Kerkrade",
+        "to_store": "11",
+        "to_store_name": "Brunssum",
+        "qty": 1,
+        "score": 7.37,
+        "reason": "dubbele maat in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425735",
+    "article_name": "Snoes Fantasy Print Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Geen voorstel gegenereerd door de huidige baseline-regels. Dit betekent niet automatisch dat het artikel optimaal verdeeld is; handmatige beoordeling blijft nodig.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Manual Review Required"
+    ],
+    "total_moves": 0,
+    "total_quantity": 0,
+    "stores_affected": [],
+    "moves": []
+  },
+  {
+    "volgnummer": "425749",
+    "article_name": "Lorrie Flow Print Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "11",
+      "6",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425749",
+        "size": "M",
+        "from_store": "6",
+        "from_store_name": "Echt",
+        "to_store": "9",
+        "to_store_name": "Stein",
+        "qty": 1,
+        "score": 5.21,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425749",
+        "size": "XL",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "9",
+        "to_store_name": "Stein",
+        "qty": 1,
+        "score": 5.1225,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425750",
+    "article_name": "Lupe Glitter Sweat Jack",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "12",
+      "13",
+      "38",
+      "8"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425750",
+        "size": "XL",
+        "from_store": "8",
+        "from_store_name": "Weert",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 7.164999999999999,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425750",
+        "size": "L",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "38",
+        "to_store_name": "Tegelen",
+        "qty": 1,
+        "score": 6.918333333333334,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "425831",
+    "article_name": "Bobin 3/4 Roses Blouse",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 2 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 2,
+    "total_quantity": 2,
+    "stores_affected": [
+      "12",
+      "13",
+      "31",
+      "38"
+    ],
+    "moves": [
+      {
+        "volgnummer": "425831",
+        "size": "M",
+        "from_store": "12",
+        "from_store_name": "Kerkrade",
+        "to_store": "13",
+        "to_store_name": "Budel",
+        "qty": 1,
+        "score": 5.52,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "425831",
+        "size": "XL",
+        "from_store": "31",
+        "from_store_name": "Tilburg",
+        "to_store": "38",
+        "to_store_name": "Tegelen",
+        "qty": 1,
+        "score": 3.99,
+        "reason": "dubbele maat in donor; geen verkoop in donor; zou maatserie breken; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "426316",
+    "article_name": "Vivi Kiezelpad Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 1 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 1,
+    "total_quantity": 1,
+    "stores_affected": [
+      "11",
+      "6"
+    ],
+    "moves": [
+      {
+        "volgnummer": "426316",
+        "size": "XL",
+        "from_store": "11",
+        "from_store_name": "Brunssum",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 9.31,
+        "reason": "dubbele maat in donor; geen verkoop in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "426317",
+    "article_name": "Doortje Aqua Garden Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 3 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 3,
+    "total_quantity": 3,
+    "stores_affected": [
+      "12",
+      "38",
+      "6",
+      "8",
+      "9"
+    ],
+    "moves": [
+      {
+        "volgnummer": "426317",
+        "size": "M",
+        "from_store": "6",
+        "from_store_name": "Echt",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 7.7225,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "426317",
+        "size": "M",
+        "from_store": "9",
+        "from_store_name": "Stein",
+        "to_store": "38",
+        "to_store_name": "Tegelen",
+        "qty": 1,
+        "score": 6.1658333333333335,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "426317",
+        "size": "L",
+        "from_store": "8",
+        "from_store_name": "Weert",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 5.6066666666666665,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  },
+  {
+    "volgnummer": "426318",
+    "article_name": "Doortje Aqua Garden Top",
+    "batch_id": 12,
+    "status": "pending",
+    "reason": "Baseline herverdeling voor 3 moves op basis van verkoop, seriebehoud en ontbrekende maten.",
+    "applied_rules": [
+      "Sales-first Baseline",
+      "Sequence Protection",
+      "Missing Size Recovery",
+      "No False Optimal Label"
+    ],
+    "total_moves": 3,
+    "total_quantity": 3,
+    "stores_affected": [
+      "12",
+      "13",
+      "31",
+      "38",
+      "6",
+      "8"
+    ],
+    "moves": [
+      {
+        "volgnummer": "426318",
+        "size": "L",
+        "from_store": "38",
+        "from_store_name": "Tegelen",
+        "to_store": "31",
+        "to_store_name": "Tilburg",
+        "qty": 1,
+        "score": 8.31,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "426318",
+        "size": "M",
+        "from_store": "13",
+        "from_store_name": "Budel",
+        "to_store": "12",
+        "to_store_name": "Kerkrade",
+        "qty": 1,
+        "score": 7.7225,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; lage totale winkelvoorraad; middenmaat ontbreekt"
+      },
+      {
+        "volgnummer": "426318",
+        "size": "XL",
+        "from_store": "8",
+        "from_store_name": "Weert",
+        "to_store": "6",
+        "to_store_name": "Echt",
+        "qty": 1,
+        "score": 5.637499999999999,
+        "reason": "dubbele maat in donor; lage demand in donor; verkoop in ontvanger; verbetert maatserie; middenmaat ontbreekt"
+      }
+    ]
+  }
+]

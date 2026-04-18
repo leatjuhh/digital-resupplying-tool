@@ -1,0 +1,17 @@
+{
+  "year": 2026,
+  "week": 12,
+  "article_count_in_excel": 47,
+  "move_count": 393,
+  "matched_pdf_count": 47,
+  "missing_pdf_count": 0,
+  "missing_pdf_article_ids": [],
+  "extra_pdf_count": 0,
+  "extra_pdf_article_ids": [],
+  "pdf_source_dir": "Z:\\Herverdeellijsten\\Jaar 2026\\Week 12\\Interfiliaallijsten",
+  "store_totals_loaded_count": 8,
+  "store_totals_source": "Z:\\Herverdeellijsten\\Jaar 2026\\Week 12\\store_totals.tsv",
+  "store_totals_missing_codes": [],
+  "parse_failure_count": 0,
+  "parse_failures": []
+}

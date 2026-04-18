@@ -1,0 +1,15 @@
+{
+  "year": 2026,
+  "week": 14,
+  "proposal_count": 72,
+  "articles_with_moves": 45,
+  "articles_without_moves": 27,
+  "interpretation": "Observed decisions versus model-detected redistribution opportunities",
+  "observed_move_count": 486,
+  "model_opportunity_count": 88,
+  "overlap_move_count": 28,
+  "observed_opportunity_recall": 0.05761316872427984,
+  "model_overlap_ratio": 0.3181818181818182,
+  "observed_only_count": 458,
+  "model_only_count": 60
+}

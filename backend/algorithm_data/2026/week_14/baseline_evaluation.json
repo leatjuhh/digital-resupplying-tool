@@ -1,0 +1,4758 @@
+{
+  "year": 2026,
+  "week": 14,
+  "interpretation": {
+    "observed_moves": "Handmatige Excel-verplaatsingen uit de week.",
+    "model_opportunities": "Kansen die de baseline-logica ziet in de voorraadrapportage.",
+    "overlap_moves": "Moves die zowel handmatig zijn gedaan als door het model zijn voorgesteld.",
+    "warning": "Deze evaluatie behandelt handmatige moves niet als absolute waarheid. Het doel is inzicht in overlap en gemiste of extra kansen."
+  },
+  "observed_move_count": 486,
+  "model_opportunity_count": 88,
+  "overlap_move_count": 28,
+  "observed_opportunity_recall": 0.05761316872427984,
+  "model_overlap_ratio": 0.3181818181818182,
+  "observed_only_count": 458,
+  "model_only_count": 60,
+  "per_article": [
+    {
+      "article_id": "53650",
+      "observed_move_count": 9,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 9,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "53650",
+          "11",
+          "13",
+          "XXL",
+          1
+        ],
+        [
+          "53650",
+          "11",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "53650",
+          "12",
+          "13",
+          "S",
+          1
+        ],
+        [
+          "53650",
+          "12",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "53650",
+          "6",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "53650",
+          "6",
+          "38",
+          "XXL",
+          1
+        ],
+        [
+          "53650",
+          "6",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "53650",
+          "8",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "53650",
+          "9",
+          "13",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "53650",
+          "9",
+          "8",
+          "M",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "56174",
+      "observed_move_count": 4,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 1,
+      "observed_only_count": 3,
+      "model_only_count": 1,
+      "overlap_moves": [
+        [
+          "56174",
+          "38",
+          "31",
+          "L",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "56174",
+          "38",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "56174",
+          "38",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "56174",
+          "9",
+          "12",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "56174",
+          "8",
+          "31",
+          "XL",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "423048",
+      "observed_move_count": 3,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 3,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "423048",
+          "31",
+          "9",
+          "XXL",
+          1
+        ],
+        [
+          "423048",
+          "6",
+          "8",
+          "XXL",
+          1
+        ],
+        [
+          "423048",
+          "8",
+          "11",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "424903",
+      "observed_move_count": 8,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 8,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "424903",
+          "11",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "424903",
+          "11",
+          "9",
+          "XL",
+          1
+        ],
+        [
+          "424903",
+          "12",
+          "6",
+          "M",
+          1
+        ],
+        [
+          "424903",
+          "12",
+          "6",
+          "S",
+          1
+        ],
+        [
+          "424903",
+          "13",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "424903",
+          "31",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "424903",
+          "38",
+          "9",
+          "XL",
+          1
+        ],
+        [
+          "424903",
+          "8",
+          "6",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "424915",
+      "observed_move_count": 8,
+      "model_opportunity_count": 3,
+      "overlap_move_count": 1,
+      "observed_only_count": 7,
+      "model_only_count": 2,
+      "overlap_moves": [
+        [
+          "424915",
+          "8",
+          "6",
+          "L",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "424915",
+          "11",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "424915",
+          "11",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "424915",
+          "11",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "424915",
+          "12",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "424915",
+          "31",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "424915",
+          "38",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "424915",
+          "6",
+          "9",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "424915",
+          "12",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "424915",
+          "31",
+          "8",
+          "XL",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "424975",
+      "observed_move_count": 8,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 8,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "424975",
+          "11",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "424975",
+          "12",
+          "38",
+          "L",
+          1
+        ],
+        [
+          "424975",
+          "38",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "424975",
+          "38",
+          "13",
+          "XXL",
+          1
+        ],
+        [
+          "424975",
+          "6",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "424975",
+          "6",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "424975",
+          "8",
+          "11",
+          "M",
+          1
+        ],
+        [
+          "424975",
+          "9",
+          "12",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "424975",
+          "12",
+          "31",
+          "L",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "424976",
+      "observed_move_count": 8,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 8,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "424976",
+          "11",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "424976",
+          "11",
+          "38",
+          "XL",
+          1
+        ],
+        [
+          "424976",
+          "11",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "424976",
+          "13",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "424976",
+          "13",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "424976",
+          "31",
+          "11",
+          "S",
+          1
+        ],
+        [
+          "424976",
+          "8",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "424976",
+          "9",
+          "31",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "424977",
+      "observed_move_count": 12,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 2,
+      "observed_only_count": 10,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "424977",
+          "38",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "424977",
+          "6",
+          "31",
+          "L",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "424977",
+          "11",
+          "12",
+          "M",
+          1
+        ],
+        [
+          "424977",
+          "11",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "424977",
+          "38",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "424977",
+          "38",
+          "13",
+          "S",
+          1
+        ],
+        [
+          "424977",
+          "38",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "424977",
+          "6",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "424977",
+          "6",
+          "8",
+          "XL",
+          2
+        ],
+        [
+          "424977",
+          "6",
+          "8",
+          "XXL",
+          1
+        ],
+        [
+          "424977",
+          "9",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "424977",
+          "9",
+          "8",
+          "S",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "424978",
+      "observed_move_count": 11,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 11,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "424978",
+          "11",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "424978",
+          "11",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "424978",
+          "13",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "424978",
+          "13",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "424978",
+          "31",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "424978",
+          "31",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "424978",
+          "38",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "424978",
+          "38",
+          "6",
+          "M",
+          1
+        ],
+        [
+          "424978",
+          "38",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "424978",
+          "6",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "424978",
+          "9",
+          "8",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "424982",
+      "observed_move_count": 10,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 1,
+      "observed_only_count": 9,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "424982",
+          "8",
+          "6",
+          "XL",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "424982",
+          "11",
+          "12",
+          "M",
+          1
+        ],
+        [
+          "424982",
+          "13",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "424982",
+          "13",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "424982",
+          "31",
+          "11",
+          "XXL",
+          1
+        ],
+        [
+          "424982",
+          "31",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "424982",
+          "6",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "424982",
+          "6",
+          "13",
+          "S",
+          1
+        ],
+        [
+          "424982",
+          "9",
+          "12",
+          "XXL",
+          1
+        ],
+        [
+          "424982",
+          "9",
+          "8",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "424984",
+      "observed_move_count": 8,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 1,
+      "observed_only_count": 7,
+      "model_only_count": 1,
+      "overlap_moves": [
+        [
+          "424984",
+          "6",
+          "9",
+          "L",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "424984",
+          "11",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "424984",
+          "11",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "424984",
+          "11",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "424984",
+          "13",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "424984",
+          "38",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "424984",
+          "8",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "424984",
+          "8",
+          "38",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "424984",
+          "8",
+          "31",
+          "XL",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425010",
+      "observed_move_count": 10,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 10,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425010",
+          "11",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "425010",
+          "11",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "425010",
+          "11",
+          "12",
+          "XXL",
+          1
+        ],
+        [
+          "425010",
+          "13",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "425010",
+          "31",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "425010",
+          "6",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "425010",
+          "8",
+          "6",
+          "XS",
+          1
+        ],
+        [
+          "425010",
+          "8",
+          "9",
+          "XL",
+          1
+        ],
+        [
+          "425010",
+          "9",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425010",
+          "9",
+          "38",
+          "XS",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425010",
+          "8",
+          "9",
+          "42",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425013",
+      "observed_move_count": 9,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 9,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425013",
+          "11",
+          "12",
+          "M",
+          1
+        ],
+        [
+          "425013",
+          "12",
+          "9",
+          "XXL",
+          1
+        ],
+        [
+          "425013",
+          "31",
+          "11",
+          "S",
+          1
+        ],
+        [
+          "425013",
+          "31",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "425013",
+          "31",
+          "6",
+          "M",
+          1
+        ],
+        [
+          "425013",
+          "31",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "425013",
+          "38",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "425013",
+          "38",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "425013",
+          "38",
+          "9",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425026",
+      "observed_move_count": 12,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 0,
+      "observed_only_count": 12,
+      "model_only_count": 2,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425026",
+          "11",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "425026",
+          "11",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "425026",
+          "11",
+          "9",
+          "XXL",
+          1
+        ],
+        [
+          "425026",
+          "13",
+          "12",
+          "XXL",
+          1
+        ],
+        [
+          "425026",
+          "13",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425026",
+          "13",
+          "6",
+          "L",
+          1
+        ],
+        [
+          "425026",
+          "13",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "425026",
+          "13",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "425026",
+          "38",
+          "31",
+          "S",
+          1
+        ],
+        [
+          "425026",
+          "6",
+          "11",
+          "S",
+          1
+        ],
+        [
+          "425026",
+          "8",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "425026",
+          "9",
+          "12",
+          "S",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425026",
+          "13",
+          "12",
+          "40",
+          1
+        ],
+        [
+          "425026",
+          "8",
+          "31",
+          "38",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425036",
+      "observed_move_count": 10,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 2,
+      "observed_only_count": 8,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "425036",
+          "13",
+          "6",
+          "M",
+          1
+        ],
+        [
+          "425036",
+          "38",
+          "12",
+          "M",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425036",
+          "11",
+          "12",
+          "S",
+          1
+        ],
+        [
+          "425036",
+          "12",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "425036",
+          "38",
+          "31",
+          "S",
+          1
+        ],
+        [
+          "425036",
+          "38",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "425036",
+          "6",
+          "11",
+          "L",
+          1
+        ],
+        [
+          "425036",
+          "8",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "425036",
+          "9",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "425036",
+          "9",
+          "38",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425109",
+      "observed_move_count": 8,
+      "model_opportunity_count": 5,
+      "overlap_move_count": 0,
+      "observed_only_count": 8,
+      "model_only_count": 5,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425109",
+          "31",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "425109",
+          "31",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "425109",
+          "31",
+          "13",
+          "S",
+          1
+        ],
+        [
+          "425109",
+          "8",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "425109",
+          "8",
+          "6",
+          "S",
+          1
+        ],
+        [
+          "425109",
+          "8",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "425109",
+          "9",
+          "6",
+          "M",
+          1
+        ],
+        [
+          "425109",
+          "9",
+          "6",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425109",
+          "31",
+          "12",
+          "42",
+          1
+        ],
+        [
+          "425109",
+          "31",
+          "13",
+          "38",
+          1
+        ],
+        [
+          "425109",
+          "8",
+          "13",
+          "40",
+          1
+        ],
+        [
+          "425109",
+          "8",
+          "6",
+          "42",
+          1
+        ],
+        [
+          "425109",
+          "9",
+          "6",
+          "38",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425111",
+      "observed_move_count": 13,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 1,
+      "observed_only_count": 12,
+      "model_only_count": 1,
+      "overlap_moves": [
+        [
+          "425111",
+          "11",
+          "8",
+          "M",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425111",
+          "11",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425111",
+          "11",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "425111",
+          "11",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "425111",
+          "12",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "425111",
+          "12",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "425111",
+          "12",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425111",
+          "12",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "425111",
+          "13",
+          "8",
+          "XS",
+          1
+        ],
+        [
+          "425111",
+          "38",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "425111",
+          "38",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "425111",
+          "6",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "425111",
+          "9",
+          "8",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425111",
+          "12",
+          "9",
+          "M",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425113",
+      "observed_move_count": 1,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425113",
+          "9",
+          "8",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425113",
+          "9",
+          "8",
+          "42",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425116",
+      "observed_move_count": 1,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425116",
+          "38",
+          "6",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425116",
+          "11",
+          "6",
+          "M",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425143",
+      "observed_move_count": 9,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 9,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425143",
+          "11",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "425143",
+          "11",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425143",
+          "12",
+          "38",
+          "L",
+          1
+        ],
+        [
+          "425143",
+          "12",
+          "38",
+          "XL",
+          1
+        ],
+        [
+          "425143",
+          "31",
+          "38",
+          "S",
+          1
+        ],
+        [
+          "425143",
+          "6",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "425143",
+          "6",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "425143",
+          "6",
+          "9",
+          "XL",
+          1
+        ],
+        [
+          "425143",
+          "8",
+          "9",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425143",
+          "6",
+          "38",
+          "40",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425144",
+      "observed_move_count": 4,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 4,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425144",
+          "31",
+          "6",
+          "S",
+          1
+        ],
+        [
+          "425144",
+          "31",
+          "6",
+          "XS",
+          1
+        ],
+        [
+          "425144",
+          "38",
+          "12",
+          "S",
+          1
+        ],
+        [
+          "425144",
+          "8",
+          "11",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425144",
+          "31",
+          "11",
+          "40",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425154",
+      "observed_move_count": 4,
+      "model_opportunity_count": 3,
+      "overlap_move_count": 0,
+      "observed_only_count": 4,
+      "model_only_count": 3,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425154",
+          "11",
+          "38",
+          "XL",
+          1
+        ],
+        [
+          "425154",
+          "8",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425154",
+          "8",
+          "31",
+          "S",
+          1
+        ],
+        [
+          "425154",
+          "8",
+          "31",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425154",
+          "11",
+          "38",
+          "42",
+          1
+        ],
+        [
+          "425154",
+          "8",
+          "31",
+          "40",
+          1
+        ],
+        [
+          "425154",
+          "8",
+          "31",
+          "42",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425162",
+      "observed_move_count": 5,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 5,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425162",
+          "31",
+          "13",
+          "XXL",
+          1
+        ],
+        [
+          "425162",
+          "31",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "425162",
+          "6",
+          "12",
+          "S",
+          1
+        ],
+        [
+          "425162",
+          "9",
+          "6",
+          "L",
+          1
+        ],
+        [
+          "425162",
+          "9",
+          "6",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425166",
+      "observed_move_count": 4,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 4,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425166",
+          "12",
+          "38",
+          "3XL",
+          1
+        ],
+        [
+          "425166",
+          "12",
+          "8",
+          "XXL",
+          1
+        ],
+        [
+          "425166",
+          "6",
+          "11",
+          "XXL",
+          1
+        ],
+        [
+          "425166",
+          "8",
+          "38",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425166",
+          "6",
+          "31",
+          "44",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425260",
+      "observed_move_count": 2,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 2,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425260",
+          "11",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "425260",
+          "9",
+          "31",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425283",
+      "observed_move_count": 1,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425283",
+          "38",
+          "31",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425283",
+          "11",
+          "31",
+          "L",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425291",
+      "observed_move_count": 2,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 0,
+      "observed_only_count": 2,
+      "model_only_count": 2,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425291",
+          "8",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "425291",
+          "9",
+          "31",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425291",
+          "6",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "425291",
+          "8",
+          "31",
+          "XL",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425320",
+      "observed_move_count": 12,
+      "model_opportunity_count": 3,
+      "overlap_move_count": 1,
+      "observed_only_count": 11,
+      "model_only_count": 2,
+      "overlap_moves": [
+        [
+          "425320",
+          "38",
+          "31",
+          "L",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425320",
+          "12",
+          "11",
+          "XXL",
+          1
+        ],
+        [
+          "425320",
+          "12",
+          "9",
+          "M",
+          2
+        ],
+        [
+          "425320",
+          "12",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "425320",
+          "13",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "425320",
+          "38",
+          "11",
+          "S",
+          1
+        ],
+        [
+          "425320",
+          "38",
+          "6",
+          "L",
+          1
+        ],
+        [
+          "425320",
+          "38",
+          "6",
+          "M",
+          1
+        ],
+        [
+          "425320",
+          "6",
+          "9",
+          "XL",
+          1
+        ],
+        [
+          "425320",
+          "8",
+          "6",
+          "S",
+          1
+        ],
+        [
+          "425320",
+          "8",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "425320",
+          "9",
+          "11",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425320",
+          "12",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "425320",
+          "9",
+          "6",
+          "L",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425322",
+      "observed_move_count": 12,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 12,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425322",
+          "11",
+          "31",
+          "S",
+          1
+        ],
+        [
+          "425322",
+          "12",
+          "11",
+          "L",
+          1
+        ],
+        [
+          "425322",
+          "12",
+          "38",
+          "XL",
+          1
+        ],
+        [
+          "425322",
+          "12",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "425322",
+          "13",
+          "11",
+          "M",
+          1
+        ],
+        [
+          "425322",
+          "6",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425322",
+          "6",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "425322",
+          "6",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "425322",
+          "9",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "425322",
+          "9",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "425322",
+          "9",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "425322",
+          "9",
+          "8",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425322",
+          "13",
+          "8",
+          "M",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425327",
+      "observed_move_count": 3,
+      "model_opportunity_count": 3,
+      "overlap_move_count": 0,
+      "observed_only_count": 3,
+      "model_only_count": 3,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425327",
+          "11",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "425327",
+          "12",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "425327",
+          "6",
+          "8",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425327",
+          "11",
+          "13",
+          "40",
+          1
+        ],
+        [
+          "425327",
+          "12",
+          "8",
+          "40",
+          1
+        ],
+        [
+          "425327",
+          "6",
+          "9",
+          "40",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425332",
+      "observed_move_count": 11,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 0,
+      "observed_only_count": 11,
+      "model_only_count": 2,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425332",
+          "12",
+          "11",
+          "L",
+          1
+        ],
+        [
+          "425332",
+          "12",
+          "11",
+          "M",
+          1
+        ],
+        [
+          "425332",
+          "12",
+          "31",
+          "3XL",
+          1
+        ],
+        [
+          "425332",
+          "13",
+          "38",
+          "3XL",
+          1
+        ],
+        [
+          "425332",
+          "31",
+          "11",
+          "L",
+          1
+        ],
+        [
+          "425332",
+          "38",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "425332",
+          "38",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "425332",
+          "6",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "425332",
+          "6",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "425332",
+          "9",
+          "11",
+          "3XL",
+          1
+        ],
+        [
+          "425332",
+          "9",
+          "11",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425332",
+          "6",
+          "11",
+          "40",
+          1
+        ],
+        [
+          "425332",
+          "9",
+          "8",
+          "40",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425343",
+      "observed_move_count": 3,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 0,
+      "observed_only_count": 3,
+      "model_only_count": 2,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425343",
+          "38",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "425343",
+          "8",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "425343",
+          "9",
+          "12",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425343",
+          "6",
+          "12",
+          "42",
+          1
+        ],
+        [
+          "425343",
+          "8",
+          "6",
+          "44",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425420",
+      "observed_move_count": 10,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 10,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425420",
+          "11",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "425420",
+          "11",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "425420",
+          "11",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "425420",
+          "31",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "425420",
+          "38",
+          "12",
+          "M",
+          1
+        ],
+        [
+          "425420",
+          "38",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "425420",
+          "38",
+          "13",
+          "S",
+          1
+        ],
+        [
+          "425420",
+          "38",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "425420",
+          "6",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425420",
+          "8",
+          "9",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425422",
+      "observed_move_count": 16,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 1,
+      "observed_only_count": 15,
+      "model_only_count": 1,
+      "overlap_moves": [
+        [
+          "425422",
+          "31",
+          "38",
+          "M",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425422",
+          "11",
+          "12",
+          "M",
+          1
+        ],
+        [
+          "425422",
+          "11",
+          "12",
+          "S",
+          1
+        ],
+        [
+          "425422",
+          "11",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "425422",
+          "11",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "425422",
+          "12",
+          "38",
+          "L",
+          1
+        ],
+        [
+          "425422",
+          "31",
+          "13",
+          "XXL",
+          1
+        ],
+        [
+          "425422",
+          "31",
+          "38",
+          "S",
+          1
+        ],
+        [
+          "425422",
+          "6",
+          "38",
+          "XL",
+          1
+        ],
+        [
+          "425422",
+          "6",
+          "38",
+          "XXL",
+          1
+        ],
+        [
+          "425422",
+          "6",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "425422",
+          "6",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "425422",
+          "6",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "425422",
+          "6",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "425422",
+          "9",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "425422",
+          "9",
+          "8",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425422",
+          "6",
+          "38",
+          "L",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425440",
+      "observed_move_count": 4,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 4,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425440",
+          "13",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "425440",
+          "13",
+          "9",
+          "XL",
+          1
+        ],
+        [
+          "425440",
+          "38",
+          "12",
+          "M",
+          1
+        ],
+        [
+          "425440",
+          "9",
+          "8",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425440",
+          "9",
+          "6",
+          "L",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425441",
+      "observed_move_count": 3,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 3,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425441",
+          "11",
+          "6",
+          "L",
+          1
+        ],
+        [
+          "425441",
+          "11",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "425441",
+          "31",
+          "38",
+          "S",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425442",
+      "observed_move_count": 5,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 5,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425442",
+          "11",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "425442",
+          "11",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "425442",
+          "12",
+          "13",
+          "S",
+          1
+        ],
+        [
+          "425442",
+          "12",
+          "9",
+          "XXL",
+          1
+        ],
+        [
+          "425442",
+          "31",
+          "6",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425442",
+          "31",
+          "8",
+          "M",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425443",
+      "observed_move_count": 4,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 1,
+      "observed_only_count": 3,
+      "model_only_count": 1,
+      "overlap_moves": [
+        [
+          "425443",
+          "8",
+          "13",
+          "L",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425443",
+          "38",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "425443",
+          "6",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "425443",
+          "8",
+          "31",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425443",
+          "12",
+          "8",
+          "M",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425444",
+      "observed_move_count": 8,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 8,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425444",
+          "13",
+          "11",
+          "XXL",
+          1
+        ],
+        [
+          "425444",
+          "13",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425444",
+          "13",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "425444",
+          "13",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "425444",
+          "13",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "425444",
+          "8",
+          "11",
+          "M",
+          1
+        ],
+        [
+          "425444",
+          "8",
+          "11",
+          "XL",
+          1
+        ],
+        [
+          "425444",
+          "9",
+          "38",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425445",
+      "observed_move_count": 1,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 1,
+      "observed_only_count": 0,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "425445",
+          "11",
+          "9",
+          "M",
+          1
+        ]
+      ],
+      "observed_only_moves": [],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425446",
+      "observed_move_count": 6,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 6,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425446",
+          "12",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "425446",
+          "12",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "425446",
+          "9",
+          "13",
+          "XXL",
+          1
+        ],
+        [
+          "425446",
+          "9",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425446",
+          "9",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "425446",
+          "9",
+          "31",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425468",
+      "observed_move_count": 11,
+      "model_opportunity_count": 4,
+      "overlap_move_count": 2,
+      "observed_only_count": 9,
+      "model_only_count": 2,
+      "overlap_moves": [
+        [
+          "425468",
+          "8",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "425468",
+          "9",
+          "38",
+          "XL",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425468",
+          "12",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425468",
+          "13",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425468",
+          "13",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "425468",
+          "31",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "425468",
+          "31",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "425468",
+          "31",
+          "9",
+          "XXL",
+          1
+        ],
+        [
+          "425468",
+          "6",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "425468",
+          "6",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "425468",
+          "8",
+          "13",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425468",
+          "31",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "425468",
+          "6",
+          "38",
+          "M",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425470",
+      "observed_move_count": 14,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 2,
+      "observed_only_count": 12,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "425470",
+          "8",
+          "6",
+          "L",
+          1
+        ],
+        [
+          "425470",
+          "8",
+          "9",
+          "XL",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425470",
+          "11",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425470",
+          "11",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "425470",
+          "11",
+          "6",
+          "M",
+          1
+        ],
+        [
+          "425470",
+          "11",
+          "9",
+          "XXL",
+          1
+        ],
+        [
+          "425470",
+          "13",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425470",
+          "13",
+          "6",
+          "S",
+          1
+        ],
+        [
+          "425470",
+          "31",
+          "38",
+          "S",
+          1
+        ],
+        [
+          "425470",
+          "31",
+          "38",
+          "XXL",
+          1
+        ],
+        [
+          "425470",
+          "8",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "425470",
+          "8",
+          "38",
+          "L",
+          1
+        ],
+        [
+          "425470",
+          "8",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "425470",
+          "8",
+          "9",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425480",
+      "observed_move_count": 1,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 1,
+      "observed_only_count": 0,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "425480",
+          "13",
+          "8",
+          "XXL",
+          1
+        ]
+      ],
+      "observed_only_moves": [],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425557",
+      "observed_move_count": 5,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 2,
+      "observed_only_count": 3,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "425557",
+          "38",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "425557",
+          "8",
+          "31",
+          "XL",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425557",
+          "11",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "425557",
+          "38",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "425557",
+          "38",
+          "9",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425558",
+      "observed_move_count": 8,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 8,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425558",
+          "11",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "425558",
+          "11",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425558",
+          "12",
+          "11",
+          "L",
+          1
+        ],
+        [
+          "425558",
+          "12",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "425558",
+          "6",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "425558",
+          "6",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "425558",
+          "6",
+          "9",
+          "XXL",
+          1
+        ],
+        [
+          "425558",
+          "8",
+          "6",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425561",
+      "observed_move_count": 3,
+      "model_opportunity_count": 3,
+      "overlap_move_count": 0,
+      "observed_only_count": 3,
+      "model_only_count": 3,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425561",
+          "31",
+          "6",
+          "L",
+          1
+        ],
+        [
+          "425561",
+          "38",
+          "9",
+          "XL",
+          1
+        ],
+        [
+          "425561",
+          "8",
+          "6",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425561",
+          "31",
+          "6",
+          "40",
+          1
+        ],
+        [
+          "425561",
+          "31",
+          "9",
+          "42",
+          1
+        ],
+        [
+          "425561",
+          "8",
+          "6",
+          "44",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425566",
+      "observed_move_count": 12,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 12,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425566",
+          "11",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "425566",
+          "11",
+          "12",
+          "S",
+          1
+        ],
+        [
+          "425566",
+          "12",
+          "8",
+          "XXL",
+          1
+        ],
+        [
+          "425566",
+          "13",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "425566",
+          "13",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425566",
+          "31",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "425566",
+          "38",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "425566",
+          "8",
+          "38",
+          "L",
+          1
+        ],
+        [
+          "425566",
+          "8",
+          "38",
+          "S",
+          1
+        ],
+        [
+          "425566",
+          "9",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "425566",
+          "9",
+          "31",
+          "S",
+          1
+        ],
+        [
+          "425566",
+          "9",
+          "6",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425568",
+      "observed_move_count": 4,
+      "model_opportunity_count": 4,
+      "overlap_move_count": 0,
+      "observed_only_count": 4,
+      "model_only_count": 4,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425568",
+          "12",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "425568",
+          "13",
+          "11",
+          "M",
+          1
+        ],
+        [
+          "425568",
+          "8",
+          "9",
+          "XL",
+          1
+        ],
+        [
+          "425568",
+          "9",
+          "6",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425568",
+          "12",
+          "13",
+          "42",
+          1
+        ],
+        [
+          "425568",
+          "31",
+          "6",
+          "38",
+          1
+        ],
+        [
+          "425568",
+          "38",
+          "11",
+          "38",
+          1
+        ],
+        [
+          "425568",
+          "8",
+          "9",
+          "42",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425571",
+      "observed_move_count": 5,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 1,
+      "observed_only_count": 4,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "425571",
+          "8",
+          "12",
+          "L",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425571",
+          "13",
+          "11",
+          "M",
+          1
+        ],
+        [
+          "425571",
+          "31",
+          "12",
+          "S",
+          1
+        ],
+        [
+          "425571",
+          "38",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "425571",
+          "6",
+          "9",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425587",
+      "observed_move_count": 12,
+      "model_opportunity_count": 5,
+      "overlap_move_count": 0,
+      "observed_only_count": 12,
+      "model_only_count": 5,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425587",
+          "11",
+          "38",
+          "L",
+          1
+        ],
+        [
+          "425587",
+          "11",
+          "38",
+          "XL",
+          1
+        ],
+        [
+          "425587",
+          "11",
+          "38",
+          "XXL",
+          1
+        ],
+        [
+          "425587",
+          "12",
+          "31",
+          "S",
+          1
+        ],
+        [
+          "425587",
+          "12",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425587",
+          "13",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "425587",
+          "13",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "425587",
+          "13",
+          "38",
+          "L",
+          1
+        ],
+        [
+          "425587",
+          "31",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425587",
+          "6",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "425587",
+          "6",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "425587",
+          "8",
+          "31",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425587",
+          "11",
+          "12",
+          "42",
+          1
+        ],
+        [
+          "425587",
+          "31",
+          "38",
+          "38",
+          1
+        ],
+        [
+          "425587",
+          "6",
+          "8",
+          "38",
+          1
+        ],
+        [
+          "425587",
+          "8",
+          "38",
+          "40",
+          1
+        ],
+        [
+          "425587",
+          "8",
+          "38",
+          "42",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "425692",
+      "observed_move_count": 8,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 8,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425692",
+          "12",
+          "11",
+          "L",
+          1
+        ],
+        [
+          "425692",
+          "12",
+          "11",
+          "M",
+          1
+        ],
+        [
+          "425692",
+          "31",
+          "11",
+          "S",
+          1
+        ],
+        [
+          "425692",
+          "6",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "425692",
+          "6",
+          "38",
+          "XXL",
+          1
+        ],
+        [
+          "425692",
+          "6",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "425692",
+          "8",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "425692",
+          "8",
+          "38",
+          "S",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425718",
+      "observed_move_count": 7,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 7,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425718",
+          "11",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "425718",
+          "12",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "425718",
+          "31",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "425718",
+          "38",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "425718",
+          "38",
+          "13",
+          "XXL",
+          1
+        ],
+        [
+          "425718",
+          "38",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425718",
+          "38",
+          "31",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425727",
+      "observed_move_count": 1,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425727",
+          "13",
+          "8",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425744",
+      "observed_move_count": 8,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 8,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "425744",
+          "12",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "425744",
+          "12",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "425744",
+          "13",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "425744",
+          "13",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "425744",
+          "13",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "425744",
+          "31",
+          "11",
+          "S",
+          1
+        ],
+        [
+          "425744",
+          "31",
+          "6",
+          "L",
+          1
+        ],
+        [
+          "425744",
+          "31",
+          "6",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425759",
+      "observed_move_count": 3,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 1,
+      "observed_only_count": 2,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "425759",
+          "8",
+          "12",
+          "L",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425759",
+          "31",
+          "12",
+          "XXL",
+          1
+        ],
+        [
+          "425759",
+          "38",
+          "11",
+          "S",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "425829",
+      "observed_move_count": 9,
+      "model_opportunity_count": 4,
+      "overlap_move_count": 3,
+      "observed_only_count": 6,
+      "model_only_count": 1,
+      "overlap_moves": [
+        [
+          "425829",
+          "12",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "425829",
+          "38",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "425829",
+          "8",
+          "31",
+          "XL",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "425829",
+          "12",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "425829",
+          "13",
+          "11",
+          "L",
+          1
+        ],
+        [
+          "425829",
+          "13",
+          "8",
+          "XXL",
+          1
+        ],
+        [
+          "425829",
+          "38",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "425829",
+          "6",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "425829",
+          "9",
+          "38",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "425829",
+          "13",
+          "9",
+          "L",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "426219",
+      "observed_move_count": 1,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426219",
+          "13",
+          "12",
+          "ONE_SIZE",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426233",
+      "observed_move_count": 1,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426233",
+          "31",
+          "12",
+          "ONE_SIZE",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426245",
+      "observed_move_count": 1,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426245",
+          "11",
+          "12",
+          "ONE_SIZE",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426257",
+      "observed_move_count": 1,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426257",
+          "11",
+          "12",
+          "ONE_SIZE",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426259",
+      "observed_move_count": 1,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426259",
+          "6",
+          "8",
+          "ONE_SIZE",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426262",
+      "observed_move_count": 1,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426262",
+          "6",
+          "9",
+          "ONE_SIZE",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426263",
+      "observed_move_count": 1,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 1,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426263",
+          "6",
+          "9",
+          "ONE_SIZE",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426300",
+      "observed_move_count": 11,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 11,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426300",
+          "11",
+          "13",
+          "XXL",
+          1
+        ],
+        [
+          "426300",
+          "11",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "426300",
+          "11",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "426300",
+          "11",
+          "31",
+          "XL",
+          2
+        ],
+        [
+          "426300",
+          "12",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "426300",
+          "8",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "426300",
+          "8",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "426300",
+          "8",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "426300",
+          "9",
+          "13",
+          "XL",
+          1
+        ],
+        [
+          "426300",
+          "9",
+          "38",
+          "M",
+          1
+        ],
+        [
+          "426300",
+          "9",
+          "6",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "426300",
+          "11",
+          "31",
+          "XL",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "426301",
+      "observed_move_count": 15,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 15,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426301",
+          "11",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "426301",
+          "11",
+          "31",
+          "S",
+          1
+        ],
+        [
+          "426301",
+          "11",
+          "6",
+          "L",
+          1
+        ],
+        [
+          "426301",
+          "11",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "426301",
+          "13",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "426301",
+          "13",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "426301",
+          "13",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "426301",
+          "38",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "426301",
+          "38",
+          "12",
+          "M",
+          1
+        ],
+        [
+          "426301",
+          "38",
+          "12",
+          "S",
+          1
+        ],
+        [
+          "426301",
+          "38",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "426301",
+          "8",
+          "6",
+          "M",
+          1
+        ],
+        [
+          "426301",
+          "9",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "426301",
+          "9",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "426301",
+          "9",
+          "8",
+          "XXL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426302",
+      "observed_move_count": 10,
+      "model_opportunity_count": 2,
+      "overlap_move_count": 2,
+      "observed_only_count": 8,
+      "model_only_count": 0,
+      "overlap_moves": [
+        [
+          "426302",
+          "11",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "426302",
+          "38",
+          "9",
+          "L",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "426302",
+          "11",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "426302",
+          "12",
+          "13",
+          "S",
+          1
+        ],
+        [
+          "426302",
+          "31",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "426302",
+          "38",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "426302",
+          "38",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "426302",
+          "38",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "426302",
+          "38",
+          "9",
+          "XXL",
+          1
+        ],
+        [
+          "426302",
+          "8",
+          "13",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426303",
+      "observed_move_count": 4,
+      "model_opportunity_count": 3,
+      "overlap_move_count": 1,
+      "observed_only_count": 3,
+      "model_only_count": 2,
+      "overlap_moves": [
+        [
+          "426303",
+          "8",
+          "6",
+          "M",
+          1
+        ]
+      ],
+      "observed_only_moves": [
+        [
+          "426303",
+          "11",
+          "12",
+          "L",
+          1
+        ],
+        [
+          "426303",
+          "8",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "426303",
+          "9",
+          "13",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "426303",
+          "11",
+          "31",
+          "L",
+          1
+        ],
+        [
+          "426303",
+          "9",
+          "12",
+          "L",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "426304",
+      "observed_move_count": 12,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 12,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426304",
+          "11",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "426304",
+          "11",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "426304",
+          "11",
+          "8",
+          "XXL",
+          1
+        ],
+        [
+          "426304",
+          "12",
+          "31",
+          "M",
+          1
+        ],
+        [
+          "426304",
+          "12",
+          "6",
+          "L",
+          1
+        ],
+        [
+          "426304",
+          "12",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "426304",
+          "38",
+          "31",
+          "XL",
+          1
+        ],
+        [
+          "426304",
+          "38",
+          "31",
+          "XXL",
+          1
+        ],
+        [
+          "426304",
+          "6",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "426304",
+          "9",
+          "31",
+          "L",
+          2
+        ],
+        [
+          "426304",
+          "9",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "426304",
+          "9",
+          "8",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "426304",
+          "9",
+          "31",
+          "L",
+          1
+        ]
+      ]
+    },
+    {
+      "article_id": "426305",
+      "observed_move_count": 9,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 9,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426305",
+          "11",
+          "38",
+          "L",
+          1
+        ],
+        [
+          "426305",
+          "12",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "426305",
+          "13",
+          "38",
+          "S",
+          1
+        ],
+        [
+          "426305",
+          "6",
+          "11",
+          "S",
+          1
+        ],
+        [
+          "426305",
+          "6",
+          "13",
+          "L",
+          1
+        ],
+        [
+          "426305",
+          "6",
+          "31",
+          "S",
+          1
+        ],
+        [
+          "426305",
+          "6",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "426305",
+          "6",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "426305",
+          "8",
+          "31",
+          "L",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426312",
+      "observed_move_count": 10,
+      "model_opportunity_count": 0,
+      "overlap_move_count": 0,
+      "observed_only_count": 10,
+      "model_only_count": 0,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426312",
+          "11",
+          "12",
+          "XL",
+          1
+        ],
+        [
+          "426312",
+          "12",
+          "13",
+          "M",
+          1
+        ],
+        [
+          "426312",
+          "31",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "426312",
+          "31",
+          "9",
+          "S",
+          1
+        ],
+        [
+          "426312",
+          "38",
+          "13",
+          "S",
+          1
+        ],
+        [
+          "426312",
+          "38",
+          "9",
+          "XL",
+          1
+        ],
+        [
+          "426312",
+          "6",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "426312",
+          "6",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "426312",
+          "6",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "426312",
+          "6",
+          "8",
+          "XL",
+          1
+        ]
+      ],
+      "model_only_moves": []
+    },
+    {
+      "article_id": "426319",
+      "observed_move_count": 15,
+      "model_opportunity_count": 1,
+      "overlap_move_count": 0,
+      "observed_only_count": 15,
+      "model_only_count": 1,
+      "overlap_moves": [],
+      "observed_only_moves": [
+        [
+          "426319",
+          "11",
+          "12",
+          "M",
+          1
+        ],
+        [
+          "426319",
+          "11",
+          "12",
+          "S",
+          1
+        ],
+        [
+          "426319",
+          "11",
+          "6",
+          "XL",
+          1
+        ],
+        [
+          "426319",
+          "12",
+          "6",
+          "XXL",
+          1
+        ],
+        [
+          "426319",
+          "13",
+          "8",
+          "L",
+          1
+        ],
+        [
+          "426319",
+          "13",
+          "8",
+          "M",
+          1
+        ],
+        [
+          "426319",
+          "13",
+          "8",
+          "S",
+          1
+        ],
+        [
+          "426319",
+          "13",
+          "8",
+          "XL",
+          1
+        ],
+        [
+          "426319",
+          "31",
+          "9",
+          "M",
+          1
+        ],
+        [
+          "426319",
+          "31",
+          "9",
+          "XL",
+          2
+        ],
+        [
+          "426319",
+          "31",
+          "9",
+          "XXL",
+          1
+        ],
+        [
+          "426319",
+          "38",
+          "6",
+          "S",
+          1
+        ],
+        [
+          "426319",
+          "38",
+          "8",
+          "XXL",
+          1
+        ],
+        [
+          "426319",
+          "38",
+          "9",
+          "L",
+          1
+        ],
+        [
+          "426319",
+          "38",
+          "9",
+          "M",
+          1
+        ]
+      ],
+      "model_only_moves": [
+        [
+          "426319",
+          "31",
+          "8",
+          "XL",
+          1
+        ]
+      ]
+    }
+  ]
+}

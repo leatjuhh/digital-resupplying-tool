@@ -1,0 +1,39 @@
+{
+  "year": 2026,
+  "weeks_included": [
+    12,
+    13,
+    14,
+    16
+  ],
+  "week_summaries": [
+    {
+      "week": 12,
+      "candidate_count": 1734,
+      "observed_move_count": 393,
+      "accepted_candidate_count": 393
+    },
+    {
+      "week": 13,
+      "candidate_count": 2425,
+      "observed_move_count": 474,
+      "accepted_candidate_count": 474
+    },
+    {
+      "week": 14,
+      "candidate_count": 3000,
+      "observed_move_count": 486,
+      "accepted_candidate_count": 486
+    },
+    {
+      "week": 16,
+      "candidate_count": 2697,
+      "observed_move_count": 644,
+      "accepted_candidate_count": 639
+    }
+  ],
+  "total_example_count": 9856,
+  "total_positive_count": 1992,
+  "total_negative_count": 7864,
+  "positive_rate": 0.2021103896103896
+}

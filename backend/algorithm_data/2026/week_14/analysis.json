@@ -1,0 +1,30 @@
+{
+  "year": 2026,
+  "week": 14,
+  "article_count_in_excel": 72,
+  "move_count": 486,
+  "matched_pdf_count": 72,
+  "missing_pdf_count": 0,
+  "missing_pdf_article_ids": [],
+  "extra_pdf_count": 12,
+  "extra_pdf_article_ids": [
+    "417463",
+    "419187",
+    "419188",
+    "423670",
+    "425264",
+    "425268",
+    "425284",
+    "425285",
+    "425298",
+    "425318",
+    "425339",
+    "426249"
+  ],
+  "pdf_source_dir": "Z:\\Herverdeellijsten\\Jaar 2026\\Week 14\\print pdf",
+  "store_totals_loaded_count": 8,
+  "store_totals_source": "Z:\\Herverdeellijsten\\Jaar 2026\\Week 14\\Print_nummers.xlsx:Info + VVN",
+  "store_totals_missing_codes": [],
+  "parse_failure_count": 0,
+  "parse_failures": []
+}
