@@ -12,6 +12,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { api, type PDFBatch, type PDFUploadIngestResponse } from "@/lib/api"
+import { STORE_LIST } from "@/lib/stores"
+import { StoreTotalsForm, parseStoreTotals } from "@/components/uploads/store-totals-form"
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("nl-NL", {
@@ -29,7 +31,9 @@ function isPdfFile(file: File) {
 export function UploadsPageClient() {
   const [batchName, setBatchName] = useState("")
   const [selectedFiles, setSelectedFiles] = useState<File[]>([])
+  const [storeTotalsRaw, setStoreTotalsRaw] = useState<Record<string, string>>({})
   const [fileError, setFileError] = useState<string | null>(null)
+  const [storeTotalsError, setStoreTotalsError] = useState<string | null>(null)
   const [pageError, setPageError] = useState<string | null>(null)
   const [successData, setSuccessData] = useState<PDFUploadIngestResponse | null>(null)
   const [recentBatches, setRecentBatches] = useState<PDFBatch[]>([])
@@ -83,19 +87,33 @@ export function UploadsPageClient() {
       return
     }
 
+    const { totals, missing } = parseStoreTotals(storeTotalsRaw)
+    if (missing.length > 0) {
+      const names = missing
+        .map((code) => STORE_LIST.find((store) => store.code === code)?.name ?? code)
+        .join(", ")
+      setStoreTotalsError(
+        `Vul voor alle filialen een geldige (≥ 0) totaalvoorraad in. Ontbreekt: ${names}.`,
+      )
+      return
+    }
+
     try {
       setIsSubmitting(true)
       setFileError(null)
+      setStoreTotalsError(null)
       setPageError(null)
 
       const response = await api.pdf.uploadPDFs(
         selectedFiles,
         batchName.trim() || undefined,
+        totals,
       )
 
       setSuccessData(response)
       setBatchName("")
       setSelectedFiles([])
+      setStoreTotalsRaw({})
       await loadRecentBatches()
     } catch (error) {
       console.error("Failed to upload PDFs:", error)
@@ -180,6 +198,17 @@ export function UploadsPageClient() {
                 )}
               </div>
 
+              <StoreTotalsForm
+                values={storeTotalsRaw}
+                onChange={(code, value) =>
+                  setStoreTotalsRaw((prev) => ({ ...prev, [code]: value }))
+                }
+                disabled={isSubmitting}
+              />
+              {storeTotalsError && (
+                <p className="text-sm text-destructive">{storeTotalsError}</p>
+              )}
+
               <div className="flex flex-wrap gap-3">
                 <Button type="submit" disabled={selectedFiles.length === 0 || isSubmitting}>
                   {isSubmitting ? (
@@ -200,7 +229,9 @@ export function UploadsPageClient() {
                   disabled={isSubmitting}
                   onClick={() => {
                     setSelectedFiles([])
+                    setStoreTotalsRaw({})
                     setFileError(null)
+                    setStoreTotalsError(null)
                     setSuccessData(null)
                   }}
                 >

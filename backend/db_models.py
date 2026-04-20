@@ -257,24 +257,29 @@ class Feedback(Base):
 class PDFBatch(Base):
     """Batch van PDF extracties - groepeert meerdere PDF extractions"""
     __tablename__ = "pdf_batches"
-    
+
     # Unieke ID voor elke batch
     id = Column(Integer, primary_key=True, index=True)
-    
+
     # Door gebruiker gekozen naam voor deze batch
     naam = Column(String, nullable=False)
-    
+
     # Status: 'PENDING', 'SUCCESS', 'FAILED', 'PARTIAL_SUCCESS'
     status = Column(String, default='PENDING', nullable=False)
-    
+
     # Aantal PDF's in deze batch
     pdf_count = Column(Integer, default=0, nullable=False)
-    
+
     # Aantal succesvol verwerkte PDF's
     processed_count = Column(Integer, default=0, nullable=False)
-    
+
     # Aanmaak tijdstip (automatisch ingevuld)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+    # Bij batch-aanmaak opgegeven totale winkelvoorraad per filiaal (alle artikelen,
+    # ook buiten deze batch) — gebruikt als tiebreaker wanneer verkoopcijfers
+    # gelijk zijn. Formaat: {"store_total_inventory": {"6": 4200, "8": 3800, ...}}
+    extra_data = Column(JSON, nullable=True)
 
 
 class ArtikelVoorraad(Base):

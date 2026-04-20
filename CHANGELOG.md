@@ -7,6 +7,62 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - BUNDLE-PLANNER MET HARDE MIN-3 REGEL (2026-04-20)
+
+- **Nieuwe artikel-level bundle-planner** in `backend/redistribution/algorithm.py` — vervangt per-maat greedy voor de receiver-assignment:
+  - `generate_moves_for_article(article, params, working_inv)` als entrypoint; schakelbaar via `params.enable_bundle_planner` (default `True`)
+  - `_rank_receivers`: composite sort-key `(-total_sales, -series_width, -sum_inv, store_total_inventory, store_code)` garandeert deterministische keuze
+  - `_assign_bundle`: feedt elke receiver tot `min_items_per_receiver` (default 3), prefereert ontbrekende maten in de serie
+  - `_drain_non_receivers`: forceert non-pick winkels naar 0 om de ≥3-of-0 regel structureel af te dwingen
+  - `_consolidate_all_to_top`: R1-uitzondering voor pools < 3 stuks → alles naar top-ranked winkel
+  - BV-grenzen gerespecteerd: elke BV-groep wordt onafhankelijk gepland wanneer `enforce_bv_separation=True`
+
+- **Harde bedrijfsregel**: elke winkel eindigt per artikel op **0 stuks of ≥ 3 stuks** (valide maatreeks). Dit lost de issue op dat voorraad werd uitgesmeerd over 9 winkels met 1-2 stuks elk (zichtbaar op proposal 29, artikel 56490).
+
+- **Tiebreaker bij verkoop-gelijkspel**: winkel met lagere totale winkelvoorraad (som álle artikelen) blijft receiver; winkel met hogere totaalvoorraad wordt leeggehaald.
+
+- **`backend/redistribution/constraints.py`** — nieuwe parameters:
+  - `min_items_per_receiver: int = 3` (harde drempel voor de bundle-planner)
+  - `enable_bundle_planner: bool = True` (feature-flag; op `False` valt het algoritme terug op het legacy per-maat pad)
+
+- **`backend/redistribution/domain.py`** — `StoreInventory.store_total_inventory` veld toegevoegd; `calculate_metrics` accepteert nu een `store_total`-parameter.
+
+- **`backend/db_models.py` + migratie `migrate_add_extra_data.py`** — `pdf_batches.extra_data` (JSON) kolom toegevoegd; slaat `{"store_total_inventory": {...}, "captured_at": <iso>}` op per batch.
+
+- **`backend/routers/pdf_ingest.py`** — `/api/pdf/ingest` endpoint uitgebreid met optionele `store_total_inventory` form-parameter (JSON-string); wordt opgeslagen in `PDFBatch.extra_data`.
+
+- **`backend/redistribution/algorithm.py`** — `load_article_data` en `generate_redistribution_proposals_for_batch` lezen de totals uit `batch.extra_data` en zetten ze per store via `calculate_metrics(store_total=...)`.
+
+- **Frontend — batch-aanmaak uitgebreid met totale-voorraad-invoer:**
+  - `frontend/lib/stores.ts` (nieuw): `STORE_LIST` constante met de 8 MC Company filialen (6, 8, 9, 11, 12, 13, 31, 38)
+  - `frontend/components/uploads/store-totals-form.tsx` (nieuw): grid met 8 numerieke inputs + `parseStoreTotals()` validator
+  - `frontend/components/uploads/uploads-page-client.tsx`: integreert het formulier; submit wordt geblokkeerd tot alle 8 waardes ≥ 0 zijn ingevuld; waardes worden meegestuurd in `api.pdf.uploadPDFs(files, name, storeTotalInventory)`
+
+- **Tests** — `backend/test_bundle_planner.py` (9 tests, allen groen):
+  - `test_min_3_hard_rule_no_store_ends_with_1_or_2` — R1 afgedwongen
+  - `test_under_3_total_all_to_one_store` — R1-uitzondering
+  - `test_sales_tie_lower_store_total_wins_as_receiver` — R3 tiebreaker
+  - `test_bv_scope_respected_no_cross_bv_moves` — R5 BV-grens
+  - `test_top_seller_gets_most_inventory` — R2 ranking
+  - `test_pool_divides_into_correct_number_of_receivers` — pool/3 caps
+  - `test_isolated_bv_with_under_3_consolidates_within_bv` — BV-isolatie bij consolidatie
+  - `test_total_moves_conserve_inventory` — geen stuks verloren
+  - `test_feature_flag_off_falls_back_to_legacy` — feature-flag werkt
+
+### Removed - DEAD RULES-SETTINGS (2026-04-20)
+
+- **`frontend/components/settings/settings-rules.tsx`** verwijderd — de 4 velden (`min_stock_per_store=2`, `max_stock_per_store=10`, `min_stores_per_article=3`, `sales_period_days=30`) werden nergens in `backend/redistribution/` gelezen en conflicteerden visueel met de nieuwe harde min-3 regel (UI zei "min 2", algoritme dwong min 3 af).
+
+- **`frontend/app/settings/settings-page-client.tsx`** — tabblad "Regels" verwijderd, inclusief `canManageRules` permission-check.
+
+- **`frontend/lib/api.ts`** — `RulesSettings` interface + `api.settings.getRules/updateRules` endpoints verwijderd.
+
+- **`backend/routers/settings.py`** — `/api/settings/rules/all` endpoint + rules-category permissiecheck verwijderd.
+
+- **`backend/seed_database.py`** — 4 rules-rows uit settings-seed verwijderd.
+
+- **Migratie `backend/migrate_drop_rules_settings.py`** — verwijdert bestaande `category='rules'` rows uit de settings-tabel van actieve databases.
+
 ### Added - STORE-EXCLUSIELIJST & UI-POLISH (2026-04-18)
 
 - **`backend/redistribution/store_config.py`** (nieuw) — centrale exclusielijst voor niet-herverdeelbare filialen:

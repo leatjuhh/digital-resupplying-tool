@@ -2,7 +2,7 @@
 title: Current State
 category: technical
 tags: [status, roadmap, consolidation]
-last_updated: 2026-04-18 (sessie 3)
+last_updated: 2026-04-20
 related:
   - ../../README.md
   - ../PROJECT_CONTEXT_INDEX.md
@@ -60,6 +60,9 @@ Deze flow moet intact blijven tijdens opschoning van documentatie, backlog en ni
 - **Loginpagina** toont nu live statistieken via een `LiveStat` widget met flash-animatie bij update.
 - **Achtergrondanimatie** herschreven: algoritme-node + winkelknopen met oranje herverdelingsflows en surplus/shortage-ringindicatoren.
 - **DB-bugfix**: `feedback.rating` en `feedback.comment` waren `NOT NULL` in de database maar `nullable=True` in het model — blokkeerde proposal-approval. Database gemigreerd, beide kolommen zijn nu nullable.
+- **Bundle-planner met harde min-3 regel** (2026-04-20): artikel-level planner in `backend/redistribution/algorithm.py` (`generate_moves_for_article`) dwingt af dat elke winkel per artikel op **0 stuks of ≥ 3 stuks** eindigt. Uitzondering: pool < 3 → alles naar top-ranked winkel. Receiver-ranking volgt `(-sales, -series_width, -sum_inv, store_total_inventory, store_code)`. Schakelbaar via `params.enable_bundle_planner` (default `True`).
+- **Tiebreaker totale winkelvoorraad** (2026-04-20): winkel met lagere som van álle artikelen wint als receiver bij verkoop-gelijkspel. Data wordt per batch ingevoerd op de uploads-pagina (8 filiaal-inputs) en opgeslagen in `pdf_batches.extra_data` (migratie `migrate_add_extra_data.py`).
+- **Dode rules-settings verwijderd** (2026-04-20): `frontend/components/settings/settings-rules.tsx`, het tabblad "Regels", de `RulesSettings`-API en de 4 seed-rows (min/max stock, min_stores_per_article, sales_period_days) werden nergens door het algoritme gelezen. Migratie `migrate_drop_rules_settings.py` verwijdert bestaande `category='rules'` rows uit actieve databases.
 
 ## Wat Bewust Geparkeerd Is
 

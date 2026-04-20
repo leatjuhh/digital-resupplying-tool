@@ -38,9 +38,15 @@ class StoreInventory:
     total_sales: int = 0
     demand_score: float = 0.0      # sales / inventory ratio
     batch_total_inventory: int = 0  # totaalvoorraad winkel over hele batch
+    store_total_inventory: int = 0  # absolute totaalvoorraad winkel (alle artikelen, ook buiten batch)
     capacity_ratio: float = 0.0    # batch_total / max_capacity (0.0 = onbekend)
 
-    def calculate_metrics(self, batch_total: int = 0, max_capacity: int = 0):
+    def calculate_metrics(
+        self,
+        batch_total: int = 0,
+        max_capacity: int = 0,
+        store_total: int = 0,
+    ):
         """Bereken afgeleide metrics"""
         self.total_inventory = sum(self.inventory.values())
         self.total_sales = sum(self.sales.values())
@@ -50,6 +56,7 @@ class StoreInventory:
             else 0.0
         )
         self.batch_total_inventory = batch_total
+        self.store_total_inventory = store_total
         if max_capacity > 0 and batch_total > 0:
             self.capacity_ratio = min(1.0, batch_total / max_capacity)
 
