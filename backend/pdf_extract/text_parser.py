@@ -30,6 +30,10 @@ def parse_from_text_lines(text: str) -> Tuple[List[str], List[Dict], Dict, Dict,
     # Find the size header line (contains sizes like XXS/XS/S/M/L or 34/36/38/40)
     size_line_idx = None
     for idx, line in enumerate(lines):
+        # Check for combo letter sizes pattern (XS/S, S/M, M/L, L/XL, XL/XX etc.)
+        if re.search(r'\bXS/S\b|\bS/M\b|\bM/L\b|\bL/XL\b|\bXL/XX', line):
+            size_line_idx = idx
+            break
         # Check for letter sizes pattern
         if re.search(r'\bXXS\b.*\bXS\b.*\bS\b.*\bM\b.*\bL\b', line):
             size_line_idx = idx
@@ -40,9 +44,9 @@ def parse_from_text_lines(text: str) -> Tuple[List[str], List[Dict], Dict, Dict,
             if 'maat' in line.lower() or (idx > 0 and 'filiaal' in lines[idx-1].lower()):
                 size_line_idx = idx
                 break
-    
+
     if size_line_idx is None:
-        return [], [], {}, {}
+        return [], [], {}, {}, []
     
     # Extract sizes from the size line
     size_line = lines[size_line_idx]
@@ -106,7 +110,14 @@ def extract_sizes_from_line(line: str) -> List[str]:
         List of size labels
     """
     sizes = []
-    
+
+    # Check for combo letter sizes first (XS/S, S/M, M/L, L/XL, XL/XX, XL/XXL etc.)
+    combo_sizes = re.findall(r'\b(X{0,3}[SML]\/X{0,3}[SML])\b', line, re.IGNORECASE)
+    if combo_sizes and len(combo_sizes) >= 2:
+        combo_order = ['XS/S', 'S/M', 'M/L', 'L/XL', 'XL/XX', 'XL/XXL']
+        combo_upper = [s.upper() for s in combo_sizes]
+        return sorted(combo_upper, key=lambda x: combo_order.index(x) if x in combo_order else 999)
+
     # Check for numeric sizes first (34, 36, 38, 40, 42, 44, 46, 48, 50, 52, etc.)
     numeric_sizes = re.findall(r'\b(\d{2})\b', line)
     if numeric_sizes and len(numeric_sizes) >= 3:

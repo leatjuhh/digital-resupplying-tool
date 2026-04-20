@@ -102,6 +102,10 @@ LETTER_SIZE_ORDER = [
     'XXXS', 'XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL', 'XXXXL'
 ]
 
+COMBO_LETTER_SIZE_ORDER = [
+    'XS/S', 'S/M', 'M/L', 'L/XL', 'XL/XX', 'XL/XXL',
+]
+
 CUSTOM_SIZE_ORDERS = {}
 
 
@@ -124,8 +128,13 @@ def get_size_order(sizes: list) -> list:
         return sorted(sizes, key=int)
 
     sizes_upper = [s.upper() for s in sizes]
+
     if all(s in LETTER_SIZE_ORDER for s in sizes_upper):
         return sorted(sizes_upper, key=lambda x: LETTER_SIZE_ORDER.index(x))
+
+    if all('/' in s and not s.replace('/', '').isdigit() for s in sizes_upper):
+        return sorted(sizes_upper, key=lambda x: COMBO_LETTER_SIZE_ORDER.index(x)
+                      if x in COMBO_LETTER_SIZE_ORDER else 999)
 
     for name, order in CUSTOM_SIZE_ORDERS.items():
         if all(s in order for s in sizes):

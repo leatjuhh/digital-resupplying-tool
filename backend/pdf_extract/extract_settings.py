@@ -65,12 +65,15 @@ KNOWN_SIZE_PATTERNS = [
     # Numeric sizes
     r'^\d{2}$',  # 34, 36, 38, etc.
     r'^\d{2}/\d{2}$',  # 34/36, etc.
-    
+
     # Letter sizes
     r'^X{0,3}[SML]$',  # XS, S, M, L, XL, XXL, XXXL, etc.
     r'^[SML]$',  # S, M, L
-    
-    # Combined
+
+    # Combo letter sizes (XS/S, S/M, M/L, L/XL, XL/XX, XL/XXL, etc.)
+    r'^(X{0,3}[SML])\/(X{0,3}[SML])$',
+
+    # Combined numeric+letter
     r'^\d{2}[SML]$',  # 34S, 36M, etc.
 ]
 

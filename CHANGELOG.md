@@ -7,6 +7,19 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Fixed - COMBINATIE-MAATBALK ONDERSTEUNING (2026-04-20)
+
+- **`backend/pdf_extract/extract_settings.py`** — nieuw regex-patroon `^(X{0,3}[SML])\/(X{0,3}[SML])$` in `KNOWN_SIZE_PATTERNS`; de table-parser herkent nu `XS/S`, `S/M`, `M/L`, `L/XL`, `XL/XX`, `XL/XXL` als geldige maatkolommen.
+
+- **`backend/pdf_extract/text_parser.py`** — drie fixes:
+  - Early-return bij niet-gevonden maatregelrij gaf 4-tuple terug terwijl pipeline een 5-tuple verwacht → `not enough values to unpack (expected 5, got 4)` opgelost
+  - Header-detectie: combo-maatpatroon als eerste check toegevoegd (`XS/S|S/M|M/L|L/XL|XL/XX`)
+  - `extract_sizes_from_line()`: detecteert en sorteert combo-maten vóór de overige letter-/numeriek-logica
+
+- **`backend/redistribution/constraints.py`** — `COMBO_LETTER_SIZE_ORDER` lijst toegevoegd en `get_size_order()` uitgebreid met een branch die combo-maten correct ordent (`XS/S → S/M → M/L → L/XL → XL/XX`)
+
+- Hiermee verwerkt DRT nu ook voorraadoverzichten met combinatie-maatbalken (bijv. artikel 425462)
+
 ### Added - BUNDLE-PLANNER MET HARDE MIN-3 REGEL (2026-04-20)
 
 - **Nieuwe artikel-level bundle-planner** in `backend/redistribution/algorithm.py` — vervangt per-maat greedy voor de receiver-assignment:

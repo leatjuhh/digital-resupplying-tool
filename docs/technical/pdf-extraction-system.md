@@ -62,7 +62,7 @@ DELETE /api/pdf/batches/{id}        # Delete batch
 
 ### 3. **Data Normalization**
 - Filiaal name normalization ("Mag Part." → "Magazijn Particulier")
-- Size label standardization (XXS, XS, S, M, L, XL, XXL, XXXL, 32-48)
+- Size label standardization (XXS, XS, S, M, L, XL, XXL, XXXL, 32-48, **XS/S, S/M, M/L, L/XL, XL/XX**)
 - Voorraad value conversion ("." → 0, empty → 0, **negative → 0**)
 - Split name reconstruction ("OL Weert" → "Outlet Weert")
 
@@ -268,7 +268,7 @@ The `visual_pdf_test.py` script generates a comprehensive HTML report with:
 ✅ Metadata extraction  
 ✅ Table extraction (multiple strategies)  
 ✅ Text-based fallback parsing  
-✅ Size detection (8 standard sizes + numeric 32-48)  
+✅ Size detection (8 standard sizes + numeric 32-48 + combo sizes XS/S, S/M, M/L, L/XL, XL/XX)  
 ✅ Filiaal name normalization  
 ✅ Voorraad value conversion  
 ✅ Negative voorraad detection and handling  
