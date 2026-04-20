@@ -40,6 +40,8 @@ database.db
 backend/uploads/
 backend/backend/uploads/
 uploads/
+!frontend/app/uploads/
+!frontend/components/uploads/
 *.pdf
 
 # IDE & Editors
