@@ -7,6 +7,13 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Security - DEPENDENCY-OPRUIMING (2026-07-13)
+
+- **npm audit — dev/build-kwetsbaarheden gepatcht (PR-023):** `npm audit fix` (zonder `--force`) toegepast. Frontend: van 9 → 5 kwetsbaarheden — **picomatch** (high, ReDoS) en top-level **postcss** (moderate, XSS in CSS-stringify) gepatcht via lock-only updates (picomatch 2.3.2, postcss 8.5.19, nanoid 3.3.16). Root: de **shell-quote** critical (transitief via de dev-tool `concurrently`) gepatcht → **0 kwetsbaarheden**. Alleen `package-lock.json`-bestanden gewijzigd; geen `package.json`-ranges aangepast.
+- **Resterend, bewust uitgesteld (PR-023):** de 5 overige frontend-advisories zitten allemaal in **Next.js** (SSRF via WebSocket-upgrade, cache-poisoning in RSC-responses, middleware/i18n-bypass) en vereisen `next@16` — een **major, breaking** upgrade (Next 14 → 16, inclusief React 19). Dat valt buiten een kleine opruiming en is gemarkeerd als aparte, apart te testen follow-up.
+- **Verdwaalde lockfile verwijderd (PR-027):** `frontend/pnpm-lock.yaml` (vrijwel leeg: alleen `lockfileVersion` + lege settings) is verwijderd; het project gebruikt npm (`package-lock.json`).
+- **Reproduceerbare dependency-pins (PR-028):** `date-fns` en `next-themes` gaan van `"latest"` naar respectievelijk `"^4.1.0"` en `"^0.4.6"` (de reeds geïnstalleerde versies), in `package.json` én de lockfile-root. Geverifieerd: `npm ci`, `tsc --noEmit`, `next lint` en `next build` blijven groen.
+
 ### Security - RATE LIMITING OP LOGIN (2026-07-13)
 
 - **Brute-force-rem op `/api/auth/login` (PR-013):** mislukte inlogpogingen worden nu per client-IP geteld; na 5 mislukkingen binnen 5 minuten volgt een tijdelijke blokkade (`429 Too Many Requests` met een `Retry-After`-header) i.p.v. onbeperkt door te mogen proberen. Een geslaagde inlog wist de teller. Keying op IP (niet op gebruikersnaam) voorkomt dat een aanvaller een legitiem account kan uitsluiten.
