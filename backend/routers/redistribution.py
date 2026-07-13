@@ -5,8 +5,7 @@ Endpoints voor herverdelingsalgoritme en voorstellen
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from typing import List, Optional
-from datetime import datetime
+from typing import Optional
 
 from database import get_db
 from db_models import ArtikelVoorraad, Batch, User

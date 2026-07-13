@@ -3,7 +3,6 @@ from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from sqlalchemy.orm import Session
 from typing import List
 import os
-import shutil
 from datetime import datetime
 
 # Importeer database models en Pydantic models

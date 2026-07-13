@@ -6,10 +6,8 @@ import re
 from typing import List, Dict, Tuple, Optional
 from .normalizers import (
     normalize_filiaal_name,
-    normalize_size,
     normalize_voorraad_value,
     normalize_verkocht_value,
-    is_totals_row,
     is_verschil_row,
 )
 

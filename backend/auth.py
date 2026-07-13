@@ -95,7 +95,7 @@ def validate_password_strength(password: str, username: str = "") -> tuple[bool,
     sequences = ["123456", "abcdef", "qwerty", "password", "admin"]
     for seq in sequences:
         if seq in password.lower():
-            return False, f"Password mag geen veelvoorkomende sequenties bevatten"
+            return False, "Password mag geen veelvoorkomende sequenties bevatten"
     
     # Check voor herhalingen
     for i in range(len(password) - 5):

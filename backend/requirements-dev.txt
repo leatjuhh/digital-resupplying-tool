@@ -13,3 +13,9 @@ pytest==8.3.4
 # zonder httpx falen test_algorithm_import_router.py, test_dashboard_summary.py
 # en test_user_store_assignments.py bij collectie met ModuleNotFoundError.
 httpx==0.28.1
+
+# Statische analyse (Fase 2, PR-011). Config staat in pyproject.toml.
+# ruff = lint (blokkerende CI-gate); mypy = typecheck (voorlopig informatief,
+# aanscherpen richting strict in Fase 3).
+ruff==0.15.21
+mypy==2.3.0
