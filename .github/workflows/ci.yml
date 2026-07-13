@@ -57,7 +57,8 @@ jobs:
             test_offline_situation_evaluation.py \
             test_algorithm_import_service.py \
             test_proposal_data_mapping.py \
-            test_security_hardening.py
+            test_security_hardening.py \
+            test_redistribution_invariants.py
 
   frontend:
     name: Frontend (tsc, build)
