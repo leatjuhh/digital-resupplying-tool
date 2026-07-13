@@ -23,7 +23,16 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
 # JWT Configuration
-SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-this-in-production")
+# SECRET_KEY is verplicht en heeft bewust GEEN fallback: een gedeelde, publiek
+# bekende default zou het ondertekenen van JWT's onveilig maken (PR-002). De
+# applicatie faalt fail-fast bij het opstarten wanneer de variabele ontbreekt.
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise RuntimeError(
+        "SECRET_KEY ontbreekt. Zet de omgevingsvariabele SECRET_KEY "
+        "(zie backend/.env.example). De applicatie start bewust niet met een "
+        "onveilige default."
+    )
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 15
 REFRESH_TOKEN_EXPIRE_DAYS = 7

@@ -28,6 +28,11 @@ _TEST_DB_FD, _TEST_DB_PATH = tempfile.mkstemp(prefix="drt_test_db_", suffix=".db
 os.close(_TEST_DB_FD)
 os.environ["DATABASE_URL"] = f"sqlite:///{Path(_TEST_DB_PATH).as_posix()}"
 
+# SECRET_KEY is in productie verplicht en heeft geen fallback (zie auth.py); de
+# testsuite heeft een deterministische waarde nodig om te kunnen importeren.
+# setdefault zodat een expliciet in de omgeving gezette SECRET_KEY intact blijft.
+os.environ.setdefault("SECRET_KEY", "test-secret-key-not-for-production-use")
+
 
 @atexit.register
 def _cleanup_test_db() -> None:
