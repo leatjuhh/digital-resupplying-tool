@@ -80,5 +80,8 @@ jobs:
       - name: TypeScript typecheck — verplichte gate
         run: npx tsc --noEmit
 
+      - name: ESLint (next lint) — verplichte gate
+        run: npm run lint
+
       - name: Build (met type-validatie, zonder ignoreBuildErrors) — verplichte gate
         run: npm run build

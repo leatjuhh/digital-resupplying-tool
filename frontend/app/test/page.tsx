@@ -109,7 +109,7 @@ export default function TestPage() {
         <ol className="list-decimal list-inside space-y-1 text-sm">
           <li>Zorg dat de backend draait op http://localhost:8000</li>
           <li>Deze pagina haalt automatisch data op van /api/articles</li>
-          <li>Klik op "Ververs" om data opnieuw op te halen</li>
+          <li>Klik op &quot;Ververs&quot; om data opnieuw op te halen</li>
         </ol>
         <p className="mt-2 text-sm text-gray-600">
           Backend starten: <code className="bg-white px-2 py-1 rounded">cd backend && venv\Scripts\activate && uvicorn main:app --reload</code>
