@@ -801,10 +801,22 @@ async def approve_proposal(
         Updated proposal
     """
     proposal = db.query(Proposal).filter(Proposal.id == proposal_id).first()
-    
+
     if not proposal:
         raise HTTPException(status_code=404, detail="Proposal not found")
-    
+
+    # Idempotentie (PR-006): een reeds goedgekeurd voorstel niet opnieuw
+    # verwerken. Zonder deze guard maakt elke herhaalde aanroep (dubbele klik,
+    # retry) opnieuw een Feedback-rij per move aan. We geven de bestaande staat
+    # terug zonder neveneffecten.
+    if proposal.status == 'approved':
+        return {
+            "id": proposal.id,
+            "status": proposal.status,
+            "reviewed_at": proposal.reviewed_at.isoformat() if proposal.reviewed_at else None,
+            "message": "Proposal was al goedgekeurd (geen wijziging)"
+        }
+
     proposal.status = 'approved'
     proposal.reviewed_at = datetime.now()
     proposal.rejection_reason = None

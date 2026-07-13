@@ -9,16 +9,21 @@ Gekoppelde bevindingen: PR-001 (auth op muterende endpoints).
 """
 from __future__ import annotations
 
+import asyncio
 import io
 import os
 import subprocess
 import sys
 import tempfile
+from datetime import datetime
 
 import pytest
 from fastapi.testclient import TestClient
 
 from main import app
+import db_models
+from database import SessionLocal
+from routers.pdf_ingest import approve_proposal
 from utils import (
     secure_pdf_filename,
     save_upload_within_limit,
@@ -136,3 +141,44 @@ def test_save_upload_within_limit_rejects_and_cleans_up_oversized(tmp_path):
         save_upload_within_limit(_FakeUpload(payload), str(dest), max_bytes=1024)
     # Het gedeeltelijke bestand mag niet blijven staan.
     assert not dest.exists()
+
+
+# --- Idempotentie van approve (PR-006) ---------------------------------------
+
+def test_approve_is_idempotent_when_already_approved():
+    """Een reeds goedgekeurd voorstel opnieuw approven maakt geen dubbele
+    Feedback-rijen aan en heeft geen neveneffecten."""
+    db = SessionLocal()
+    try:
+        proposal = db_models.Proposal(
+            artikelnummer="TESTART",
+            article_name="Test artikel",
+            moves=[{"from_store": "1", "to_store": "2", "size": "M", "qty": 3}],
+            status="approved",
+            reviewed_at=datetime.now(),
+        )
+        db.add(proposal)
+        db.commit()
+        db.refresh(proposal)
+        proposal_id = proposal.id
+
+        feedback_before = (
+            db.query(db_models.Feedback)
+            .filter(db_models.Feedback.proposal_id == proposal_id)
+            .count()
+        )
+
+        result = asyncio.run(
+            approve_proposal(proposal_id=proposal_id, db=db, current_user=None)
+        )
+
+        feedback_after = (
+            db.query(db_models.Feedback)
+            .filter(db_models.Feedback.proposal_id == proposal_id)
+            .count()
+        )
+
+        assert "al goedgekeurd" in result["message"]
+        assert feedback_after == feedback_before, "approve mag geen dubbele Feedback-rijen aanmaken"
+    finally:
+        db.close()
