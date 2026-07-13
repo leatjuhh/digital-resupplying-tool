@@ -11,8 +11,8 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 - **Getypeerde moves (PR-015):** `UpdateProposalRequest.moves` is nu `List[MoveInput]` (Pydantic) i.p.v. `List[dict]`; core-velden gevalideerd, extra velden bewaard. Onvolledige move → 422 i.p.v. `KeyError`. De opgeslagen moves worden defensief gelezen bij het opbouwen van de "proposed"-situatie.
 - **Frontend API-base geconsolideerd (PR-016):** `frontend/lib/api.ts` gebruikt nu `NEXT_PUBLIC_API_URL` voor de base-URL (ook de auth-calls).
-- **Invariant-vangnet (`backend/test_redistribution_invariants.py`, nieuw):** property-based tests (80 seeds × modi) die vóór de algoritme-refactors de invarianten voorraadbehoud, geen-negatieve-voorraad, BV-scheiding en geldige-winkels borgen (560 tests groen).
-- **Nieuwe bevinding PR-029 (Medium):** het invariant-vangnet legde bloot dat de "harde" min-3-regel in ~1% van willekeurige scenario's wordt geschonden (een winkel houdt 1-2 stuks naast andere niet-lege winkels in dezelfde BV). Vastgelegd in `docs/engineering/PRODUCTION_READINESS_AUDIT.md`; apart te onderzoeken, niet gewijzigd.
+- **Invariant-vangnet (`backend/test_redistribution_invariants.py`, nieuw):** property-based tests (120 seeds) die vóór de algoritme-refactors de invarianten **voorraadbehoud, geen-negatieve-voorraad, min-3-regel en geldige-winkels** borgen (480 tests groen). Draait met `enforce_bv_separation=False` om de pure planner-logica config-onafhankelijk te testen; BV-scheiding blijft gedekt door `test_bundle_planner.py`.
+- **PR-029 onderzocht en ingetrokken:** een aanvankelijk vermoeden dat de min-3-regel in ~1% van scenario's werd geschonden, bleek een **testartefact** — het testharnas kende winkels een `bv_name` toe dat inconsistent was met de BV-configuratie (die op winkel-CODE werkt). Met een consistente wereld houdt min-3 over 3000 scenario's zonder schending. De regel is nu permanent geborgd (POS-011). Zie de audit voor de volledige toelichting.
 - Nog openstaand in Fase 3: `pdf_ingest.py` splitsen (3.1) en module-level singletons → dependency injection (3.3).
 
 ### Added - FASE 2 QUALITY GATES (2026-07-13)

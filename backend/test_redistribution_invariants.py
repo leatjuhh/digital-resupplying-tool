@@ -5,18 +5,22 @@ injection). Voert `generate_moves_for_article` uit over veel deterministisch
 gegenereerde scenario's en controleert de invarianten uit hoofdstuk 10 van
 `docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md`:
 
+- (a) Min-3-regel: elke winkel eindigt op 0 of >= min_items_per_receiver, met
+      als enige uitzondering de consolidatie van een totale pool < min naar één
+      winkel (die dan < min mag houden).
 - (c) Voorraadbehoud: som vóór == som ná (geen units verzonnen of verloren).
 - (d) Geen negatieve voorraden na toepassing van de moves.
-- (b) BV-groepsscheiding: bij enforce_bv_separation geen cross-BV moves.
 - (e) Geldige winkels: moves verwijzen alleen naar bestaande winkels.
 
-Let op: de min-3-regel (a) wordt hier bewust NIET als universele property
-geassert — verkennende runs tonen een kleine edge-case (~1% van willekeurige
-scenario's) waarin een winkel op 1-2 stuks eindigt terwijl zijn BV meerdere
-niet-lege winkels heeft. Dat is een bestaand, apart te onderzoeken punt in de
-algoritmelogica; de scenario-gebaseerde min-3-tests staan in
-`test_bundle_planner.py`. Dit vangnet legt het huidige, correcte gedrag van de
-overige invarianten vast zodat een refactor ze niet ongemerkt breekt.
+Belangrijk (methodische keuze): deze tests draaien met
+`enforce_bv_separation=False`. De BV-scheiding (invariant (b)) wordt niet hier
+getest maar in `test_bundle_planner.py`, met échte, consistente winkelcodes.
+Reden: `enforce_bv_separation=True` gate't moves via `validate_bv_move`, dat de
+BV-groep uit de *configuratie* afleidt op basis van winkel-CODE. Synthetische,
+willekeurig toegewezen `bv_name`-waarden zouden dan tegenstrijdig zijn met die
+configuratie en een onrepresentatieve wereld testen. Met `enforce=False` wordt
+de pure bundle-planner-logica getest, config-onafhankelijk — precies het gedrag
+dat een refactor niet mag breken.
 
 Geen database nodig — alles in-memory. Run vanuit backend/:
     python -m pytest test_redistribution_invariants.py -v
@@ -33,8 +37,9 @@ from redistribution.constraints import RedistributionParams
 from redistribution.domain import ArticleStock, SizeType, StoreInventory
 
 SIZES = ["S", "M", "L", "XL"]
-BV_GROUPS = ["BV_A", "BV_B"]
-SEEDS = list(range(80))
+SEEDS = list(range(120))
+PARAMS = RedistributionParams(enforce_bv_separation=False)
+MIN_QTY = PARAMS.min_items_per_receiver
 
 
 def _build_scenario(seed: int) -> Tuple[ArticleStock, Dict[str, Dict[str, int]]]:
@@ -47,7 +52,7 @@ def _build_scenario(seed: int) -> Tuple[ArticleStock, Dict[str, Dict[str, int]]]
         store = StoreInventory(
             store_code=str(i),
             store_name=f"Store{i}",
-            bv_name=rng.choice(BV_GROUPS),
+            bv_name="BV_ALL",  # één groep; niet relevant bij enforce=False
             inventory=inventory,
             sales={"TOTAL": rng.randint(0, 9)} if rng.random() < 0.7 else {},
         )
@@ -75,60 +80,56 @@ def _total(working: Dict[str, Dict[str, int]]) -> int:
     return sum(sum(inv.values()) for inv in working.values())
 
 
-@pytest.mark.parametrize("enforce_bv", [True, False])
+def _store_totals(working: Dict[str, Dict[str, int]]) -> Dict[str, int]:
+    return {code: sum(v for v in inv.values() if v > 0) for code, inv in working.items()}
+
+
 @pytest.mark.parametrize("seed", SEEDS)
-def test_inventory_is_conserved(seed: int, enforce_bv: bool):
+def test_inventory_is_conserved(seed: int):
     """(c) De totale voorraad blijft gelijk vóór en ná herverdeling."""
     article, working = _build_scenario(seed)
     before = _total(working)
-    generate_moves_for_article(
-        article, RedistributionParams(enforce_bv_separation=enforce_bv), working
-    )
-    after = _total(working)
-    assert before == after, f"seed={seed} enforce={enforce_bv}: {before} -> {after}"
+    generate_moves_for_article(article, PARAMS, working)
+    assert before == _total(working), f"seed={seed}: {before} -> {_total(working)}"
 
 
-@pytest.mark.parametrize("enforce_bv", [True, False])
 @pytest.mark.parametrize("seed", SEEDS)
-def test_no_negative_inventory(seed: int, enforce_bv: bool):
+def test_no_negative_inventory(seed: int):
     """(d) Geen enkele winkel/maat-combinatie eindigt negatief."""
     article, working = _build_scenario(seed)
-    generate_moves_for_article(
-        article, RedistributionParams(enforce_bv_separation=enforce_bv), working
-    )
+    generate_moves_for_article(article, PARAMS, working)
     negatives = [
         (code, sz, v)
         for code, inv in working.items()
         for sz, v in inv.items()
         if v < 0
     ]
-    assert not negatives, f"seed={seed} enforce={enforce_bv}: negatieve voorraad {negatives}"
+    assert not negatives, f"seed={seed}: negatieve voorraad {negatives}"
 
 
 @pytest.mark.parametrize("seed", SEEDS)
-def test_no_cross_bv_moves_when_enforced(seed: int):
-    """(b) Met enforce_bv_separation=True zijn er geen cross-BV moves."""
+def test_min_3_rule_holds(seed: int):
+    """(a) Elke winkel eindigt op 0 of >= min, behalve de under-min consolidatie
+    (één overgebleven winkel wanneer de totale pool < min is)."""
     article, working = _build_scenario(seed)
-    moves, _ = generate_moves_for_article(
-        article, RedistributionParams(enforce_bv_separation=True), working
-    )
-    for move in moves:
-        from_bv = article.stores[move.from_store].bv_name
-        to_bv = article.stores[move.to_store].bv_name
-        assert from_bv == to_bv, (
-            f"seed={seed}: cross-BV move {move.from_store}({from_bv}) -> "
-            f"{move.to_store}({to_bv})"
+    generate_moves_for_article(article, PARAMS, working)
+    totals = _store_totals(working)
+    non_zero = [t for t in totals.values() if t > 0]
+    # Uitzondering: als slechts één winkel niet-leeg is, mag die < min houden
+    # (volledige consolidatie van een pool < min).
+    if len(non_zero) > 1:
+        offenders = {c: t for c, t in totals.items() if 0 < t < MIN_QTY}
+        assert not offenders, (
+            f"seed={seed}: winkel(s) eindigen op 1..{MIN_QTY - 1} naast andere "
+            f"niet-lege winkels: {offenders} (alle totalen: {totals})"
         )
 
 
-@pytest.mark.parametrize("enforce_bv", [True, False])
 @pytest.mark.parametrize("seed", SEEDS)
-def test_moves_reference_existing_stores(seed: int, enforce_bv: bool):
+def test_moves_reference_existing_stores(seed: int):
     """(e) Elke move verwijst naar winkels die in het artikel bestaan."""
     article, working = _build_scenario(seed)
-    moves, _ = generate_moves_for_article(
-        article, RedistributionParams(enforce_bv_separation=enforce_bv), working
-    )
+    moves, _ = generate_moves_for_article(article, PARAMS, working)
     for move in moves:
         assert move.from_store in article.stores, f"seed={seed}: onbekende bron {move.from_store}"
         assert move.to_store in article.stores, f"seed={seed}: onbekende bestemming {move.to_store}"

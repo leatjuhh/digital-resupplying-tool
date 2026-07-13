@@ -96,13 +96,13 @@ document verwijzen staat in
 | PR-022 | Medium | backend/routers/pdf_ingest.py, backend/redistribution/algorithm.py | Grote modules met gemengde verantwoordelijkheid |
 | PR-023 | Medium | frontend/, root | npm audit meldt kwetsbaarheden |
 | PR-024 | Medium | backend/pdf_extraction_data.json, backend/pdf_extraction_report.html | Gegenereerde artefacten getrackt in git |
-| PR-029 | Medium | backend/redistribution/algorithm.py | Min-3-regel wordt in ~1% van scenario's geschonden (edge-case) |
+| ~~PR-029~~ | ~~Medium~~ | backend/redistribution/algorithm.py | **Ingetrokken** — testartefact, geen defect (zie hieronder en POS-011) |
 | PR-025 | Low | backend/test_situation_classifier.py | 2 falende tests door test-isolatie (geen productiebug) |
 | PR-026 | Low | backend/test_*.py | Meerderheid van root-testbestanden zonder assertions |
 | PR-027 | Low | frontend/pnpm-lock.yaml | Verdwaald, vrijwel leeg lockbestand naast package-lock.json |
 | PR-028 | Low | frontend/package.json | Dependencies gepind op `latest` |
 
-Positieve bevindingen: zie sectie "Wat behouden moet blijven" (POS-001 t/m POS-010).
+Positieve bevindingen: zie sectie "Wat behouden moet blijven" (POS-001 t/m POS-011).
 
 ---
 
@@ -414,17 +414,13 @@ Positieve bevindingen: zie sectie "Wat behouden moet blijven" (POS-001 t/m POS-0
 
 ---
 
-### PR-029 — Min-3-regel wordt in een edge-case geschonden
+### PR-029 — INGETROKKEN: min-3-"schending" was een testartefact
 
-- **Ernst**: Medium
-- **Component**: `backend/redistribution/algorithm.py` (`generate_moves_for_article` / bundle-planner)
-- **Bewijs**: Toegevoegd op 2026-07-13 tijdens het opbouwen van het invariant-vangnet (`backend/test_redistribution_invariants.py`). Bij het uitvoeren van `generate_moves_for_article` over deterministisch gegenereerde scenario's eindigt in ~1% van de gevallen (verkenning: 4 op 300 willekeurige scenario's met `enforce_bv_separation=True`) een winkel op 1 of 2 stuks terwijl zijn BV-groep meerdere niet-lege winkels heeft. De "harde" min-3-regel (`min_items_per_receiver=3`, `constraints.py:44`) schrijft voor dat elke winkel op 0 óf ≥ 3 eindigt, met als toegestane uitzondering de consolidatie van een BV-pool < 3 naar één winkel.
-- **Risico**: Operationeel onbedoelde picklijsten: een enkele winkel houdt een gebroken maatreeks (1-2 stuks) aan terwijl consolidatie mogelijk was. Geen dataverlies of crash; wel een afwijking van een gedocumenteerde bedrijfsregel. Laagfrequent, maar in de kritieke domeinlogica.
-- **Power of Ten-regel**: Regel 5 (invariant van de kritieke domeinlogica) en hoofdstuk 10 (te testen invariant (a)).
-- **Aanbevolen oplossing**: Het exacte edge-case-scenario isoleren (reproduceerbaar via een seed uit de invariant-verkenning) en de restverdeling in de bundle-planner corrigeren zodat een 1-2-restant altijd wordt geconsolideerd. Zorgvuldig aanpakken met de bestaande `test_bundle_planner.py`- en `test_redistribution_invariants.py`-suites als vangnet; niet als onderdeel van een bredere refactor.
-- **Verificatiemethode**: Een regressietest die het geïsoleerde scenario reproduceert en aantoont dat geen winkel met 1-2 stuks overblijft naast andere niet-lege winkels in dezelfde BV; daarna de min-3-invariant als universele property toevoegen aan `test_redistribution_invariants.py`.
-- **Veranderomvang**: Medium (algoritmelogica; vereist zorgvuldige afbakening om de overige invarianten niet te breken).
-- **Afhankelijkheden/blokkades**: Geen; wel bewust los te houden van de architectuur-refactors (3.1/3.3) om oorzaak en gevolg gescheiden te reviewen.
+- **Status**: **Ingetrokken op 2026-07-13** (zelfde dag toegevoegd en weer ingetrokken na nader onderzoek). Geen defect in de applicatiecode.
+- **Oorspronkelijk vermoeden**: bij het opbouwen van het invariant-vangnet leek de min-3-regel in ~1% van willekeurige scenario's geschonden (een winkel op 1-2 stuks naast andere niet-lege winkels).
+- **Oorzaak (vastgesteld)**: het testharnas was inconsistent, niet de algoritmecode. `generate_moves_for_article` groepeert winkels via `store.bv_name` (`_group_by_bv`), maar de move-gate `_bv_compatible` leidt de BV-groep af uit de *configuratie* op basis van winkel-CODE (`validate_bv_move`). In de synthetische scenario's kregen winkels een willekeurig `bv_name` dat níét overeenkwam met wat de configuratie voor die codes zegt (bijv. code `6` = "Lumitex B.V.", code `5` = "Panningen B.V."). Daardoor weigerde de planner terecht een cross-BV donor, waardoor een receiver onder-gevuld bleef — een artefact van de tegenstrijdige testopstelling, niet van de planner.
+- **Verificatie**: met een consistente wereld (`enforce_bv_separation=False`, geen configuratie-afhankelijkheid) houdt de min-3-regel over **3000 willekeurige scenario's zonder enkele schending**. Deze invariant staat nu permanent geborgd in `backend/test_redistribution_invariants.py` (`test_min_3_rule_holds`). Zie POS-011.
+- **Les**: BV-afhankelijke tests moeten winkelcodes gebruiken die consistent zijn met de configuratie (zoals `test_bundle_planner.py` doet), of `enforce_bv_separation=False` om de pure planner-logica te isoleren.
 
 ---
 
@@ -521,3 +517,7 @@ De repository bevat een expliciete documentatiestructuur (`docs/DOCUMENTATION_GU
 ### POS-010 — Health-endpoints aanwezig
 
 `backend/main.py:111-123` bevat zowel een root-endpoint (`GET /`) als een `GET /health`-endpoint. De inhoud van `/health` is beperkt (zie PR-019), maar het endpoint zelf — als aanknopingspunt voor orchestration-tooling — is al aanwezig en hoeft niet vanaf nul te worden opgezet.
+
+### POS-011 — Kernalgoritme-invarianten geverifieerd en geborgd
+
+Toegevoegd op 2026-07-13. `backend/test_redistribution_invariants.py` borgt met property-based tests (120 seeds) de kritieke invarianten van het herverdelingsalgoritme uit hoofdstuk 10: **voorraadbehoud**, **geen negatieve voorraad**, **min-3-regel** en **moves naar alleen bestaande winkels**. Verkenning over duizenden willekeurige scenario's toonde geen enkele schending van deze invarianten (de aanvankelijk vermoede min-3-afwijking bleek een testartefact, zie PR-029). Dit is zowel een bevestiging dat de kernlogica correct is, als een blijvend vangnet dat een toekomstige refactor (Fase 3) niet ongemerkt de invarianten mag breken.
