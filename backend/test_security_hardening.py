@@ -182,3 +182,11 @@ def test_approve_is_idempotent_when_already_approved():
         assert feedback_after == feedback_before, "approve mag geen dubbele Feedback-rijen aanmaken"
     finally:
         db.close()
+
+
+# --- Refresh-endpoint foutafhandeling (PR-008) -------------------------------
+
+def test_refresh_with_invalid_token_returns_401():
+    """Een ongeldig/malformed refresh token geeft 401 (JWTError-pad), niet 500."""
+    response = client.post("/api/auth/refresh", json={"refresh_token": "not-a-valid-jwt"})
+    assert response.status_code == 401
