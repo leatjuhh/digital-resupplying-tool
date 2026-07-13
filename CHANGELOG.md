@@ -14,7 +14,7 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 - **Frontend TypeScript afgedwongen (PR-010):** `next.config.mjs` `typescript.ignoreBuildErrors` verwijderd nadat de 2 openstaande `TS2339`-fouten zijn opgelost (`BatchWithProposals.batch_name` correct getypeerd). `tsc --noEmit` geeft 0 fouten; de productie-build valideert nu types.
 - **Frontend/backend-koppeling hersteld (vervolg PR-001, raakt PR-016):** de PDF-/proposal-calls in `frontend/lib/api.ts` liepen via een kale `fetch` zonder token; ze gaan nu via de token-bewuste `apiFetch` (voegt Authorization toe + 401→refresh). Zonder deze fix zouden de nu-beschermde endpoints een 401 geven voor ingelogde gebruikers. Lokaal end-to-end bevestigd (upload → proposals → approve → assignments, alle 200).
 - **Setup-robuustheid:** `scripts/setup-backend.ps1` detecteert Python nu op exit-code + versie (3.11+) met meerdere fallbacks, i.p.v. hardcoded `py -3.13`; voorkomt "No suitable Python runtime found" op machines zonder 3.13.
-- Openstaand in Fase 2: frontend ESLint-config (aparte stap i.v.m. ESLint 10 + Next flat-config).
+- **Frontend ESLint (verplichte gate):** ESLint 8 + `eslint-config-next` als reproduceerbare devDependencies (voorheen haalde `npx` ad-hoc ESLint 10); `.eslintrc.json` met `next/core-web-vitals`, lint-script → `next lint`. 6 `react/no-unescaped-entities`-errors opgelost; `npm run lint` is groen (resterende `react-hooks/exhaustive-deps` zijn warnings). CI draait `npm run lint` als verplichte gate. **Hiermee is Fase 2 (quality gates) volledig afgerond.**
 
 ### Security - KRITIEKE HARDENING FASE 1 (2026-07-13)
 
