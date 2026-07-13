@@ -1,0 +1,15 @@
+# Ontwikkel- en testafhankelijkheden (NIET nodig in productie).
+# Installeer samen met de productie-afhankelijkheden:
+#   pip install -r requirements.txt -r requirements-dev.txt
+#
+# Waarom apart: requirements.txt blijft de minimale productie-afhankelijkhedenlijst.
+# Zie docs/engineering/PRODUCTION_READINESS_AUDIT.md (PR-012) en
+# docs/engineering/PRODUCTION_READINESS_PLAN.md (Stap 0.3).
+
+# Testframework — gebruikt door de test_*.py-bestanden in deze map.
+pytest==8.3.4
+
+# Harde runtime-vereiste van fastapi.testclient.TestClient (via Starlette);
+# zonder httpx falen test_algorithm_import_router.py, test_dashboard_summary.py
+# en test_user_store_assignments.py bij collectie met ModuleNotFoundError.
+httpx==0.28.1
