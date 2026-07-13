@@ -20,6 +20,14 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
   - **`docs/engineering/AI_SESSION_HANDOFF.md`** (nieuw) — leeg rapportagesjabloon voor sessie-overdracht tussen Codex/GPT/Claude.
 - **Docs-governance-updates:** `.clinerules` en `docs/DOCUMENTATION_GUIDELINES.md` verwijzen nu naar de canonieke standaard en hanteren dezelfde root-markdown-whitelist (7 bestanden, incl. `CLAUDE.md`/`CHATGPT_PROJECT_INSTRUCTIONS.md`); `docs/PROJECT_CONTEXT_INDEX.md` registreert de nieuwe documenten en neemt de standaard op in de conflictresolutie-volgorde.
 
+### Changed - FASE 0 BASELINE (production-readiness plan) (2026-07-13)
+
+- **Git-hygiëne (PR-003, PR-024):** de drie `backend/database.db.backup_*`-bestanden (waaronder een 241 KB SQLite-kopie met gebruikers-/settingsdata) en de gegenereerde artefacten `backend/pdf_extraction_data.json` + `backend/pdf_extraction_report.html` uit git-tracking gehaald (`git rm --cached`; bestanden blijven lokaal) en aan `.gitignore` toegevoegd. *Let op:* verwijdering uit de git-historie en rotatie van gelekte secrets zijn aparte, nog openstaande vervolgacties.
+- **Testafhankelijkheden (PR-012):** nieuw `backend/requirements-dev.txt` met `pytest` en `httpx`; `requirements.txt` (productie) blijft ongewijzigd.
+- **Test-DB-isolatie (Fase 0.6):** `backend/database.py` leest nu optioneel `DATABASE_URL` uit de omgeving (default = lokale `database.db`, backward-compatible); nieuw `backend/conftest.py` stuurt testruns naar een wegwerpdatabase zodat tests de lokale `database.db` niet muteren; `.env.example` bijgewerkt.
+- **Testisolatie (PR-025):** `backend/test_situation_classifier.py` laat de twee seed-afhankelijke integratietests netjes skippen wanneer er geen batchdata is; unit-baseline gaat van "37 passed, 2 failed" naar "37 passed, 2 skipped".
+- Overdracht vastgelegd in `docs/sessions/2026-07-13.md` (ingevuld handoff-document).
+
 ### Fixed - COMBINATIE-MAATBALK ONDERSTEUNING (2026-04-20)
 
 - **`backend/pdf_extract/extract_settings.py`** — nieuw regex-patroon `^(X{0,3}[SML])\/(X{0,3}[SML])$` in `KNOWN_SIZE_PATTERNS`; de table-parser herkent nu `XS/S`, `S/M`, `M/L`, `L/XL`, `XL/XX`, `XL/XXL` als geldige maatkolommen.
