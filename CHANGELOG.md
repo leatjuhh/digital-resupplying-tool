@@ -7,6 +7,15 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - FASE 2 QUALITY GATES (2026-07-13)
+
+- **CI-pipeline (`.github/workflows/ci.yml`, nieuw):** GitHub Actions met verplichte gates op push (main, `claude/**`) en elke PR — backend `ruff check` + `pytest` (unit + security), frontend `tsc --noEmit` + `npm run build`. `mypy` draait informatief (baseline: 167 meldingen in legacy-code; wordt blokkerend in Fase 3).
+- **Backend statische analyse:** `backend/pyproject.toml` met ruff-config (F/E7/E9, `E712` genegeerd voor SQLAlchemy-filters, legacy scripts uitgesloten) en een milde mypy-baseline; `ruff`/`mypy` toegevoegd aan `requirements-dev.txt`. `ruff check .` is groen na opschoning: ongebruikte imports/f-strings verwijderd, dode variabelen (`was_negative`, `bv_config`) opgeruimd, loop-shadowing (`field` → `meta_field`) en de bare `except:` in `pdf_parser.validate_pdf` opgelost.
+- **Frontend TypeScript afgedwongen (PR-010):** `next.config.mjs` `typescript.ignoreBuildErrors` verwijderd nadat de 2 openstaande `TS2339`-fouten zijn opgelost (`BatchWithProposals.batch_name` correct getypeerd). `tsc --noEmit` geeft 0 fouten; de productie-build valideert nu types.
+- **Frontend/backend-koppeling hersteld (vervolg PR-001, raakt PR-016):** de PDF-/proposal-calls in `frontend/lib/api.ts` liepen via een kale `fetch` zonder token; ze gaan nu via de token-bewuste `apiFetch` (voegt Authorization toe + 401→refresh). Zonder deze fix zouden de nu-beschermde endpoints een 401 geven voor ingelogde gebruikers. Lokaal end-to-end bevestigd (upload → proposals → approve → assignments, alle 200).
+- **Setup-robuustheid:** `scripts/setup-backend.ps1` detecteert Python nu op exit-code + versie (3.11+) met meerdere fallbacks, i.p.v. hardcoded `py -3.13`; voorkomt "No suitable Python runtime found" op machines zonder 3.13.
+- Openstaand in Fase 2: frontend ESLint-config (aparte stap i.v.m. ESLint 10 + Next flat-config).
+
 ### Security - KRITIEKE HARDENING FASE 1 (2026-07-13)
 
 - **Auth op muterende endpoints (PR-001):** PDF-ingest, batch create/upload/delete, proposal approve/reject/edit, redistribution generate en article create/update/delete vereisen nu authenticatie/autorisatie via de bestaande RBAC (`require_permission` / `get_current_active_user`). Voorheen waren deze anoniem aanroepbaar.
