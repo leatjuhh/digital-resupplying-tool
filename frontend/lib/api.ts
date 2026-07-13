@@ -6,8 +6,9 @@
 import { User, LoginCredentials, TokenResponse } from '@/types/auth';
 import { apiClient, apiFetch } from '@/lib/api-client';
 
-// Base URL van de FastAPI backend (localhost tijdens development)
-const API_BASE_URL = 'http://localhost:8000';
+// Base URL van de FastAPI backend. Omgevingsgestuurd (consistent met
+// lib/api-client.ts, PR-016) met localhost als fallback voor development.
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 /**
  * PDF Batch interface

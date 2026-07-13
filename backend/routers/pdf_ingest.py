@@ -7,7 +7,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 import json
 import os
 import shutil
@@ -92,8 +92,21 @@ class RejectProposalRequest(BaseModel):
     reason_code: Optional[str] = None  # Reden-code uit feedback dropdown
 
 
+class MoveInput(BaseModel):
+    # Validatie van door de client aangeleverde moves (PR-015, R7.3/R9.1). De
+    # core-velden zijn verplicht en getypeerd, zodat een onvolledige move een
+    # nette 422 oplevert i.p.v. verderop een ongevangen KeyError. Extra velden
+    # (from_store_name, score, from_bv, feature_snapshot, ...) worden bewaard
+    # via extra="allow", zodat de round-trip met de frontend intact blijft.
+    model_config = ConfigDict(extra="allow")
+    size: str
+    from_store: str
+    to_store: str
+    qty: int
+
+
 class UpdateProposalRequest(BaseModel):
-    moves: List[dict]
+    moves: List[MoveInput]
     reason_code: Optional[str] = None  # Reden voor de edit
     comment: Optional[str] = None      # Optionele toelichting
 
@@ -724,13 +737,17 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
     for store_id, data in stores_inventory.items():
         proposed_inventory[store_id] = dict(data["sizes"])  # Copy current
     
-    # Apply moves
+    # Apply moves. Defensieve toegang op de opgeslagen (JSON) moves: een
+    # onvolledige/legacy move wordt overgeslagen i.p.v. een ongevangen KeyError
+    # te veroorzaken (R7.3).
     for move in proposal.moves:
-        from_store = move["from_store"]
-        to_store = move["to_store"]
-        size = move["size"]
-        qty = move["qty"]
-        
+        from_store = move.get("from_store")
+        to_store = move.get("to_store")
+        size = move.get("size")
+        qty = move.get("qty", 0) or 0
+        if from_store is None or to_store is None or size is None:
+            continue
+
         # Verwijder van bron
         if from_store in proposed_inventory and size in proposed_inventory[from_store]:
             proposed_inventory[from_store][size] = max(0, proposed_inventory[from_store][size] - qty)
@@ -916,19 +933,20 @@ async def update_proposal(
     if not proposal:
         raise HTTPException(status_code=404, detail="Proposal not found")
     
-    # Update moves
-    proposal.moves = payload.moves
+    # Update moves — serialiseer de gevalideerde modellen terug naar dicts voor
+    # de JSON-kolom (extra velden blijven behouden via extra="allow").
+    proposal.moves = [move.model_dump() for move in payload.moves]
     proposal.status = 'edited'
 
     # Recalculate totals
     proposal.total_moves = len(payload.moves)
-    proposal.total_quantity = sum(move.get('qty', 0) for move in payload.moves)
+    proposal.total_quantity = sum(move.qty for move in payload.moves)
 
     # Update stores affected
     stores = set()
     for move in payload.moves:
-        stores.add(move.get('from_store'))
-        stores.add(move.get('to_store'))
+        stores.add(move.from_store)
+        stores.add(move.to_store)
     proposal.stores_affected = list(stores)
 
     # Feedback-record op proposal-niveau bij edit

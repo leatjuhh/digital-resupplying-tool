@@ -192,6 +192,35 @@ def test_refresh_with_invalid_token_returns_401():
     assert response.status_code == 401
 
 
+# --- Getypeerde moves-validatie (PR-015) -------------------------------------
+
+def test_move_input_rejects_missing_core_field():
+    """Een move zonder verplicht core-veld faalt validatie (endpoint -> 422),
+    i.p.v. verderop een ongevangen KeyError."""
+    from pydantic import ValidationError
+    from routers.pdf_ingest import UpdateProposalRequest
+
+    with pytest.raises(ValidationError):
+        # from_store ontbreekt
+        UpdateProposalRequest(moves=[{"size": "M", "to_store": "2", "qty": 3}])
+
+
+def test_move_input_preserves_extra_fields():
+    """De core-velden worden gevalideerd terwijl extra velden behouden blijven
+    (round-trip met de frontend blijft intact)."""
+    from routers.pdf_ingest import UpdateProposalRequest
+
+    req = UpdateProposalRequest(moves=[{
+        "size": "M", "from_store": "1", "to_store": "2", "qty": 3,
+        "from_store_name": "Winkel A", "score": 0.9, "from_bv": "X",
+    }])
+    dumped = req.moves[0].model_dump()
+    assert dumped["from_store"] == "1"
+    assert dumped["qty"] == 3
+    assert dumped["from_store_name"] == "Winkel A"  # extra veld bewaard
+    assert dumped["score"] == 0.9
+
+
 # --- CORS: ALLOWED_ORIGINS wordt daadwerkelijk toegepast (PR-009) -------------
 
 def test_allowed_origins_env_var_is_honored():
