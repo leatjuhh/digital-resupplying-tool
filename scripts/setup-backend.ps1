@@ -3,29 +3,49 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $backendRoot = Join-Path $repoRoot "backend"
 
-function Get-BootstrapPythonCommand {
-    if (Get-Command py -ErrorAction SilentlyContinue) {
-        $candidates = @(
-            @("py", "-3.13"),
-            @("py", "-3"),
-            @("py")
-        )
+function Test-PythonCandidate {
+    param([string[]]$CommandParts)
 
-        foreach ($candidate in $candidates) {
-            try {
-                Invoke-CommandParts -CommandParts $candidate -ExtraArgs @("-c", "import sys") | Out-Null
-                return $candidate
-            }
-            catch {
-            }
+    # Een kandidaat is bruikbaar als hij daadwerkelijk draait EN Python 3.11+ is.
+    # We controleren de exit-code expliciet: `py -3.13` op een machine zonder 3.13
+    # print een fout maar levert (afhankelijk van PowerShell-versie) geen exception
+    # op, dus alleen op exit-code vertrouwen is niet genoeg -> exit-code checken.
+    try {
+        Invoke-CommandParts -CommandParts $CommandParts -ExtraArgs @(
+            "-c", "import sys; sys.exit(0 if sys.version_info[:2] >= (3, 11) else 1)"
+        ) 2>$null | Out-Null
+    }
+    catch {
+        return $false
+    }
+    return ($LASTEXITCODE -eq 0)
+}
+
+function Get-BootstrapPythonCommand {
+    $candidates = @()
+    if (Get-Command py -ErrorAction SilentlyContinue) {
+        # Meerdere expliciete versies plus generieke selectors, zodat een
+        # ontbrekende specifieke versie netjes doorvalt naar een aanwezige.
+        $candidates += ,@("py", "-3.13")
+        $candidates += ,@("py", "-3.12")
+        $candidates += ,@("py", "-3.11")
+        $candidates += ,@("py", "-3")
+        $candidates += ,@("py")
+    }
+    if (Get-Command python -ErrorAction SilentlyContinue) {
+        $candidates += ,@("python")
+    }
+    if (Get-Command python3 -ErrorAction SilentlyContinue) {
+        $candidates += ,@("python3")
+    }
+
+    foreach ($candidate in $candidates) {
+        if (Test-PythonCandidate -CommandParts $candidate) {
+            return $candidate
         }
     }
 
-    if (Get-Command python -ErrorAction SilentlyContinue) {
-        return @("python")
-    }
-
-    throw "Geen werkende Python-installatie gevonden om de backend-venv opnieuw op te bouwen."
+    throw "Geen werkende Python 3.11+ gevonden om de backend-venv op te bouwen. Installeer Python 3.11 of nieuwer (bijv. 'winget install Python.Python.3.12' of via python.org, met 'Add to PATH')."
 }
 
 function Invoke-CommandParts {
