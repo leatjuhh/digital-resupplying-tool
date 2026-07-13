@@ -1,7 +1,10 @@
 # Importeer benodigde packages voor FastAPI, CORS en omgevingsvariabelen
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
+from sqlalchemy import text
+import logging
 import os
 
 # Importeer de routers voor verschillende endpoints
@@ -24,6 +27,15 @@ from routers import (
 
 # Laad omgevingsvariabelen uit .env bestand
 load_dotenv()
+
+# Centrale logging-configuratie (PR-019): één plek i.p.v. verspreide
+# logging.basicConfig-aanroepen in individuele modules, zodat het loggedrag
+# deterministisch is en later uitbreidbaar naar gestructureerd (JSON-)loggen.
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 # Maak een FastAPI applicatie aan met metadata
 app = FastAPI(
@@ -120,5 +132,21 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint"""
-    return {"status": "healthy"}
+    """Health check endpoint — bevestigt tevens databaseconnectiviteit (PR-019).
+
+    Een statische 'healthy' verbergt een database-uitval; daarom wordt een lichte
+    query uitgevoerd. Bij falen volgt een 503 zodat orchestration-tooling de
+    onbeschikbaarheid van een afhankelijkheid daadwerkelijk waarneemt.
+    """
+    try:
+        with engine.connect() as connection:
+            connection.execute(text("SELECT 1"))
+    except Exception:
+        # Brede vangst is hier bewust: elke DB-fout betekent 'niet gezond'. De
+        # fout wordt met stacktrace gelogd (R7.1), geen details naar de client.
+        logger.exception("Health check: database niet bereikbaar")
+        return JSONResponse(
+            status_code=503,
+            content={"status": "unhealthy", "database": "unreachable"},
+        )
+    return {"status": "healthy", "database": "ok"}

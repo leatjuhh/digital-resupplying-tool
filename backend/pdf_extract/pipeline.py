@@ -28,8 +28,8 @@ from .normalizers import (
 )
 from .text_parser import parse_from_text_lines
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
+# Logging: centrale configuratie staat in main.py (PR-019); hier alleen een
+# module-logger ophalen.
 logger = logging.getLogger(__name__)
 
 

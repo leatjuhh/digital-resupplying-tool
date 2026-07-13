@@ -221,6 +221,17 @@ def test_move_input_preserves_extra_fields():
     assert dumped["score"] == 0.9
 
 
+# --- Health check met DB-connectiviteit (PR-019) -----------------------------
+
+def test_health_check_reports_database_connectivity():
+    """/health voert een echte DB-query uit en rapporteert de databasestatus."""
+    response = client.get("/health")
+    assert response.status_code == 200
+    body = response.json()
+    assert body["status"] == "healthy"
+    assert body["database"] == "ok"
+
+
 # --- CORS: ALLOWED_ORIGINS wordt daadwerkelijk toegepast (PR-009) -------------
 
 def test_allowed_origins_env_var_is_honored():
