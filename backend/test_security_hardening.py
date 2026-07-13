@@ -190,3 +190,34 @@ def test_refresh_with_invalid_token_returns_401():
     """Een ongeldig/malformed refresh token geeft 401 (JWTError-pad), niet 500."""
     response = client.post("/api/auth/refresh", json={"refresh_token": "not-a-valid-jwt"})
     assert response.status_code == 401
+
+
+# --- CORS: ALLOWED_ORIGINS wordt daadwerkelijk toegepast (PR-009) -------------
+
+def test_allowed_origins_env_var_is_honored():
+    """Een via ALLOWED_ORIGINS geconfigureerde origin krijgt een CORS-antwoord.
+
+    De app leest ALLOWED_ORIGINS bij import, dus dit draait in een subprocess met
+    een custom waarde en een eigen wegwerpdatabase.
+    """
+    with tempfile.TemporaryDirectory() as cwd:
+        db_path = os.path.join(cwd, "cors_test.db")
+        env = {
+            **os.environ,
+            "ALLOWED_ORIGINS": "http://custom.example:3000",
+            "SECRET_KEY": "test-secret-key-not-for-production-use",
+            "DATABASE_URL": f"sqlite:///{db_path}",
+            "PYTHONPATH": BACKEND_DIR,
+        }
+        code = (
+            "from fastapi.testclient import TestClient\n"
+            "from main import app\n"
+            "c = TestClient(app)\n"
+            "r = c.get('/health', headers={'Origin': 'http://custom.example:3000'})\n"
+            "print('ACAO=' + str(r.headers.get('access-control-allow-origin')))\n"
+        )
+        result = subprocess.run(
+            [sys.executable, "-c", code], cwd=cwd, env=env, capture_output=True, text=True
+        )
+    assert result.returncode == 0, result.stderr
+    assert "ACAO=http://custom.example:3000" in result.stdout, result.stdout

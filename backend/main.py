@@ -42,18 +42,19 @@ allowed_origins_str = os.getenv(
     "http://localhost:3000,http://127.0.0.1:3000"
 )
 
-# Parse CORS origins - support voor wildcards
-allowed_origins = []
-for origin in allowed_origins_str.split(","):
-    origin = origin.strip()
-    if "*" in origin:
-        # Voor wildcards, gebruik regex pattern
-        allowed_origins.append(origin)
-    else:
-        allowed_origins.append(origin)
+# Parse CORS origins uit de omgevingsvariabele (komma-gescheiden lijst).
+allowed_origins = [o.strip() for o in allowed_origins_str.split(",") if o.strip()]
 
+# De expliciet geconfigureerde origins uit ALLOWED_ORIGINS worden nu daadwerkelijk
+# doorgegeven aan de middleware (PR-009: voorheen werd deze lijst opgebouwd maar
+# nooit gebruikt). Daarnaast blijft een regex voor lokale LAN-adressen actief,
+# zodat mobiel testen op hetzelfde netwerk blijft werken.
+# LET OP (productie / Fase 4): dit private-IP-bereik met allow_credentials=True is
+# bewust ruim voor lokale ontwikkeling. Beperk of verwijder de regex zodra het
+# productiedeploymentdoel bekend is en configureer uitsluitend ALLOWED_ORIGINS.
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=allowed_origins,   # Expliciet geconfigureerde origins (env)
     allow_origin_regex=r"http://(localhost|127\.0\.0\.1|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.\d+\.\d+\.\d+):3000",
     allow_credentials=True,          # Sta cookies en credentials toe
     allow_methods=["*"],             # Sta alle HTTP methods toe (GET, POST, PUT, DELETE, etc.)
