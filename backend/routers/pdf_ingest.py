@@ -14,7 +14,8 @@ import shutil
 import logging
 
 from database import get_db
-from db_models import PDFBatch, ArtikelVoorraad, PDFParseLog, Proposal, Feedback
+from db_models import PDFBatch, ArtikelVoorraad, PDFParseLog, Proposal, Feedback, User
+from auth import require_permission
 from assignment_service import sync_assignments_for_proposal
 from pdf_extract import parse_pdf_to_records
 from redistribution.algorithm import generate_redistribution_proposals_for_batch
@@ -97,7 +98,8 @@ async def ingest_pdfs(
     files: List[UploadFile] = File(...),
     batch_name: Optional[str] = Form(None),
     store_total_inventory: Optional[str] = Form(None),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_permission("upload_pdfs"))
 ):
     """
     Ingest one or more PDF files
@@ -531,7 +533,11 @@ async def get_batch_details(batch_id: int, db: Session = Depends(get_db)):
 
 
 @router.delete("/batches/{batch_id}")
-async def delete_batch(batch_id: int, db: Session = Depends(get_db)):
+async def delete_batch(
+    batch_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_permission("manage_batches"))
+):
     """
     Delete a batch and all its data
     
@@ -762,7 +768,11 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
 
 
 @router.post("/proposals/{proposal_id}/approve")
-async def approve_proposal(proposal_id: int, db: Session = Depends(get_db)):
+async def approve_proposal(
+    proposal_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_permission("approve_proposals"))
+):
     """
     Approve a proposal
     
@@ -809,7 +819,8 @@ async def approve_proposal(proposal_id: int, db: Session = Depends(get_db)):
 async def reject_proposal(
     proposal_id: int,
     payload: Optional[RejectProposalRequest] = None,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_permission("reject_proposals"))
 ):
     """
     Reject a proposal
@@ -859,7 +870,8 @@ async def reject_proposal(
 async def update_proposal(
     proposal_id: int,
     payload: UpdateProposalRequest,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_permission("edit_proposals"))
 ):
     """
     Update a proposal with edited moves

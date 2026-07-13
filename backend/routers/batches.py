@@ -10,6 +10,7 @@ from datetime import datetime
 from database import get_db
 import db_models
 from models import BatchCreate, BatchResponse, PDFUploadResponse, BatchDetailResponse
+from auth import require_permission
 
 # Importeer PDF parser
 from pdf_parser import parse_voorraad_pdf, validate_pdf
@@ -23,7 +24,11 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
 @router.post("/batches/create", response_model=BatchResponse)
-async def create_batch(batch_data: BatchCreate, db: Session = Depends(get_db)):
+async def create_batch(
+    batch_data: BatchCreate,
+    db: Session = Depends(get_db),
+    current_user: db_models.User = Depends(require_permission("manage_batches"))
+):
     """
     Maak een nieuwe batch aan voor PDF uploads
     
@@ -49,7 +54,8 @@ async def create_batch(batch_data: BatchCreate, db: Session = Depends(get_db)):
 async def upload_pdf_to_batch(
     batch_id: int,
     file: UploadFile = File(...),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: db_models.User = Depends(require_permission("upload_pdfs"))
 ):
     """
     Upload een PDF naar een bestaande batch
