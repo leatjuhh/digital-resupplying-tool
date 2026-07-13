@@ -430,6 +430,10 @@ export interface ExternalAlgorithmProposalComparison {
  * Batch with proposals
  */
 export interface BatchWithProposals extends PDFBatch {
+  // De proposals-endpoint (GET /api/pdf/batches/{id}/proposals) levert de
+  // batchnaam als `batch_name` (backend: routers/pdf_ingest.py). Expliciet
+  // getypeerd zodat consumenten dit veld type-veilig kunnen gebruiken.
+  batch_name: string;
   total_proposals: number;
   status_counts: {
     pending: number;
