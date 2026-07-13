@@ -7,6 +7,12 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Security - RATE LIMITING OP LOGIN (2026-07-13)
+
+- **Brute-force-rem op `/api/auth/login` (PR-013):** mislukte inlogpogingen worden nu per client-IP geteld; na 5 mislukkingen binnen 5 minuten volgt een tijdelijke blokkade (`429 Too Many Requests` met een `Retry-After`-header) i.p.v. onbeperkt door te mogen proberen. Een geslaagde inlog wist de teller. Keying op IP (niet op gebruikersnaam) voorkomt dat een aanvaller een legitiem account kan uitsluiten.
+- **Implementatie (`backend/rate_limit.py`, nieuw):** een ingekapselde `LoginRateLimiter` met `threading.Lock`, automatische expiry-invalidatie en een bovengrens op het aantal bijgehouden sleutels (begrensd geheugen, R2/R3). De limiter wordt via dependency injection (`Depends`) aan de handler aangeboden. De procesbrede singleton is een bewuste, gedocumenteerde **AFWIJKING op R6.1** (cache met invalidatie), met de tests hieronder als compenserende controle. Bekende beperking: de teller is per proces (bij meerdere workers is een gedeelde store zoals Redis nodig — buiten scope).
+- **Tests:** `backend/test_rate_limit.py` (10 deterministische unit-tests via een geïnjecteerde klok: drempel, blokkade, expiry, venster-reset, isolatie per sleutel, pruning/bovengrens, configuratievalidatie) + een integratietest in `test_security_hardening.py` die de `429`-respons met `Retry-After` op `/api/auth/login` aantoont. Toegevoegd aan de CI-testlijst.
+
 ### Added - OBSERVABILITY & FRONTEND-ROBUUSTHEID (2026-07-13)
 
 - **Centrale logging (PR-019):** één `logging.basicConfig` bij opstart in `backend/main.py`; de verspreide aanroepen in `routers/pdf_ingest.py` en `pdf_extract/pipeline.py` zijn verwijderd.

@@ -232,6 +232,37 @@ def test_health_check_reports_database_connectivity():
     assert body["database"] == "ok"
 
 
+# --- Rate limiting op login (PR-013) -----------------------------------------
+
+def test_login_rate_limit_returns_429_after_repeated_failures():
+    """Na de drempel aan mislukte inlogpogingen geeft /login een 429 met een
+    Retry-After-header, i.p.v. onbeperkt 401's toe te staan (brute-force)."""
+    from rate_limit import LoginRateLimiter, get_login_rate_limiter
+
+    # Verse limiter met een lage drempel, via dependency-override zodat de test
+    # geïsoleerd is van de procesbrede singleton.
+    limiter = LoginRateLimiter(max_attempts=3, window_seconds=60, lockout_seconds=60)
+    app.dependency_overrides[get_login_rate_limiter] = lambda: limiter
+    try:
+        # Onder de drempel: nog steeds de normale 401 (geen bestaande gebruiker).
+        for _ in range(3):
+            resp = client.post(
+                "/api/auth/login",
+                data={"username": "nobody", "password": "wrong"},
+            )
+            assert resp.status_code == 401, resp.text
+
+        # Volgende poging wordt geblokkeerd.
+        blocked = client.post(
+            "/api/auth/login",
+            data={"username": "nobody", "password": "wrong"},
+        )
+        assert blocked.status_code == 429, blocked.text
+        assert "retry-after" in {k.lower() for k in blocked.headers}
+    finally:
+        app.dependency_overrides.pop(get_login_rate_limiter, None)
+
+
 # --- CORS: ALLOWED_ORIGINS wordt daadwerkelijk toegepast (PR-009) -------------
 
 def test_allowed_origins_env_var_is_honored():

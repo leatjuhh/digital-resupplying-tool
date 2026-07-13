@@ -3,7 +3,7 @@ Authentication router - Login, logout, refresh endpoints
 """
 import logging
 from datetime import datetime
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordRequestForm
 from jose import JWTError
 from sqlalchemy.orm import Session
@@ -19,6 +19,7 @@ from auth import (
     get_current_active_user,
     decode_token
 )
+from rate_limit import LoginRateLimiter, get_login_rate_limiter
 
 logger = logging.getLogger(__name__)
 
@@ -55,24 +56,44 @@ class UserResponse(BaseModel):
 
 @router.post("/login", response_model=Token)
 async def login(
+    request: Request,
     form_data: OAuth2PasswordRequestForm = Depends(),
     remember_me: bool = False,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    rate_limiter: LoginRateLimiter = Depends(get_login_rate_limiter),
 ):
     """
     Login endpoint - Authenticeer gebruiker met username en password
-    
+
     Returns JWT access en refresh tokens
     """
+    # Rate limiting (PR-013): begrens brute-force op basis van de client-IP.
+    # Achter een reverse proxy moet de echte client-IP via proxy-headers worden
+    # doorgegeven; in de directe (dev-)opstelling is request.client.host correct.
+    client_key = request.client.host if request.client else "onbekend"
+    retry_after = rate_limiter.check(client_key)
+    if retry_after is not None:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Te veel mislukte inlogpogingen. Probeer het later opnieuw.",
+            headers={"Retry-After": str(retry_after)},
+        )
+
     # Authenticeer gebruiker
     user = authenticate_user(db, form_data.username, form_data.password)
     if not user:
+        # Mislukte poging telt mee voor de rate limit.
+        rate_limiter.register_failure(client_key)
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Onjuiste gebruikersnaam of wachtwoord",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
+
+    # Geldige inloggegevens: wis de teller voor deze client (ook bij een verder
+    # gedeactiveerd account — dit is geen brute-force-poging).
+    rate_limiter.reset(client_key)
+
     if not user.is_active:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,

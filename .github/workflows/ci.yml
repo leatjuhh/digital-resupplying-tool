@@ -58,6 +58,7 @@ jobs:
             test_algorithm_import_service.py \
             test_proposal_data_mapping.py \
             test_security_hardening.py \
+            test_rate_limit.py \
             test_redistribution_invariants.py
 
   frontend:
