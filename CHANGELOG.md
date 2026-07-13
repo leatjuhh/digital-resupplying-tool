@@ -7,6 +7,17 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Security - KRITIEKE HARDENING FASE 1 (2026-07-13)
+
+- **Auth op muterende endpoints (PR-001):** PDF-ingest, batch create/upload/delete, proposal approve/reject/edit, redistribution generate en article create/update/delete vereisen nu authenticatie/autorisatie via de bestaande RBAC (`require_permission` / `get_current_active_user`). Voorheen waren deze anoniem aanroepbaar.
+- **SECRET_KEY verplicht (PR-002):** hardcoded fallback-secret verwijderd; de backend faalt fail-fast bij het opstarten zonder `SECRET_KEY`. `check_secret_key.py` print de sleutel niet langer.
+- **Veilige uploads (PR-004/PR-005):** upload-bestandsnamen worden gesaneerd (path traversal en niet-`.pdf` geblokkeerd) en de bestandsgrootte is begrensd (25 MB, streaming). `batches.py` lekt geen ruwe exception-tekst meer naar de client (PR-014).
+- **Idempotente approve (PR-006):** een reeds goedgekeurd voorstel opnieuw approven maakt geen dubbele `Feedback`-rijen meer aan.
+- **Foutafhandeling refresh (PR-008):** de refresh-tokenhandler vangt niet langer alle exceptions breed af; alleen een ongeldig token geeft 401, serverfouten geven 500 met logging.
+- **CORS (PR-009):** `ALLOWED_ORIGINS` wordt nu daadwerkelijk aan de CORS-middleware doorgegeven (was dode code).
+- **Config:** `DATABASE_URL` (optioneel) en `SECRET_KEY` (verplicht) toegevoegd aan `backend/.env.example`.
+- **Tests:** `backend/test_security_hardening.py` (auth-401 per endpoint, fail-fast, filename-/groottevalidatie, idempotentie, refresh-401, CORS). Bewust uitgesteld: transactiegrens bij multi-file ingest (PR-007) en unique constraint op `ArtikelVoorraad` (PR-006, vereist data-audit).
+
 ### Added - ENGINEERING STANDAARD, AUDIT & AI-INSTRUCTIELAAG (2026-07-13)
 
 - **`docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md`** (nieuw) — canonieke engineeringstandaard, een projectspecifieke vertaling van P10 ("The Power of Ten — Rules for Developing Safety Critical Code", Holzmann/NASA-JPL); bij conflict met elk ander instructie- of adapterbestand altijd leidend.

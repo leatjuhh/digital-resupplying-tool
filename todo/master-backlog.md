@@ -40,6 +40,24 @@ Er is één herhaalbare checklist of testset waarmee de leidende kernflow end-to
 **Status**  
 done
 
+### Titel
+Kritieke security-hardening op de API (production-readiness Fase 1)
+
+**Waarom dit nu telt**  
+Muterende endpoints waren anoniem aanroepbaar en `SECRET_KEY` had een publiek bekende fallback — directe risico's op ongeautoriseerde mutaties en tokenvervalsing.
+
+**Concrete ingreep**  
+Auth/permissies op alle muterende endpoints, `SECRET_KEY` verplicht (fail-fast), upload-filename-sanitisering + groottelimiet, idempotente approve, smallere refresh-foutafhandeling en werkende `ALLOWED_ORIGINS`. Zie `docs/engineering/PRODUCTION_READINESS_PLAN.md` Fase 1.
+
+**Afhankelijkheden**  
+Geen.
+
+**Acceptatiecriteria**  
+`backend/test_security_hardening.py` is groen (o.a. 401 op elk muterend endpoint zonder token, fail-fast zonder `SECRET_KEY`).
+
+**Status**  
+done
+
 ## P1 Daarna afmaken
 
 ### Titel
