@@ -4,7 +4,7 @@
  */
 
 import { User, LoginCredentials, TokenResponse } from '@/types/auth';
-import { apiClient } from '@/lib/api-client';
+import { apiClient, apiFetch } from '@/lib/api-client';
 
 // Base URL van de FastAPI backend (localhost tijdens development)
 const API_BASE_URL = 'http://localhost:8000';
@@ -480,24 +480,11 @@ export interface BatchWithPDFs extends Batch {
  * Generic API fetch wrapper
  */
 async function fetchAPI<T>(endpoint: string): Promise<T> {
-  // Bouw de volledige URL
-  const url = `${API_BASE_URL}${endpoint}`;
-  
-  // Voer de fetch request uit naar de backend
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  // Controleer of de request succesvol was
-  if (!response.ok) {
-    throw new Error(`API Error: ${response.status}`);
-  }
-
-  // Parse en return de JSON response
-  return response.json();
+  // Gebruik de token-bewuste client: deze voegt de Authorization-header toe en
+  // handelt 401 -> refresh af. Voorheen stuurde deze helper geen token mee,
+  // waardoor beschermde endpoints een 401 gaven voor ingelogde gebruikers
+  // (PR-001/PR-016).
+  return apiFetch<T>(endpoint, { method: 'GET' });
 }
 
 /**
@@ -581,16 +568,12 @@ export const api = {
         formData.append('store_total_inventory', JSON.stringify(storeTotalInventory));
       }
 
-      const response = await fetch(`${API_BASE_URL}/api/pdf/ingest`, {
+      // apiFetch stuurt de token mee en laat Content-Type met de juiste
+      // multipart-boundary door de browser bepalen voor FormData.
+      return apiFetch<PDFUploadIngestResponse>('/api/pdf/ingest', {
         method: 'POST',
         body: formData,
       });
-
-      if (!response.ok) {
-        throw new Error(`Upload failed: ${response.status}`);
-      }
-
-      return response.json() as Promise<PDFUploadIngestResponse>;
     },
   },
 
@@ -616,56 +599,29 @@ export const api = {
      * Keur een proposal goed
      */
     async approve(proposalId: number) {
-      const response = await fetch(`${API_BASE_URL}/api/pdf/proposals/${proposalId}/approve`, {
+      return apiFetch<any>(`/api/pdf/proposals/${proposalId}/approve`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
       });
-
-      if (!response.ok) {
-        throw new Error(`Approve failed: ${response.status}`);
-      }
-
-      return response.json();
     },
 
     /**
      * Keur een proposal af
      */
     async reject(proposalId: number, reason?: string, reasonCode?: string) {
-      const response = await fetch(`${API_BASE_URL}/api/pdf/proposals/${proposalId}/reject`, {
+      return apiFetch<any>(`/api/pdf/proposals/${proposalId}/reject`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify({ reason, reason_code: reasonCode }),
       });
-
-      if (!response.ok) {
-        throw new Error(`Reject failed: ${response.status}`);
-      }
-
-      return response.json();
     },
 
     /**
      * Update een proposal met aangepaste moves
      */
     async update(proposalId: number, moves: ProposalMove[], reasonCode?: string, comment?: string) {
-      const response = await fetch(`${API_BASE_URL}/api/pdf/proposals/${proposalId}`, {
+      return apiFetch<any>(`/api/pdf/proposals/${proposalId}`, {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify({ moves, reason_code: reasonCode, comment }),
       });
-
-      if (!response.ok) {
-        throw new Error(`Update failed: ${response.status}`);
-      }
-
-      return response.json();
     },
   },
 
