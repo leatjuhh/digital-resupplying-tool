@@ -43,6 +43,8 @@ uploads/
 !frontend/app/uploads/
 !frontend/components/uploads/
 *.pdf
+# Uitzondering: referentiedocumenten die bewust in de repo horen
+!docs/references/P10.pdf
 
 # IDE & Editors
 .vscode/
