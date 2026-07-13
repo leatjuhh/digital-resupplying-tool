@@ -7,6 +7,12 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - OBSERVABILITY & FRONTEND-ROBUUSTHEID (2026-07-13)
+
+- **Centrale logging (PR-019):** één `logging.basicConfig` bij opstart in `backend/main.py`; de verspreide aanroepen in `routers/pdf_ingest.py` en `pdf_extract/pipeline.py` zijn verwijderd.
+- **Health check met DB-connectiviteit (PR-019):** `GET /health` voert nu een echte query uit en geeft `503` bij een onbereikbare database, i.p.v. altijd statisch `healthy`.
+- **Frontend fetch-timeout (PR-017):** `apiFetch` (`frontend/lib/api-client.ts`) heeft een `AbortController`-timeout (30s) op de initiële én de retry-fetch, zodat een hangende backend-request de UI niet oneindig laat wachten.
+
 ### Changed - FASE 3 ARCHITECTUUR (in uitvoering) (2026-07-13)
 
 - **Getypeerde moves (PR-015):** `UpdateProposalRequest.moves` is nu `List[MoveInput]` (Pydantic) i.p.v. `List[dict]`; core-velden gevalideerd, extra velden bewaard. Onvolledige move → 422 i.p.v. `KeyError`. De opgeslagen moves worden defensief gelezen bij het opbouwen van de "proposed"-situatie.
