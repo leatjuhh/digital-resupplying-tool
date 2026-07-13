@@ -7,6 +7,14 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Changed - FASE 3 ARCHITECTUUR (in uitvoering) (2026-07-13)
+
+- **Getypeerde moves (PR-015):** `UpdateProposalRequest.moves` is nu `List[MoveInput]` (Pydantic) i.p.v. `List[dict]`; core-velden gevalideerd, extra velden bewaard. Onvolledige move → 422 i.p.v. `KeyError`. De opgeslagen moves worden defensief gelezen bij het opbouwen van de "proposed"-situatie.
+- **Frontend API-base geconsolideerd (PR-016):** `frontend/lib/api.ts` gebruikt nu `NEXT_PUBLIC_API_URL` voor de base-URL (ook de auth-calls).
+- **Invariant-vangnet (`backend/test_redistribution_invariants.py`, nieuw):** property-based tests (80 seeds × modi) die vóór de algoritme-refactors de invarianten voorraadbehoud, geen-negatieve-voorraad, BV-scheiding en geldige-winkels borgen (560 tests groen).
+- **Nieuwe bevinding PR-029 (Medium):** het invariant-vangnet legde bloot dat de "harde" min-3-regel in ~1% van willekeurige scenario's wordt geschonden (een winkel houdt 1-2 stuks naast andere niet-lege winkels in dezelfde BV). Vastgelegd in `docs/engineering/PRODUCTION_READINESS_AUDIT.md`; apart te onderzoeken, niet gewijzigd.
+- Nog openstaand in Fase 3: `pdf_ingest.py` splitsen (3.1) en module-level singletons → dependency injection (3.3).
+
 ### Added - FASE 2 QUALITY GATES (2026-07-13)
 
 - **CI-pipeline (`.github/workflows/ci.yml`, nieuw):** GitHub Actions met verplichte gates op push (main, `claude/**`) en elke PR — backend `ruff check` + `pytest` (unit + security), frontend `tsc --noEmit` + `npm run build`. `mypy` draait informatief (baseline: 167 meldingen in legacy-code; wordt blokkerend in Fase 3).

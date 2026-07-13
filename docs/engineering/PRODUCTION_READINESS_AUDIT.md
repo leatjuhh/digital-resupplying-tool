@@ -96,6 +96,7 @@ document verwijzen staat in
 | PR-022 | Medium | backend/routers/pdf_ingest.py, backend/redistribution/algorithm.py | Grote modules met gemengde verantwoordelijkheid |
 | PR-023 | Medium | frontend/, root | npm audit meldt kwetsbaarheden |
 | PR-024 | Medium | backend/pdf_extraction_data.json, backend/pdf_extraction_report.html | Gegenereerde artefacten getrackt in git |
+| PR-029 | Medium | backend/redistribution/algorithm.py | Min-3-regel wordt in ~1% van scenario's geschonden (edge-case) |
 | PR-025 | Low | backend/test_situation_classifier.py | 2 falende tests door test-isolatie (geen productiebug) |
 | PR-026 | Low | backend/test_*.py | Meerderheid van root-testbestanden zonder assertions |
 | PR-027 | Low | frontend/pnpm-lock.yaml | Verdwaald, vrijwel leeg lockbestand naast package-lock.json |
@@ -410,6 +411,20 @@ Positieve bevindingen: zie sectie "Wat behouden moet blijven" (POS-001 t/m POS-0
 - **Verificatiemethode**: `git ls-files | grep pdf_extraction` geeft na de fix geen resultaat meer voor deze twee bestanden.
 - **Veranderomvang**: Small.
 - **Afhankelijkheden/blokkades**: Controleer eerst of `test_pdf_extraction.py` deze bestanden daadwerkelijk zelf regenereert (niet binnen deze audit geverifieerd — **niet vastgesteld**) voordat ze verwijderd worden, om te voorkomen dat een script stilzwijgend op een ontbrekend bestand faalt.
+
+---
+
+### PR-029 — Min-3-regel wordt in een edge-case geschonden
+
+- **Ernst**: Medium
+- **Component**: `backend/redistribution/algorithm.py` (`generate_moves_for_article` / bundle-planner)
+- **Bewijs**: Toegevoegd op 2026-07-13 tijdens het opbouwen van het invariant-vangnet (`backend/test_redistribution_invariants.py`). Bij het uitvoeren van `generate_moves_for_article` over deterministisch gegenereerde scenario's eindigt in ~1% van de gevallen (verkenning: 4 op 300 willekeurige scenario's met `enforce_bv_separation=True`) een winkel op 1 of 2 stuks terwijl zijn BV-groep meerdere niet-lege winkels heeft. De "harde" min-3-regel (`min_items_per_receiver=3`, `constraints.py:44`) schrijft voor dat elke winkel op 0 óf ≥ 3 eindigt, met als toegestane uitzondering de consolidatie van een BV-pool < 3 naar één winkel.
+- **Risico**: Operationeel onbedoelde picklijsten: een enkele winkel houdt een gebroken maatreeks (1-2 stuks) aan terwijl consolidatie mogelijk was. Geen dataverlies of crash; wel een afwijking van een gedocumenteerde bedrijfsregel. Laagfrequent, maar in de kritieke domeinlogica.
+- **Power of Ten-regel**: Regel 5 (invariant van de kritieke domeinlogica) en hoofdstuk 10 (te testen invariant (a)).
+- **Aanbevolen oplossing**: Het exacte edge-case-scenario isoleren (reproduceerbaar via een seed uit de invariant-verkenning) en de restverdeling in de bundle-planner corrigeren zodat een 1-2-restant altijd wordt geconsolideerd. Zorgvuldig aanpakken met de bestaande `test_bundle_planner.py`- en `test_redistribution_invariants.py`-suites als vangnet; niet als onderdeel van een bredere refactor.
+- **Verificatiemethode**: Een regressietest die het geïsoleerde scenario reproduceert en aantoont dat geen winkel met 1-2 stuks overblijft naast andere niet-lege winkels in dezelfde BV; daarna de min-3-invariant als universele property toevoegen aan `test_redistribution_invariants.py`.
+- **Veranderomvang**: Medium (algoritmelogica; vereist zorgvuldige afbakening om de overige invarianten niet te breken).
+- **Afhankelijkheden/blokkades**: Geen; wel bewust los te houden van de architectuur-refactors (3.1/3.3) om oorzaak en gevolg gescheiden te reviewen.
 
 ---
 
