@@ -36,6 +36,10 @@ next-env.d.ts
 database.db
 *.db.backup_*
 
+# Gegenereerde PDF-extractie-artefacten (regenereerbaar via backend/visual_pdf_test.py)
+backend/pdf_extraction_data.json
+backend/pdf_extraction_report.html
+
 # Uploads & Generated files
 backend/uploads/
 backend/backend/uploads/
