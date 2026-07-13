@@ -1,7 +1,7 @@
 # 📚 Documentation Guidelines
 
-**Versie:** 1.1  
-**Laatst bijgewerkt:** 14 maart 2026
+**Versie:** 1.2  
+**Laatst bijgewerkt:** 13 juli 2026
 
 > ⚠️ **BELANGRIJK**: Dit document bevat strikte regels voor het toevoegen en beheren van documentatie. Volg deze regels om wildgroei te voorkomen!
 
@@ -25,6 +25,8 @@ project-root/
 ├── CHANGELOG.md                 # ✅ Versiegeschiedenis
 ├── CONTRIBUTING.md              # ✅ Contributing guidelines
 ├── AGENTS.md                    # ✅ Agent context & prompt-ingang
+├── CLAUDE.md                    # ✅ Claude Code-adapter (importeert de standaard)
+├── CHATGPT_PROJECT_INSTRUCTIONS.md  # ✅ Zelfstandige ChatGPT-projectinstructies
 ├── LICENSE                      # ✅ License file
 │
 ├── docs/                        # 📁 ALLE overige documentatie gaat hier
@@ -32,6 +34,8 @@ project-root/
 │   ├── getting-started/         # Voor nieuwe gebruikers
 │   ├── guides/                  # User & developer guides
 │   ├── technical/               # Technische documentatie
+│   ├── engineering/             # Engineeringstandaard, audits, verbeterplannen
+│   ├── references/              # Externe bronbestanden, alleen-lezen
 │   └── sessions/                # Development session logs
 │
 ├── todo/                        # ✅ Todo items en planning
@@ -40,7 +44,7 @@ project-root/
 
 ---
 
-## ✅ REGEL 1: Maximaal 5 MD Bestanden in Root
+## ✅ REGEL 1: Maximaal 7 MD Bestanden in Root
 
 **Root level mag ALLEEN bevatten:**
 
@@ -48,7 +52,11 @@ project-root/
 2. `CHANGELOG.md` - Versiegeschiedenis
 3. `CONTRIBUTING.md` - Contributing guidelines
 4. `AGENTS.md` - Korte agent-instructies en context-ingang voor toekomstige prompts
-5. `LICENSE` - License file
+5. `CLAUDE.md` - Claude Code-adapter (importeert de canonieke engineeringstandaard)
+6. `CHATGPT_PROJECT_INSTRUCTIONS.md` - Zelfstandige, kopieerbare ChatGPT-projectinstructies
+7. `LICENSE` - License file
+
+> **Conflictoplossing:** `.clinerules` vermeldde eerder "maximaal 4" (zonder `AGENTS.md`). Dit document is voortaan dé bron voor deze whitelist en `.clinerules` volgt. Reden voor de uitbreiding naar 7: AI-adapterbestanden (`AGENTS.md`, `CLAUDE.md`, `CHATGPT_PROJECT_INSTRUCTIONS.md`) moeten in de root staan omdat hun respectievelijke tools (Claude Code, ChatGPT-projecten, overige agents) ze daar automatisch verwachten.
 
 **❌ VERBODEN in root:**
 - Feature documentatie
@@ -128,6 +136,31 @@ project-root/
 
 ---
 
+### `docs/engineering/`
+**Voor:** Engineeringstandaard, production-readiness audits en gefaseerde verbeterplannen
+
+**Voorbeelden:**
+- `PRODUCTION_ENGINEERING_STANDARD.md` - Canonieke projectstandaard (P10-vertaling)
+- `PRODUCTION_READINESS_AUDIT.md` - Bevindingen met bewijs (pad:regel)
+- `PRODUCTION_READINESS_PLAN.md` - Gefaseerd verbeterplan
+- `AI_SESSION_HANDOFF.md` - Sjabloon voor sessie-overdracht
+
+**Template naam:** `UPPERCASE_WITH_UNDERSCORES.md` (afwijkend van REGEL 4 hieronder — deze documenten zijn normatief en volgen hun eigen vaste naamgeving, gelijk aan `README.md`/`CHANGELOG.md`)
+
+**Belangrijk:** wijzig deze documenten alleen via het wijzigingsbeheerproces dat de standaard zelf beschrijft (zie hoofdstuk 16 van `PRODUCTION_ENGINEERING_STANDARD.md`), niet ad hoc.
+
+---
+
+### `docs/references/`
+**Voor:** Externe bronbestanden waarop projectstandaarden zijn gebaseerd
+
+**Voorbeelden:**
+- `P10.pdf` - "The Power of Ten" (Holzmann/NASA-JPL), bron van de engineeringstandaard
+
+**Belangrijk:** alleen-lezen. De inhoud van bestanden in deze map wordt nooit gewijzigd; een nieuwe bron wordt als apart bestand toegevoegd, nooit een bestaande overschreven.
+
+---
+
 ## ✅ REGEL 3: Documentatie Template
 
 **Gebruik altijd deze header:**
@@ -180,6 +213,9 @@ related:
 - `README.md` (GitHub conventie)
 - `CHANGELOG.md` (Standaard conventie)
 - `CONTRIBUTING.md` (GitHub conventie)
+- `AGENTS.md` (AI-adapter; ontbrak eerder in deze lijst terwijl REGEL 1 het al toestond — hersteld voor interne consistentie)
+- `CLAUDE.md` (AI-adapter; Claude Code-conventie)
+- `CHATGPT_PROJECT_INSTRUCTIONS.md` (AI-adapter)
 - `LICENSE` (GitHub conventie)
 
 ---

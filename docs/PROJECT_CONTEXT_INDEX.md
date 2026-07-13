@@ -2,10 +2,11 @@
 title: Project Context Index
 category: technical
 tags: [documentation, context, navigation]
-last_updated: 2026-03-30
+last_updated: 2026-07-13
 related:
   - DOCUMENTATION_GUIDELINES.md
   - technical/current-state.md
+  - engineering/PRODUCTION_ENGINEERING_STANDARD.md
   - ../README.md
 ---
 
@@ -21,6 +22,17 @@ Deze index onderscheidt expliciet tussen leidende, aanvullende en historische br
   De enige actuele status- en roadmapbron tijdens de consolidatiefase.
 - `todo/master-backlog.md`
   De enige actieve backlog met prioriteiten, afhankelijkheden en acceptatiecriteria.
+
+### Leidend voor engineering-/kwaliteitsvragen
+
+- `docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md`
+  Canonieke engineeringstandaard (P10-vertaling); leidend bij elke hoe-vraag over codekwaliteit, architectuur, security, testen of quality gates.
+- `docs/engineering/PRODUCTION_READINESS_AUDIT.md`
+  Production-readiness bevindingen met bewijs, gekoppeld aan de standaard.
+- `docs/engineering/PRODUCTION_READINESS_PLAN.md`
+  Gefaseerd verbeterplan dat op de audit voortbouwt.
+- `docs/engineering/AI_SESSION_HANDOFF.md`
+  Leidend rapportagesjabloon bij sessie-einde of AI-overdracht.
 
 ## Aanvullend
 
@@ -46,12 +58,24 @@ Deze index onderscheidt expliciet tussen leidende, aanvullende en historische br
 - `backend/README.md`
 - `frontend/PROJECT-OVERVIEW.md`
 
+### AI-instructielaag (adapters)
+
+- `CLAUDE.md`
+  Claude Code-adapter; importeert de canonieke standaard, definieert geen eigen regels.
+- `CHATGPT_PROJECT_INSTRUCTIONS.md`
+  Zelfstandige, kopieerbare ChatGPT-projectinstructies; verwijst naar dezelfde canonieke standaard.
+
 Gebruik deze bronnen alleen als aanvulling op de leidende documenten.
 
 Specifiek voor de huidige baseline-slice geldt:
 
 - `docs/technical/baseline-algorithm-phase-1.md` beschrijft de actieve shadow-mode classificatie
 - externe algoritme-import is aanvullende technische context, geen leidende planning- of roadmapbron
+
+## Bronnen
+
+- `docs/references/P10.pdf`
+  Oorspronkelijke bron van de engineeringstandaard ("The Power of Ten", Holzmann/NASA-JPL). Alleen-lezen; nooit inhoudelijk wijzigen.
 
 ## Historisch
 
@@ -77,6 +101,7 @@ Als documenten elkaar tegenspreken, geldt deze volgorde:
 
 1. actuele code
 2. `docs/technical/current-state.md`
-3. `todo/master-backlog.md`
-4. overige actieve docs
-5. `archive/` en sessielogs
+3. `docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md` (voor hoe-/kwaliteitsvragen: architectuur, security, testen, quality gates)
+4. `todo/master-backlog.md`
+5. overige actieve docs
+6. `archive/` en sessielogs

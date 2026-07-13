@@ -7,6 +7,19 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - ENGINEERING STANDAARD, AUDIT & AI-INSTRUCTIELAAG (2026-07-13)
+
+- **`docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md`** (nieuw) — canonieke engineeringstandaard, een projectspecifieke vertaling van P10 ("The Power of Ten — Rules for Developing Safety Critical Code", Holzmann/NASA-JPL); bij conflict met elk ander instructie- of adapterbestand altijd leidend.
+- **`docs/references/P10.pdf`** (nieuw) — ongewijzigde kopie van de bronpublicatie als referentie; `.gitignore` uitgezonderd van de bestaande `*.pdf`-regel via `!docs/references/P10.pdf`.
+- **`docs/engineering/PRODUCTION_READINESS_AUDIT.md`** (nieuw) — production-readiness bevindingen met concreet pad(:regel)-bewijs, gekoppeld aan de standaard.
+- **`docs/engineering/PRODUCTION_READINESS_PLAN.md`** (nieuw) — gefaseerd verbeterplan (baseline → critical/high fixes → quality gates → architectuur → productievalidatie) op basis van de audit.
+- **AI-instructielaag:**
+  - `AGENTS.md` uitgebreid met een verplichte verwijzing naar de standaard, de niet-onderhandelbare beslisregels, werkelijke projectcommando's en de rapportageverplichting bij sessie-einde.
+  - **`CLAUDE.md`** (nieuw, root) — Claude Code-adapter die de standaard importeert.
+  - **`CHATGPT_PROJECT_INSTRUCTIONS.md`** (nieuw, root) — zelfstandige, kopieerbare ChatGPT-projectinstructies.
+  - **`docs/engineering/AI_SESSION_HANDOFF.md`** (nieuw) — leeg rapportagesjabloon voor sessie-overdracht tussen Codex/GPT/Claude.
+- **Docs-governance-updates:** `.clinerules` en `docs/DOCUMENTATION_GUIDELINES.md` verwijzen nu naar de canonieke standaard en hanteren dezelfde root-markdown-whitelist (7 bestanden, incl. `CLAUDE.md`/`CHATGPT_PROJECT_INSTRUCTIONS.md`); `docs/PROJECT_CONTEXT_INDEX.md` registreert de nieuwe documenten en neemt de standaard op in de conflictresolutie-volgorde.
+
 ### Fixed - COMBINATIE-MAATBALK ONDERSTEUNING (2026-04-20)
 
 - **`backend/pdf_extract/extract_settings.py`** — nieuw regex-patroon `^(X{0,3}[SML])\/(X{0,3}[SML])$` in `KNOWN_SIZE_PATTERNS`; de table-parser herkent nu `XS/S`, `S/M`, `M/L`, `L/XL`, `XL/XX`, `XL/XXL` als geldige maatkolommen.

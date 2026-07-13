@@ -34,6 +34,14 @@ digital-resupplying-tool/
 
 ---
 
+## 🎯 Canonieke Engineeringstandaard
+
+Vóór elke code- of configuratiewijziging: lees en pas `docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md` toe (canonieke projectstandaard, een vertaling van P10 — "The Power of Ten", Holzmann/NASA-JPL; bron: `docs/references/P10.pdf`). Bij een conflict tussen dit bestand (`.clinerules`) en die standaard wint de standaard. `.clinerules` blijft leidend voor dev-workflow-details die de standaard niet regelt: `dev.ps1`-gebruik, commit-types, projectconventies en doc-plaatsing (zie hieronder).
+
+Zie ook `AGENTS.md` (niet-onderhandelbare beslisregels + werkelijke commando's), `docs/engineering/PRODUCTION_READINESS_AUDIT.md` en `docs/engineering/PRODUCTION_READINESS_PLAN.md`.
+
+---
+
 ## 🚀 Development Workflow
 
 ### Opstarten van de Applicatie
@@ -189,13 +197,18 @@ export function MyComponent({ title, items, onSelect }: Props) {
 
 ### STRIKTE REGELS - ALTIJD VOLGEN!
 
-**REGEL 1: Maximaal 4 MD Bestanden in Root**
+**REGEL 1: Root-Markdown-Whitelist**
 
 Root level mag ALLEEN bevatten:
 1. `README.md` - Project overview
 2. `CHANGELOG.md` - Versiegeschiedenis
 3. `CONTRIBUTING.md` - Contributing guidelines
 4. `LICENSE` - License file
+5. `AGENTS.md` - Agent-instructies en context-ingang
+6. `CLAUDE.md` - Claude Code-adapter (importeert de canonieke standaard)
+7. `CHATGPT_PROJECT_INSTRUCTIONS.md` - Zelfstandige ChatGPT-projectinstructies
+
+> **Conflictnotitie:** dit vervangt het eerdere aantal van 4. AI-adapterbestanden (`AGENTS.md`, `CLAUDE.md`, `CHATGPT_PROJECT_INSTRUCTIONS.md`) moeten in de root staan omdat hun respectievelijke tools ze daar automatisch verwachten. Deze lijst is bindend voor alle vermeldingen van root-uitzonderingsbestanden in dit bestand (inclusief REGEL 3 hieronder) en volgt `docs/DOCUMENTATION_GUIDELINES.md`, dat de canonieke bron voor deze whitelist is.
 
 **❌ VERBODEN in root:**
 - Feature documentatie
