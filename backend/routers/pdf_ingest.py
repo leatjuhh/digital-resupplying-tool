@@ -22,7 +22,14 @@ from redistribution.algorithm import generate_redistribution_proposals_for_batch
 from redistribution.constraints import DEFAULT_PARAMS
 from algorithm_import.config import get_algorithm_assist_mode
 from algorithm_import.service import enrich_moves_with_model_scores
-from utils import sort_stores_by_code, sort_store_ids
+from utils import (
+    sort_stores_by_code,
+    sort_store_ids,
+    secure_pdf_filename,
+    save_upload_within_limit,
+    UnsafeFilenameError,
+    UploadTooLargeError,
+)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -136,6 +143,16 @@ async def ingest_pdfs(
                 detail=f"Ongeldige store_total_inventory: {exc}",
             )
 
+    # Valideer bestandsnamen vóórdat een batch wordt aangemaakt: een onveilige
+    # naam (path traversal, niet-.pdf) is een client-/securityfout die de hele
+    # aanvraag weigert met 400, zodat er geen wees-batch achterblijft.
+    safe_filenames = []
+    for file in files:
+        try:
+            safe_filenames.append(secure_pdf_filename(file.filename))
+        except UnsafeFilenameError as exc:
+            raise HTTPException(status_code=400, detail=f"Ongeldige bestandsnaam: {exc}")
+
     # Create batch
     if not batch_name:
         batch_name = f"Batch {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
@@ -163,14 +180,15 @@ async def ingest_pdfs(
     success_count = 0
     failed_count = 0
     
-    for file in files:
+    for file, safe_name in zip(files, safe_filenames):
         logger.info(f"[FILE_PROCESS] Processing {file.filename}")
-        
+
         try:
-            # Save uploaded file
-            file_path = os.path.join(batch_dir, file.filename)
-            with open(file_path, "wb") as buffer:
-                shutil.copyfileobj(file.file, buffer)
+            # Save uploaded file met een genormaliseerde, veilige bestandsnaam en
+            # een harde groottelimiet (een te groot bestand wordt niet volledig
+            # weggeschreven en telt als per-bestand FAILED).
+            file_path = os.path.join(batch_dir, safe_name)
+            save_upload_within_limit(file, file_path)
             
             # Parse PDF
             parsed = parse_pdf_to_records(file_path)

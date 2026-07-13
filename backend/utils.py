@@ -1,8 +1,96 @@
 """
 Utility functions voor backend
 """
-from typing import Any, List
+from typing import Any, List, Optional
+import os
 import re
+
+
+# --- Veilige verwerking van geüploade bestanden (PR-004/PR-005) --------------
+
+# Maximale grootte per geüpload bestand. PDF-voorraadoverzichten zijn in de
+# praktijk klein; 25 MB is ruim en begrenst het resourcegebruik (R3.1).
+MAX_UPLOAD_SIZE_BYTES = 25 * 1024 * 1024
+
+
+class UnsafeFilenameError(ValueError):
+    """Door de client aangeleverde bestandsnaam is niet veilig te gebruiken."""
+
+
+class UploadTooLargeError(Exception):
+    """Een geüpload bestand overschrijdt de maximale toegestane grootte."""
+
+    def __init__(self, max_bytes: int) -> None:
+        self.max_bytes = max_bytes
+        super().__init__(f"Bestand overschrijdt de maximale grootte van {max_bytes} bytes")
+
+
+def secure_pdf_filename(filename: Optional[str]) -> str:
+    """Valideer en normaliseer een client-bestandsnaam vóór gebruik in een pad.
+
+    Weigert lege namen, padscheidingstekens (waarmee `..`-traversal onmogelijk
+    wordt), null bytes en niet-PDF-extensies. Retourneert de veilige basisnaam.
+
+    Raises:
+        UnsafeFilenameError: als de naam niet veilig te gebruiken is.
+    """
+    if not filename:
+        raise UnsafeFilenameError("Lege bestandsnaam")
+    if "\x00" in filename:
+        raise UnsafeFilenameError("Ongeldige bestandsnaam (null byte)")
+    # Padscheidingstekens (beide platforms) niet toegestaan; dit blokkeert
+    # tevens elke vorm van `../` of `..\` traversal.
+    if "/" in filename or "\\" in filename:
+        raise UnsafeFilenameError("Ongeldige bestandsnaam (padcomponenten niet toegestaan)")
+    base = os.path.basename(filename)
+    if base in ("", ".", ".."):
+        raise UnsafeFilenameError("Ongeldige bestandsnaam")
+    if not base.lower().endswith(".pdf"):
+        raise UnsafeFilenameError("Alleen .pdf-bestanden zijn toegestaan")
+    return base
+
+
+def save_upload_within_limit(
+    upload_file: Any,
+    dest_path: str,
+    max_bytes: int = MAX_UPLOAD_SIZE_BYTES,
+    chunk_size: int = 1024 * 1024,
+) -> int:
+    """Stream een geüpload bestand naar schijf met een harde bovengrens.
+
+    Kopieert in blokken en breekt af zodra `max_bytes` wordt overschreden,
+    zodat een te groot bestand nooit volledig wordt weggeschreven (R3.1). Het
+    reeds geschreven, gedeeltelijke bestand wordt bij overschrijding verwijderd.
+
+    Args:
+        upload_file: een object met een `.file`-attribuut (Starlette UploadFile).
+        dest_path: doelpad op schijf.
+
+    Returns:
+        Het aantal geschreven bytes.
+
+    Raises:
+        UploadTooLargeError: als de grootte de limiet overschrijdt.
+    """
+    total = 0
+    source = upload_file.file
+    try:
+        with open(dest_path, "wb") as buffer:
+            while True:
+                chunk = source.read(chunk_size)
+                if not chunk:
+                    break
+                total += len(chunk)
+                if total > max_bytes:
+                    raise UploadTooLargeError(max_bytes)
+                buffer.write(chunk)
+    except UploadTooLargeError:
+        try:
+            os.remove(dest_path)
+        except OSError:
+            pass
+        raise
+    return total
 
 
 def extract_store_code_numeric(store_id: str) -> int:

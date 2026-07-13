@@ -9,6 +9,7 @@ Gekoppelde bevindingen: PR-001 (auth op muterende endpoints).
 """
 from __future__ import annotations
 
+import io
 import os
 import subprocess
 import sys
@@ -18,10 +19,23 @@ import pytest
 from fastapi.testclient import TestClient
 
 from main import app
+from utils import (
+    secure_pdf_filename,
+    save_upload_within_limit,
+    UnsafeFilenameError,
+    UploadTooLargeError,
+)
 
 client = TestClient(app)
 
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+class _FakeUpload:
+    """Minimale nabootsing van Starlette's UploadFile (alleen .file nodig)."""
+
+    def __init__(self, data: bytes) -> None:
+        self.file = io.BytesIO(data)
 
 # Elk muterend endpoint met de HTTP-methode. Zonder Authorization-header MOET
 # elk van deze een 401 teruggeven (OAuth2PasswordBearer weigert de ontbrekende
@@ -73,3 +87,52 @@ def test_missing_secret_key_fails_fast():
     assert "SECRET_KEY" in result.stderr, (
         f"Verwachtte een SECRET_KEY-foutmelding, kreeg: {result.stderr!r}"
     )
+
+
+# --- Upload-veiligheid: filename-sanitisering + groottelimiet (PR-004/PR-005) -
+
+@pytest.mark.parametrize(
+    "bad_name",
+    [
+        None,
+        "",
+        "../../etc/passwd.pdf",
+        "..\\..\\windows\\evil.pdf",
+        "sub/dir/report.pdf",
+        "report.txt",
+        "report.exe",
+        "..",
+        "with\x00null.pdf",
+    ],
+)
+def test_secure_pdf_filename_rejects_unsafe_names(bad_name):
+    with pytest.raises(UnsafeFilenameError):
+        secure_pdf_filename(bad_name)
+
+
+@pytest.mark.parametrize(
+    "good_name,expected",
+    [
+        ("voorraad.pdf", "voorraad.pdf"),
+        ("Rapport 2026-07.PDF", "Rapport 2026-07.PDF"),
+        ("artikel_56490.pdf", "artikel_56490.pdf"),
+    ],
+)
+def test_secure_pdf_filename_accepts_normal_names(good_name, expected):
+    assert secure_pdf_filename(good_name) == expected
+
+
+def test_save_upload_within_limit_writes_small_file(tmp_path):
+    dest = tmp_path / "ok.pdf"
+    written = save_upload_within_limit(_FakeUpload(b"%PDF-1.4 klein"), str(dest), max_bytes=1024)
+    assert written == len(b"%PDF-1.4 klein")
+    assert dest.read_bytes() == b"%PDF-1.4 klein"
+
+
+def test_save_upload_within_limit_rejects_and_cleans_up_oversized(tmp_path):
+    dest = tmp_path / "too_big.pdf"
+    payload = b"x" * 5000
+    with pytest.raises(UploadTooLargeError):
+        save_upload_within_limit(_FakeUpload(payload), str(dest), max_bytes=1024)
+    # Het gedeeltelijke bestand mag niet blijven staan.
+    assert not dest.exists()
