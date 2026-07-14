@@ -7,6 +7,15 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Changed - FASE 3.1 ARCHITECTUUR: pdf_ingest.py gesplitst (2026-07-14)
+
+- **`pdf_ingest.py` opgesplitst in drie lagen (PR-022):** de router (972 regels) mengde HTTP-routing, domeinlogica en persistentie. Dit is nu gescheiden conform hoofdstuk 5 + R4.4, zónder het externe API-contract te wijzigen:
+  - **`backend/pdf_ingest_persistence.py` (nieuw):** `save_parsed_records` (was `save_to_database`) en `save_generated_proposals` — uitsluitend DB-schrijven.
+  - **`backend/pdf_ingest_service.py` (nieuw):** domeinlaag — de pure helpers (`is_optimal_distribution_proposal`, `collect_store_inventory`, `apply_moves_to_inventory`), `build_proposal_rows`, `generate_and_save_proposals` en de ingest-orkestratie `run_batch_ingest`.
+  - **`backend/routers/pdf_ingest.py`:** teruggebracht tot een dunne HTTP-laag (972 → 598 regels); alle 8 endpoints en hun request/response-contract ongewijzigd. `OPTIMAL_DISTRIBUTION_RULE` en de helpers blijven via backward-compat re-exports importeerbaar, zodat bestaande imports/tests niet wijzigen.
+- **Regressievangnet (`backend/test_pdf_ingest_service.py`, nieuw):** dekt de geëxtraheerde ingest-orkestratie (success / partial-success / all-failed, inclusief dat proposal-generatie wordt overgeslagen bij 0 successen) en de domein-helpers — dekking die er vóór de splitsing niet was. Toegevoegd aan de CI-gate. Totaal nu 565 passed, 2 skipped.
+- **Standaard bijgewerkt:** de R4-afwijking voor `pdf_ingest.py` (hoofdstuk 5 + uitzonderingentabel hoofdstuk 15) is gemarkeerd als **opgelost**, met `test_pdf_ingest_service.py` als compenserende controle.
+
 ### Security - DEPENDENCY-OPRUIMING (2026-07-13)
 
 - **npm audit — dev/build-kwetsbaarheden gepatcht (PR-023):** `npm audit fix` (zonder `--force`) toegepast. Frontend: van 9 → 5 kwetsbaarheden — **picomatch** (high, ReDoS) en top-level **postcss** (moderate, XSS in CSS-stringify) gepatcht via lock-only updates (picomatch 2.3.2, postcss 8.5.19, nanoid 3.3.16). Root: de **shell-quote** critical (transitief via de dev-tool `concurrently`) gepatcht → **0 kwetsbaarheden**. Alleen `package-lock.json`-bestanden gewijzigd; geen `package.json`-ranges aangepast.
