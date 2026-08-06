@@ -2,7 +2,7 @@
 title: Current State
 category: technical
 tags: [status, roadmap, consolidation]
-last_updated: 2026-04-20
+last_updated: 2026-07-13
 related:
   - ../../README.md
   - ../PROJECT_CONTEXT_INDEX.md
@@ -43,6 +43,13 @@ Deze flow moet intact blijven tijdens opschoning van documentatie, backlog en ni
 - De frontend production build slaagt weer.
 - Er is een browser smoke voor login, backend health, admin settings-tabs, user settingsrechten en store redirect naar assignments.
 - De leidende kernflow-checklist staat vast in `docs/getting-started/gui-testing-and-debugging.md`.
+- **Security-hardening Fase 1 (2026-07-13):** alle muterende endpoints (PDF-ingest, batch-upload/-delete, proposal approve/reject/edit, redistribution generate, article CRUD) vereisen nu authenticatie/autorisatie via de bestaande RBAC. `SECRET_KEY` is verplicht zonder fallback (fail-fast). Upload-bestandsnamen worden gesaneerd (path-traversal geblokkeerd) en de uploadgrootte is begrensd. Proposal-approve is idempotent. De refresh-tokenhandler maskeert serverfouten niet langer als 401. `ALLOWED_ORIGINS` wordt nu daadwerkelijk op CORS toegepast. Geborgd met `backend/test_security_hardening.py`. Zie `docs/engineering/PRODUCTION_READINESS_PLAN.md` Fase 1.
+
+## Engineeringstandaard en production-readiness
+
+- De canonieke engineeringstandaard staat in `docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md` (P10-vertaling), met een audit (`PRODUCTION_READINESS_AUDIT.md`) en gefaseerd plan (`PRODUCTION_READINESS_PLAN.md`).
+- Fase 0 (baseline/bescherming), Fase 1 (kritieke risico's) en Fase 2 (quality gates) zijn afgerond. Fase 2 leverde: een GitHub Actions CI-pipeline (`.github/workflows/ci.yml`) met verplichte gates (backend `ruff` + `pytest`; frontend `tsc` + `next lint` (ESLint) + build), een groene `ruff`-lint met `backend/pyproject.toml`, verwijdering van `ignoreBuildErrors` (TypeScript wordt afgedwongen), een reproduceerbare ESLint-config (ESLint 8 + eslint-config-next), en een frontend-tokenfix zodat de nu-beschermde endpoints werken voor ingelogde gebruikers. `mypy` draait informatief (baseline ~167 meldingen, aanscherpen in Fase 3). Volgende: Fase 3 (architectuur) en Fase 4 (deployment/observability). Bewust uitgesteld binnen Fase 1: transactiegrens bij multi-file ingest (productbeslissing) en een unique constraint op `ArtikelVoorraad` (vereist data-audit).
+- De lokale kernflow is op 2026-07-13 end-to-end handmatig bevestigd op een Windows-omgeving na Fase 1/2 (login → PDF-ingest → proposals → approve → assignments), zonder 401's op de beschermde endpoints.
 
 - Het herverdelingsalgoritme is fundamenteel herschreven (2026-04-17): de gemiddelde-drempel logica (`1.5x/0.5x`) is vervangen door demand-gedreven donor/ontvanger scoring op basis van de baseline uit `Herverdelingsalgoritme`. Donors worden bepaald op verkoop + voorraad per maat; ontvangers zijn winkels met `qty=0` voor die maat. Werkende voorraad wordt per artikel over alle maten bijgehouden. Gevalideerd op 4 weken manuele herverdelingsdata (weken 12, 13, 14, 16).
 - De BV-configuratie is ingesteld op de werkelijke filiaalindeling: 6, 8, 9, 11, 12, 13, 31 en 38 vallen onder Lumitex B.V.; filiaal 5 (Panningen) valt onder een aparte BV en is daarmee automatisch uitgesloten van DRT-herverdelingen. Configuratie staat in `backend/bv_mapping.json`.

@@ -7,6 +7,7 @@ from typing import List
 from models import Article
 from database import get_db
 import db_models
+from auth import get_current_active_user
 
 # Maak een router aan voor alle article-gerelateerde endpoints
 router = APIRouter()
@@ -56,7 +57,11 @@ async def get_article(artikelnummer: str, db: Session = Depends(get_db)):
 
 
 @router.post("/articles", response_model=Article, status_code=201)
-async def create_article(article: Article, db: Session = Depends(get_db)):
+async def create_article(
+    article: Article,
+    db: Session = Depends(get_db),
+    current_user: db_models.User = Depends(get_current_active_user)
+):
     """
     Create a new article
     """
@@ -95,7 +100,8 @@ async def create_article(article: Article, db: Session = Depends(get_db)):
 async def update_article(
     artikelnummer: str,
     article: Article,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: db_models.User = Depends(get_current_active_user)
 ):
     """
     Update an existing article
@@ -127,7 +133,11 @@ async def update_article(
 
 
 @router.delete("/articles/{artikelnummer}", status_code=204)
-async def delete_article(artikelnummer: str, db: Session = Depends(get_db)):
+async def delete_article(
+    artikelnummer: str,
+    db: Session = Depends(get_db),
+    current_user: db_models.User = Depends(get_current_active_user)
+):
     """
     Delete an article
     """

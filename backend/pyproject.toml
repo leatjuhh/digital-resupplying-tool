@@ -1,0 +1,46 @@
+# Backend tooling-configuratie (Fase 2, PR-011).
+# Zie docs/engineering/PRODUCTION_READINESS_PLAN.md (Stap 2.1/2.2) en
+# hoofdstuk 10 van PRODUCTION_ENGINEERING_STANDARD.md (Regel 10).
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+exclude = [
+    "venv",
+    ".venv",
+    "__pycache__",
+    # Legacy/standalone scripts en procedurele test-scripts in de backend-root:
+    # erkende technische schuld, buiten de eerste lint-gate. Worden later
+    # (Fase 3) opgeschoond of omgezet naar echte tests.
+    "test_*.py",
+    "check_*.py",
+    "debug_*.py",
+    "migrate_*.py",
+    "seed_database.py",
+    "seed_redistribution_test.py",
+    "reset_database.py",
+    "create_tables.py",
+    "compare_extraction.py",
+    "visual_pdf_test.py",
+    "detailed_pdf_report.py",
+]
+
+[tool.ruff.lint]
+# Eerste gate: pyflakes (F) vangt echte fouten (ongebruikte imports/vars,
+# undefined names, shadowing) en de kritieke pycodestyle-groepen E7/E9
+# (statement- en syntaxfouten). Stijlregels zoals E501 (line-length) volgen
+# in een latere, aparte uitbreiding zodat de gate nu haalbaar groen is.
+select = ["F", "E7", "E9"]
+# E712: SQLAlchemy-filterexpressies gebruiken bewust `Column == True`; dat is
+# hier geen fout maar idiomatisch.
+ignore = ["E712"]
+
+[tool.mypy]
+python_version = "3.11"
+# Eerste, milde mypy-configuratie: draait als baseline (typecheck van
+# geannoteerde signaturen) zonder de volledige legacy-codebase te blokkeren.
+# Aanscherpen richting strict volgt in Fase 3.
+ignore_missing_imports = true
+check_untyped_defs = false
+warn_unused_ignores = true
+exclude = "(venv|\\.venv|__pycache__)"

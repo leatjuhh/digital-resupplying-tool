@@ -4,7 +4,7 @@ Gebaseerd op pdfplumber (beproefd in oud project)
 """
 import pdfplumber
 import re
-from typing import Dict, List, Optional
+from typing import Dict
 
 
 def parse_voorraad_pdf(pdf_path: str) -> Dict:
@@ -87,5 +87,7 @@ def validate_pdf(pdf_path: str) -> bool:
     try:
         with pdfplumber.open(pdf_path) as pdf:
             return len(pdf.pages) > 0
-    except:
+    except Exception:
+        # Bewust brede vangst: elke fout bij het openen/lezen betekent hier dat
+        # het bestand geen geldige, bruikbare PDF is -> validatie faalt (False).
         return False

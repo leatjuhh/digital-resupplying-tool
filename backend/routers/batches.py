@@ -3,13 +3,19 @@ from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from sqlalchemy.orm import Session
 from typing import List
 import os
-import shutil
 from datetime import datetime
 
 # Importeer database models en Pydantic models
 from database import get_db
 import db_models
 from models import BatchCreate, BatchResponse, PDFUploadResponse, BatchDetailResponse
+from auth import require_permission
+from utils import (
+    secure_pdf_filename,
+    save_upload_within_limit,
+    UnsafeFilenameError,
+    UploadTooLargeError,
+)
 
 # Importeer PDF parser
 from pdf_parser import parse_voorraad_pdf, validate_pdf
@@ -23,7 +29,11 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
 @router.post("/batches/create", response_model=BatchResponse)
-async def create_batch(batch_data: BatchCreate, db: Session = Depends(get_db)):
+async def create_batch(
+    batch_data: BatchCreate,
+    db: Session = Depends(get_db),
+    current_user: db_models.User = Depends(require_permission("manage_batches"))
+):
     """
     Maak een nieuwe batch aan voor PDF uploads
     
@@ -49,7 +59,8 @@ async def create_batch(batch_data: BatchCreate, db: Session = Depends(get_db)):
 async def upload_pdf_to_batch(
     batch_id: int,
     file: UploadFile = File(...),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: db_models.User = Depends(require_permission("upload_pdfs"))
 ):
     """
     Upload een PDF naar een bestaande batch
@@ -61,25 +72,30 @@ async def upload_pdf_to_batch(
     if not batch:
         raise HTTPException(status_code=404, detail="Batch not found")
     
-    # Check of bestand een PDF is
-    if not file.filename.endswith('.pdf'):
-        raise HTTPException(status_code=400, detail="Only PDF files are allowed")
-    
+    # Valideer en normaliseer de bestandsnaam (blokkeert path traversal via
+    # ../-segmenten en niet-PDF-bestanden) vóór opslag.
+    try:
+        clean_name = secure_pdf_filename(file.filename)
+    except UnsafeFilenameError as exc:
+        raise HTTPException(status_code=400, detail=f"Ongeldige bestandsnaam: {exc}")
+
     # Maak batch-specifieke directory
     batch_dir = os.path.join(UPLOAD_DIR, f"batch_{batch_id}")
     os.makedirs(batch_dir, exist_ok=True)
-    
-    # Genereer unieke bestandsnaam
+
+    # Genereer unieke, veilige bestandsnaam (timestamp-prefix + gesaneerde naam)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    safe_filename = f"{timestamp}_{file.filename}"
-    file_path = os.path.join(batch_dir, safe_filename)
-    
-    # Sla PDF op
+    stored_filename = f"{timestamp}_{clean_name}"
+    file_path = os.path.join(batch_dir, stored_filename)
+
+    # Sla PDF op met een harde groottelimiet
     try:
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to save file: {str(e)}")
+        save_upload_within_limit(file, file_path)
+    except UploadTooLargeError as exc:
+        raise HTTPException(status_code=413, detail=str(exc))
+    except OSError:
+        # Interne opslagfout: geen interne details naar de client lekken.
+        raise HTTPException(status_code=500, detail="Kon het bestand niet opslaan")
     
     # Valideer PDF
     if not validate_pdf(file_path):

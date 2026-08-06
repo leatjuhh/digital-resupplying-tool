@@ -7,6 +7,83 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Changed - FASE 3.1 ARCHITECTUUR: pdf_ingest.py gesplitst (2026-07-14)
+
+- **`pdf_ingest.py` opgesplitst in drie lagen (PR-022):** de router (972 regels) mengde HTTP-routing, domeinlogica en persistentie. Dit is nu gescheiden conform hoofdstuk 5 + R4.4, zónder het externe API-contract te wijzigen:
+  - **`backend/pdf_ingest_persistence.py` (nieuw):** `save_parsed_records` (was `save_to_database`) en `save_generated_proposals` — uitsluitend DB-schrijven.
+  - **`backend/pdf_ingest_service.py` (nieuw):** domeinlaag — de pure helpers (`is_optimal_distribution_proposal`, `collect_store_inventory`, `apply_moves_to_inventory`), `build_proposal_rows`, `generate_and_save_proposals` en de ingest-orkestratie `run_batch_ingest`.
+  - **`backend/routers/pdf_ingest.py`:** teruggebracht tot een dunne HTTP-laag (972 → 598 regels); alle 8 endpoints en hun request/response-contract ongewijzigd. `OPTIMAL_DISTRIBUTION_RULE` en de helpers blijven via backward-compat re-exports importeerbaar, zodat bestaande imports/tests niet wijzigen.
+- **Regressievangnet (`backend/test_pdf_ingest_service.py`, nieuw):** dekt de geëxtraheerde ingest-orkestratie (success / partial-success / all-failed, inclusief dat proposal-generatie wordt overgeslagen bij 0 successen) en de domein-helpers — dekking die er vóór de splitsing niet was. Toegevoegd aan de CI-gate. Totaal nu 565 passed, 2 skipped.
+- **Standaard bijgewerkt:** de R4-afwijking voor `pdf_ingest.py` (hoofdstuk 5 + uitzonderingentabel hoofdstuk 15) is gemarkeerd als **opgelost**, met `test_pdf_ingest_service.py` als compenserende controle.
+
+### Security - DEPENDENCY-OPRUIMING (2026-07-13)
+
+- **npm audit — dev/build-kwetsbaarheden gepatcht (PR-023):** `npm audit fix` (zonder `--force`) toegepast. Frontend: van 9 → 5 kwetsbaarheden — **picomatch** (high, ReDoS) en top-level **postcss** (moderate, XSS in CSS-stringify) gepatcht via lock-only updates (picomatch 2.3.2, postcss 8.5.19, nanoid 3.3.16). Root: de **shell-quote** critical (transitief via de dev-tool `concurrently`) gepatcht → **0 kwetsbaarheden**. Alleen `package-lock.json`-bestanden gewijzigd; geen `package.json`-ranges aangepast.
+- **Resterend, bewust uitgesteld (PR-023):** de 5 overige frontend-advisories zitten allemaal in **Next.js** (SSRF via WebSocket-upgrade, cache-poisoning in RSC-responses, middleware/i18n-bypass) en vereisen `next@16` — een **major, breaking** upgrade (Next 14 → 16, inclusief React 19). Dat valt buiten een kleine opruiming en is gemarkeerd als aparte, apart te testen follow-up.
+- **Verdwaalde lockfile verwijderd (PR-027):** `frontend/pnpm-lock.yaml` (vrijwel leeg: alleen `lockfileVersion` + lege settings) is verwijderd; het project gebruikt npm (`package-lock.json`).
+- **Reproduceerbare dependency-pins (PR-028):** `date-fns` en `next-themes` gaan van `"latest"` naar respectievelijk `"^4.1.0"` en `"^0.4.6"` (de reeds geïnstalleerde versies), in `package.json` én de lockfile-root. Geverifieerd: `npm ci`, `tsc --noEmit`, `next lint` en `next build` blijven groen.
+
+### Security - RATE LIMITING OP LOGIN (2026-07-13)
+
+- **Brute-force-rem op `/api/auth/login` (PR-013):** mislukte inlogpogingen worden nu per client-IP geteld; na 5 mislukkingen binnen 5 minuten volgt een tijdelijke blokkade (`429 Too Many Requests` met een `Retry-After`-header) i.p.v. onbeperkt door te mogen proberen. Een geslaagde inlog wist de teller. Keying op IP (niet op gebruikersnaam) voorkomt dat een aanvaller een legitiem account kan uitsluiten.
+- **Implementatie (`backend/rate_limit.py`, nieuw):** een ingekapselde `LoginRateLimiter` met `threading.Lock`, automatische expiry-invalidatie en een bovengrens op het aantal bijgehouden sleutels (begrensd geheugen, R2/R3). De limiter wordt via dependency injection (`Depends`) aan de handler aangeboden. De procesbrede singleton is een bewuste, gedocumenteerde **AFWIJKING op R6.1** (cache met invalidatie), met de tests hieronder als compenserende controle. Bekende beperking: de teller is per proces (bij meerdere workers is een gedeelde store zoals Redis nodig — buiten scope).
+- **Tests:** `backend/test_rate_limit.py` (10 deterministische unit-tests via een geïnjecteerde klok: drempel, blokkade, expiry, venster-reset, isolatie per sleutel, pruning/bovengrens, configuratievalidatie) + een integratietest in `test_security_hardening.py` die de `429`-respons met `Retry-After` op `/api/auth/login` aantoont. Toegevoegd aan de CI-testlijst.
+
+### Added - OBSERVABILITY & FRONTEND-ROBUUSTHEID (2026-07-13)
+
+- **Centrale logging (PR-019):** één `logging.basicConfig` bij opstart in `backend/main.py`; de verspreide aanroepen in `routers/pdf_ingest.py` en `pdf_extract/pipeline.py` zijn verwijderd.
+- **Health check met DB-connectiviteit (PR-019):** `GET /health` voert nu een echte query uit en geeft `503` bij een onbereikbare database, i.p.v. altijd statisch `healthy`.
+- **Frontend fetch-timeout (PR-017):** `apiFetch` (`frontend/lib/api-client.ts`) heeft een `AbortController`-timeout (30s) op de initiële én de retry-fetch, zodat een hangende backend-request de UI niet oneindig laat wachten.
+
+### Changed - FASE 3 ARCHITECTUUR (in uitvoering) (2026-07-13)
+
+- **Getypeerde moves (PR-015):** `UpdateProposalRequest.moves` is nu `List[MoveInput]` (Pydantic) i.p.v. `List[dict]`; core-velden gevalideerd, extra velden bewaard. Onvolledige move → 422 i.p.v. `KeyError`. De opgeslagen moves worden defensief gelezen bij het opbouwen van de "proposed"-situatie.
+- **Frontend API-base geconsolideerd (PR-016):** `frontend/lib/api.ts` gebruikt nu `NEXT_PUBLIC_API_URL` voor de base-URL (ook de auth-calls).
+- **Invariant-vangnet (`backend/test_redistribution_invariants.py`, nieuw):** property-based tests (120 seeds) die vóór de algoritme-refactors de invarianten **voorraadbehoud, geen-negatieve-voorraad, min-3-regel en geldige-winkels** borgen (480 tests groen). Draait met `enforce_bv_separation=False` om de pure planner-logica config-onafhankelijk te testen; BV-scheiding blijft gedekt door `test_bundle_planner.py`.
+- **PR-029 onderzocht en ingetrokken:** een aanvankelijk vermoeden dat de min-3-regel in ~1% van scenario's werd geschonden, bleek een **testartefact** — het testharnas kende winkels een `bv_name` toe dat inconsistent was met de BV-configuratie (die op winkel-CODE werkt). Met een consistente wereld houdt min-3 over 3000 scenario's zonder schending. De regel is nu permanent geborgd (POS-011). Zie de audit voor de volledige toelichting.
+- Nog openstaand in Fase 3: `pdf_ingest.py` splitsen (3.1) en module-level singletons → dependency injection (3.3).
+
+### Added - FASE 2 QUALITY GATES (2026-07-13)
+
+- **CI-pipeline (`.github/workflows/ci.yml`, nieuw):** GitHub Actions met verplichte gates op push (main, `claude/**`) en elke PR — backend `ruff check` + `pytest` (unit + security), frontend `tsc --noEmit` + `npm run build`. `mypy` draait informatief (baseline: 167 meldingen in legacy-code; wordt blokkerend in Fase 3).
+- **Backend statische analyse:** `backend/pyproject.toml` met ruff-config (F/E7/E9, `E712` genegeerd voor SQLAlchemy-filters, legacy scripts uitgesloten) en een milde mypy-baseline; `ruff`/`mypy` toegevoegd aan `requirements-dev.txt`. `ruff check .` is groen na opschoning: ongebruikte imports/f-strings verwijderd, dode variabelen (`was_negative`, `bv_config`) opgeruimd, loop-shadowing (`field` → `meta_field`) en de bare `except:` in `pdf_parser.validate_pdf` opgelost.
+- **Frontend TypeScript afgedwongen (PR-010):** `next.config.mjs` `typescript.ignoreBuildErrors` verwijderd nadat de 2 openstaande `TS2339`-fouten zijn opgelost (`BatchWithProposals.batch_name` correct getypeerd). `tsc --noEmit` geeft 0 fouten; de productie-build valideert nu types.
+- **Frontend/backend-koppeling hersteld (vervolg PR-001, raakt PR-016):** de PDF-/proposal-calls in `frontend/lib/api.ts` liepen via een kale `fetch` zonder token; ze gaan nu via de token-bewuste `apiFetch` (voegt Authorization toe + 401→refresh). Zonder deze fix zouden de nu-beschermde endpoints een 401 geven voor ingelogde gebruikers. Lokaal end-to-end bevestigd (upload → proposals → approve → assignments, alle 200).
+- **Setup-robuustheid:** `scripts/setup-backend.ps1` detecteert Python nu op exit-code + versie (3.11+) met meerdere fallbacks, i.p.v. hardcoded `py -3.13`; voorkomt "No suitable Python runtime found" op machines zonder 3.13.
+- **Frontend ESLint (verplichte gate):** ESLint 8 + `eslint-config-next` als reproduceerbare devDependencies (voorheen haalde `npx` ad-hoc ESLint 10); `.eslintrc.json` met `next/core-web-vitals`, lint-script → `next lint`. 6 `react/no-unescaped-entities`-errors opgelost; `npm run lint` is groen (resterende `react-hooks/exhaustive-deps` zijn warnings). CI draait `npm run lint` als verplichte gate. **Hiermee is Fase 2 (quality gates) volledig afgerond.**
+
+### Security - KRITIEKE HARDENING FASE 1 (2026-07-13)
+
+- **Auth op muterende endpoints (PR-001):** PDF-ingest, batch create/upload/delete, proposal approve/reject/edit, redistribution generate en article create/update/delete vereisen nu authenticatie/autorisatie via de bestaande RBAC (`require_permission` / `get_current_active_user`). Voorheen waren deze anoniem aanroepbaar.
+- **SECRET_KEY verplicht (PR-002):** hardcoded fallback-secret verwijderd; de backend faalt fail-fast bij het opstarten zonder `SECRET_KEY`. `check_secret_key.py` print de sleutel niet langer.
+- **Veilige uploads (PR-004/PR-005):** upload-bestandsnamen worden gesaneerd (path traversal en niet-`.pdf` geblokkeerd) en de bestandsgrootte is begrensd (25 MB, streaming). `batches.py` lekt geen ruwe exception-tekst meer naar de client (PR-014).
+- **Idempotente approve (PR-006):** een reeds goedgekeurd voorstel opnieuw approven maakt geen dubbele `Feedback`-rijen meer aan.
+- **Foutafhandeling refresh (PR-008):** de refresh-tokenhandler vangt niet langer alle exceptions breed af; alleen een ongeldig token geeft 401, serverfouten geven 500 met logging.
+- **CORS (PR-009):** `ALLOWED_ORIGINS` wordt nu daadwerkelijk aan de CORS-middleware doorgegeven (was dode code).
+- **Config:** `DATABASE_URL` (optioneel) en `SECRET_KEY` (verplicht) toegevoegd aan `backend/.env.example`.
+- **Tests:** `backend/test_security_hardening.py` (auth-401 per endpoint, fail-fast, filename-/groottevalidatie, idempotentie, refresh-401, CORS). Bewust uitgesteld: transactiegrens bij multi-file ingest (PR-007) en unique constraint op `ArtikelVoorraad` (PR-006, vereist data-audit).
+
+### Added - ENGINEERING STANDAARD, AUDIT & AI-INSTRUCTIELAAG (2026-07-13)
+
+- **`docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md`** (nieuw) — canonieke engineeringstandaard, een projectspecifieke vertaling van P10 ("The Power of Ten — Rules for Developing Safety Critical Code", Holzmann/NASA-JPL); bij conflict met elk ander instructie- of adapterbestand altijd leidend.
+- **`docs/references/P10.pdf`** (nieuw) — ongewijzigde kopie van de bronpublicatie als referentie; `.gitignore` uitgezonderd van de bestaande `*.pdf`-regel via `!docs/references/P10.pdf`.
+- **`docs/engineering/PRODUCTION_READINESS_AUDIT.md`** (nieuw) — production-readiness bevindingen met concreet pad(:regel)-bewijs, gekoppeld aan de standaard.
+- **`docs/engineering/PRODUCTION_READINESS_PLAN.md`** (nieuw) — gefaseerd verbeterplan (baseline → critical/high fixes → quality gates → architectuur → productievalidatie) op basis van de audit.
+- **AI-instructielaag:**
+  - `AGENTS.md` uitgebreid met een verplichte verwijzing naar de standaard, de niet-onderhandelbare beslisregels, werkelijke projectcommando's en de rapportageverplichting bij sessie-einde.
+  - **`CLAUDE.md`** (nieuw, root) — Claude Code-adapter die de standaard importeert.
+  - **`CHATGPT_PROJECT_INSTRUCTIONS.md`** (nieuw, root) — zelfstandige, kopieerbare ChatGPT-projectinstructies.
+  - **`docs/engineering/AI_SESSION_HANDOFF.md`** (nieuw) — leeg rapportagesjabloon voor sessie-overdracht tussen Codex/GPT/Claude.
+- **Docs-governance-updates:** `.clinerules` en `docs/DOCUMENTATION_GUIDELINES.md` verwijzen nu naar de canonieke standaard en hanteren dezelfde root-markdown-whitelist (7 bestanden, incl. `CLAUDE.md`/`CHATGPT_PROJECT_INSTRUCTIONS.md`); `docs/PROJECT_CONTEXT_INDEX.md` registreert de nieuwe documenten en neemt de standaard op in de conflictresolutie-volgorde.
+
+### Changed - FASE 0 BASELINE (production-readiness plan) (2026-07-13)
+
+- **Git-hygiëne (PR-003, PR-024):** de drie `backend/database.db.backup_*`-bestanden (waaronder een 241 KB SQLite-kopie met gebruikers-/settingsdata) en de gegenereerde artefacten `backend/pdf_extraction_data.json` + `backend/pdf_extraction_report.html` uit git-tracking gehaald (`git rm --cached`; bestanden blijven lokaal) en aan `.gitignore` toegevoegd. *Let op:* verwijdering uit de git-historie en rotatie van gelekte secrets zijn aparte, nog openstaande vervolgacties.
+- **Testafhankelijkheden (PR-012):** nieuw `backend/requirements-dev.txt` met `pytest` en `httpx`; `requirements.txt` (productie) blijft ongewijzigd.
+- **Test-DB-isolatie (Fase 0.6):** `backend/database.py` leest nu optioneel `DATABASE_URL` uit de omgeving (default = lokale `database.db`, backward-compatible); nieuw `backend/conftest.py` stuurt testruns naar een wegwerpdatabase zodat tests de lokale `database.db` niet muteren; `.env.example` bijgewerkt.
+- **Testisolatie (PR-025):** `backend/test_situation_classifier.py` laat de twee seed-afhankelijke integratietests netjes skippen wanneer er geen batchdata is; unit-baseline gaat van "37 passed, 2 failed" naar "37 passed, 2 skipped".
+- Overdracht vastgelegd in `docs/sessions/2026-07-13.md` (ingevuld handoff-document).
+
 ### Fixed - COMBINATIE-MAATBALK ONDERSTEUNING (2026-04-20)
 
 - **`backend/pdf_extract/extract_settings.py`** — nieuw regex-patroon `^(X{0,3}[SML])\/(X{0,3}[SML])$` in `KNOWN_SIZE_PATTERNS`; de table-parser herkent nu `XS/S`, `S/M`, `M/L`, `L/XL`, `XL/XX`, `XL/XXL` als geldige maatkolommen.

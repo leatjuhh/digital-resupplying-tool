@@ -669,7 +669,6 @@ def check_and_consolidate_fragmented_bv(
 
     moves = []
     applied_rules = []
-    bv_config = get_bv_config()
 
     # Groepeer voorraad per BV
     bv_inventory: Dict[str, Dict[str, Dict[str, int]]] = defaultdict(lambda: defaultdict(dict))

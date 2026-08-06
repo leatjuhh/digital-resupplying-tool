@@ -328,8 +328,8 @@ export function EditableProposalDetail({ id, batchId, batchInfo, onProposalDataC
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li>Bewerk de aantallen direct door op de getallen te klikken</li>
               <li>De totale voorraad moet gelijk blijven (gebalanceerd zijn) om op te kunnen slaan</li>
-              <li>Gebruik "Laad AI Voorstel" om te starten vanaf het gegenereerde voorstel</li>
-              <li>Gebruik "Resetten" om terug te gaan naar de {editingBasis === 'current' ? 'originele voorraad' : 'AI voorstel basis'}</li>
+              <li>Gebruik &quot;Laad AI Voorstel&quot; om te starten vanaf het gegenereerde voorstel</li>
+              <li>Gebruik &quot;Resetten&quot; om terug te gaan naar de {editingBasis === 'current' ? 'originele voorraad' : 'AI voorstel basis'}</li>
             </ul>
           </div>
 

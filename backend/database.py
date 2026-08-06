@@ -2,6 +2,7 @@
 Database configuration and session management
 """
 # Importeer SQLAlchemy componenten voor database connectie en ORM
+import os
 from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -10,7 +11,14 @@ from pathlib import Path
 # SQLite database bestand locatie, expliciet gekoppeld aan de backend-map
 BACKEND_DIR = Path(__file__).resolve().parent
 DATABASE_PATH = BACKEND_DIR / "database.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{DATABASE_PATH.as_posix()}"
+# Standaard draait de applicatie tegen het lokale SQLite-bestand. De URL kan
+# worden overschreven via DATABASE_URL, o.a. zodat tests tegen een wegwerp-
+# database draaien in plaats van de lokale database.db (zie backend/conftest.py
+# en docs/engineering/PRODUCTION_READINESS_PLAN.md, Stap 0.6). Zonder de
+# variabele blijft het gedrag identiek aan voorheen.
+SQLALCHEMY_DATABASE_URL = os.getenv(
+    "DATABASE_URL", f"sqlite:///{DATABASE_PATH.as_posix()}"
+)
 
 # Maak database engine aan
 # check_same_thread=False is nodig voor SQLite om meerdere threads toe te staan
