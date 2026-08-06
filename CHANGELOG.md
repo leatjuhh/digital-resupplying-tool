@@ -7,6 +7,14 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - DATA-INTEGRITEIT: niet-negativiteits-CheckConstraints op ArtikelVoorraad (2026-08-06)
+
+- **`ArtikelVoorraad` heeft nu twee `CheckConstraint`s (PR-006, R5.4):** `ck_artikel_voorraad_voorraad_nonneg` (`voorraad >= 0`) en `ck_artikel_voorraad_verkocht_nonneg` (`verkocht >= 0`) — defensie tegen datacorruptie op databaseniveau.
+- **Compenserende controle:** `backend/test_artikel_voorraad_constraint.py` (nieuw) bewijst op een verse in-memory DB dat negatieve waarden geweigerd en geldige rijen geaccepteerd worden.
+- **Let op (SQLite):** de constraints gelden vanaf tabel-aanmaak (`create_all` op een verse DB); een bestaande tabel krijgt ze pas via een tabel-herbouw/migratie (Fase 4).
+- **Bewust nog niet gedaan:** de unieke constraint over (batch, volgnummer, filiaal, maat) tegen dubbele ingest-rijen — die vereist ook nette foutafhandeling in het ingestpad en volgt als aparte stap.
+- **Standaard bijgewerkt:** Regel 5 "Huidige toestand" + hoofdstuk 6 "Databaseconstraints".
+
 ### Changed - QUALITY GATE: mypy blokkerend voor de Kritiek-domeinlaag (2026-08-06)
 
 - **`mypy redistribution/` is nu een blokkerende CI-gate (R10.1):** de kritieke domeinlaag is type-schoon gemaakt en wordt voortaan verplicht getypecheckt. De volledige-backend `mypy .` blijft een niet-blokkerende baseline (router-/legacy-laag met resterende, grotendeels SQLAlchemy-`Column` typefouten), op te schonen module-voor-module.
