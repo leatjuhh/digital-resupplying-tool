@@ -32,18 +32,22 @@ _DEFAULT_PROFILES: Dict[str, StoreProfile] = {
     "38": StoreProfile("38", floor_area_m2=110, max_capacity=220),
 }
 
-_active_profiles: Dict[str, StoreProfile] = dict(_DEFAULT_PROFILES)
+# `_DEFAULT_PROFILES` is de read-only standaardconfiguratie. De vorige
+# muteerbare module-global (`_active_profiles`) plus setter is verwijderd
+# (Fase 3.3, PR-020): afwijkende profielen worden nu expliciet meegegeven via de
+# `profiles`-parameter (dependency injection) i.p.v. gedeelde state te muteren.
 
 
-def get_store_profile(store_code: str) -> Optional[StoreProfile]:
-    return _active_profiles.get(store_code)
+def get_store_profile(
+    store_code: str, profiles: Optional[Dict[str, StoreProfile]] = None
+) -> Optional[StoreProfile]:
+    """Geef het profiel van een winkel; gebruikt de standaardprofielen tenzij een
+    expliciete `profiles`-map wordt meegegeven."""
+    return (profiles if profiles is not None else _DEFAULT_PROFILES).get(store_code)
 
 
-def get_all_profiles() -> Dict[str, StoreProfile]:
-    return dict(_active_profiles)
-
-
-def set_store_profiles(profiles: Dict[str, StoreProfile]) -> None:
-    """Overschrijf actieve profielen — bruikbaar voor tests of runtime config."""
-    global _active_profiles
-    _active_profiles = profiles
+def get_all_profiles(
+    profiles: Optional[Dict[str, StoreProfile]] = None
+) -> Dict[str, StoreProfile]:
+    """Geef een kopie van de (standaard- of meegegeven) winkelprofielen."""
+    return dict(profiles if profiles is not None else _DEFAULT_PROFILES)

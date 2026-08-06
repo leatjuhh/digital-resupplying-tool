@@ -13,11 +13,11 @@ from .constraints import (
     RedistributionParams, DEFAULT_PARAMS,
     get_size_order, LETTER_SIZE_ORDER,
 )
-from .bv_config import get_bv_config, validate_bv_move
+from .bv_config import BVConfig, get_bv_config, validate_bv_move
 from .scoring import calculate_move_score, filter_low_quality_moves
 from .store_config import is_redistribution_candidate
 from .situation import classify_article_situation, format_situation_rule
-from .store_profiles import get_store_profile
+from .store_profiles import StoreProfile, get_store_profile
 from db_models import ArtikelVoorraad, PDFBatch
 
 logger = logging.getLogger(__name__)
@@ -74,8 +74,15 @@ def load_article_data(
     batch_id: int,
     batch_store_totals: Optional[Dict[str, int]] = None,
     store_total_inventory: Optional[Dict[str, int]] = None,
+    bv_config: Optional[BVConfig] = None,
+    store_profiles: Optional[Dict[str, StoreProfile]] = None,
 ) -> Optional[ArticleStock]:
-    """Laad artikel voorraad data uit database"""
+    """Laad artikel voorraad data uit database.
+
+    `bv_config` en `store_profiles` kunnen expliciet worden meegegeven
+    (dependency injection); bij None wordt de gedeelde read-only configuratie
+    gebruikt.
+    """
     records = db.query(ArtikelVoorraad).filter(
         ArtikelVoorraad.volgnummer == volgnummer,
         ArtikelVoorraad.batch_id == batch_id,
@@ -90,7 +97,7 @@ def load_article_data(
         batch_id=batch_id,
     )
 
-    bv_config = get_bv_config()
+    bv_config = bv_config if bv_config is not None else get_bv_config()
 
     stores_data: Dict[str, Dict] = defaultdict(lambda: {
         'inventory': {},
@@ -135,7 +142,7 @@ def load_article_data(
         store_total = (
             store_total_inventory.get(store_code, 0) if store_total_inventory else 0
         )
-        profile = get_store_profile(store_code)
+        profile = get_store_profile(store_code, store_profiles)
         max_capacity = profile.max_capacity if profile else 0
         store_inv.calculate_metrics(
             batch_total=batch_total,
@@ -265,6 +272,7 @@ def generate_moves_for_size(
     size: str,
     params: RedistributionParams,
     working_inventory: Dict[str, Dict[str, int]],
+    bv_config: Optional[BVConfig] = None,
 ) -> List[Move]:
     """
     Genereer moves voor één specifieke maat (demand-gedreven, baseline-stijl).
@@ -314,7 +322,7 @@ def generate_moves_for_size(
 
             if params.enforce_bv_separation:
                 is_valid, _reason = validate_bv_move(
-                    from_store, to_store, params.enforce_bv_separation
+                    from_store, to_store, params.enforce_bv_separation, config=bv_config
                 )
                 if not is_valid:
                     continue
@@ -470,10 +478,15 @@ def _donor_order(
     return [s for s in non_picks if _store_inv_total(working_inv, s) > 0] + pick_donors
 
 
-def _bv_compatible(from_store: str, to_store: str, params: RedistributionParams) -> bool:
+def _bv_compatible(
+    from_store: str,
+    to_store: str,
+    params: RedistributionParams,
+    bv_config: Optional[BVConfig] = None,
+) -> bool:
     if not params.enforce_bv_separation:
         return True
-    valid, _ = validate_bv_move(from_store, to_store, True)
+    valid, _ = validate_bv_move(from_store, to_store, True, config=bv_config)
     return valid
 
 
@@ -485,6 +498,7 @@ def _assign_bundle(
     working_inv: Dict[str, Dict[str, int]],
     params: RedistributionParams,
     min_qty: int,
+    bv_config: Optional[BVConfig] = None,
 ) -> List[Move]:
     """Voed receiver tot ≥ min_qty stuks, bij voorkeur met een aaneengesloten serie."""
     moves: List[Move] = []
@@ -514,7 +528,7 @@ def _assign_bundle(
                 # Pick-donor mag niet onder min_qty zakken
                 if donor in picks and _store_inv_total(working_inv, donor) - 1 < min_qty:
                     continue
-                if not _bv_compatible(donor, receiver, params):
+                if not _bv_compatible(donor, receiver, params, bv_config):
                     continue
                 moves.append(_make_bundle_move(
                     article, donor, receiver, size, working_inv, params,
@@ -538,6 +552,7 @@ def _drain_non_receivers(
     all_stores: List[str],
     working_inv: Dict[str, Dict[str, int]],
     params: RedistributionParams,
+    bv_config: Optional[BVConfig] = None,
 ) -> List[Move]:
     """Forceer elke niet-pick winkel naar 0: resterende stuks naar picks."""
     moves: List[Move] = []
@@ -547,7 +562,7 @@ def _drain_non_receivers(
         for size in list(article.all_sizes):
             while working_inv[donor].get(size, 0) > 0:
                 target = next(
-                    (p for p in picks if _bv_compatible(donor, p, params)),
+                    (p for p in picks if _bv_compatible(donor, p, params, bv_config)),
                     None,
                 )
                 if target is None:
@@ -569,6 +584,7 @@ def _consolidate_all_to_top(
     store_codes: List[str],
     working_inv: Dict[str, Dict[str, int]],
     params: RedistributionParams,
+    bv_config: Optional[BVConfig] = None,
 ) -> List[Move]:
     """Totaal in groep < min_qty: alles naar top-ranked winkel."""
     ranked = _rank_receivers(article, store_codes, working_inv)
@@ -580,7 +596,7 @@ def _consolidate_all_to_top(
     for donor in store_codes:
         if donor == top:
             continue
-        if not _bv_compatible(donor, top, params):
+        if not _bv_compatible(donor, top, params, bv_config):
             continue
         for size in list(article.all_sizes):
             while working_inv[donor].get(size, 0) > 0:
@@ -596,6 +612,7 @@ def _plan_group(
     store_codes: List[str],
     params: RedistributionParams,
     working_inv: Dict[str, Dict[str, int]],
+    bv_config: Optional[BVConfig] = None,
 ) -> List[Move]:
     """Plan herverdeling voor één BV-groep (of alle winkels als cross-BV)."""
     min_qty = params.min_items_per_receiver
@@ -605,7 +622,7 @@ def _plan_group(
         return []
 
     if pool < min_qty:
-        return _consolidate_all_to_top(article, store_codes, working_inv, params)
+        return _consolidate_all_to_top(article, store_codes, working_inv, params, bv_config)
 
     # Aantal receivers = hoeveel bundels van min_qty passen
     max_picks = pool // min_qty
@@ -615,11 +632,11 @@ def _plan_group(
     moves: List[Move] = []
     for recv in picks:
         moves.extend(_assign_bundle(
-            article, recv, picks, store_codes, working_inv, params, min_qty
+            article, recv, picks, store_codes, working_inv, params, min_qty, bv_config
         ))
 
     moves.extend(_drain_non_receivers(
-        article, picks, store_codes, working_inv, params
+        article, picks, store_codes, working_inv, params, bv_config
     ))
     return moves
 
@@ -628,21 +645,26 @@ def generate_moves_for_article(
     article: ArticleStock,
     params: RedistributionParams,
     working_inv: Dict[str, Dict[str, int]],
+    bv_config: Optional[BVConfig] = None,
 ) -> Tuple[List[Move], List[str]]:
-    """Artikel-level bundle-planner. Retourneert (moves, applied_rules)."""
+    """Artikel-level bundle-planner. Retourneert (moves, applied_rules).
+
+    `bv_config` kan expliciet worden meegegeven (dependency injection); bij None
+    wordt de gedeelde read-only BV-configuratie gebruikt.
+    """
     applied_rules: List[str] = []
 
     if params.enforce_bv_separation:
         groups = _group_by_bv(article)
         all_moves: List[Move] = []
         for _bv_name, store_codes in groups.items():
-            all_moves.extend(_plan_group(article, store_codes, params, working_inv))
+            all_moves.extend(_plan_group(article, store_codes, params, working_inv, bv_config))
         applied_rules.append(
             f"Bundle Planner (per BV, ≥{params.min_items_per_receiver}/winkel)"
         )
     else:
         store_codes = list(article.stores.keys())
-        all_moves = _plan_group(article, store_codes, params, working_inv)
+        all_moves = _plan_group(article, store_codes, params, working_inv, bv_config)
         applied_rules.append(
             f"Bundle Planner (cross-BV, ≥{params.min_items_per_receiver}/winkel)"
         )
@@ -757,6 +779,8 @@ def generate_redistribution_proposals_for_article(
     params: Optional[RedistributionParams] = None,
     batch_store_totals: Optional[Dict[str, int]] = None,
     store_total_inventory: Optional[Dict[str, int]] = None,
+    bv_config: Optional[BVConfig] = None,
+    store_profiles: Optional[Dict[str, StoreProfile]] = None,
 ) -> Optional[Proposal]:
     """
     Genereer herverdelingsvoorstel voor één artikel.
@@ -772,9 +796,15 @@ def generate_redistribution_proposals_for_article(
     if params is None:
         params = DEFAULT_PARAMS
 
+    # BV-configuratie éénmalig resolven (BVConfig() doet file-I/O) en expliciet
+    # doorgeven aan alle onderliggende stappen (dependency injection).
+    if bv_config is None:
+        bv_config = get_bv_config()
+
     # === STAP 1: Data ophalen ===
     article = load_article_data(
-        db, volgnummer, batch_id, batch_store_totals, store_total_inventory
+        db, volgnummer, batch_id, batch_store_totals, store_total_inventory,
+        bv_config=bv_config, store_profiles=store_profiles,
     )
 
     if article is None:
@@ -799,7 +829,7 @@ def generate_redistribution_proposals_for_article(
     if params.enable_bundle_planner:
         # Nieuwe artikel-level planner met harde min-3 regel
         all_moves, planner_rules = generate_moves_for_article(
-            article, params, working_inventory
+            article, params, working_inventory, bv_config
         )
         applied_rules = [situation_rule, *planner_rules]
     else:
@@ -815,7 +845,7 @@ def generate_redistribution_proposals_for_article(
             applied_rules = [situation_rule]
             for size in article.all_sizes:
                 all_moves.extend(generate_moves_for_size(
-                    article, size, params, working_inventory
+                    article, size, params, working_inventory, bv_config
                 ))
             if params.enforce_bv_separation:
                 applied_rules.append("BV Separation")
@@ -852,8 +882,15 @@ def generate_redistribution_proposals_for_batch(
     db: Session,
     batch_id: int,
     params: Optional[RedistributionParams] = None,
+    bv_config: Optional[BVConfig] = None,
+    store_profiles: Optional[Dict[str, StoreProfile]] = None,
 ) -> List[Proposal]:
-    """Genereer herverdelingsvoorstellen voor alle artikelen in een batch"""
+    """Genereer herverdelingsvoorstellen voor alle artikelen in een batch.
+
+    `bv_config`/`store_profiles` kunnen expliciet worden meegegeven (dependency
+    injection). De BV-configuratie wordt hier éénmalig per batch geresolved
+    (BVConfig() doet file-I/O) en aan elk artikel doorgegeven.
+    """
     records = db.query(ArtikelVoorraad.volgnummer).filter(
         ArtikelVoorraad.batch_id == batch_id,
     ).distinct().all()
@@ -866,12 +903,18 @@ def generate_redistribution_proposals_for_batch(
     # Door gebruiker opgegeven totale winkelvoorraad (tiebreaker bij sales=0)
     store_total_inventory = load_store_total_inventory(db, batch_id)
 
+    # Config één keer resolven en hergebruiken over alle artikelen in de batch.
+    if bv_config is None:
+        bv_config = get_bv_config()
+
     proposals = []
     for volgnummer in volgnummers:
         proposal = generate_redistribution_proposals_for_article(
             db, volgnummer, batch_id, params,
             batch_store_totals=batch_store_totals,
             store_total_inventory=store_total_inventory,
+            bv_config=bv_config,
+            store_profiles=store_profiles,
         )
         if proposal:
             proposals.append(proposal)
