@@ -7,6 +7,15 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Changed - QUALITY GATE: mypy blokkerend voor de Kritiek-domeinlaag (2026-08-06)
+
+- **`mypy redistribution/` is nu een blokkerende CI-gate (R10.1):** de kritieke domeinlaag is type-schoon gemaakt en wordt voortaan verplicht getypecheckt. De volledige-backend `mypy .` blijft een niet-blokkerende baseline (router-/legacy-laag met resterende, grotendeels SQLAlchemy-`Column` typefouten), op te schonen module-voor-module.
+- **Type-schoon gemaakt (allemaal tooling-schijnfouten, geen gedragswijziging):**
+  - `data_loading.py`: de DB→domein-grens (`record.filiaal_code`/`.maat`/`.omschrijving`) expliciet als `str` getypeerd — de ORM-reads zijn op runtime al strings.
+  - `constraints.py`: `CUSTOM_SIZE_ORDERS: dict` geannoteerd.
+  - `offline_evaluation.py`: `per_article: List[dict]` geannoteerd.
+- **Standaard bijgewerkt:** Regel 10 "Huidige toestand" weerspiegelt nu de daadwerkelijke CI-gates (was verouderd tot de pre-CI-staat).
+
 ### Changed - FASE 3 ARCHITECTUUR: algorithm.py opgesplitst (2026-08-06)
 
 - **`redistribution/algorithm.py` (922 r.) opgesplitst in 5 modules (PR-022):** de grote domeinmodule mengde data-laden, twee planner-varianten en orchestratie. Nu gescheiden op verantwoordelijkheid, zónder gedragswijziging:

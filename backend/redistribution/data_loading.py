@@ -90,7 +90,7 @@ def load_article_data(
 
     article = ArticleStock(
         volgnummer=volgnummer,
-        omschrijving=records[0].omschrijving if records else "",
+        omschrijving=str(records[0].omschrijving) if records else "",
         batch_id=batch_id,
     )
 
@@ -106,12 +106,14 @@ def load_article_data(
     all_sizes_set = set()
 
     for record in records:
-        store_code = record.filiaal_code
+        # DB→domein-grens: ORM-kolommen expliciet als str typen (record.* is voor
+        # de typechecker Column[str], op runtime een gewone str).
+        store_code = str(record.filiaal_code)
 
         if not is_redistribution_candidate(store_code):
             continue
 
-        size = record.maat
+        size = str(record.maat)
 
         stores_data[store_code]['inventory'][size] = record.voorraad
         stores_data[store_code]['sales_total'] = max(

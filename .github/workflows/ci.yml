@@ -39,9 +39,15 @@ jobs:
       - name: Ruff (lint) — verplichte gate
         run: ruff check .
 
-      - name: Mypy (typecheck) — informatief
-        # Voorlopig niet-blokkerend: de legacy-codebase heeft nog een
-        # baseline aan typefouten. Wordt blokkerend in Fase 3.
+      - name: Mypy (Kritiek-domeinlaag) — verplichte gate
+        # De kritieke domeinlaag redistribution/ is type-schoon en wordt daarom
+        # blokkerend getypecheckt (R10.1, risicoklasse Kritiek — hoofdstuk 14).
+        run: mypy redistribution/
+
+      - name: Mypy (volledige backend) — informatief
+        # Niet-blokkerende baseline: de router-/legacy-laag heeft nog een
+        # baseline aan (grotendeels SQLAlchemy-Column) typefouten. Wordt
+        # module-voor-module opgeschoond en blokkerend gemaakt.
         run: mypy .
         continue-on-error: true
 
