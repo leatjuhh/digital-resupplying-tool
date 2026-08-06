@@ -106,7 +106,7 @@ COMBO_LETTER_SIZE_ORDER = [
     'XS/S', 'S/M', 'M/L', 'L/XL', 'XL/XX', 'XL/XXL',
 ]
 
-CUSTOM_SIZE_ORDERS = {}
+CUSTOM_SIZE_ORDERS: dict = {}
 
 
 def register_custom_size_order(name: str, sizes: list):
