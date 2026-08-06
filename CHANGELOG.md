@@ -7,6 +7,14 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - AUDIT TRAIL: reviewed_by op Proposal (2026-08-06)
+
+- **`Proposal.reviewed_by` (hoofdstuk 6/8):** legt de `username` vast van wie een voorstel goedkeurt, afkeurt of bewerkt. De approve/reject/edit-handlers zetten `reviewed_by` (en `reviewed_at`) op basis van de ingelogde gebruiker; de waarde wordt ook in de lees- en review-responses teruggegeven.
+- **Runtime-migratie:** `ensure_runtime_schema()` voegt de kolom toe aan bestaande SQLite-databases (`ALTER TABLE proposals ADD COLUMN reviewed_by`), consistent met de bestaande `users`/`feedback`-migraties. Nullable, dus bestaande/nog niet-gereviewde voorstellen blijven geldig.
+- **Compenserende controle:** `backend/test_proposal_review_audit.py` (nieuw) verifieert dat approve/reject de reviewer vastleggen.
+- **Resterend:** `Feedback` heeft nog geen `user_id` (kleiner, apart punt). Het ad-hoc runtime-migratiemechanisme blijft een tussenoplossing tot Alembic (Fase 4).
+- **Standaard (hoofdstuk 6 + 8) bijgewerkt.**
+
 ### Added - DATA-INTEGRITEIT: idempotentie-guard + robuustere ingest (2026-08-06)
 
 - **`UniqueConstraint` op `ArtikelVoorraad` (hoofdstuk 6, idempotentie):** `uq_artikel_voorraad_batch_vlg_fil_maat` over (batch_id, volgnummer, filiaal_code, maat) voorkomt dubbele voorraadrijen — en dus dubbeltelling — bij een dubbele ingest binnen dezelfde batch.

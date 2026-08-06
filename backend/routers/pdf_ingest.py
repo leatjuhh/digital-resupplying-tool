@@ -300,6 +300,7 @@ async def get_batch_proposals(batch_id: int, db: Session = Depends(get_db)):
                 "stores_affected": p.stores_affected,
                 "created_at": p.created_at.isoformat() if p.created_at else None,
                 "reviewed_at": p.reviewed_at.isoformat() if p.reviewed_at else None,
+                "reviewed_by": p.reviewed_by,
                 "moves": p.moves
             }
             for p in proposals
@@ -338,6 +339,7 @@ async def get_proposal_detail(proposal_id: int, db: Session = Depends(get_db)):
         "stores_affected": proposal.stores_affected,
         "created_at": proposal.created_at.isoformat() if proposal.created_at else None,
         "reviewed_at": proposal.reviewed_at.isoformat() if proposal.reviewed_at else None,
+        "reviewed_by": proposal.reviewed_by,
         "rejection_reason": proposal.rejection_reason
     }
 
@@ -418,6 +420,7 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
         "stores_affected": proposal.stores_affected,
         "created_at": proposal.created_at.isoformat() if proposal.created_at else None,
         "reviewed_at": proposal.reviewed_at.isoformat() if proposal.reviewed_at else None,
+        "reviewed_by": proposal.reviewed_by,
         "rejection_reason": proposal.rejection_reason,
         "metadata": metadata,
         "sizes": sorted_sizes,
@@ -456,11 +459,13 @@ async def approve_proposal(
             "id": proposal.id,
             "status": proposal.status,
             "reviewed_at": proposal.reviewed_at.isoformat() if proposal.reviewed_at else None,
+        "reviewed_by": proposal.reviewed_by,
             "message": "Proposal was al goedgekeurd (geen wijziging)"
         }
 
     proposal.status = 'approved'
     proposal.reviewed_at = datetime.now()
+    proposal.reviewed_by = current_user.username
     proposal.rejection_reason = None
 
     # Automatisch feedback-record aanmaken per move (geen dialog nodig bij approve)
@@ -483,6 +488,7 @@ async def approve_proposal(
         "id": proposal.id,
         "status": proposal.status,
         "reviewed_at": proposal.reviewed_at.isoformat(),
+        "reviewed_by": proposal.reviewed_by,
         "message": "Proposal approved successfully"
     }
 
@@ -514,6 +520,7 @@ async def reject_proposal(
 
     proposal.status = 'rejected'
     proposal.reviewed_at = datetime.now()
+    proposal.reviewed_by = current_user.username
     proposal.rejection_reason = rejection_reason
 
     # Feedback-record op proposal-niveau bij reject
@@ -533,6 +540,7 @@ async def reject_proposal(
         "id": proposal.id,
         "status": proposal.status,
         "reviewed_at": proposal.reviewed_at.isoformat(),
+        "reviewed_by": proposal.reviewed_by,
         "rejection_reason": proposal.rejection_reason,
         "message": "Proposal rejected successfully"
     }
@@ -564,6 +572,8 @@ async def update_proposal(
     # de JSON-kolom (extra velden blijven behouden via extra="allow").
     proposal.moves = [move.model_dump() for move in payload.moves]
     proposal.status = 'edited'
+    proposal.reviewed_at = datetime.now()
+    proposal.reviewed_by = current_user.username
 
     # Recalculate totals
     proposal.total_moves = len(payload.moves)
