@@ -150,7 +150,12 @@ class Proposal(Base):
     
     # Review tijdstip
     reviewed_at = Column(DateTime(timezone=True))
-    
+
+    # Audit trail: username van wie het voorstel heeft goedgekeurd/afgekeurd/
+    # bewerkt (hoofdstuk 6/8). Nullable: bestaande en nog niet-gereviewde
+    # voorstellen hebben geen reviewer.
+    reviewed_by = Column(String, nullable=True)
+
     # Rejection reason (bij afkeur)
     rejection_reason = Column(Text)
 

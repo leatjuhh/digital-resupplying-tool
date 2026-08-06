@@ -80,6 +80,12 @@ def ensure_runtime_schema():
             # rating en comment mogen NULL zijn (bestaande NOT NULL constraint verwijderen
             # kan niet in SQLite zonder tabel herbouwen; nieuwe records slaan NULL correct op)
 
+        # Proposals-tabel: audit trail (wie reviewde het voorstel — hoofdstuk 6/8).
+        if "proposals" in table_names:
+            proposal_columns = {col["name"] for col in inspector.get_columns("proposals")}
+            if "reviewed_by" not in proposal_columns:
+                connection.execute(text("ALTER TABLE proposals ADD COLUMN reviewed_by VARCHAR"))
+
 # Dependency functie voor FastAPI endpoints
 def get_db():
     """
