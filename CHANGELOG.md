@@ -7,6 +7,11 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - AUDIT TRAIL: user_id op Feedback (2026-08-06)
+
+- **`Feedback.user_id` (FK → `users`, nullable):** legt per mutatie (approve/reject/edit) vast wélke gebruiker de actie uitvoerde, complementair aan `Proposal.reviewed_by`. Zo is de audit-trail zowel op voorstel- als op feedback-niveau compleet.
+- De 3 Feedback-creatiepunten in `routers/pdf_ingest.py` zetten nu `user_id=current_user.id`. `ensure_runtime_schema()` voegt de kolom toe aan bestaande databases (uitbreiding van de bestaande feedback-migraties). `test_proposal_review_audit.py` borgt dat een reject-mutatie de `user_id` vastlegt.
+
 ### Added - AUDIT TRAIL: reviewed_by op Proposal (2026-08-06)
 
 - **`Proposal.reviewed_by` (hoofdstuk 6/8):** legt de `username` vast van wie een voorstel goedkeurt, afkeurt of bewerkt. De approve/reject/edit-handlers zetten `reviewed_by` (en `reviewed_at`) op basis van de ingelogde gebruiker; de waarde wordt ook in de lees- en review-responses teruggegeven.

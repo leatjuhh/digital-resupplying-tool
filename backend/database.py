@@ -72,6 +72,7 @@ def ensure_runtime_schema():
                 "move_index": "INTEGER",
                 "feature_snapshot": "JSON",
                 "model_score_at_time": "FLOAT",
+                "user_id": "INTEGER",
             }
             for col_name, col_type in migrations.items():
                 if col_name not in feedback_columns:
