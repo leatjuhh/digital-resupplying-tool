@@ -259,6 +259,10 @@ def run_batch_ingest(
                     )
                     db.add(log_entry)
 
+                # Commit de validatie-logs meteen, zodat ze niet verloren gaan als
+                # een later bestand in deze batch een sessie-rollback veroorzaakt.
+                db.commit()
+
                 failed_count += 1
                 results.append({
                     "filename": file.filename,
@@ -285,6 +289,15 @@ def run_batch_ingest(
             # Bewuste brede vangst op de buitenste per-bestand-laag (R7.1-uitzondering):
             # één corrupt bestand mag de rest van de batch niet meeslepen. De fout
             # wordt met stacktrace gelogd en als per-bestand FAILED gerapporteerd.
+            #
+            # Herstel eerst de sessie: als de fout een mislukte commit was (bv. een
+            # UniqueConstraint-schending bij een dubbel bestand), staat de sessie in
+            # een pending-rollback-staat en zou elke verdere db-actie — inclusief de
+            # foutlog en de batch-afronding hieronder — óók falen. rollback() gooit
+            # alleen de niet-gecommitte records van DIT bestand weg (all-or-nothing
+            # per bestand); reeds gecommitte bestanden blijven behouden.
+            db.rollback()
+
             logger.error(f"[FILE_ERROR] Error processing {file.filename}: {e}", exc_info=True)
 
             log_entry = PDFParseLog(

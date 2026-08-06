@@ -286,13 +286,20 @@ class ArtikelVoorraad(Base):
     """Voorraad data geëxtraheerd uit PDF's"""
     __tablename__ = "artikel_voorraad"
 
-    # R5.4: voorraad en verkocht zijn per definitie niet-negatief. Deze
-    # CheckConstraints beschermen tegen datacorruptie op databaseniveau. NB: bij
-    # SQLite gelden ze vanaf tabel-aanmaak (create_all op een verse DB); een
-    # bestaande tabel krijgt ze pas via een tabel-herbouw (migratie, Fase 4).
+    # Databaseconstraints (NB bij SQLite: gelden vanaf tabel-aanmaak via
+    # create_all op een verse DB; een bestaande tabel krijgt ze pas via een
+    # tabel-herbouw/migratie, Fase 4):
+    #  - R5.4: voorraad en verkocht zijn per definitie niet-negatief.
+    #  - Idempotentie (hoofdstuk 6): per batch is (volgnummer, filiaal, maat)
+    #    uniek, zodat een dubbele ingest binnen dezelfde batch geen dubbele
+    #    voorraadrijen (en dus geen dubbeltelling) oplevert.
     __table_args__ = (
         CheckConstraint("voorraad >= 0", name="ck_artikel_voorraad_voorraad_nonneg"),
         CheckConstraint("verkocht >= 0", name="ck_artikel_voorraad_verkocht_nonneg"),
+        UniqueConstraint(
+            "batch_id", "volgnummer", "filiaal_code", "maat",
+            name="uq_artikel_voorraad_batch_vlg_fil_maat",
+        ),
     )
 
     # Unieke ID

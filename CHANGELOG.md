@@ -7,6 +7,14 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Added - DATA-INTEGRITEIT: idempotentie-guard + robuustere ingest (2026-08-06)
+
+- **`UniqueConstraint` op `ArtikelVoorraad` (hoofdstuk 6, idempotentie):** `uq_artikel_voorraad_batch_vlg_fil_maat` over (batch_id, volgnummer, filiaal_code, maat) voorkomt dubbele voorraadrijen — en dus dubbeltelling — bij een dubbele ingest binnen dezelfde batch.
+- **Robuustere per-bestand-foutafhandeling in `run_batch_ingest`:** het per-bestand `except`-blok doet nu een `db.rollback()`, zodat een mislukte commit (bv. de nieuwe UniqueConstraint bij een dubbel bestand) de sessie niet in een kapotte staat achterlaat en de batch-afronding niet meesleept. Hierdoor houdt de bestaande "één corrupt bestand sleept de rest niet mee"-garantie nu óók bij database-fouten. Validatie-logs worden per bestand direct gecommit zodat een latere rollback ze niet weggooit.
+- **Compenserende controle:** `test_run_batch_ingest_duplicate_file_recovers` (nieuw) bewijst dat twee identieke bestanden in één batch resulteren in `PARTIAL_SUCCESS` met precies 2 (niet 4) voorraadrijen.
+- **Let op (SQLite) & scope:** de constraint geldt vanaf tabel-aanmaak op een verse DB (bestaande tabel → migratie, Fase 4). Elke upload krijgt een nieuwe `batch_id`, dus dit dekt duplicaten *binnen* één batch; cross-batch-idempotentie blijft een apart punt.
+- **Standaard + `docs/guides/database.md` bijgewerkt.**
+
 ### Added - DATA-INTEGRITEIT: niet-negativiteits-CheckConstraints op ArtikelVoorraad (2026-08-06)
 
 - **`ArtikelVoorraad` heeft nu twee `CheckConstraint`s (PR-006, R5.4):** `ck_artikel_voorraad_voorraad_nonneg` (`voorraad >= 0`) en `ck_artikel_voorraad_verkocht_nonneg` (`verkocht >= 0`) — defensie tegen datacorruptie op databaseniveau.

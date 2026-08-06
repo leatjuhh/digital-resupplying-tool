@@ -154,3 +154,35 @@ def test_run_batch_ingest_all_failed_skips_proposals(monkeypatch, tmp_path):
         assert gen_called["value"] is False
     finally:
         db.close()
+
+
+def test_run_batch_ingest_duplicate_file_recovers(monkeypatch, tmp_path):
+    """Twee identieke bestanden in één batch: het tweede schendt de unieke
+    (batch, volgnummer, filiaal, maat)-constraint. De ingest herstelt de sessie,
+    markeert het duplicaat als FAILED en rondt de batch af (PARTIAL_SUCCESS) —
+    zonder dubbele voorraadrijen (geen dubbeltelling)."""
+    monkeypatch.setattr(svc, "parse_pdf_to_records", lambda path: _ok_parsed())
+    monkeypatch.setattr(svc, "generate_and_save_proposals", lambda db, batch_id: 1)
+
+    db = SessionLocal()
+    try:
+        files = [_FakeUpload(b"a", "dup1.pdf"), _FakeUpload(b"a", "dup2.pdf")]
+        payload = svc.run_batch_ingest(
+            db, files, ["dup1.pdf", "dup2.pdf"], "DupBatch", None, str(tmp_path)
+        )
+        assert payload["status"] == "PARTIAL_SUCCESS"
+        assert payload["success_count"] == 1
+        assert payload["failed_count"] == 1
+
+        # Alleen de 2 records van het eerste bestand — geen dubbele rijen.
+        records = db.query(db_models.ArtikelVoorraad).filter(
+            db_models.ArtikelVoorraad.batch_id == payload["batch_id"]
+        ).all()
+        assert len(records) == 2
+
+        batch = db.query(db_models.PDFBatch).filter(
+            db_models.PDFBatch.id == payload["batch_id"]
+        ).first()
+        assert batch is not None and batch.status == "PARTIAL_SUCCESS"
+    finally:
+        db.close()
