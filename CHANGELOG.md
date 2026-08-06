@@ -7,6 +7,15 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Changed - FASE 3.3 ARCHITECTUUR: config-singletons → dependency injection (2026-07-14)
+
+- **Module-level mutable singletons vervangen door DI (PR-020):** het herverdelingsalgoritme haalde BV-configuratie en winkelprofielen uit gedeelde, muteerbare module-globals (`_global_bv_config`, `_active_profiles`). Die zijn nu opgelost conform R6.1:
+  - **`bv_config.py`:** de mutator `reload_bv_config()` is verwijderd; `validate_bv_move(..., config=...)` accepteert nu een expliciete config. De resterende lazy singleton is read-only (BVConfig() doet file-I/O en wordt éénmalig per batch geresolved) — een toegestane read-mostly configuratiecache.
+  - **`store_profiles.py`:** de muteerbare `_active_profiles` + `set_store_profiles()` zijn verwijderd; `_DEFAULT_PROFILES` is read-only en `get_store_profile(code, profiles=...)` accepteert injectie.
+  - **`algorithm.py`:** `bv_config`/`store_profiles` worden nu expliciet doorgegeven vanaf de entrypoints (`generate_redistribution_proposals_for_batch`/`_for_article`) tot in `load_article_data`, de bundle-planner-keten (`_plan_group` → `_assign_bundle`/`_drain_non_receivers`/`_consolidate_all_to_top` → `_bv_compatible`) en `generate_moves_for_size`. Alle nieuwe parameters zijn optioneel (default → gedeelde read-only config), dus backward-compatibel: geen bestaande test hoefde te wijzigen.
+- **Compenserende controle (`backend/test_algorithm_config_injection.py`, nieuw):** 3 tests die bewijzen dat een geïnjecteerde config doorpropageert — op leaf-niveau (`validate_bv_move`), voor winkelprofielen, én end-to-end door de volledige bundle-planner. De 25+ invariant-/bundle-planner-tests bevestigen dat het gedrag ongewijzigd is (568 passed, 2 skipped).
+- **Standaard bijgewerkt:** de twee R6.1-afwijkingen (hoofdstuk 6 + uitzonderingentabel hoofdstuk 15) zijn gemarkeerd als **opgelost**.
+
 ### Changed - FASE 3.1 ARCHITECTUUR: pdf_ingest.py gesplitst (2026-07-14)
 
 - **`pdf_ingest.py` opgesplitst in drie lagen (PR-022):** de router (972 regels) mengde HTTP-routing, domeinlogica en persistentie. Dit is nu gescheiden conform hoofdstuk 5 + R4.4, zónder het externe API-contract te wijzigen:

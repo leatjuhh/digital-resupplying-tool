@@ -238,46 +238,54 @@ class BVConfig:
 
 
 # Global instance (kan worden gebruikt door algoritme)
-_global_bv_config: Optional[BVConfig] = None
+# Read-only, lazy geladen BV-configuratie (Fase 3.3, PR-020). BVConfig() doet
+# file-I/O bij constructie, dus dit wordt éénmalig geladen en daarna niet meer
+# gewijzigd — een read-mostly configuratiecache, expliciet toegestaan door R6.1.
+# De vorige mutator `reload_bv_config()` is verwijderd; wie een afwijkende config
+# wil gebruiken, geeft die expliciet mee via de `config`-parameter van
+# `validate_bv_move` en de algoritme-entrypoints (dependency injection) i.p.v. de
+# gedeelde state te muteren.
+_default_bv_config: Optional[BVConfig] = None
 
 
 def get_bv_config() -> BVConfig:
     """
-    Haal global BV configuratie op (singleton pattern)
+    Haal de gedeelde, read-only BV configuratie op (lazy geladen singleton)
     
     Returns:
         BVConfig instance
     """
-    global _global_bv_config
-    
-    if _global_bv_config is None:
-        _global_bv_config = BVConfig()
-    
-    return _global_bv_config
+    global _default_bv_config
 
+    if _default_bv_config is None:
+        _default_bv_config = BVConfig()
 
-def reload_bv_config():
-    """Herlaad BV configuratie (bijv. na wijzigingen via UI)"""
-    global _global_bv_config
-    _global_bv_config = BVConfig()
+    return _default_bv_config
 
 
 # ===== UTILITY FUNCTIONS =====
 
-def validate_bv_move(from_store: str, to_store: str, enforce_bv: bool = True) -> tuple[bool, str]:
+def validate_bv_move(
+    from_store: str,
+    to_store: str,
+    enforce_bv: bool = True,
+    config: Optional["BVConfig"] = None,
+) -> tuple[bool, str]:
     """
     Valideer of een move toegestaan is volgens BV regels
-    
+
     Args:
         from_store: Bron winkel
         to_store: Doel winkel
         enforce_bv: Of BV constraint gehandhaafd moet worden
-        
+        config: Expliciete BV-configuratie (dependency injection). Bij None wordt
+            de gedeelde read-only configuratie gebruikt.
+
     Returns:
         Tuple van (is_valid, reason)
     """
-    config = get_bv_config()
-    
+    config = config if config is not None else get_bv_config()
+
     if not enforce_bv:
         return True, "BV constraint niet actief"
     
