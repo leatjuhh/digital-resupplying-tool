@@ -59,6 +59,7 @@ jobs:
           pytest -q \
             test_bundle_planner.py \
             test_algorithm_config_injection.py \
+            test_artikel_voorraad_constraint.py \
             test_store_sorting.py \
             test_situation_classifier.py \
             test_offline_situation_evaluation.py \

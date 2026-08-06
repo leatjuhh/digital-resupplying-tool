@@ -242,6 +242,18 @@ CREATE INDEX idx_proposals_artikelnummer ON proposals(artikelnummer);
 CREATE INDEX idx_feedback_proposal_id ON feedback(proposal_id);
 ```
 
+### Constraints (data-integriteit)
+
+Naast `UNIQUE`-constraints kent `artikel_voorraad` sinds PR-006 niet-negativiteits-`CHECK`-constraints (R5.4):
+
+```sql
+-- op tabel artikel_voorraad
+CONSTRAINT ck_artikel_voorraad_voorraad_nonneg CHECK (voorraad >= 0),
+CONSTRAINT ck_artikel_voorraad_verkocht_nonneg CHECK (verkocht >= 0)
+```
+
+> ⚠️ **SQLite-let op:** deze `CHECK`-constraints worden toegepast bij tabel-aanmaak (`Base.metadata.create_all` op een verse DB). Een reeds bestaande `artikel_voorraad`-tabel krijgt ze pas via een tabel-herbouw/migratie (voorzien in Fase 4) — `ALTER TABLE ADD CONSTRAINT` bestaat niet in SQLite.
+
 ---
 
 ## <a id="crud"></a>🔧 CRUD Operaties
