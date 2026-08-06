@@ -7,6 +7,17 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Changed - FASE 3 ARCHITECTUUR: algorithm.py opgesplitst (2026-08-06)
+
+- **`redistribution/algorithm.py` (922 r.) opgesplitst in 5 modules (PR-022):** de grote domeinmodule mengde data-laden, twee planner-varianten en orchestratie. Nu gescheiden op verantwoordelijkheid, zónder gedragswijziging:
+  - **`sequence.py` (nieuw):** de gedeelde maatreeks-helper `_series_width`.
+  - **`data_loading.py` (nieuw):** DB → `ArticleStock` (`calculate_batch_store_totals`, `detect_size_type`, `load_store_total_inventory`, `load_article_data`).
+  - **`bundle_planner.py` (nieuw):** de actieve min-3 bundle-planner (`generate_moves_for_article` + helpers).
+  - **`legacy_size_planner.py` (nieuw):** het legacy per-maat-greedy pad (`generate_moves_for_size`, `check_and_consolidate_fragmented_bv`), alleen actief bij `enable_bundle_planner=False`.
+  - **`algorithm.py`:** teruggebracht tot **197 regels** pure orchestratie (`generate_redistribution_proposals_for_article`/`_for_batch`). Alle verplaatste symbolen blijven via backward-compat re-exports importeerbaar uit `redistribution.algorithm`, dus geen bestaande test hoefde te wijzigen.
+- **Gedragsbehoud bewezen:** naast de 25+ invariant-/bundle-/injectie-tests is de output van oud (main) vs. nieuw (gesplitst) vergeleken over **1000 scenario's** (500 seeds × BV-scheiding aan/uit) — **bit-identiek** (zelfde SHA-256). Verificatie: ruff groen, 568 passed / 2 skipped, app-boot OK.
+- **Standaard bijgewerkt:** de R4-afwijking voor `algorithm.py` (hoofdstuk 4 + uitzonderingentabel hoofdstuk 15) is gemarkeerd als **opgelost**.
+
 ### Changed - FASE 3.3 ARCHITECTUUR: config-singletons → dependency injection (2026-07-14)
 
 - **Module-level mutable singletons vervangen door DI (PR-020):** het herverdelingsalgoritme haalde BV-configuratie en winkelprofielen uit gedeelde, muteerbare module-globals (`_global_bv_config`, `_active_profiles`). Die zijn nu opgelost conform R6.1:
