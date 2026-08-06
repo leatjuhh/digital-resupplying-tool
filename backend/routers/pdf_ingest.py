@@ -472,6 +472,7 @@ async def approve_proposal(
     for idx, move in enumerate(proposal.moves or []):
         fb = Feedback(
             proposal_id=proposal.id,
+            user_id=current_user.id,
             category="approval",
             action_taken="approved",
             move_index=idx,
@@ -526,6 +527,7 @@ async def reject_proposal(
     # Feedback-record op proposal-niveau bij reject
     fb = Feedback(
         proposal_id=proposal.id,
+        user_id=current_user.id,
         category="rejection",
         action_taken="rejected",
         reason_code=reason_code,
@@ -589,6 +591,7 @@ async def update_proposal(
     # Feedback-record op proposal-niveau bij edit
     fb = Feedback(
         proposal_id=proposal.id,
+        user_id=current_user.id,
         category="edit",
         action_taken="edited",
         reason_code=payload.reason_code,

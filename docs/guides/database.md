@@ -258,7 +258,7 @@ Een dubbele ingest binnen dezelfde batch wordt zo geweigerd; de ingest herstelt 
 
 ### Audit trail
 
-`proposals` heeft naast `reviewed_at` een `reviewed_by`-kolom (`VARCHAR`, nullable) die vastlegt wie een voorstel goedkeurde/afkeurde/bewerkte (de `username` van de ingelogde gebruiker). Bestaande databases krijgen de kolom via `ensure_runtime_schema()` (`ALTER TABLE proposals ADD COLUMN reviewed_by`).
+`proposals` heeft naast `reviewed_at` een `reviewed_by`-kolom (`VARCHAR`, nullable) die vastlegt wie een voorstel goedkeurde/afkeurde/bewerkte (de `username` van de ingelogde gebruiker). Aanvullend legt `feedback.user_id` (`INTEGER`, FK → `users`, nullable) per mutatie de uitvoerende gebruiker vast. Bestaande databases krijgen beide kolommen via `ensure_runtime_schema()` (`ALTER TABLE ... ADD COLUMN`).
 
 > ⚠️ **SQLite-let op:** deze `CHECK`-constraints worden toegepast bij tabel-aanmaak (`Base.metadata.create_all` op een verse DB). Een reeds bestaande `artikel_voorraad`-tabel krijgt ze pas via een tabel-herbouw/migratie (voorzien in Fase 4) — `ALTER TABLE ADD CONSTRAINT` bestaat niet in SQLite.
 

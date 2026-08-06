@@ -35,7 +35,7 @@ def test_approve_records_reviewer(monkeypatch):
     try:
         pid = _seed_pending(db)
         result = asyncio.run(pi.approve_proposal(
-            pid, db=db, current_user=SimpleNamespace(username="alice")
+            pid, db=db, current_user=SimpleNamespace(id=101, username="alice")
         ))
         assert result["status"] == "approved"
         assert result["reviewed_by"] == "alice"
@@ -53,12 +53,18 @@ def test_reject_records_reviewer(monkeypatch):
     try:
         pid = _seed_pending(db)
         result = asyncio.run(pi.reject_proposal(
-            pid, payload=None, db=db, current_user=SimpleNamespace(username="bob")
+            pid, payload=None, db=db, current_user=SimpleNamespace(id=202, username="bob")
         ))
         assert result["status"] == "rejected"
         assert result["reviewed_by"] == "bob"
 
         prop = db.get(db_models.Proposal, pid)
         assert prop.reviewed_by == "bob"
+
+        # De bijbehorende Feedback-mutatie legt óók de uitvoerende gebruiker vast.
+        fb = db.query(db_models.Feedback).filter(
+            db_models.Feedback.proposal_id == pid
+        ).first()
+        assert fb is not None and fb.user_id == 202
     finally:
         db.close()

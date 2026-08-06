@@ -225,6 +225,11 @@ class Feedback(Base):
     # Verwijzing naar het voorstel
     proposal_id = Column(Integer, ForeignKey('proposals.id'), nullable=False)
 
+    # Audit trail: welke gebruiker deze feedback/mutatie uitvoerde (hoofdstuk
+    # 6/8). Nullable: bestaande records en systeem-gegenereerde feedback hebben
+    # geen gebruiker.
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=True)
+
     # Categorie: 'approval', 'rejection', 'edit', 'removal', 'manual_add'
     category = Column(String, nullable=False)
 
