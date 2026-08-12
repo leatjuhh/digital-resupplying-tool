@@ -516,6 +516,18 @@ async def reject_proposal(
     if not proposal:
         raise HTTPException(status_code=404, detail="Proposal not found")
 
+    # Idempotentie (hoofdstuk 6): een reeds afgekeurd voorstel niet opnieuw
+    # verwerken — anders maakt elke herhaalde aanroep (dubbele klik, retry) een
+    # extra rejection-Feedback-rij aan. Consistent met approve_proposal.
+    if proposal.status == 'rejected':
+        return {
+            "id": proposal.id,
+            "status": proposal.status,
+            "reviewed_at": proposal.reviewed_at.isoformat() if proposal.reviewed_at else None,
+            "reviewed_by": proposal.reviewed_by,
+            "message": "Proposal was al afgekeurd (geen wijziging)"
+        }
+
     rejection_reason = payload.reason if payload else None
     reason_code = payload.reason_code if payload and hasattr(payload, "reason_code") else None
 
@@ -607,5 +619,7 @@ async def update_proposal(
         "status": proposal.status,
         "total_moves": proposal.total_moves,
         "total_quantity": proposal.total_quantity,
+        "reviewed_at": proposal.reviewed_at.isoformat() if proposal.reviewed_at else None,
+        "reviewed_by": proposal.reviewed_by,
         "message": "Proposal updated successfully"
     }

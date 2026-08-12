@@ -308,6 +308,9 @@ def run_batch_ingest(
                 extra_data={"filename": file.filename},
             )
             db.add(log_entry)
+            # Commit de foutlog meteen (net als in de validatie-tak), zodat een
+            # rollback bij een later falend bestand deze diagnostiek niet wist.
+            db.commit()
 
             failed_count += 1
             results.append({

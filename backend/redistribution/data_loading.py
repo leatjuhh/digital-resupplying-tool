@@ -90,7 +90,7 @@ def load_article_data(
 
     article = ArticleStock(
         volgnummer=volgnummer,
-        omschrijving=str(records[0].omschrijving) if records else "",
+        omschrijving=str(records[0].omschrijving),
         batch_id=batch_id,
     )
 

@@ -68,3 +68,23 @@ def test_reject_records_reviewer(monkeypatch):
         assert fb is not None and fb.user_id == 202
     finally:
         db.close()
+
+
+def test_reject_is_idempotent(monkeypatch):
+    """Een tweede reject van hetzelfde voorstel is een no-op: geen tweede
+    rejection-Feedback-rij (idempotentie, hoofdstuk 6)."""
+    monkeypatch.setattr(pi, "sync_assignments_for_proposal", lambda db, proposal: None)
+    db = SessionLocal()
+    try:
+        pid = _seed_pending(db)
+        user = SimpleNamespace(id=7, username="carol")
+        asyncio.run(pi.reject_proposal(pid, payload=None, db=db, current_user=user))
+        second = asyncio.run(pi.reject_proposal(pid, payload=None, db=db, current_user=user))
+
+        assert second["status"] == "rejected"
+        feedback_rows = db.query(db_models.Feedback).filter(
+            db_models.Feedback.proposal_id == pid
+        ).all()
+        assert len(feedback_rows) == 1  # tweede aanroep voegt niets toe
+    finally:
+        db.close()

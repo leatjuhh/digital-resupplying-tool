@@ -186,3 +186,31 @@ def test_run_batch_ingest_duplicate_file_recovers(monkeypatch, tmp_path):
         assert batch is not None and batch.status == "PARTIAL_SUCCESS"
     finally:
         db.close()
+
+
+def test_run_batch_ingest_exception_logs_survive_multiple_failures(monkeypatch, tmp_path):
+    """Twee bestanden die beide via een exception falen: béíde foutlogs moeten
+    bewaard blijven. De rollback bij het tweede bestand mag de (nog niet
+    gecommitte) foutlog van het eerste niet wissen — regressietest voor de
+    asymmetrie tussen de validatie- en exception-tak."""
+    def _boom(path):
+        raise ValueError("kapot bestand")
+
+    monkeypatch.setattr(svc, "parse_pdf_to_records", _boom)
+
+    db = SessionLocal()
+    try:
+        files = [_FakeUpload(b"a", "a.pdf"), _FakeUpload(b"b", "b.pdf")]
+        payload = svc.run_batch_ingest(
+            db, files, ["a.pdf", "b.pdf"], "Batch", None, str(tmp_path)
+        )
+        assert payload["status"] == "FAILED"
+        assert payload["failed_count"] == 2
+
+        logs = db.query(db_models.PDFParseLog).filter(
+            db_models.PDFParseLog.batch_id == payload["batch_id"],
+            db_models.PDFParseLog.phase == "PROCESSING",
+        ).all()
+        assert len(logs) == 2  # beide foutlogs bewaard
+    finally:
+        db.close()
