@@ -17,13 +17,18 @@ Gevonden via code-review op PR #9; het is een pre-bestaande bug, geen regressie.
      winkelopdracht liet staan (winkel ziet/executeert een afgekeurd voorstel);
   2. een edit die een route weghaalde, de oude opdracht voor die route liet
      staan (winkel ziet een verplaatsing die niet meer in het voorstel zit).
-- **Fix:** `sync_assignments_for_proposal` ruimt nu de items op waarvan de route
-  niet meer in het voorstel zit; `reject_proposal` verwijdert álle assignments
-  van het voorstel via de nieuwe `remove_assignments_for_proposal`. Lege
-  `AssignmentSeries` (winkels zonder resterende opdrachten) worden opgeruimd.
-- **Compenserende controle:** `backend/test_assignment_sync_cleanup.py` (3 tests:
-  verwijderen-bij-reject incl. lege serie, stale-route-bij-edit, reject-handler
-  end-to-end).
+- **Fix:** zowel `reject_proposal` als het edit-endpoint `update_proposal`
+  verwijderen nu de nog-openstaande assignments van het voorstel via de nieuwe
+  `remove_assignments_for_proposal`; `approve` ruimt bij re-sync stale routes op
+  (`cleanup_stale=True`). Lege `AssignmentSeries` worden opgeruimd.
+- **Verfijningen uit de code-review op deze PR:** reeds uitgevoerde/afgehandelde
+  opdrachten (`completed`/`failed`) blijven behouden (auditrecord); het brede
+  read-path-sync verwijdert nooit (een GET heeft geen destructieve neveneffecten).
+- **Compenserende controle:** `backend/test_assignment_sync_cleanup.py` (6 tests,
+  o.a. via het echte edit-endpoint, behoud van uitgevoerde opdrachten, en
+  geen-delete-op-het-leespad).
+- **Resterend, pre-bestaand:** her-goedkeuring na een edit upsert een bestaand
+  item zonder een `completed`-status te resetten — apart aandachtspunt.
 - Audit-readout bijgewerkt.
 
 ### Fixed - CODE-REVIEW REMEDIATIE + readout-reconciliatie (2026-08-12)

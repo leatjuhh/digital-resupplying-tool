@@ -484,7 +484,7 @@ async def approve_proposal(
         )
         db.add(fb)
 
-    sync_assignments_for_proposal(db, proposal)
+    sync_assignments_for_proposal(db, proposal, cleanup_stale=True)
     db.commit()
     db.refresh(proposal)
 
@@ -596,6 +596,12 @@ async def update_proposal(
     proposal.status = 'edited'
     proposal.reviewed_at = datetime.now()
     proposal.reviewed_by = current_user.username
+
+    # Edit haalt het voorstel uit 'approved': de bij de vorige goedkeuring
+    # aangemaakte, nog-openstaande assignments zijn niet meer geldig en worden
+    # opgeruimd. Bij een eventuele her-goedkeuring maakt sync ze opnieuw aan voor
+    # de nieuwe moves. (Reeds uitgevoerde/afgehandelde opdrachten blijven staan.)
+    remove_assignments_for_proposal(db, proposal)
 
     # Recalculate totals
     proposal.total_moves = len(payload.moves)

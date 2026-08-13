@@ -83,6 +83,7 @@ def sync_assignments_for_proposal(
     db: Session,
     proposal: db_models.Proposal,
     batch_name: str | None = None,
+    cleanup_stale: bool = False,
 ) -> int:
     """
     Zet een goedgekeurd voorstel om in store-facing assignments.
@@ -97,9 +98,11 @@ def sync_assignments_for_proposal(
     route_groups = _group_moves_by_route(proposal.moves)
 
     # Ruim assignment-items op waarvan de route niet (meer) in het voorstel zit —
-    # bv. na een edit die een route verwijderde (of naar 0 moves). Zonder deze
-    # opschoning blijven verweesde, nog uitvoerbare winkelopdrachten achter.
-    _remove_stale_assignment_items(db, proposal, keep_routes=set(route_groups.keys()))
+    # alleen bij een expliciete mutatie (cleanup_stale=True, bv. via approve). Het
+    # brede read-path-sync roept dit met False aan, zodat een GET nooit
+    # verwijdert (geen neveneffecten/races op een leesverzoek).
+    if cleanup_stale:
+        _remove_stale_assignment_items(db, proposal, keep_routes=set(route_groups.keys()))
 
     if not route_groups:
         return 0
@@ -204,6 +207,11 @@ def _remove_stale_assignment_items(
     affected_series_ids: set[int] = set()
     removed = 0
     for item in items:
+        # Al uitgevoerde/afgehandelde opdrachten (completed/failed) NIET wissen —
+        # dat is een fysiek uitvoerings-/auditrecord. Alleen nog-openstaande
+        # (status "open") items mogen opgeruimd worden.
+        if item.status != "open":
+            continue
         if (item.from_store_code, item.to_store_code) not in keep_routes:
             affected_series_ids.add(item.series_id)
             db.delete(item)

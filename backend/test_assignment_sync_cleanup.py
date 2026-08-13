@@ -2,9 +2,12 @@
 
 Dekt de bug waarbij `sync_assignments_for_proposal` nooit verwijderde, waardoor
 (a) een goedgekeurd-daarna-afgekeurd voorstel en (b) een edit die een route
-weghaalt, uitvoerbare winkelopdrachten lieten staan die niet meer klopten.
+weghaalt, uitvoerbare winkelopdrachten lieten staan die niet meer klopten. Plus
+de nuances uit de code-review: reeds uitgevoerde opdrachten blijven behouden, en
+een leesverzoek (brede sync) verwijdert nooit.
 """
 import asyncio
+from datetime import datetime
 from types import SimpleNamespace
 
 import db_models
@@ -14,6 +17,7 @@ from assignment_service import (
     sync_assignments_for_proposal,
 )
 from database import Base, SessionLocal, engine
+from routers.pdf_ingest import MoveInput, UpdateProposalRequest
 
 Base.metadata.create_all(bind=engine)
 
@@ -29,11 +33,8 @@ def _seed_approved(db, moves):
     db.commit()
     db.refresh(batch)
     prop = db_models.Proposal(
-        artikelnummer="ART1",
-        article_name="Artikel 1",
-        moves=moves,
-        status="approved",
-        pdf_batch_id=batch.id,
+        artikelnummer="ART1", article_name="Artikel 1",
+        moves=moves, status="approved", pdf_batch_id=batch.id,
     )
     db.add(prop)
     db.commit()
@@ -47,11 +48,11 @@ def _items(db, proposal_id):
     ).all()
 
 
-def test_remove_deletes_all_items_and_empty_series():
+def test_remove_deletes_open_items_and_empty_series():
     db = SessionLocal()
     try:
         prop = _seed_approved(db, [_MOVE_A, _MOVE_B])
-        sync_assignments_for_proposal(db, prop)
+        sync_assignments_for_proposal(db, prop, cleanup_stale=True)
         db.commit()
         assert len(_items(db, prop.id)) == 2
         series_id = _items(db, prop.id)[0].series_id
@@ -60,7 +61,6 @@ def test_remove_deletes_all_items_and_empty_series():
         db.commit()
 
         assert _items(db, prop.id) == []
-        # De nu lege serie is opgeruimd.
         assert db.query(db_models.AssignmentSeries).filter(
             db_models.AssignmentSeries.id == series_id,
         ).first() is None
@@ -68,22 +68,86 @@ def test_remove_deletes_all_items_and_empty_series():
         db.close()
 
 
-def test_sync_removes_stale_route_after_edit():
+def test_completed_assignment_is_preserved():
+    """Een al uitgevoerde (completed) opdracht is een auditrecord en mag niet
+    door reject/cleanup verdwijnen."""
+    db = SessionLocal()
+    try:
+        prop = _seed_approved(db, [_MOVE_A])
+        sync_assignments_for_proposal(db, prop, cleanup_stale=True)
+        db.commit()
+        item = _items(db, prop.id)[0]
+        item.status = "completed"
+        item.completed_at = datetime.now()
+        db.commit()
+
+        remove_assignments_for_proposal(db, prop)
+        db.commit()
+
+        remaining = _items(db, prop.id)
+        assert len(remaining) == 1 and remaining[0].status == "completed"
+    finally:
+        db.close()
+
+
+def test_sync_cleanup_stale_true_drops_removed_route():
     db = SessionLocal()
     try:
         prop = _seed_approved(db, [_MOVE_A, _MOVE_B])
-        sync_assignments_for_proposal(db, prop)
+        sync_assignments_for_proposal(db, prop, cleanup_stale=True)
         db.commit()
         assert len(_items(db, prop.id)) == 2
 
-        # "Edit": route 1->3 verwijderd; opnieuw synchroniseren.
         prop.moves = [_MOVE_A]
         db.commit()
-        sync_assignments_for_proposal(db, prop)
+        sync_assignments_for_proposal(db, prop, cleanup_stale=True)
         db.commit()
 
         routes = {(i.from_store_code, i.to_store_code) for i in _items(db, prop.id)}
-        assert routes == {("1", "2")}  # alleen de behouden route blijft
+        assert routes == {("1", "2")}
+    finally:
+        db.close()
+
+
+def test_readpath_sync_default_does_not_delete():
+    """Zonder cleanup_stale (de brede read-path-sync) mag er niets verwijderd
+    worden — een GET heeft geen destructieve neveneffecten."""
+    db = SessionLocal()
+    try:
+        prop = _seed_approved(db, [_MOVE_A, _MOVE_B])
+        sync_assignments_for_proposal(db, prop, cleanup_stale=True)
+        db.commit()
+        assert len(_items(db, prop.id)) == 2
+
+        prop.moves = [_MOVE_A]
+        db.commit()
+        sync_assignments_for_proposal(db, prop)  # default cleanup_stale=False
+        db.commit()
+
+        # Beide items blijven staan: het leespad verwijdert niet.
+        assert len(_items(db, prop.id)) == 2
+    finally:
+        db.close()
+
+
+def test_edit_endpoint_removes_open_assignments():
+    """Het echte edit-endpoint (update_proposal) ruimt de nog-openstaande
+    assignments op — het voorstel is na een edit niet meer 'approved'."""
+    db = SessionLocal()
+    try:
+        prop = _seed_approved(db, [_MOVE_A, _MOVE_B])
+        sync_assignments_for_proposal(db, prop, cleanup_stale=True)
+        db.commit()
+        assert len(_items(db, prop.id)) == 2
+
+        payload = UpdateProposalRequest(moves=[MoveInput(**_MOVE_A)])
+        asyncio.run(pi.update_proposal(
+            prop.id, payload=payload, db=db,
+            current_user=SimpleNamespace(id=1, username="x"),
+        ))
+
+        assert _items(db, prop.id) == []
+        assert db.get(db_models.Proposal, prop.id).status == "edited"
     finally:
         db.close()
 
@@ -92,12 +156,13 @@ def test_reject_handler_removes_assignments():
     db = SessionLocal()
     try:
         prop = _seed_approved(db, [_MOVE_A])
-        sync_assignments_for_proposal(db, prop)
+        sync_assignments_for_proposal(db, prop, cleanup_stale=True)
         db.commit()
         assert len(_items(db, prop.id)) == 1
 
         asyncio.run(pi.reject_proposal(
-            prop.id, payload=None, db=db, current_user=SimpleNamespace(id=1, username="x"),
+            prop.id, payload=None, db=db,
+            current_user=SimpleNamespace(id=1, username="x"),
         ))
 
         assert _items(db, prop.id) == []
