@@ -2,7 +2,7 @@
 title: Production Readiness Audit
 category: technical
 tags: [engineering, production-readiness, security, audit, power-of-ten]
-last_updated: 2026-07-13
+last_updated: 2026-08-12
 related:
   - docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md
   - docs/engineering/PRODUCTION_READINESS_PLAN.md
@@ -65,6 +65,46 @@ security-review door een gespecialiseerde partij en geen penetratietest.
 De canonieke engineeringstandaard waarnaar de Power of Ten-regels in dit
 document verwijzen staat in
 `docs/engineering/PRODUCTION_ENGINEERING_STANDARD.md`.
+
+---
+
+## Statusreconciliatie (2026-08-12)
+
+> Deze audit is een momentopname van **2026-07-13**. Sindsdien is een reeks
+> bevindingen opgelost via PR #1–#9 op `main`. Onderstaande tabel geeft de
+> **actuele status**; de oorspronkelijke bevindingsteksten verderop blijven als
+> historisch record staan. Bevindingen die hier **niet** als "deze sessie
+> geverifieerd" staan, zijn niet opnieuw gecontroleerd — daarvoor blijft de
+> oorspronkelijke tekst leidend (geen aanname van "opgelost").
+
+| ID | Status | Toelichting (geverifieerd 2026-08 tenzij anders vermeld) |
+|---|---|---|
+| PR-001 | ✅ Opgelost | Auth (`require_permission`) aanwezig op de ingest/approve-endpoints. |
+| PR-002 | ✅ Opgelost (fallback) | `SECRET_KEY = os.getenv("SECRET_KEY")` zónder fallback. (De `check_secret_key.py`-print is niet apart herzien.) |
+| PR-003 | 🟡 Deels — jouw actie | Tracking verwijderd; secret roteren + git-historie herschrijven vereist eigenaarsactie. |
+| PR-004 | ✅ Opgelost | Veilige bestandsnaam (`safe_name`) bij opslag (sanitisatie-detail niet diepgaand herzien). |
+| PR-005 | ✅ Opgelost | `save_upload_within_limit()` dwingt een groottelimiet af vóór wegschrijven. |
+| PR-006 | ✅ Opgelost | Idempotentie op approve én reject; niet-negatief- + unieke-constraints op `ArtikelVoorraad`. ⚠ Zie kanttekeningen hieronder. |
+| PR-007 | 🟡 Deels — productkeuze | Per-bestand-sessieherstel verbeterd (PR #6/#9); de transactiegrens-keuze bij multi-file blijft open. |
+| PR-009 | ✅ Opgelost | CORS gebruikt nu `allow_origins` uit de omgeving. |
+| PR-010 | ✅ Opgelost | `ignoreBuildErrors` verwijderd; frontend-build faalt bij typefouten. |
+| PR-011 | ✅ Opgelost | CI-pipeline met ruff/mypy/pytest + frontend tsc/lint/build. |
+| PR-012 | ✅ Opgelost | `requirements-dev.txt` bevat de testafhankelijkheden. |
+| PR-013 | ✅ Opgelost | Rate limiting (`rate_limit.py`). |
+| PR-015 | 🟡 Deels | Edit-pad valideert `moves` via Pydantic; lees-consumenten gebruiken defensieve `.get()`, nog geen model. |
+| PR-019 | ✅ Opgelost | Eén centrale `logging.basicConfig` in `main.py`; `/health` doet een DB-check (503 bij uitval). |
+| PR-020 | ✅ Opgelost | Config-singletons → dependency injection (PR #2). |
+| PR-021 | 🔴 Open — Fase 4 | Nog geen Alembic; ad-hoc `ensure_runtime_schema` blijft tussenoplossing. |
+| PR-022 | ✅ Opgelost | `algorithm.py` (922→197 r.) + `pdf_ingest.py` opgesplitst (PR #3 e.a.). |
+| Audit trail (§6/§8) | ✅ Opgelost | `Proposal.reviewed_by` + `Feedback.user_id` (PR #7/#8). |
+
+**Niet opnieuw geverifieerd deze sessie** (oorspronkelijke tekst blijft leidend): PR-008, PR-014, PR-016, PR-017, PR-018, PR-023, PR-024.
+
+### Nieuwe/uitgebreide kanttekeningen (uit code-review 2026-08-12)
+
+- **Constraints gelden alleen op een verse DB (PR-006):** de `CheckConstraint`s en de `UniqueConstraint` op `ArtikelVoorraad` worden toegepast bij `create_all` op een verse database. `ensure_runtime_schema()` voegt wél kolommen toe aan bestaande SQLite-DB's, maar géén constraints (SQLite kan dat niet zonder tabel-herbouw). Op een bestaande productie-/dev-DB zijn de dubbeltelling- en negatief-beschermingen daarom **inert** tot een echte migratie (Fase 4 / PR-021). Dit is de belangrijkste openstaande beperking van PR-006.
+- **Alles-of-niets per bestand (PR-006):** één dubbele of ongeldige rij in een PDF laat de commit van dat héle bestand falen (bestand → `FAILED`, geen enkele rij opgeslagen). Verdedigbaar (een duplicaat ís fout), maar een zware faalmodus; deduplicatie binnen één bestand is een mogelijke verfijning.
+- **Tijdzone-naïeve audit-tijdstempels:** `reviewed_at`/`created_at` gebruiken `datetime.now()` (tz-naïef) in tijdzone-bewuste kolommen; audit-tijdstempels missen een offset. Bestaand patroon, aandachtspunt voor opschoning naar `datetime.now(timezone.utc)`.
 
 ---
 

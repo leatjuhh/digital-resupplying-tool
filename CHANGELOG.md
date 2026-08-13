@@ -7,6 +7,31 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Fixed - CODE-REVIEW REMEDIATIE + readout-reconciliatie (2026-08-12)
+
+Naar aanleiding van een code-review over PR #2–#8:
+
+- **Regressie hersteld (`pdf_ingest_service.py`):** de per-bestand `except`-tak
+  committeerde de foutlog niet, waardoor een `db.rollback()` bij een later falend
+  bestand de diagnostiek van een eerder bestand wiste. Nu wordt de foutlog direct
+  gecommit, symmetrisch met de validatie-tak. Regressietest:
+  `test_run_batch_ingest_exception_logs_survive_multiple_failures`.
+- **Idempotentie op reject (`routers/pdf_ingest.py`):** `reject_proposal` kreeg
+  dezelfde guard als approve — een reeds afgekeurd voorstel opnieuw afkeuren is nu
+  een no-op i.p.v. een dubbele `Feedback`-rij. Test: `test_reject_is_idempotent`.
+- **Edit-response consistent:** `update_proposal` geeft nu ook `reviewed_by`/
+  `reviewed_at` terug (net als approve/reject).
+- **Opruiming (`data_loading.py`):** dode `if records else ""`-conditie verwijderd
+  (de functie retourneert hierboven al `None` bij lege `records`).
+- **Vervolg-review op deze PR:** de idempotente reject-response geeft nu ook
+  `rejection_reason` terug (consistent met de normale reject-response); en de
+  foutlog-commits in `run_batch_ingest` zijn defensief gemaakt (een mislukte
+  log-commit valt terug op de app-log en sleept de batch-afronding niet meer mee).
+- **Readout-reconciliatie:** `PRODUCTION_READINESS_AUDIT.md` (statusreconciliatie
+  2026-08-12, incl. eerlijke kanttekeningen over constraints-op-verse-DB, alles-of-
+  niets per bestand, tz-naïeve tijdstempels), `PRODUCTION_READINESS_PLAN.md`
+  (fasestatus) en een ingevulde sessielog `docs/sessions/2026-08-12.md`.
+
 ### Added - AUDIT TRAIL: user_id op Feedback (2026-08-06)
 
 - **`Feedback.user_id` (FK → `users`, nullable):** legt per mutatie (approve/reject/edit) vast wélke gebruiker de actie uitvoerde, complementair aan `Proposal.reviewed_by`. Zo is de audit-trail zowel op voorstel- als op feedback-niveau compleet.

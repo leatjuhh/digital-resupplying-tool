@@ -50,6 +50,17 @@ stap moet voldoen staat in
 | Fase 3 | Architectuur en onderhoudbaarheid: modules opsplitsen, typering, dependency injection. |
 | Fase 4 | Productievalidatie: deployment, database-robuustheid, observability, runbook. |
 
+> **Voortgangsstand (2026-08-12):** Fase 0–2 zijn grotendeels afgerond en Fase 3
+> is inhoudelijk klaar (PR #1–#9 op `main`): auth, secrets, uploadlimieten, CORS,
+> rate limiting, idempotentie-guards en `ArtikelVoorraad`-constraints (Fase 1);
+> CI met ruff/mypy/pytest + frontend tsc/lint/build (Fase 2); `algorithm.py` en
+> `pdf_ingest.py` opgesplitst, config-dependency-injection en `mypy` blokkerend
+> voor de Kritiek-domeinlaag (Fase 3). **Fase 4 is nog niet gestart** en blijft
+> geblokkeerd op een bekend deployment-doel; ook PR-003 (secret-rotatie +
+> git-historie) en PR-007 (transactiegrens) vragen een eigenaarsbeslissing. Zie
+> de statusreconciliatie in `PRODUCTION_READINESS_AUDIT.md` voor de
+> per-bevinding-stand.
+
 ---
 
 ## Fase 0 — Baseline en bescherming
