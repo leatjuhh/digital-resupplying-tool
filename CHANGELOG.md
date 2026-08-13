@@ -7,6 +7,30 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Fixed - DATA-INTEGRITEIT: verweesde winkel-assignments opgeruimd (2026-08-13)
+
+Gevonden via code-review op PR #9; het is een pre-bestaande bug, geen regressie.
+
+- **De assignment-sync verwijderde nooit.** `sync_assignments_for_proposal`
+  (`assignment_service.py`) maakte/updatete alleen, waardoor:
+  1. een goedgekeurd-daarna-afgekeurd voorstel de bij goedkeuring aangemaakte
+     winkelopdracht liet staan (winkel ziet/executeert een afgekeurd voorstel);
+  2. een edit die een route weghaalde, de oude opdracht voor die route liet
+     staan (winkel ziet een verplaatsing die niet meer in het voorstel zit).
+- **Fix:** zowel `reject_proposal` als het edit-endpoint `update_proposal`
+  verwijderen nu de nog-openstaande assignments van het voorstel via de nieuwe
+  `remove_assignments_for_proposal`; `approve` ruimt bij re-sync stale routes op
+  (`cleanup_stale=True`). Lege `AssignmentSeries` worden opgeruimd.
+- **Verfijningen uit de code-review op deze PR:** reeds uitgevoerde/afgehandelde
+  opdrachten (`completed`/`failed`) blijven behouden (auditrecord); het brede
+  read-path-sync verwijdert nooit (een GET heeft geen destructieve neveneffecten).
+- **Compenserende controle:** `backend/test_assignment_sync_cleanup.py` (6 tests,
+  o.a. via het echte edit-endpoint, behoud van uitgevoerde opdrachten, en
+  geen-delete-op-het-leespad).
+- **Resterend, pre-bestaand:** her-goedkeuring na een edit upsert een bestaand
+  item zonder een `completed`-status te resetten — apart aandachtspunt.
+- Audit-readout bijgewerkt.
+
 ### Fixed - CODE-REVIEW REMEDIATIE + readout-reconciliatie (2026-08-12)
 
 Naar aanleiding van een code-review over PR #2–#8:

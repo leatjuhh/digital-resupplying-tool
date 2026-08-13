@@ -30,7 +30,7 @@ def _seed_pending(db) -> int:
 
 
 def test_approve_records_reviewer(monkeypatch):
-    monkeypatch.setattr(pi, "sync_assignments_for_proposal", lambda db, proposal: None)
+    monkeypatch.setattr(pi, "sync_assignments_for_proposal", lambda *a, **k: None)
     db = SessionLocal()
     try:
         pid = _seed_pending(db)
@@ -48,7 +48,7 @@ def test_approve_records_reviewer(monkeypatch):
 
 
 def test_reject_records_reviewer(monkeypatch):
-    monkeypatch.setattr(pi, "sync_assignments_for_proposal", lambda db, proposal: None)
+    monkeypatch.setattr(pi, "sync_assignments_for_proposal", lambda *a, **k: None)
     db = SessionLocal()
     try:
         pid = _seed_pending(db)
@@ -73,7 +73,7 @@ def test_reject_records_reviewer(monkeypatch):
 def test_reject_is_idempotent(monkeypatch):
     """Een tweede reject van hetzelfde voorstel is een no-op: geen tweede
     rejection-Feedback-rij (idempotentie, hoofdstuk 6)."""
-    monkeypatch.setattr(pi, "sync_assignments_for_proposal", lambda db, proposal: None)
+    monkeypatch.setattr(pi, "sync_assignments_for_proposal", lambda *a, **k: None)
     db = SessionLocal()
     try:
         pid = _seed_pending(db)
