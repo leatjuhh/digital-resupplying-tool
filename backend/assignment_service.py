@@ -90,15 +90,21 @@ def sync_assignments_for_proposal(
     if proposal.status != "approved":
         return 0
 
-    route_groups = _group_moves_by_route(proposal.moves)
-    if not route_groups:
-        return 0
-
-    # Geen batch → geen assignments aanmaken (bv. testvoorstellen zonder batch)
+    # Geen batch → geen assignments (bv. testvoorstellen zonder batch)
     if proposal.pdf_batch_id is None:
         return 0
 
-    if batch_name is None and proposal.pdf_batch_id:
+    route_groups = _group_moves_by_route(proposal.moves)
+
+    # Ruim assignment-items op waarvan de route niet (meer) in het voorstel zit —
+    # bv. na een edit die een route verwijderde (of naar 0 moves). Zonder deze
+    # opschoning blijven verweesde, nog uitvoerbare winkelopdrachten achter.
+    _remove_stale_assignment_items(db, proposal, keep_routes=set(route_groups.keys()))
+
+    if not route_groups:
+        return 0
+
+    if batch_name is None:
         batch = db.query(db_models.PDFBatch).filter(db_models.PDFBatch.id == proposal.pdf_batch_id).first()
         batch_name = batch.naam if batch else f"Batch {proposal.pdf_batch_id}"
 
@@ -164,6 +170,57 @@ def sync_assignments_for_proposal(
             item.total_quantity = sum(entry["qty"] for entry in size_quantities)
 
     return created_count
+
+
+def _cleanup_empty_series(db: Session, series_ids: set[int]) -> None:
+    """Verwijder AssignmentSeries die na een item-verwijdering geen items meer
+    hebben (een winkel zonder opdrachten hoort niet als serie te blijven staan).
+    Series kunnen door meerdere voorstellen gedeeld worden, dus alleen wissen
+    wanneer er écht geen items meer aan hangen."""
+    for series_id in series_ids:
+        remaining = db.query(db_models.AssignmentItem).filter(
+            db_models.AssignmentItem.series_id == series_id,
+        ).count()
+        if remaining == 0:
+            series = db.query(db_models.AssignmentSeries).filter(
+                db_models.AssignmentSeries.id == series_id,
+            ).first()
+            if series:
+                db.delete(series)
+
+
+def _remove_stale_assignment_items(
+    db: Session,
+    proposal: db_models.Proposal,
+    keep_routes: set[tuple[str, str]],
+) -> int:
+    """Verwijder de AssignmentItems van dit voorstel waarvan de (from, to)-route
+    niet in `keep_routes` zit; lege series worden opgeruimd. Met een lege
+    `keep_routes` worden álle items van het voorstel verwijderd."""
+    items = db.query(db_models.AssignmentItem).filter(
+        db_models.AssignmentItem.proposal_id == proposal.id,
+    ).all()
+
+    affected_series_ids: set[int] = set()
+    removed = 0
+    for item in items:
+        if (item.from_store_code, item.to_store_code) not in keep_routes:
+            affected_series_ids.add(item.series_id)
+            db.delete(item)
+            removed += 1
+
+    if removed:
+        db.flush()
+        _cleanup_empty_series(db, affected_series_ids)
+
+    return removed
+
+
+def remove_assignments_for_proposal(db: Session, proposal: db_models.Proposal) -> int:
+    """Verwijder álle store-facing assignments van een voorstel — bv. wanneer het
+    wordt afgekeurd — zodat winkels geen verouderde, niet meer geldige opdracht
+    blijven zien/uitvoeren. Retourneert het aantal verwijderde items."""
+    return _remove_stale_assignment_items(db, proposal, keep_routes=set())
 
 
 def build_assignment_item_detail(db: Session, item: db_models.AssignmentItem) -> dict[str, Any]:

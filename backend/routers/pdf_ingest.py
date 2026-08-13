@@ -20,7 +20,10 @@ import logging
 from database import get_db
 from db_models import PDFBatch, ArtikelVoorraad, PDFParseLog, Proposal, Feedback, User
 from auth import require_permission
-from assignment_service import sync_assignments_for_proposal
+from assignment_service import (
+    remove_assignments_for_proposal,
+    sync_assignments_for_proposal,
+)
 from utils import (
     sort_store_ids,
     secure_pdf_filename,
@@ -536,6 +539,10 @@ async def reject_proposal(
     proposal.reviewed_at = datetime.now()
     proposal.reviewed_by = current_user.username
     proposal.rejection_reason = rejection_reason
+
+    # Verwijder eerder (bij goedkeuring) aangemaakte store-facing assignments,
+    # zodat winkels geen opdracht voor een nu afgekeurd voorstel blijven zien.
+    remove_assignments_for_proposal(db, proposal)
 
     # Feedback-record op proposal-niveau bij reject
     fb = Feedback(

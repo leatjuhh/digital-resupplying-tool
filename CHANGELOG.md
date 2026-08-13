@@ -7,6 +7,25 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
 ## [Unreleased]
 
+### Fixed - DATA-INTEGRITEIT: verweesde winkel-assignments opgeruimd (2026-08-13)
+
+Gevonden via code-review op PR #9; het is een pre-bestaande bug, geen regressie.
+
+- **De assignment-sync verwijderde nooit.** `sync_assignments_for_proposal`
+  (`assignment_service.py`) maakte/updatete alleen, waardoor:
+  1. een goedgekeurd-daarna-afgekeurd voorstel de bij goedkeuring aangemaakte
+     winkelopdracht liet staan (winkel ziet/executeert een afgekeurd voorstel);
+  2. een edit die een route weghaalde, de oude opdracht voor die route liet
+     staan (winkel ziet een verplaatsing die niet meer in het voorstel zit).
+- **Fix:** `sync_assignments_for_proposal` ruimt nu de items op waarvan de route
+  niet meer in het voorstel zit; `reject_proposal` verwijdert álle assignments
+  van het voorstel via de nieuwe `remove_assignments_for_proposal`. Lege
+  `AssignmentSeries` (winkels zonder resterende opdrachten) worden opgeruimd.
+- **Compenserende controle:** `backend/test_assignment_sync_cleanup.py` (3 tests:
+  verwijderen-bij-reject incl. lege serie, stale-route-bij-edit, reject-handler
+  end-to-end).
+- Audit-readout bijgewerkt.
+
 ### Fixed - CODE-REVIEW REMEDIATIE + readout-reconciliatie (2026-08-12)
 
 Naar aanleiding van een code-review over PR #2–#8:
