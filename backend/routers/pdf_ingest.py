@@ -525,6 +525,7 @@ async def reject_proposal(
             "status": proposal.status,
             "reviewed_at": proposal.reviewed_at.isoformat() if proposal.reviewed_at else None,
             "reviewed_by": proposal.reviewed_by,
+            "rejection_reason": proposal.rejection_reason,
             "message": "Proposal was al afgekeurd (geen wijziging)"
         }
 

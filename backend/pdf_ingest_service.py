@@ -261,7 +261,12 @@ def run_batch_ingest(
 
                 # Commit de validatie-logs meteen, zodat ze niet verloren gaan als
                 # een later bestand in deze batch een sessie-rollback veroorzaakt.
-                db.commit()
+                # Defensief: een mislukte log-commit mag de batch niet meeslepen.
+                try:
+                    db.commit()
+                except Exception:
+                    db.rollback()
+                    logger.exception("[VALIDATION] Kon validatielog niet wegschrijven")
 
                 failed_count += 1
                 results.append({
@@ -310,7 +315,13 @@ def run_batch_ingest(
             db.add(log_entry)
             # Commit de foutlog meteen (net als in de validatie-tak), zodat een
             # rollback bij een later falend bestand deze diagnostiek niet wist.
-            db.commit()
+            # Defensief: faalt zelfs deze log-commit (bv. DB locked/vol), dan mag
+            # dat de batch-afronding niet meeslepen — val terug op de app-log.
+            try:
+                db.commit()
+            except Exception:
+                db.rollback()
+                logger.exception("[FILE_ERROR] Kon foutlog niet wegschrijven")
 
             failed_count += 1
             results.append({
