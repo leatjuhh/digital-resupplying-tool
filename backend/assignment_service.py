@@ -99,8 +99,9 @@ def sync_assignments_for_proposal(
 
     # Ruim assignment-items op waarvan de route niet (meer) in het voorstel zit —
     # alleen bij een expliciete mutatie (cleanup_stale=True, bv. via approve). Het
-    # brede read-path-sync roept dit met False aan, zodat een GET nooit
-    # verwijdert (geen neveneffecten/races op een leesverzoek).
+    # brede read-path-sync roept dit met False aan, zodat een GET geen assignments
+    # VERWIJDERT. (De bestaande create/update-neveneffecten + commit van dat
+    # read-path-sync zijn pre-bestaand en vallen buiten deze fix.)
     if cleanup_stale:
         _remove_stale_assignment_items(db, proposal, keep_routes=set(route_groups.keys()))
 
