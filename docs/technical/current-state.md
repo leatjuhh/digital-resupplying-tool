@@ -63,6 +63,7 @@ Deze flow moet intact blijven tijdens opschoning van documentatie, backlog en ni
 - **Bundle-planner met harde min-3 regel** (2026-04-20): artikel-level planner in `backend/redistribution/algorithm.py` (`generate_moves_for_article`) dwingt af dat elke winkel per artikel op **0 stuks of ≥ 3 stuks** eindigt. Uitzondering: pool < 3 → alles naar top-ranked winkel. Receiver-ranking volgt `(-sales, -series_width, -sum_inv, store_total_inventory, store_code)`. Schakelbaar via `params.enable_bundle_planner` (default `True`).
 - **Tiebreaker totale winkelvoorraad** (2026-04-20): winkel met lagere som van álle artikelen wint als receiver bij verkoop-gelijkspel. Data wordt per batch ingevoerd op de uploads-pagina (8 filiaal-inputs) en opgeslagen in `pdf_batches.extra_data` (migratie `migrate_add_extra_data.py`).
 - **Dode rules-settings verwijderd** (2026-04-20): `frontend/components/settings/settings-rules.tsx`, het tabblad "Regels", de `RulesSettings`-API en de 4 seed-rows (min/max stock, min_stores_per_article, sales_period_days) werden nergens door het algoritme gelezen. Migratie `migrate_drop_rules_settings.py` verwijdert bestaande `category='rules'` rows uit actieve databases.
+- **Production-readiness hardening gestart** (2026-07-13): muterende PDF/proposal-, batch-, artikel- en redistributie-endpoints vereisen nu bestaande RBAC-permissies; JWT-signing faalt fail-fast zonder `SECRET_KEY`; PDF-upload bestandsnamen worden server-side gevalideerd tegen path traversal.
 
 ## Wat Bewust Geparkeerd Is
 

@@ -22,6 +22,7 @@ from redistribution.constraints import DEFAULT_PARAMS
 from algorithm_import.config import get_algorithm_assist_mode
 from algorithm_import.service import enrich_moves_with_model_scores
 from utils import sort_stores_by_code, sort_store_ids
+from auth import require_permission
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -34,6 +35,21 @@ UPLOAD_DIR = "backend/uploads/pdf_batches"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 OPTIMAL_DISTRIBUTION_RULE = "Optimal Distribution Analysis"
+
+
+def get_safe_pdf_filename(filename: str | None) -> str:
+    """Return een veilige PDF-bestandsnaam zonder padcomponenten."""
+    if not filename:
+        raise HTTPException(status_code=400, detail="Filename is required")
+
+    basename = os.path.basename(filename.replace("\\", "/"))
+    if basename != filename or basename in {"", ".", ".."} or ".." in basename:
+        raise HTTPException(status_code=400, detail="Invalid filename")
+
+    if not basename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Only PDF files are allowed")
+
+    return basename
 
 
 def is_optimal_distribution_proposal(proposal: Proposal) -> bool:
@@ -97,7 +113,8 @@ async def ingest_pdfs(
     files: List[UploadFile] = File(...),
     batch_name: Optional[str] = Form(None),
     store_total_inventory: Optional[str] = Form(None),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user = Depends(require_permission("upload_pdfs"))
 ):
     """
     Ingest one or more PDF files
@@ -162,11 +179,12 @@ async def ingest_pdfs(
     failed_count = 0
     
     for file in files:
-        logger.info(f"[FILE_PROCESS] Processing {file.filename}")
+        safe_filename = get_safe_pdf_filename(file.filename)
+        logger.info(f"[FILE_PROCESS] Processing {safe_filename}")
         
         try:
             # Save uploaded file
-            file_path = os.path.join(batch_dir, file.filename)
+            file_path = os.path.join(batch_dir, safe_filename)
             with open(file_path, "wb") as buffer:
                 shutil.copyfileobj(file.file, buffer)
             
@@ -182,13 +200,13 @@ async def ingest_pdfs(
                         phase="VALIDATION",
                         level="ERROR",
                         message=error,
-                        extra_data={"filename": file.filename}
+                        extra_data={"filename": safe_filename}
                     )
                     db.add(log_entry)
                 
                 failed_count += 1
                 results.append({
-                    "filename": file.filename,
+                    "filename": safe_filename,
                     "status": "FAILED",
                     "errors": parsed.errors,
                     "artikel_count": 0
@@ -196,21 +214,21 @@ async def ingest_pdfs(
                 continue
             
             # Save extracted data to database
-            artikel_count = save_to_database(db, batch_id, parsed, file.filename)
+            artikel_count = save_to_database(db, batch_id, parsed, safe_filename)
             
             success_count += 1
             results.append({
-                "filename": file.filename,
+                "filename": safe_filename,
                 "status": "SUCCESS",
                 "artikel_count": artikel_count,
                 "volgnummer": parsed.meta.get("Volgnummer"),
                 "omschrijving": parsed.meta.get("Omschrijving")
             })
             
-            logger.info(f"[FILE_SUCCESS] {file.filename}: {artikel_count} records saved")
+            logger.info(f"[FILE_SUCCESS] {safe_filename}: {artikel_count} records saved")
             
         except Exception as e:
-            logger.error(f"[FILE_ERROR] Error processing {file.filename}: {e}", exc_info=True)
+            logger.error(f"[FILE_ERROR] Error processing {safe_filename}: {e}", exc_info=True)
             
             # Log error
             log_entry = PDFParseLog(
@@ -218,13 +236,13 @@ async def ingest_pdfs(
                 phase="PROCESSING",
                 level="ERROR",
                 message=f"Failed to process file: {str(e)}",
-                extra_data={"filename": file.filename}
+                extra_data={"filename": safe_filename}
             )
             db.add(log_entry)
             
             failed_count += 1
             results.append({
-                "filename": file.filename,
+                "filename": safe_filename,
                 "status": "FAILED",
                 "errors": [str(e)],
                 "artikel_count": 0
@@ -531,7 +549,11 @@ async def get_batch_details(batch_id: int, db: Session = Depends(get_db)):
 
 
 @router.delete("/batches/{batch_id}")
-async def delete_batch(batch_id: int, db: Session = Depends(get_db)):
+async def delete_batch(
+    batch_id: int,
+    db: Session = Depends(get_db),
+    current_user = Depends(require_permission("manage_batches"))
+):
     """
     Delete a batch and all its data
     
@@ -762,7 +784,11 @@ async def get_proposal_with_full_inventory(proposal_id: int, db: Session = Depen
 
 
 @router.post("/proposals/{proposal_id}/approve")
-async def approve_proposal(proposal_id: int, db: Session = Depends(get_db)):
+async def approve_proposal(
+    proposal_id: int,
+    db: Session = Depends(get_db),
+    current_user = Depends(require_permission("approve_proposals"))
+):
     """
     Approve a proposal
     
@@ -809,7 +835,8 @@ async def approve_proposal(proposal_id: int, db: Session = Depends(get_db)):
 async def reject_proposal(
     proposal_id: int,
     payload: Optional[RejectProposalRequest] = None,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user = Depends(require_permission("reject_proposals"))
 ):
     """
     Reject a proposal
@@ -859,7 +886,8 @@ async def reject_proposal(
 async def update_proposal(
     proposal_id: int,
     payload: UpdateProposalRequest,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user = Depends(require_permission("edit_proposals"))
 ):
     """
     Update a proposal with edited moves

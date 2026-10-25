@@ -8,6 +8,7 @@ from datetime import datetime
 
 # Importeer database models en Pydantic models
 from database import get_db
+from auth import require_permission
 import db_models
 from models import BatchCreate, BatchResponse, PDFUploadResponse, BatchDetailResponse
 
@@ -23,7 +24,11 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
 @router.post("/batches/create", response_model=BatchResponse)
-async def create_batch(batch_data: BatchCreate, db: Session = Depends(get_db)):
+async def create_batch(
+    batch_data: BatchCreate,
+    db: Session = Depends(get_db),
+    current_user = Depends(require_permission("manage_batches"))
+):
     """
     Maak een nieuwe batch aan voor PDF uploads
     
@@ -49,7 +54,8 @@ async def create_batch(batch_data: BatchCreate, db: Session = Depends(get_db)):
 async def upload_pdf_to_batch(
     batch_id: int,
     file: UploadFile = File(...),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user = Depends(require_permission("upload_pdfs"))
 ):
     """
     Upload een PDF naar een bestaande batch
@@ -62,7 +68,10 @@ async def upload_pdf_to_batch(
         raise HTTPException(status_code=404, detail="Batch not found")
     
     # Check of bestand een PDF is
-    if not file.filename.endswith('.pdf'):
+    safe_original_filename = os.path.basename((file.filename or "").replace("\\", "/"))
+    if safe_original_filename != file.filename or not safe_original_filename or ".." in safe_original_filename:
+        raise HTTPException(status_code=400, detail="Invalid filename")
+    if not safe_original_filename.lower().endswith('.pdf'):
         raise HTTPException(status_code=400, detail="Only PDF files are allowed")
     
     # Maak batch-specifieke directory
@@ -71,7 +80,7 @@ async def upload_pdf_to_batch(
     
     # Genereer unieke bestandsnaam
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    safe_filename = f"{timestamp}_{file.filename}"
+    safe_filename = f"{timestamp}_{safe_original_filename}"
     file_path = os.path.join(batch_dir, safe_filename)
     
     # Sla PDF op
@@ -92,7 +101,7 @@ async def upload_pdf_to_batch(
     # Maak BatchPDF record
     batch_pdf = db_models.BatchPDF(
         batch_id=batch_id,
-        filename=file.filename,
+        filename=safe_original_filename,
         file_path=file_path,
         status="completed" if parse_result.get("success") else "failed",
         parsed_data=parse_result,
@@ -115,7 +124,7 @@ async def upload_pdf_to_batch(
     
     return PDFUploadResponse(
         batch_id=batch_id,
-        filename=file.filename,
+        filename=safe_original_filename,
         status=batch_pdf.status,
         message=f"Extracted {len(parse_result.get('artikelnummers', []))} artikelnummers" if parse_result.get("success") else f"Failed: {parse_result.get('error')}"
     )

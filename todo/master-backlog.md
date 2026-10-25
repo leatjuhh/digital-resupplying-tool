@@ -40,6 +40,25 @@ Er is één herhaalbare checklist of testset waarmee de leidende kernflow end-to
 **Status**  
 done
 
+
+### Titel
+Production-readiness kritieke hardening uitvoeren
+
+**Waarom dit nu telt**
+De kernflow is pas veilig richting productie wanneer muterende API-routes niet anoniem schrijfbaar zijn, JWT-signing geen hardcoded fallback-secret gebruikt en PDF-uploads geen padtraversal kunnen veroorzaken.
+
+**Concrete ingreep**
+Bescherm muterende PDF/proposal-, batch-, artikel- en redistributie-endpoints met bestaande RBAC-permissies, maak `SECRET_KEY` verplicht via environment en valideer uploadbestandsnamen server-side.
+
+**Afhankelijkheden**
+Stabiele leidende kernflow en bestaande auth/RBAC-inrichting.
+
+**Acceptatiecriteria**
+Unauthenticated muterende requests krijgen 401/403, ontbrekende `SECRET_KEY` faalt fail-fast en kwaadaardige PDF-bestandsnamen worden geweigerd voordat er naar disk geschreven wordt.
+
+**Status**
+done
+
 ## P1 Daarna afmaken
 
 ### Titel
