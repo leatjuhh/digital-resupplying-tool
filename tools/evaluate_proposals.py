@@ -158,7 +158,13 @@ def categorize(
 # Data laden
 # ---------------------------------------------------------------------------
 
-def load_week(week: int) -> tuple[list[Move], list[Move], dict]:
+PROPOSALS_FILE = {
+    "baseline": "baseline_proposals.json",
+    "drt": "drt_proposals.json",
+}
+
+
+def load_week(week: int, source: str = "baseline") -> tuple[list[Move], list[Move], dict]:
     week_dir = DATA_ROOT / f"week_{week}"
 
     raw_gt = json.loads((week_dir / "moves.json").read_text(encoding="utf-8"))
@@ -173,7 +179,8 @@ def load_week(week: int) -> tuple[list[Move], list[Move], dict]:
         for m in raw_gt
     ]
 
-    raw_proposals = json.loads((week_dir / "baseline_proposals.json").read_text(encoding="utf-8"))
+    proposals_filename = PROPOSALS_FILE.get(source, "baseline_proposals.json")
+    raw_proposals = json.loads((week_dir / proposals_filename).read_text(encoding="utf-8"))
     proposed_moves = [
         Move(
             article_id=str(proposal["volgnummer"]),
@@ -212,8 +219,8 @@ def build_profiles(snapshots: dict) -> dict:
 # Evaluatie
 # ---------------------------------------------------------------------------
 
-def evaluate_week(week: int) -> EvalResult:
-    gt_moves, proposed_moves, snapshots = load_week(week)
+def evaluate_week(week: int, source: str = "baseline") -> EvalResult:
+    gt_moves, proposed_moves, snapshots = load_week(week, source)
     profiles = build_profiles(snapshots)
 
     result = EvalResult(week=week, total_gt=len(gt_moves), total_proposed=len(proposed_moves))
@@ -338,6 +345,12 @@ def main() -> None:
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--week", type=int, nargs="+", metavar="W", help="Weeknummer(s)")
     group.add_argument("--all", action="store_true", help="Evalueer alle beschikbare weken")
+    parser.add_argument(
+        "--source",
+        choices=["baseline", "drt"],
+        default="baseline",
+        help="Voorstellenbron: 'baseline' (extern) of 'drt' (backtest_drt.py uitvoer)",
+    )
     args = parser.parse_args()
 
     if args.all:
@@ -349,10 +362,11 @@ def main() -> None:
     else:
         weeks = args.week
 
+    print(f"Bron: {args.source}")
     results = []
     for week in weeks:
         try:
-            r = evaluate_week(week)
+            r = evaluate_week(week, args.source)
             print_report(r)
             results.append(r)
         except FileNotFoundError as exc:
