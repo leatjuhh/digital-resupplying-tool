@@ -8,7 +8,6 @@ import { DashboardShell } from "@/components/dashboard/dashboard-shell";
 import { SettingsApi } from "@/components/settings/settings-api";
 import { SettingsGeneral } from "@/components/settings/settings-general";
 import { SettingsRoles } from "@/components/settings/settings-roles";
-import { SettingsRules } from "@/components/settings/settings-rules";
 import { SettingsUsers } from "@/components/settings/settings-users";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { FeatureStatusBanner } from "@/components/ui/feature-status-banner";
@@ -22,7 +21,6 @@ export function SettingsPageClient() {
 
   const canViewSettings = hasPermission("view_settings");
   const canManageGeneral = hasPermission("manage_general_settings");
-  const canManageRules = hasPermission("manage_rules_settings");
   const canManageUsers = hasPermission("manage_users");
   const canManageApi = hasPermission("manage_api_settings");
   const canManageRoles = hasPermission("manage_roles");
@@ -81,11 +79,6 @@ export function SettingsPageClient() {
       value: "general",
       label: "Algemeen",
       content: <SettingsGeneral canManage={canManageGeneral} />,
-    },
-    {
-      value: "rules",
-      label: "Regels",
-      content: <SettingsRules canManage={canManageRules} />,
     },
     ...(canManageUsers
       ? [

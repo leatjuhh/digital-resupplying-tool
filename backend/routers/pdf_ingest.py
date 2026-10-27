@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 from datetime import datetime
 from pydantic import BaseModel
+import json
 import os
 import shutil
 import logging
@@ -95,30 +96,54 @@ class UpdateProposalRequest(BaseModel):
 async def ingest_pdfs(
     files: List[UploadFile] = File(...),
     batch_name: Optional[str] = Form(None),
+    store_total_inventory: Optional[str] = Form(None),
     db: Session = Depends(get_db)
 ):
     """
     Ingest one or more PDF files
-    
+
     Args:
         files: List of PDF files to process
         batch_name: Optional name for the batch
+        store_total_inventory: JSON string met totale winkelvoorraad per filiaal
+            (bv. '{"6": 4200, "8": 3800, ...}'). Gebruikt als tiebreaker bij
+            verkoop-gelijkspel in het herverdelingsalgoritme.
         db: Database session
-        
+
     Returns:
         JSON response with batch info and processing results
     """
     logger.info(f"[INGEST_START] Received {len(files)} files")
-    
+
+    # Parse store_total_inventory JSON (optioneel)
+    extra_data = None
+    if store_total_inventory:
+        try:
+            parsed_totals = json.loads(store_total_inventory)
+            if not isinstance(parsed_totals, dict):
+                raise ValueError("store_total_inventory moet een object zijn")
+            extra_data = {
+                "store_total_inventory": {
+                    str(k): int(v) for k, v in parsed_totals.items()
+                },
+                "captured_at": datetime.now().isoformat(),
+            }
+        except (ValueError, TypeError, json.JSONDecodeError) as exc:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Ongeldige store_total_inventory: {exc}",
+            )
+
     # Create batch
     if not batch_name:
         batch_name = f"Batch {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-    
+
     batch = PDFBatch(
         naam=batch_name,
         status="PENDING",
         pdf_count=len(files),
-        processed_count=0
+        processed_count=0,
+        extra_data=extra_data,
     )
     db.add(batch)
     db.commit()

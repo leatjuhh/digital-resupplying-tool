@@ -37,6 +37,15 @@ class RedistributionParams:
     # Enable BV consolidation rule
     enable_bv_consolidation: bool = True
 
+    # ===== MIN-3 CONSOLIDATIEREGEL =====
+
+    # Harde regel: elke winkel eindigt per artikel op 0 stuks óf op ≥ dit aantal.
+    # Wordt afgedwongen door de artikel-level bundle-planner.
+    min_items_per_receiver: int = 3
+
+    # Enable bundle-planner (R1-R6 uit herverdelingsplan)
+    enable_bundle_planner: bool = True
+
     # ===== DONOR GUARDS =====
 
     # Donor moet na give-away nog minstens dit aantal stuks totaal hebben

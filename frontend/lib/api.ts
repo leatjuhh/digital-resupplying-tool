@@ -204,13 +204,6 @@ export interface GeneralSettings {
   email_notifications: boolean;
 }
 
-export interface RulesSettings {
-  min_stock_per_store: number;
-  max_stock_per_store: number;
-  min_stores_per_article: number;
-  sales_period_days: number;
-}
-
 export interface ApiKeyStatus {
   configured: boolean;
   masked_key: string | null;
@@ -572,13 +565,20 @@ export const api = {
     /**
      * Upload PDF files
      */
-    async uploadPDFs(files: File[], batchName?: string) {
+    async uploadPDFs(
+      files: File[],
+      batchName?: string,
+      storeTotalInventory?: Record<string, number>,
+    ) {
       const formData = new FormData();
       files.forEach(file => {
         formData.append('files', file);
       });
       if (batchName) {
         formData.append('batch_name', batchName);
+      }
+      if (storeTotalInventory && Object.keys(storeTotalInventory).length > 0) {
+        formData.append('store_total_inventory', JSON.stringify(storeTotalInventory));
       }
 
       const response = await fetch(`${API_BASE_URL}/api/pdf/ingest`, {
@@ -751,16 +751,6 @@ export const api = {
     },
 
     async updateGeneral(settings: GeneralSettings) {
-      return apiClient.put<SettingsUpdateResponse>("/api/settings", {
-        settings,
-      });
-    },
-
-    async getRules() {
-      return apiClient.get<RulesSettings>("/api/settings/rules/all");
-    },
-
-    async updateRules(settings: RulesSettings) {
       return apiClient.put<SettingsUpdateResponse>("/api/settings", {
         settings,
       });

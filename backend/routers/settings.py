@@ -152,23 +152,6 @@ async def update_setting(
                 detail="Je hebt geen toegang tot API instellingen"
             )
     
-    elif setting.category == "rules":
-        # Rules settings require manage_rules_settings permission
-        role = db.query(db_models.Role).filter(
-            db_models.Role.id == current_user.role_id
-        ).first()
-        
-        has_permission = any(
-            perm.name in ["manage_rules_settings", "manage_general_settings"] 
-            for perm in role.permissions
-        )
-        
-        if not has_permission:
-            raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
-                detail="Je hebt geen toegang tot regel instellingen"
-            )
-    
     else:  # general
         # General settings require manage_general_settings permission
         role = db.query(db_models.Role).filter(
@@ -263,25 +246,6 @@ async def get_general_settings(
     """
     settings = db.query(db_models.Settings).filter(
         db_models.Settings.category == "general"
-    ).all()
-    
-    result = {}
-    for setting in settings:
-        result[setting.key] = setting.value
-    
-    return result
-
-
-@router.get("/rules/all", response_model=dict)
-async def get_rules_settings(
-    current_user: db_models.User = Depends(require_permission("view_settings")),
-    db: Session = Depends(get_db)
-):
-    """
-    Haal alle regel instellingen op als dict
-    """
-    settings = db.query(db_models.Settings).filter(
-        db_models.Settings.category == "rules"
     ).all()
     
     result = {}

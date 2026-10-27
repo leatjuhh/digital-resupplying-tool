@@ -225,12 +225,6 @@ def seed_settings(db):
         ("language", "nl", "general", "Taal"),
         ("timezone", "Europe/Amsterdam", "general", "Tijdzone"),
         ("email_notifications", True, "general", "E-mail notificaties"),
-        
-        # Rules settings
-        ("min_stock_per_store", 2, "rules", "Minimum voorraad per winkel"),
-        ("max_stock_per_store", 10, "rules", "Maximum voorraad per winkel"),
-        ("min_stores_per_article", 3, "rules", "Minimum aantal winkels per artikel"),
-        ("sales_period_days", 30, "rules", "Verkoopcijfers periode (dagen)"),
     ]
     
     for key, value, category, description in settings_data:
