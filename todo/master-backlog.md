@@ -96,6 +96,76 @@ Settings-tabs tonen echte data en voeren echte backendmutaties uit binnen de gel
 **Status**  
 done
 
+### Titel
+Week-inventarisatie van manuele herverdeeldata (scanner)
+
+**Waarom dit nu telt**  
+Er is van veel meer weken manuele herverdeeldata beschikbaar dan de 4 verwerkte weken (12, 13, 14, 16). Voordat die data het algoritme kan verbeteren, moet per week vaststaan of `Ingevoerd.xlsx` en de Interfiliaalverdeling-PDF's compleet en consistent zijn, en uit welke werkwijze-periode de week stamt (zie "Domeinkennis Manuele Herverdeling" in `docs/technical/current-state.md`).
+
+**Concrete ingreep**  
+Een read-only, niet-interactief script in `tools/baseline-pipeline/` (bv. `inventory_weeks.py`) dat alle mappen `Z:\Herverdeellijsten\Jaar YYYY\Week N\` scant en per week één regel naar een CSV schrijft. Het script schrijft nooit in de bronmap. Bouwen en draaien op de werkmachine: alleen daar is `Z:` bereikbaar en alleen daar zijn de echte mapvarianten te testen. De bestaande per-week-controles in `run_week_update.py` (`check_excel_pdf_mismatch`) en `week_pipeline.py` (`analysis.json`) zijn het vertrekpunt.
+
+Per week:
+- Bronbestanden aanwezig: `Ingevoerd.xlsx` en een PDF-map. Mapnamen variëren (`Interfiliaallijsten`, `print pdf`, mogelijk `pdf_print`); de scanner rapporteert welke variant hij vond in plaats van een week stil over te slaan.
+- Kruiscontrole op volgnummer: Excel-artikelen zonder PDF (onbruikbaar, geen voorraadbeeld) en PDF's zonder Excel-regel (zwak "niets nodig"-signaal).
+- PDF's parsebaar via `pdf_extract`; winkeltotalen aanwezig.
+- Moves passen bij de voorraad: de donor had volgens de PDF minstens het verplaatste aantal van die maat. Zo niet, dan is de PDF waarschijnlijk op een ander moment geprint dan het moment van beslissen.
+- Ongeldige filiaalcodes en niet-numerieke aantallen.
+- Periode: vóór of na de BV-samenvoeging en de overstap naar kriskrasverdeling (wisselweken als configuratie).
+- Cooldown: hoe vaak een artikel binnen een week na een eerdere verplaatsing opnieuw verplaatst werd.
+- Kwaliteitsvlaggen voor afwijkende weken (bv. veel moves die niet bij de voorraad passen, uitzonderlijk aantal moves), ter beoordeling door de eigenaar.
+
+Uitkomstlabel per week: compleet / bruikbaar / onbruikbaar.
+
+**Afhankelijkheden**  
+Toegang tot `Z:\Herverdeellijsten` (werkmachine). De weken waarin de BV-samenvoeging en de kriskrasverdeling ingingen (bij benadering), nog op te geven door de eigenaar.
+
+**Acceptatiecriteria**  
+Eén commando levert een CSV met één regel per beschikbare week en bovenstaande kolommen. De 4 al verwerkte weken komen overeen met hun bestaande `analysis.json` (week 12–14: geen ontbrekende PDF's; week 16: 8 van 91 Excel-artikelen zonder PDF). De bronmap blijft onaangeroerd.
+
+**Status**  
+todo
+
+### Titel
+Scorebord over alle bruikbare weken met oefen- en controleweken
+
+**Waarom dit nu telt**  
+Met 4 weken wordt elke algoritme-aanpassing afgestemd op dezelfde weken waarop gemeten wordt, waardoor verbeteringen groter lijken dan ze zijn. Met veel weken is een eerlijke meting mogelijk.
+
+**Concrete ingreep**  
+1. Bruikbare weken van ná de werkwijzewijzigingen verwerken met de bestaande pipeline (`run_week_update.py --non-interactive`).
+2. Verwerkte JSON in de repo; ruwe Excel- en PDF-bestanden niet in gewone git (de repo wordt dan te zwaar voor beide machines), maar in een gesynchroniseerde map of via Git LFS. De eigenaar heeft bevestigd dat de data buiten de werkmachine en in git mag staan.
+3. Weken splitsen: het oudste deel om op af te stemmen, het nieuwste deel als controleset die niet bij het afstemmen gebruikt wordt.
+4. Eén commando dat `backend/backtest_drt.py` en `tools/evaluate_proposals.py` over alle weken draait en per foutcategorie (A–F) rapporteert, apart voor oefen- en controleweken. Weken die de eigenaar als minder betrouwbaar markeert tellen niet mee.
+5. Daarna gericht de grootste foutcategorieën aanpakken (gemeten op week 16: juiste artikel maar andere maat 36,5%, juiste maat maar andere filialen 30,2%).
+
+**Afhankelijkheden**  
+Week-inventarisatie van manuele herverdeeldata.
+
+**Acceptatiecriteria**  
+Het scorebord is met één commando reproduceerbaar. Een algoritmewijziging wordt alleen aangenomen als de score op de controleweken verbetert.
+
+**Status**  
+todo
+
+### Titel
+Cooldown-regel: geen herverdeling van recent verplaatste artikelen
+
+**Waarom dit nu telt**  
+In de manuele werkwijze wordt een artikel na verplaatsing minimaal 1 week niet opnieuw herverdeeld, en wordt heen-en-weer schuiven tussen filialen vermeden. DRT kijkt niet naar eerdere batches en kan dus een artikel voorstellen dat vorige week al verplaatst is.
+
+**Concrete ingreep**  
+Bij proposalgeneratie artikelen uitsluiten (of markeren) die binnen het cooldownvenster in een goedgekeurd voorstel van een eerdere batch zaten, en geen move voorstellen die een recente verplaatsing terugdraait. Venster configureerbaar, standaard 1 week; definitief af te stemmen op de cooldown-meting van de scanner.
+
+**Afhankelijkheden**  
+Geen harde afhankelijkheid: de regel leunt op goedgekeurde voorstellen in de DRT-database, niet op `Z:`, en kan op elke machine gebouwd worden. Niet tegelijk met ander werk op de andere machine uitvoeren.
+
+**Acceptatiecriteria**  
+Een test met twee opeenvolgende batches toont dat een in batch 1 goedgekeurd artikel binnen het venster in batch 2 geen moves krijgt, en buiten het venster wel.
+
+**Status**  
+todo
+
 ## P2 Geparkeerd
 
 ### Titel
@@ -148,6 +218,9 @@ Store-niveau capaciteitsprofielen geland (`store_profiles.py`): vloeroppervlak e
 
 **Fase-update 2026-04-18 (sessie 2)**
 De externe sibling-map `Herverdelingsalgoritme/` is niet langer vereist voor een werkende DRT-setup. De algoritmedata (4 weken JSON + aggregate, ~37MB) staat nu intern in `backend/algorithm_data/` en de historische baseline-pipeline is als bevroren tooling opgenomen in `tools/baseline-pipeline/` inclusief `legacy_redistribution/` (niet verwarren met het actieve `backend/redistribution/`). `algorithm_import/config.py` wijst standaard naar de interne locatie; `EXTERNAL_ALGORITHM_DATA_ROOT` blijft beschikbaar voor overrides. Dit maakt hybride werken op meerdere machines wrijvingsloos: `git pull` + setup-scripts volstaat.
+
+**Fase-update 2026-10-27**
+Nieuwe meting op weken 12, 13, 14 en 16 met de huidige `backend/redistribution/`-code via `backend/backtest_drt.py` en `tools/evaluate_proposals.py`: exacte recall 8,1% en semantische recall 17,1% over 2.008 manuele moves; DRT stelt 872 moves voor. De eerder genoemde 27% precisie / 16% recall is daarmee niet meer actueel. Het vervolg loopt via de P1-items week-inventarisatie, scorebord en cooldown-regel; de domeinkennis die daarvoor is vastgelegd staat in `docs/technical/current-state.md`.
 
 **Afhankelijkheden**  
 Stabiele leidende kernflow.

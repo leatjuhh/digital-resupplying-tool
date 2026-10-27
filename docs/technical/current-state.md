@@ -2,7 +2,7 @@
 title: Current State
 category: technical
 tags: [status, roadmap, consolidation]
-last_updated: 2026-07-13
+last_updated: 2026-10-27
 related:
   - ../../README.md
   - ../PROJECT_CONTEXT_INDEX.md
@@ -71,6 +71,7 @@ Deze flow moet intact blijven tijdens opschoning van documentatie, backlog en ni
 - **Tiebreaker totale winkelvoorraad** (2026-04-20): winkel met lagere som van álle artikelen wint als receiver bij verkoop-gelijkspel. Data wordt per batch ingevoerd op de uploads-pagina (8 filiaal-inputs) en opgeslagen in `pdf_batches.extra_data` (migratie `migrate_add_extra_data.py`).
 - **Dode rules-settings verwijderd** (2026-04-20): `frontend/components/settings/settings-rules.tsx`, het tabblad "Regels", de `RulesSettings`-API en de 4 seed-rows (min/max stock, min_stores_per_article, sales_period_days) werden nergens door het algoritme gelezen. Migratie `migrate_drop_rules_settings.py` verwijdert bestaande `category='rules'` rows uit actieve databases.
 - **Production-readiness hardening gestart** (2026-07-13): muterende PDF/proposal-, batch-, artikel- en redistributie-endpoints vereisen nu bestaande RBAC-permissies; JWT-signing faalt fail-fast zonder `SECRET_KEY`; PDF-upload bestandsnamen worden server-side gevalideerd tegen path traversal.
+- **Backtest-meting** (2026-10-27): `backend/backtest_drt.py` draait het huidige algoritme op de historische snapshots en `tools/evaluate_proposals.py --source drt` vergelijkt de uitkomst met de manuele moves. Over weken 12, 13, 14 en 16: exacte recall 8,1%, semantische recall 17,1% (2.008 manuele moves, 872 DRT-moves). De grootste afwijkingen (week 16): juiste artikel maar andere maat (36,5%) en juiste maat maar andere filialen (30,2%).
 
 ## Wat Bewust Geparkeerd Is
 
@@ -88,6 +89,19 @@ Deze onderdelen mogen zichtbaar blijven, maar zijn niet leidend voor planning of
 - De AI-architectuur is bewust adviserend en batchmatig: feedbackanalyse en regelverfijning zijn de beoogde vervolgrichting, maar actieve runtime-sturing door AI hoort nog niet bij de huidige productclaim.
 - Browser smoke is stabiel gevalideerd op een schone frontendstart; een vervuilde Next dev-cache kan lokaal nog steeds rare `.next` chunkfouten geven totdat de frontend opnieuw schoon is gestart.
 - Historische roadmap- en analysebestanden zijn verplaatst naar `archive/2026-03-consolidation/`.
+- De backend start niet zonder `SECRET_KEY`. Elke machine heeft daarom een eigen, niet-gecommitte `backend/.env` nodig (sjabloon: `backend/.env.example`); `.\dev.ps1` maakt die niet zelf aan.
+- Na een `git pull` op een andere machine eerst de dependencies bijwerken (`pip install -r requirements.txt -r requirements-dev.txt` in `backend/venv`, `npm install` in `frontend/`), anders ontbreken tools zoals ESLint lokaal.
+
+## Domeinkennis Manuele Herverdeling
+
+Vastgelegd op 2026-10-27 op basis van de werkwijze van de eigenaar. Bepalend voor welke historische weken bruikbaar zijn voor algoritmewerk.
+
+- **Bron**: per week staan de manuele beslissingen in `Z:\Herverdeellijsten\Jaar YYYY\Week N\Ingevoerd.xlsx`, met de bijbehorende Interfiliaalverdeling-PDF's (één per volgnummer) in een submap. `Z:` is alleen op de werkmachine bereikbaar. De data mag buiten de werkmachine en in git staan.
+- **Cooldown**: een verplaatst artikel wordt minimaal 1 week niet opnieuw herverdeeld, en heen-en-weer schuiven tussen filialen wordt vermeden (handmatig, op gevoel). DRT modelleert dit nog niet.
+- **Werkwijzewijzigingen**: de 2 BV-groepen zijn samengevoegd tot één groep, en er wordt niet meer per vrachtroute verdeeld maar kriskras voor maximale verkoop (korte opslag tijdens transport wordt geaccepteerd). Weken van vóór deze wijzigingen weerspiegelen een andere werkwijze en tellen niet ongemarkeerd mee in metingen. De wisselweken zijn nog niet vastgelegd. De huidige DRT-configuratie (één BV voor de 8 actieve filialen, geen routes) sluit aan op de nieuwe werkwijze.
+- **PDF zonder Excel-regel**: meestal "bekeken, niets nodig", maar met regelmatige uitzonderingen. Bruikbaar als zwak signaal voor onterechte voorstellen, niet als harde waarheid.
+- **Wisselende kwaliteit**: niet elke week of planner is even betrouwbaar als voorbeeld; weken krijgen een kwaliteitslabel van de eigenaar.
+- **Uitkomstmeting beperkt**: door de cooldown komen artikelen niet snel terug, dus "is het verplaatste stuk verkocht" is maar beperkt meetbaar. Overeenkomst met het handwerk blijft de hoofdmaatstaf.
 
 ## Eerstvolgende Fasen
 
