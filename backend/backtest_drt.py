@@ -21,8 +21,9 @@ from typing import Dict
 sys.path.insert(0, str(Path(__file__).parent))
 
 from redistribution.domain import ArticleStock, StoreInventory
-from redistribution.constraints import DEFAULT_PARAMS, RedistributionParams, get_size_order
-from redistribution.algorithm import generate_moves_for_article, detect_size_type
+from redistribution.constraints import RedistributionParams, get_size_order
+from redistribution.adapter import detect_size_type
+from redistribution.bundle_planner import generate_moves_for_article
 from redistribution.bv_config import get_bv_config
 from redistribution.store_config import is_redistribution_candidate
 from redistribution.store_profiles import get_store_profile
