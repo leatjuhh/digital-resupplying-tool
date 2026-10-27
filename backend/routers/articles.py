@@ -8,6 +8,7 @@ from models import Article
 from database import get_db
 from auth import require_permission
 import db_models
+from auth import get_current_active_user
 
 # Maak een router aan voor alle article-gerelateerde endpoints
 router = APIRouter()
@@ -60,7 +61,7 @@ async def get_article(artikelnummer: str, db: Session = Depends(get_db)):
 async def create_article(
     article: Article,
     db: Session = Depends(get_db),
-    current_user = Depends(require_permission("manage_batches"))
+    current_user: db_models.User = Depends(get_current_active_user)
 ):
     """
     Create a new article
@@ -101,7 +102,7 @@ async def update_article(
     artikelnummer: str,
     article: Article,
     db: Session = Depends(get_db),
-    current_user = Depends(require_permission("manage_batches"))
+    current_user: db_models.User = Depends(get_current_active_user)
 ):
     """
     Update an existing article
@@ -136,7 +137,7 @@ async def update_article(
 async def delete_article(
     artikelnummer: str,
     db: Session = Depends(get_db),
-    current_user = Depends(require_permission("manage_batches"))
+    current_user: db_models.User = Depends(get_current_active_user)
 ):
     """
     Delete an article

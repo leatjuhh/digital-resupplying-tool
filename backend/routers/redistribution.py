@@ -5,12 +5,11 @@ Endpoints voor herverdelingsalgoritme en voorstellen
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from typing import List, Optional
-from datetime import datetime
+from typing import Optional
 
 from database import get_db
+from db_models import ArtikelVoorraad, Batch, User
 from auth import require_permission
-from db_models import ArtikelVoorraad, Batch
 from redistribution.algorithm import (
     generate_redistribution_proposals_for_article,
     generate_redistribution_proposals_for_batch
@@ -26,7 +25,7 @@ async def generate_proposals(
     enforce_bv_separation: bool = Query(default=True, description="Enforce BV separation constraint"),
     min_move_quantity: int = Query(default=1, description="Minimum quantity per move"),
     db: Session = Depends(get_db),
-    current_user = Depends(require_permission("create_proposals"))
+    current_user: User = Depends(require_permission("create_proposals"))
 ):
     """
     Genereer herverdelingsvoorstellen voor een hele batch

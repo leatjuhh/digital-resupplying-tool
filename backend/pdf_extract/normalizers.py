@@ -3,7 +3,7 @@ Text normalization and correction utilities
 Handles common extraction issues and standardizes data
 """
 import re
-from typing import Optional, Dict, List
+from typing import Optional, List
 from .extract_settings import FILIAAL_NAME_MAPPINGS
 
 
@@ -86,9 +86,7 @@ def normalize_voorraad_value(raw_value: str, track_negative: bool = False) -> tu
     # Handle empty or "." (which means 0)
     if not value or value == '.' or value == '-':
         return (0, False) if track_negative else 0
-    
-    was_negative = False
-    
+
     # Try to parse as integer (including negative values)
     try:
         parsed_value = int(value)
@@ -96,7 +94,6 @@ def normalize_voorraad_value(raw_value: str, track_negative: bool = False) -> tu
         # BUSINESS RULE: Convert negative voorraad to 0
         # Negative inventory cannot be redistributed
         if parsed_value < 0:
-            was_negative = True
             import logging
             logger = logging.getLogger(__name__)
             logger.warning(f"[NEGATIVE_VOORRAAD] Detected negative voorraad value '{raw_value}', converting to 0")
@@ -112,7 +109,6 @@ def normalize_voorraad_value(raw_value: str, track_negative: bool = False) -> tu
                 
                 # BUSINESS RULE: Convert negative voorraad to 0
                 if parsed_value < 0:
-                    was_negative = True
                     import logging
                     logger = logging.getLogger(__name__)
                     logger.warning(f"[NEGATIVE_VOORRAAD] Detected negative voorraad value '{raw_value}', converting to 0")

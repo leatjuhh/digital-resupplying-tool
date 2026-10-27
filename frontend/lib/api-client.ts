@@ -8,6 +8,10 @@ import { tokenStorage } from './token-storage';
 // Use environment variable for API URL, fallback to localhost
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
+// Standaard-timeout voor API-aanroepen (PR-017): voorkomt dat een hangende
+// backend-request de UI oneindig laat wachten.
+const DEFAULT_TIMEOUT_MS = 30000;
+
 // Store handle401 callback globally
 let handle401Callback: (() => Promise<void>) | null = null;
 
@@ -38,11 +42,15 @@ export async function apiFetch<T>(
   }
 
   const url = `${API_BASE_URL}${endpoint}`;
-  
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT_MS);
+
   try {
     const response = await fetch(url, {
       ...options,
       headers,
+      signal: controller.signal,
     });
 
     // Handle 401 Unauthorized
@@ -59,6 +67,7 @@ export async function apiFetch<T>(
           const retryResponse = await fetch(url, {
             ...options,
             headers,
+            signal: controller.signal,
           });
           
           if (!retryResponse.ok && retryResponse.status !== 401) {
@@ -88,8 +97,14 @@ export async function apiFetch<T>(
 
     return response.json();
   } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      console.error(`API call timed out na ${DEFAULT_TIMEOUT_MS}ms:`, url);
+      throw new Error('De aanvraag duurde te lang (timeout).');
+    }
     console.error('API call failed:', error);
     throw error;
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 

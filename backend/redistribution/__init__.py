@@ -30,7 +30,6 @@ from .store_profiles import (
     StoreProfile,
     get_store_profile,
     get_all_profiles,
-    set_store_profiles,
 )
 
 __all__ = [
@@ -48,5 +47,4 @@ __all__ = [
     'StoreProfile',
     'get_store_profile',
     'get_all_profiles',
-    'set_store_profiles',
 ]

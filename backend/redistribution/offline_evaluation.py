@@ -44,7 +44,7 @@ def evaluate_combined_records(
     situation_counts = Counter(_empty_situation_map())
     moved_article_counts = Counter(_empty_situation_map())
     observed_move_counts = Counter(_empty_situation_map())
-    per_article = []
+    per_article: List[dict] = []
 
     for record in records:
         article = article_from_combined_record(record, batch_id=week)

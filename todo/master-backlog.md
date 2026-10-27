@@ -40,23 +40,22 @@ Er is één herhaalbare checklist of testset waarmee de leidende kernflow end-to
 **Status**  
 done
 
-
 ### Titel
-Production-readiness kritieke hardening uitvoeren
+Kritieke security-hardening op de API (production-readiness Fase 1)
 
-**Waarom dit nu telt**
-De kernflow is pas veilig richting productie wanneer muterende API-routes niet anoniem schrijfbaar zijn, JWT-signing geen hardcoded fallback-secret gebruikt en PDF-uploads geen padtraversal kunnen veroorzaken.
+**Waarom dit nu telt**  
+Muterende endpoints waren anoniem aanroepbaar en `SECRET_KEY` had een publiek bekende fallback — directe risico's op ongeautoriseerde mutaties en tokenvervalsing.
 
-**Concrete ingreep**
-Bescherm muterende PDF/proposal-, batch-, artikel- en redistributie-endpoints met bestaande RBAC-permissies, maak `SECRET_KEY` verplicht via environment en valideer uploadbestandsnamen server-side.
+**Concrete ingreep**  
+Auth/permissies op alle muterende endpoints, `SECRET_KEY` verplicht (fail-fast), upload-filename-sanitisering + groottelimiet, idempotente approve, smallere refresh-foutafhandeling en werkende `ALLOWED_ORIGINS`. Zie `docs/engineering/PRODUCTION_READINESS_PLAN.md` Fase 1.
 
-**Afhankelijkheden**
-Stabiele leidende kernflow en bestaande auth/RBAC-inrichting.
+**Afhankelijkheden**  
+Geen.
 
-**Acceptatiecriteria**
-Unauthenticated muterende requests krijgen 401/403, ontbrekende `SECRET_KEY` faalt fail-fast en kwaadaardige PDF-bestandsnamen worden geweigerd voordat er naar disk geschreven wordt.
+**Acceptatiecriteria**  
+`backend/test_security_hardening.py` is groen (o.a. 401 op elk muterend endpoint zonder token, fail-fast zonder `SECRET_KEY`).
 
-**Status**
+**Status**  
 done
 
 ## P1 Daarna afmaken

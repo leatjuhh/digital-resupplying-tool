@@ -2,7 +2,7 @@
 SQLAlchemy database models
 """
 # Importeer SQLAlchemy kolom types en de Base class
-from sqlalchemy import Column, Integer, String, JSON, DateTime, Text, ForeignKey, Boolean, Float, Table, UniqueConstraint
+from sqlalchemy import Column, Integer, String, JSON, DateTime, Text, ForeignKey, Boolean, Float, Table, UniqueConstraint, CheckConstraint
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from database import Base
@@ -150,7 +150,12 @@ class Proposal(Base):
     
     # Review tijdstip
     reviewed_at = Column(DateTime(timezone=True))
-    
+
+    # Audit trail: username van wie het voorstel heeft goedgekeurd/afgekeurd/
+    # bewerkt (hoofdstuk 6/8). Nullable: bestaande en nog niet-gereviewde
+    # voorstellen hebben geen reviewer.
+    reviewed_by = Column(String, nullable=True)
+
     # Rejection reason (bij afkeur)
     rejection_reason = Column(Text)
 
@@ -220,6 +225,11 @@ class Feedback(Base):
     # Verwijzing naar het voorstel
     proposal_id = Column(Integer, ForeignKey('proposals.id'), nullable=False)
 
+    # Audit trail: welke gebruiker deze feedback/mutatie uitvoerde (hoofdstuk
+    # 6/8). Nullable: bestaande records en systeem-gegenereerde feedback hebben
+    # geen gebruiker.
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=True)
+
     # Categorie: 'approval', 'rejection', 'edit', 'removal', 'manual_add'
     category = Column(String, nullable=False)
 
@@ -285,7 +295,23 @@ class PDFBatch(Base):
 class ArtikelVoorraad(Base):
     """Voorraad data geëxtraheerd uit PDF's"""
     __tablename__ = "artikel_voorraad"
-    
+
+    # Databaseconstraints (NB bij SQLite: gelden vanaf tabel-aanmaak via
+    # create_all op een verse DB; een bestaande tabel krijgt ze pas via een
+    # tabel-herbouw/migratie, Fase 4):
+    #  - R5.4: voorraad en verkocht zijn per definitie niet-negatief.
+    #  - Idempotentie (hoofdstuk 6): per batch is (volgnummer, filiaal, maat)
+    #    uniek, zodat een dubbele ingest binnen dezelfde batch geen dubbele
+    #    voorraadrijen (en dus geen dubbeltelling) oplevert.
+    __table_args__ = (
+        CheckConstraint("voorraad >= 0", name="ck_artikel_voorraad_voorraad_nonneg"),
+        CheckConstraint("verkocht >= 0", name="ck_artikel_voorraad_verkocht_nonneg"),
+        UniqueConstraint(
+            "batch_id", "volgnummer", "filiaal_code", "maat",
+            name="uq_artikel_voorraad_batch_vlg_fil_maat",
+        ),
+    )
+
     # Unieke ID
     id = Column(Integer, primary_key=True, index=True)
     

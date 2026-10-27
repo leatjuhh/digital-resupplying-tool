@@ -7,7 +7,6 @@ import re
 import logging
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, field
-from datetime import datetime
 
 from .extract_settings import (
     TABLE_SETTINGS,
@@ -25,13 +24,12 @@ from .normalizers import (
     combine_split_filiaal,
     is_totals_row,
     is_verschil_row,
-    validate_filiaal_code,
     normalize_metadata_value,
 )
 from .text_parser import parse_from_text_lines
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
+# Logging: centrale configuratie staat in main.py (PR-019); hier alleen een
+# module-logger ophalen.
 logger = logging.getLogger(__name__)
 
 
@@ -101,9 +99,9 @@ def parse_pdf_to_records(pdf_path: str) -> ParsedDoc:
                 result.errors.extend(validation_result['errors'])
                 logger.error(f"[VALIDATION] Validation failed: {validation_result['errors']}")
             else:
-                logger.info(f"[VALIDATION] Validation passed")
+                logger.info("[VALIDATION] Validation passed")
             
-            logger.info(f"[PARSE_COMPLETE] Parsing completed successfully")
+            logger.info("[PARSE_COMPLETE] Parsing completed successfully")
             
     except Exception as e:
         error_msg = f"Failed to parse PDF: {str(e)}"
@@ -457,9 +455,9 @@ def validate_extraction(parsed: ParsedDoc) -> Dict[str, Any]:
     
     # Check required metadata fields
     required_meta = ['Volgnummer', 'Omschrijving']
-    for field in required_meta:
-        if field not in parsed.meta or not parsed.meta[field]:
-            errors.append(f"Missing required metadata: {field}")
+    for meta_field in required_meta:
+        if meta_field not in parsed.meta or not parsed.meta[meta_field]:
+            errors.append(f"Missing required metadata: {meta_field}")
     
     # Validate totals if present (but only as warnings, not errors)
     if parsed.totals and parsed.rows:

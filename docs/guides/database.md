@@ -242,6 +242,26 @@ CREATE INDEX idx_proposals_artikelnummer ON proposals(artikelnummer);
 CREATE INDEX idx_feedback_proposal_id ON feedback(proposal_id);
 ```
 
+### Constraints (data-integriteit)
+
+`artikel_voorraad` kent sinds PR-006 niet-negativiteits-`CHECK`-constraints (R5.4) en een `UNIQUE`-constraint tegen dubbele voorraadrijen (idempotentie):
+
+```sql
+-- op tabel artikel_voorraad
+CONSTRAINT ck_artikel_voorraad_voorraad_nonneg CHECK (voorraad >= 0),
+CONSTRAINT ck_artikel_voorraad_verkocht_nonneg CHECK (verkocht >= 0),
+CONSTRAINT uq_artikel_voorraad_batch_vlg_fil_maat
+    UNIQUE (batch_id, volgnummer, filiaal_code, maat)
+```
+
+Een dubbele ingest binnen dezelfde batch wordt zo geweigerd; de ingest herstelt de sessie (`db.rollback()`) en markeert het dubbele bestand als `FAILED` in plaats van de hele batch te laten crashen.
+
+### Audit trail
+
+`proposals` heeft naast `reviewed_at` een `reviewed_by`-kolom (`VARCHAR`, nullable) die vastlegt wie een voorstel goedkeurde/afkeurde/bewerkte (de `username` van de ingelogde gebruiker). Aanvullend legt `feedback.user_id` (`INTEGER`, FK → `users`, nullable) per mutatie de uitvoerende gebruiker vast. Bestaande databases krijgen beide kolommen via `ensure_runtime_schema()` (`ALTER TABLE ... ADD COLUMN`).
+
+> ⚠️ **SQLite-let op:** deze `CHECK`-constraints worden toegepast bij tabel-aanmaak (`Base.metadata.create_all` op een verse DB). Een reeds bestaande `artikel_voorraad`-tabel krijgt ze pas via een tabel-herbouw/migratie (voorzien in Fase 4) — `ALTER TABLE ADD CONSTRAINT` bestaat niet in SQLite.
+
 ---
 
 ## <a id="crud"></a>🔧 CRUD Operaties

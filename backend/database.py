@@ -2,6 +2,7 @@
 Database configuration and session management
 """
 # Importeer SQLAlchemy componenten voor database connectie en ORM
+import os
 from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -10,7 +11,14 @@ from pathlib import Path
 # SQLite database bestand locatie, expliciet gekoppeld aan de backend-map
 BACKEND_DIR = Path(__file__).resolve().parent
 DATABASE_PATH = BACKEND_DIR / "database.db"
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{DATABASE_PATH.as_posix()}"
+# Standaard draait de applicatie tegen het lokale SQLite-bestand. De URL kan
+# worden overschreven via DATABASE_URL, o.a. zodat tests tegen een wegwerp-
+# database draaien in plaats van de lokale database.db (zie backend/conftest.py
+# en docs/engineering/PRODUCTION_READINESS_PLAN.md, Stap 0.6). Zonder de
+# variabele blijft het gedrag identiek aan voorheen.
+SQLALCHEMY_DATABASE_URL = os.getenv(
+    "DATABASE_URL", f"sqlite:///{DATABASE_PATH.as_posix()}"
+)
 
 # Maak database engine aan
 # check_same_thread=False is nodig voor SQLite om meerdere threads toe te staan
@@ -64,6 +72,7 @@ def ensure_runtime_schema():
                 "move_index": "INTEGER",
                 "feature_snapshot": "JSON",
                 "model_score_at_time": "FLOAT",
+                "user_id": "INTEGER",
             }
             for col_name, col_type in migrations.items():
                 if col_name not in feedback_columns:
@@ -71,6 +80,12 @@ def ensure_runtime_schema():
 
             # rating en comment mogen NULL zijn (bestaande NOT NULL constraint verwijderen
             # kan niet in SQLite zonder tabel herbouwen; nieuwe records slaan NULL correct op)
+
+        # Proposals-tabel: audit trail (wie reviewde het voorstel — hoofdstuk 6/8).
+        if "proposals" in table_names:
+            proposal_columns = {col["name"] for col in inspector.get_columns("proposals")}
+            if "reviewed_by" not in proposal_columns:
+                connection.execute(text("ALTER TABLE proposals ADD COLUMN reviewed_by VARCHAR"))
 
 # Dependency functie voor FastAPI endpoints
 def get_db():

@@ -1,9 +1,11 @@
 """
 Authentication router - Login, logout, refresh endpoints
 """
+import logging
 from datetime import datetime
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordRequestForm
+from jose import JWTError
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from typing import Optional
@@ -17,6 +19,9 @@ from auth import (
     get_current_active_user,
     decode_token
 )
+from rate_limit import LoginRateLimiter, get_login_rate_limiter
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/auth", tags=["authentication"])
 
@@ -51,24 +56,44 @@ class UserResponse(BaseModel):
 
 @router.post("/login", response_model=Token)
 async def login(
+    request: Request,
     form_data: OAuth2PasswordRequestForm = Depends(),
     remember_me: bool = False,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    rate_limiter: LoginRateLimiter = Depends(get_login_rate_limiter),
 ):
     """
     Login endpoint - Authenticeer gebruiker met username en password
-    
+
     Returns JWT access en refresh tokens
     """
+    # Rate limiting (PR-013): begrens brute-force op basis van de client-IP.
+    # Achter een reverse proxy moet de echte client-IP via proxy-headers worden
+    # doorgegeven; in de directe (dev-)opstelling is request.client.host correct.
+    client_key = request.client.host if request.client else "onbekend"
+    retry_after = rate_limiter.check(client_key)
+    if retry_after is not None:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Te veel mislukte inlogpogingen. Probeer het later opnieuw.",
+            headers={"Retry-After": str(retry_after)},
+        )
+
     # Authenticeer gebruiker
     user = authenticate_user(db, form_data.username, form_data.password)
     if not user:
+        # Mislukte poging telt mee voor de rate limit.
+        rate_limiter.register_failure(client_key)
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Onjuiste gebruikersnaam of wachtwoord",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
+
+    # Geldige inloggegevens: wis de teller voor deze client (ook bij een verder
+    # gedeactiveerd account — dit is geen brute-force-poging).
+    rate_limiter.reset(client_key)
+
     if not user.is_active:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -118,63 +143,78 @@ async def refresh_token(
     """
     Refresh endpoint - Vernieuw access token met refresh token
     """
+    # Alleen een ongeldig/verlopen token levert een 401. Een brede except
+    # Exception zou onverwachte serverfouten (bv. een databasefout) maskeren als
+    # authenticatiefout — dat is precies wat we hier vermijden (PR-008).
     try:
         payload = decode_token(token_data.refresh_token)
-        
-        # Check of het een refresh token is
-        if payload.get("type") != "refresh":
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Ongeldig refresh token"
-            )
-        
-        user_id: int = payload.get("sub")
-        if user_id is None:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Ongeldig refresh token"
-            )
-        
-        # Haal gebruiker op
-        user = db.query(db_models.User).filter(
-            db_models.User.id == user_id
-        ).first()
-        
-        if not user or not user.is_active:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Gebruiker niet gevonden of gedeactiveerd"
-            )
-        
-        # Haal rol en permissions op
-        role = db.query(db_models.Role).filter(
-            db_models.Role.id == user.role_id
-        ).first()
-        
-        permissions = [perm.name for perm in role.permissions]
-        
-        # Creëer nieuwe tokens (sub moet een string zijn volgens JWT spec)
-        token_payload = {
-            "sub": str(user.id),
-            "username": user.username,
-            "role": role.name,
-            "permissions": permissions
-        }
-        
-        access_token = create_access_token(data=token_payload)
-        # Hergebruik de refresh token
-        
-        return {
-            "access_token": access_token,
-            "refresh_token": token_data.refresh_token,
-            "token_type": "bearer"
-        }
-        
-    except Exception as e:
+    except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token kon niet vernieuwd worden"
+            detail="Ongeldig of verlopen refresh token"
         )
+
+    # Check of het een refresh token is
+    if payload.get("type") != "refresh":
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Ongeldig refresh token"
+        )
+
+    user_id = payload.get("sub")
+    if user_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Ongeldig refresh token"
+        )
+
+    # Haal gebruiker op
+    user = db.query(db_models.User).filter(
+        db_models.User.id == user_id
+    ).first()
+
+    if not user or not user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Gebruiker niet gevonden of gedeactiveerd"
+        )
+
+    # Haal rol en permissions op
+    role = db.query(db_models.Role).filter(
+        db_models.Role.id == user.role_id
+    ).first()
+
+    if not role:
+        # Data-inconsistentie: een actieve gebruiker zonder geldige rol is een
+        # serverfout (5xx), geen ongeldig token. Loggen met context, en NIET
+        # stilzwijgend als 401 teruggeven.
+        logger.error(
+            "Refresh mislukt: gebruiker %s heeft geen geldige rol (role_id=%s)",
+            user.id, user.role_id
+        )
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Interne serverfout"
+        )
+
+    permissions = [perm.name for perm in role.permissions]
+
+    # Creëer nieuwe tokens (sub moet een string zijn volgens JWT spec)
+    token_payload = {
+        "sub": str(user.id),
+        "username": user.username,
+        "role": role.name,
+        "permissions": permissions
+    }
+
+    access_token = create_access_token(data=token_payload)
+    # Hergebruik de refresh token
+
+    return {
+        "access_token": access_token,
+        "refresh_token": token_data.refresh_token,
+        "token_type": "bearer"
+    }
 
 
 @router.get("/me", response_model=UserResponse)
