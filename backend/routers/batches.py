@@ -10,7 +10,6 @@ from database import get_db
 from auth import require_permission
 import db_models
 from models import BatchCreate, BatchResponse, PDFUploadResponse, BatchDetailResponse
-from auth import require_permission
 from utils import (
     secure_pdf_filename,
     save_upload_within_limit,
@@ -110,7 +109,7 @@ async def upload_pdf_to_batch(
     # Maak BatchPDF record
     batch_pdf = db_models.BatchPDF(
         batch_id=batch_id,
-        filename=safe_original_filename,
+        filename=clean_name,
         file_path=file_path,
         status="completed" if parse_result.get("success") else "failed",
         parsed_data=parse_result,
@@ -133,7 +132,7 @@ async def upload_pdf_to_batch(
     
     return PDFUploadResponse(
         batch_id=batch_id,
-        filename=safe_original_filename,
+        filename=clean_name,
         status=batch_pdf.status,
         message=f"Extracted {len(parse_result.get('artikelnummers', []))} artikelnummers" if parse_result.get("success") else f"Failed: {parse_result.get('error')}"
     )

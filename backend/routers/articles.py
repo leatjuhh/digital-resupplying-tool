@@ -6,7 +6,6 @@ from typing import List
 # Importeer Pydantic models (voor API) en database models (voor ORM)
 from models import Article
 from database import get_db
-from auth import require_permission
 import db_models
 from auth import get_current_active_user
 
