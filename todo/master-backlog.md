@@ -97,7 +97,7 @@ Settings-tabs tonen echte data en voeren echte backendmutaties uit binnen de gel
 done
 
 ### Titel
-Week-inventarisatie van manuele herverdeeldata (scanner)
+Week-inventarisatie van manuele herverdeeldata (scanner) ✅
 
 **Waarom dit nu telt**  
 Er is van veel meer weken manuele herverdeeldata beschikbaar dan de 4 verwerkte weken (12, 13, 14, 16). Voordat die data het algoritme kan verbeteren, moet per week vaststaan of `Ingevoerd.xlsx` en de Interfiliaalverdeling-PDF's compleet en consistent zijn, en uit welke werkwijze-periode de week stamt (zie "Domeinkennis Manuele Herverdeling" in `docs/technical/current-state.md`).
@@ -124,7 +124,14 @@ Toegang tot `Z:\Herverdeellijsten` (werkmachine). De weken waarin de BV-samenvoe
 Eén commando levert een CSV met één regel per beschikbare week en bovenstaande kolommen. De 4 al verwerkte weken komen overeen met hun bestaande `analysis.json` (week 12–14: geen ontbrekende PDF's; week 16: 8 van 91 Excel-artikelen zonder PDF). De bronmap blijft onaangeroerd.
 
 **Status**  
-todo
+done — PR: feature/week-inventory-scanner (2026-10-27)
+
+**Uitkomst**  
+`tools/baseline-pipeline/inventory_weeks.py` + `test_inventory_weeks.py` (40 tests groen).
+Eerste scan: 378 weken (2017–2026), 7 compleet / 206 bruikbaar / 165 onbruikbaar.
+CSV: `backend/algorithm_data/inventory/week_inventory.csv`.
+Wisselweken nog niet ingevuld — period='unknown' voor alle weken.
+Te doen vóór scorebord: wisselweken opgeven via `--bv-merge-year/week` en `--kriskras-year/week`.
 
 ### Titel
 Scorebord over alle bruikbare weken met oefen- en controleweken
