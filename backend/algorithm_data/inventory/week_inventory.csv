@@ -1,379 +1,379 @@
 year,week,week_dir_name,excel_found,excel_filename,excel_article_count,pdf_submap_found,pdf_submap_name,pdf_count,loose_pdfs_at_root,missing_pdfs_count,extra_pdfs_count,period,parse_failure_count,invalid_store_moves,donor_violation_count,non_numeric_qty_count,cooldown_article_count,quality_label,flags,notes
-2017,1,Week 1,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert.xlsx,Heverdelingslijst 2017 Brunssum.xlsx,Totaal.xlsx,Week 1 Budel.xlsx"
-2017,10,Week 10,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (14).xlsx,Herverdeellijst 2017 - Weert  week 10.xlsx,Heverdelingslijst 2016 (14) brunssum.xlsx,week 10 herver budel.xlsx"
-2017,11,Week 11,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:brunssum.xlsx,budel.xlsx,Herverdeellijst 2014 - Echt (1) (15).xlsx,Herverdeellijst 2017 - Weert wk 11.xlsx,Macro lijst.xlsx"
-2017,12,Week 12,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx"
-2017,13,Week 13,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,14,Week 14,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,16,Week 16,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Buul.xlsx,Herverdeellijst 2014 - Echt (1) (21).xlsx,Herverdeellijst 2017 - Weert week 16.xlsx,Heverdelingslijst 2016 (20) BRS.xlsx,Totaal.xlsx"
-2017,17,Week 17,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (22).xlsx,Herverdeellijst 2017 - Weert week 17.xlsx,Heverdelingslijst 2016 (21) Brs.xlsx,Macro lijst.xlsx,week 17 herv Budel.xlsx"
-2017,18,Week 18,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:BRS 11 dubbele.xlsx,BRS 11 Enkele.xlsx,Budel 13.xlsx,Echt 06.xlsx,Totaal.xlsx"
-2017,19,Week 19,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1).xlsx,Herverdeellijst 2017 - Weert 19.xlsx,Totaal.xlsx,Week 19 herv Budel.xlsx"
-2017,2,Week 2,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert week 2.xlsx,Totaal.xlsx,week 2 Budel herverdeling.xlsx"
-2017,21,Week 21,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert 21.xlsx,Totaal.xlsx"
-2017,22,Week 22,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,23,Week 23,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,26,Week 26,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx"
-2017,27,Week 27,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brs.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,28,Week 28,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx,Weert.xlsx"
-2017,29,Week 29,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:BRS.xlsx,Budel.xlsx,Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert 29.xlsx,Totaal.xlsx"
-2017,30,Week 30,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Herverdeellijst 2014 - Echt (1).xlsx,Herverdeellijst 2017 - Weert 30.xlsx,totaal.xlsx"
-2017,31,Week 31,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,Herverdeellijst 2017 - Weert week 31.xlsx,Totaal.xlsx,Week 31 herv Budel.xlsx"
-2017,34,Week 34,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (1) schoenen.xlsx,Herverdeellijst 2014 - Echt (1) (1).xlsx,Herverdeellijst 2017 - Weert wk 33.xlsx,Heverdelingslijst 2016 (30) Brunssum.xlsx,week 34 herv Budel.xlsx"
-2017,35,Week 35,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,36,Week 36,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:BRS.xlsx,Budel.xlsx,Echt.xlsx,Nieuw - Microsoft Excel-werkblad.xlsx,totaal.xlsx"
-2017,37,Week 37,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,39,Week 39,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brs.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,4,Week 4,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Herverdeellijst 2014 - Echt (1) (10).xlsx,Herverdeellijst 2017 - Weert week 4.xlsx,Totaal.xlsx,Week 4 herver Budel.xlsx"
-2017,40,Week 40,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Br-z.xlsx,Brs.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx"
-2017,41,Week 41,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:BR-z.xlsx,BRS.xlsx,Budel.xlsx,echt.xlsx,tilly wek 40.xlsx"
-2017,42,Week 42,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,43,Week 43,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:brunssum.xlsx,Budel.xlsx,Herverdeellijst 2014 - Echt (1) (26).xlsx,Herverdeellijst 2017 - Weert week 43.xlsx,totaal.xlsx"
-2017,44,Week 44,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:brs.xlsx,budel.xlsx,Herverdeellijst 2014 - Echt (1).xlsx,totaal.xlsx"
-2017,45,Week 45,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
-2017,46,Week 46,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,47,Week 47,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel week 47 herv.xlsx,Echt Herverdeellijst 2014 - Echt (1).xlsx,totaal.xlsx,Weert week 47.xlsx"
-2017,48,Week 48,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Buul week 48 herv 1.xlsx,Herverdeellijst 2014 - Echt (1).xlsx,Herverdeellijst 2017 - Weert week 48.xlsx,totaal.xlsx"
-2017,5,Week 5,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (11).xlsx,Herverdeellijst 2017 - Weert week 5.xlsx,Heverdelingslijst 2016 Brunssum.xlsx,Totaal.xlsx,week 5 herver BUDEL.xlsx"
-2017,6,Week 6,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2017,7,Week 7,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert  wk 7.xlsx,Heverdelingslijst 2016 brunssum.xlsx,Totaal.xlsx,week 7 herver  Budel.xlsx"
-2017,9,Week 9,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum Heverdelingslijst 2016 (13).xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx,Weert Herverdeellijst 2017 - Weert week 9.xlsx"
-2018,1,Week 1,False,,0,False,,0,4,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Echt.xlsx,Totaal.xlsx"
-2018,11,Week 11,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (1).xlsx
-2018,14,Week 14,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Echt.xlsx,totaal.xlsx"
-2018,15,Week 15,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,Totaal.xlsx"
-2018,16,Week 16,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (1).xlsx,totaal.xlsx"
-2018,17,Week 17,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2018,18,Week 18,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Herverdeellijst 2014 - Echt (1) (1).xlsx,Herverdeellijst 2018 - Weert week 17 (1).xlsx,Herverdeellijst WEEK 18- 2018 - Arcen (1).xlsx"
-2018,2,Week 2,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunss.xlsx,budel.xlsx,Echt.xlsx,TOTAAL.xlsx,Weert.xlsx"
-2018,21,Week 21,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,totaal.xlsx"
-2018,23,Week 23,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,Totaal.xlsx"
-2018,26,Week 26,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Totaal.xlsx"
-2018,27,Week 27,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0716095822465.xlsx,herverdelinslijst week 28.xlsx,Week 28 herv 1.xlsx"
-2018,28,Week 28,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:combi.xlsx
-2018,29,Week 29,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,herverdelinslijst week 29.xlsx,Totaal.xlsx,Week 29 herv 1.xlsx"
-2018,3,Week 3,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2018,30,Week 30,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Totaal.xlsx
-2018,31,Week 31,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Kerkr.xlsx,Totaal.xlsx"
-2018,32,Week 32,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Herverdeellijst  week 32 Kerkrade.xlsx,Herverdeellijst 2018 - Weert week 32.xlsx,Totaal.xlsx"
-2018,33,Week 33,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Totaal.xlsx
-2018,35,Week 35,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Buul.xlsx,Echt.xlsx,Herverdeellijst 2018 - Weert week 35.xlsx,kerk.xlsx,Totaal.xlsx"
-2018,38,Week 38,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Weert.xlsx,_Totaal.xlsx"
-2018,4,Week 4,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx,Weert.xlsx"
-2018,40,Week 40,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Weert.xlsx,_Totaal.xlsx"
-2018,41,Week 41,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,totaal.xlsx"
-2018,42,Week 42,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Totaal.xlsx,Weert.xlsx"
-2018,43,Week 43,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Totaal.xlsx,Weert.xlsx"
-2018,44,Week 44,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Herverdeellijst 2018 - Weert week 44.xlsx,kerkrade.xlsx,Totaal.xlsx"
-2018,45,Week 45,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,totaal.xlsx,Weert.xlsx"
-2018,46,Week 46,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Herverdeellijst 2018 - Weert week 46.xlsx,Totaal.xlsx"
-2018,48,Week 48,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Totaal 123.xlsx,Totaal.xlsx"
-2018,5,Week 5,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2018,7,Week 7,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx,Weert.xlsx"
-2018,8,Week 8,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2018 - Weert week 8.xlsx,Totaal.xlsx"
-2018,9,Week 9,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,Totaal.xlsx"
-2018,24,week 24,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:capri en shorts.xlsx
-2019,1,Week 1,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Totaal.xlsx,Weert.xlsx"
-2019,11,Week 11,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Map2.xlsx
-2019,14,Week 14,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 13.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0401101024219.xlsx,totaal.xlsx,Week 13 herv.xlsx"
-2019,15,Week 15,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0408092254414.xlsx,Herverdeellijst week 14.xlsx,TOTAAL.xlsx,Week 14 herv.xlsx"
-2019,16,Week 16,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2018 - Weert week 15.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0415095409469.xlsx,Herverdeellijst week 15.xlsx,TOTAAL.xlsx"
-2019,17,Week 17,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Map5.xlsx
-2019,18,Week 18,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 17.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 17.xlsx,Totaal.xlsx,Week 17 herv.xlsx"
-2019,19,Week 19,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 18.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0506095649766.xlsx,Herverdeellijst week 18.xlsx,Totaal.xlsx"
-2019,2,Week 2,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Br-Z.xlsx,Brunssum 1.xlsx,Brunssum 2.xlsx,Budel.xlsx,Echt.xlsx"
-2019,20,Week 20,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:bam jonge.xlsx
-2019,21,Week 21,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0520094033137.xlsx,Herverdeellijst week 20 Kerkrade.xlsx,Totaal.xlsx,Week 20 herv.xlsx; onbekende_submappen:20"
-2019,23,Week 23,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst  week 22.xlsx,Herverdeellijst 2019 - Weert week 22.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0603091419258.xlsx,Totaal.xlsx"
-2019,25,Week 25,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0617100201121.xlsx,Herverdeellijst Week 23 Kerkrade.xlsx,Totaal.xlsx,Week 24 herv.xlsx"
-2019,27,Week 27,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",onbekende_submappen:Doorgest. einde actieweek
-2019,29,Week 29,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Map1.xlsx
-2019,30,Week 30,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 29.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0722120202750.xlsx,herverdeling week 29 2019.xlsx,Totaal.xlsx"
-2019,31,Week 31,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
-2019,32,Week 32,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 31.xlsx,Herverdeellijst 2019 - Weert week 32.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0809102833047.xlsx,Herverdeellijst BLANCO_0809102833215.xlsx"
-2019,36,Week 36,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 35.xlsx,Herverdeellijst BLANCO.xlsx,herverdeling week 35.xlsx,Totaal.xlsx"
-2019,38,Week 38,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0916091914445.xlsx,Herverdeellijst week 37 Kerkrade.xlsx,TOTAAL.xlsx,week 37 herv.xlsx"
-2019,39,Week 39,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
-2019,4,Week 4,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Kerkr.xlsx,totaal.xlsx"
-2019,40,Week 40,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 39.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 39.xlsx,Totaal!.xlsx"
-2019,41,Week 41,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 40.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein 09 week 40.xlsx,Herverdeellijst week 40 Kerkrade.xlsx,totaal.xlsx"
-2019,42,Week 42,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 41.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1014095601566.xlsx,Herverdeellijst Stein 09 week 41.xlsx,Herverdeellijst week 41 Kerkrade.xlsx"
-2019,44,Week 44,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 43.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1028095546871.xlsx,Herverdeellijst Stein week 43.xlsx,Herverdeellijst week 43 kerkrade.xlsx"
-2019,45,Week 45,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1104092319266.xlsx,Herverdeellijst Stein week 44.xlsx,herverdelingslijst week 44 kerkrade.xlsx,Totaal.xlsx"
-2019,46,Week 46,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 45.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1111104016969.xlsx,Herverdeellijst week 45 Kerkrade.xlsx,Herverdeellijst week 45.xlsx"
-2019,47,Week 47,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 46.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1118100533051.xlsx,Herverdeellijst week 46  kerkrade.xlsx,Herverdeellijst week 46.xlsx"
-2019,48,Week 48,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 47.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1125103324910.xlsx,Herverdeellijst week 47 Stein.xlsx,Herverdeellijst week 47.xlsx"
-2019,49,Week 49,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 48.xlsx,Herverdeellijst 2019 - Weert week 48_1202094436629.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1202094436434.xlsx,Herverdeellijst Budel week 48.xlsx"
-2019,5,Week 5,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
-2019,50,Week 50,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 49.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1209094947355.xlsx,Herverdeellijst Stein week 49.xlsx,Herverdeellijst week 49 kerkrade.xlsx"
-2019,6,Week 6,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Herverdeellijst 2018 - Weert week 6.xlsx,Kerkrade.xlsx"
-2019,7,Week 7,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Totaal.xlsx
-2019,8,Week 8,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
-2019,10,week 10,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
-2019,12,week 12,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
-2019,37,week 37,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019- Weert week 36.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 36 Kerkrade.xlsx"
-2019,43,week 43,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1021105839949.xlsx,Herverdeellijst Stein 09 week 42.xlsx,Herverdeellijstweek 42.xlsx,totaallijst herverdeling printen.xlsx"
-2020,1,Week 1,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 week 1.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO1.xlsx,Herverdeellijst week 1-2020.xlsx,Herverdeellijst week2.xlsx"
-2020,15,Week 15,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
-2020,2,Week 2,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 week 2.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0113113145871.xlsx,Herverdeellijst BLANCO_0113113145914.xlsx,Herverdeellijst Stein week 2.xlsx"
-2020,22,Week 22,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0525090538969.xlsx,Herverdeellijst Stein week 21.xlsx,Herverdeellijst week 21-2020.xlsx,herverdelingslijst week 19.xlsx"
-2020,25,Week 25,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0615090949363.xlsx,Herverdeellijst week 24 Budel.xlsx,herverdelingslijst week24.xlsx,totaal.xlsx"
-2020,27,Week 27,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 26.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0629093000352.xlsx,Herverdeellijst week 27 kerkrade.xlsx,totaal.xlsx"
-2020,28,Week 28,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 27.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0706102530039.xlsx,herverdelingslijst week 27.xlsx,totaal.xlsx"
-2020,29,Week 29,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Arcen.xlsx,Etten-Leur.xlsx,Herverdeellijst 2020 - Weert week 28.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0713083657934.xlsx"
-2020,3,Week 3,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 3.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0120091953168.xlsx,Herverdeellijst Stein week 3.xlsx,Herverdeellijst week 3 2020 Kerkrade.xlsx"
-2020,30,Week 30,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 29.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0720092111992.xlsx,Herverdeellijst week 29 Budel.xlsx,herverdelingslijst week 29.xlsx; onbekende_submappen:Partners DigiHerVer"
-2020,31,Week 31,False,,0,True,digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Digiherver.xlsx,Herverdeellijst 2020 - Weert week 30.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 30 Budel.xlsx,Herverdeellijst week 30 kerkrade.xlsx"
-2020,32,Week 32,False,,0,True,digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 31.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0803091817867.xlsx,Herverdeellijst week 31 Budel.xlsx,herverdeling week 31 Kerkrade.xlsx"
-2020,33,Week 33,False,,0,True,DigiHerverDocu,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 32.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0810092521457.xlsx,Herverdeellijst week 32 Budel.xlsx,Herverdeellijst week 32 kerkrade.xlsx"
-2020,34,Week 34,False,,0,True,DigiHerver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,geen_ingevoerd_maar_xlsx:Totaal.xlsx
-2020,37,Week 37,False,,0,True,pdf,5,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Arcen.xlsx,DigiHerver.xlsx,Etten-Leur.xlsx,Tegelen.xlsx,Tilburg.xlsx"
-2020,39,Week 39,False,,0,True,digi herver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 38.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0921090728840.xlsx,Herverdeellijst week 38 Kerkrade.xlsx,Herverdeellijst week 38.xlsx"
-2020,40,Week 40,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Digiherver.xlsx,Herverdeellijst 2020 - Weert week 40.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1005090618348.xlsx,Herverdeellijst week 40.xlsx"
-2020,41,Week 41,False,,0,False,,0,6,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 41.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 41 2020.xlsx,Herverdeellijst week 41 Budel.xlsx,Herverdeellijst wk 41 kerkrade.xlsx"
-2020,42,Week 42,False,,0,True,Digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Digiherver sorteer.xlsx,Digiherver.xlsx,Herverdeellijst 2020 - Weert week 42.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 42 2020.xlsx"
-2020,43,Week 43,False,,0,True,Digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:digiherver totaal.xlsx,Herverdeellijst 2020 - Weert week 43.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 43 2020.xlsx,Totaal.xlsx"
-2020,44,Week 44,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 44.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 44.xlsx,Herverdeellijst week 44_1102091211883.xlsx,Herverdeellijst wk 44 kerkrade.xlsx"
-2020,45,Week 45,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 45.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 45.xlsx,Herverdeellijst week 45_1109091951738.xlsx,Herverdeellijst wk 45.xlsx"
-2020,46,Week 46,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 46.xlsx,herverdeellijst week 46 kerkrade.xlsx,Herverdeellijst week 46.xlsx,Totaal.xlsx,week 46 herverdeling.xlsx"
-2020,47,Week 47,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 47.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 47.xlsx,Herverdeellijst wk 47 kerkrade.xlsx,totaal.xlsx"
-2020,49,Week 49,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Map3.xlsx
-2020,5,Week 5,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 5.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0203092539730.xlsx,Herverdeellijst Stein week 5.xlsx,Herverdeellijst week 5-2020.xlsx"
-2020,53,Week 53,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Arcen.xlsx,Digiherver.xlsx,Etten-Leur.xlsx,Tegelen.xlsx,Tilburg.xlsx"
-2020,7,Week 7,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 7.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0217092220836.xlsx,Herverdeellijst Stein week 7.xlsx,Herverdeellijst week 7.xlsx"
-2020,16,week 16,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:totaal.xlsx
-2020,17,week 17,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeellijst Stein week 17.xlsx,Herverdeellijst week 17 Kerkrade.xlsx,Totaal.xlsx"
-2020,18,week 18,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:totaal.xlsx
-2020,19,week 19,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",
-2020,38,week 38,False,,0,True,digiherver,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,
-2020,6,week 6,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:brunssum.xlsx,Budel.xlsx,Echt.xlsx,Stein.xlsx,totaal.xlsx"
-2020,9,week 9,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:doorgestuurd en top 40.xlsx
-2021,10,Week 10,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 10.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 10 2021 Echt.xlsx,Herverdeellijst week 10 Budel.xlsx,Herverdeellijst week 10 Kerkrade.xlsx"
-2021,11,Week 11,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:ECHT-week 11 2021.xlsx,Herverdeellijst 2021 - Weert week 11.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 11 Stein.xlsx,Herverdeellijst week 11.xlsx"
-2021,12,Week 12,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 12.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 12.xlsx,Herverdeellijst week 12 2021 Echt.xlsx,Herverdeellijst week 12 Budel.xlsx"
-2021,15,Week 15,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 14.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 14.xlsx,Herverdeellijst week 14.xlsx,Herverdeellijst week 14_0412091329578.xlsx"
-2021,16,Week 16,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 15.xlsx,Herverdeellijst Stein week 15.xlsx,Herverdeellijst week 15.xlsx,Herverdeellijst wk 15.xlsx,herverdeling week 16.xlsx"
-2021,17,Week 17,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 16.xlsx,Herverdeellijst 2021 - Weert week 17.xlsx,Herverdeellijst Stein week 17.xlsx,Herverdeellijst week 17.xlsx,Herverdeellijst week 17_0503092214586.xlsx"
-2021,18,Week 18,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 18.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 18 Stein.xlsx,Herverdeellijst week 18.xlsx,herverdeling week 18.xlsx; onbekende_submappen:mail"
-2021,19,Week 19,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 19.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 19.xlsx,Herverdeellijst week 19 2021.xlsx,Herverdeellijst week 19 kerkrade.xlsx"
-2021,21,Week 21,False,,0,True,Digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Digi herver totaal.xlsx,Herverdeellijst 2021 - Weert week 21.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 21.xlsx,Herverdeellijst week 21 Kerkrade.xlsx"
-2021,22,Week 22,False,,0,True,digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst week 19.xlsx,Herverdeellijst week 22.xlsx,Herverdeellijst week 22_0607093424445.xlsx,Herverdeellijst week 22_0607093424469.xlsx"
-2021,23,Week 23,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 23.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 23 Kerkrade.xlsx,Herverdeellijst week 23.xlsx,Herverdeellijst Week 23_0614093252703.xlsx; onbekende_submappen:digi"
-2021,24,Week 24,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 24.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Srein week 24.xlsx,Herverdeellijst week 24 Kerkrade.xlsx,Herverdeellijst week 24.xlsx"
-2021,26,Week 26,False,,0,True,digi herver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 26.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 26-2021.xlsx,Herverdeellijst week 26-2021_0705094658238.xlsx,Herverdeellijst week 26.xlsx"
-2021,28,Week 28,False,,0,True,digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert  week 28.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 28.xlsx,Herverdeellijst week 28 Kerkrade.xlsx,Herverdeellijst week 28.xlsx"
-2021,29,Week 29,False,,0,True,digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:digiherver.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 29.xlsx,Herverdeellijst week 28.xlsx,Herverdeellijst week 29 Kerkrade.xlsx"
-2021,30,Week 30,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:digi herver.xlsx,Herverdeellijst 2021 - Weert week 30.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 28.xlsx,Herverdeellijst week 30 Kerkrade.xlsx"
-2021,32,Week 32,True,totaal blad ingevoerd.xlsx,23,True,digiherver,0,0,23,0,unknown,-1,-1,-1,-1,0,bruikbaar,many_missing_pdfs,
-2021,34,Week 34,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Kopie van retourlijst.xlsx,Retourlijst controle 11.xlsx,Retourlijst controle 12.xlsx,Retourlijst controle 13.xlsx,Retourlijst controle 31.xlsx"
-2021,35,Week 35,False,,0,True,digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:digi herver.xlsx,Herverdeellijst 2021 - Weert week 35.xlsx,Herverdeellijst week 34.xlsx,Herverdeellijst week 35.xlsx,herverdeellijst wk 35 Kerkrade.xlsx"
-2021,27,week 27,False,,0,True,digiherver,0,0,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst Stein week 27.xlsx,Herverdeellijst week 27 Kerkrade.xlsx,Herverdeellijst week 27.xlsx,Herverdeellijst week 27xlsx.xlsx,totaal.xlsx"
-2021,36,week 36,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling 11.xlsx,Herverdeling 12.xlsx,Herverdeling 13.xlsx,Herverdeling 31.xlsx,Herverdeling 35.xlsx"
-2021,38,week 38,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
-2021,45,week 45,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",onbekende_submappen:Herverdeling Alain & Stephany
-2021,47,week 47,False,,0,False,,0,7,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Arcen herverdeling week 47.xlsx,Brunssum herverdeling week 47.xlsx,Budel herverdeling week 47.xlsx,Echt herverdeling week 47.xlsx,Etten-Leur herverdeling week 47.xlsx"
-2021,48,week 48,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:totaal voor de winkels.xlsx,Totaal.xlsx"
-2021,49,week 49,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:digi herver.xlsx,totaal doorgestuurd v2.xlsx,totaal doorgestuurd.xlsx"
-2022,12,Week 12 Herverdeling,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 12 voor 11.xlsx,Herverdeling week 12 voor 12.xlsx,Herverdeling week 12 voor 13.xlsx,Herverdeling week 12 voor 31.xlsx,Herverdeling week 12 voor 35.xlsx"
-2022,13,Week 13 Herverdeling,True,Ingevoerde opgelezen nummer.xlsx,84,False,,0,0,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,pdf_missing,onbekende_submappen:voor de winkel
-2022,14,Week 14,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 14 voor 11.xlsx,Herverdeling week 14 voor 12.xlsx,Herverdeling week 14 voor 13.xlsx,Herverdeling week 14 voor 31.xlsx,Herverdeling week 14 voor 35.xlsx"
-2022,18,Week 18,True,Ingevoerd.xlsx,114,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2022,19,Week 19,True,Ingevoerd.xlsx,57,False,,0,0,0,0,unknown,-1,-1,-1,-1,19,bruikbaar,pdf_missing,onbekende_submappen:Per winkel
-2022,20,Week 20,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Invoeren.xlsx,Te printen nummers.xlsx"
-2022,21,Week 21,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 21 2022.xlsx,Herverdeling week 21 Arcen.xlsx,Herverdeling week 21 Brunssum.xlsx,Herverdeling week 21 Budel.xlsx,Herverdeling week 21 Echt.xlsx"
-2022,22,Week 22,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Totaal.xlsx
-2022,23,Week 23,True,Ingevoerd.xlsx,62,False,,0,0,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,pdf_missing,onbekende_submappen:Doorsturenn
-2022,24,Week 24,True,Ingevoerd.xlsx,41,False,,0,0,0,0,unknown,-1,-1,-1,-1,15,bruikbaar,pdf_missing,
-2022,25,Week 25,True,Ingevoerd.xlsx,90,False,,0,2,0,0,unknown,-1,-1,-1,-1,11,bruikbaar,loose_pdfs_only,onbekende_submappen:naar filialen
-2022,29,Week 29,True,Ingevoerd.xlsx,69,False,,0,3,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2022,30,Week 30,True,Ingevoerd.xlsx,84,False,,0,1,0,0,unknown,-1,-1,-1,-1,35,bruikbaar,loose_pdfs_only,onbekende_submappen:VOor de inkels
-2022,34,Week 34,True,Ingevoerd.xlsx,82,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2022,35,Week 35,True,Ingevoerd.xlsx,68,False,,0,0,0,0,unknown,-1,-1,-1,-1,20,bruikbaar,pdf_missing,
-2022,36,Week 36,True,Ingevoerd.xlsx,120,False,,0,0,0,0,unknown,-1,-1,-1,-1,11,bruikbaar,pdf_missing,
-2022,37,Week 37,True,Ingevoerd.xlsx,48,False,,0,0,0,0,unknown,-1,-1,-1,-1,6,bruikbaar,pdf_missing,
-2022,38,Week 38,False,,0,False,,0,3,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 38 voor 11.xlsx,Herverdeling week 38 voor 12.xlsx,Herverdeling week 38 voor 13.xlsx,Herverdeling week 38 voor 31.xlsx,Herverdeling week 38 voor 35.xlsx"
-2022,39,Week 39,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 39 totaal.xlsx,Herverdeling week 39 voor 11.xlsx,Herverdeling week 39 voor 12.xlsx,Herverdeling week 39 voor 13.xlsx,Herverdeling week 39 voor 31.xlsx"
-2022,40,Week 40,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:herverdeling print 2-10-2022.xlsx; onbekende_submappen:Per winkels
-2022,41,Week 41,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
-2022,42,Week 42,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 42 Arcen.xlsx,Herverdeling week 42 Brunssum.xlsx,Herverdeling week 42 Budel.xlsx,Herverdeling week 42 Echt.xlsx,Herverdeling week 42 Etten-Leur.xlsx"
-2022,43,Week 43,False,,0,False,,0,3,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 43 Totaal.xlsx,Print nrs.xlsx; onbekende_submappen:Herverdeling per winkel"
-2022,44,Week 44,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 44 Totaal.xlsx,print nrs.xlsx; onbekende_submappen:alle winkels"
-2022,45,Week 45,True,Ingevoerd.xlsx,76,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2022,46,Week 46,True,Ingevoerd.xlsx,95,False,,0,0,0,0,unknown,-1,-1,-1,-1,14,bruikbaar,pdf_missing,onbekende_submappen:Winkel documenten
-2022,47,Week 47,True,Ingevoerd.xlsx,54,False,,0,2,0,0,unknown,-1,-1,-1,-1,2,bruikbaar,loose_pdfs_only,
-2022,48,Week 48,True,Ingevoerd.xlsx,54,False,,0,1,0,0,unknown,-1,-1,-1,-1,3,bruikbaar,loose_pdfs_only,
-2022,49,Week 49,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 49 Arcen.xlsx,Herverdeling week 49 Brunssum.xlsx,Herverdeling week 49 Budel.xlsx,Herverdeling week 49 Echt.xlsx,Herverdeling week 49 Etten-Leur.xlsx"
-2022,50,Week 50,True,Ingevoerd.xlsx,102,False,,0,0,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
-2022,51,Week 51,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:print nrs wk 50.xlsx
-2022,52,Week 52,True,Ingevoerd.xlsx,62,False,,0,0,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
-2022,15,week 15,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Arcen. Herverdeling week 15.xlsx,Brunssum. Herverdeling week 15.xlsx,Budel. Herverdeling week 15.xlsx,Echt. Herverdeling week 15.xlsx,Etten-Leur Herverdeling week 15.xlsx"
-2022,16,week 16,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:top 40 mc.xlsx
-2023,1,Week 1,True,Ingevoerd.xlsx,112,False,,0,2,0,0,unknown,-1,-1,-1,-1,28,bruikbaar,loose_pdfs_only,
-2023,12,Week 12,True,Ingevoerd.xlsx,95,False,,0,1,0,0,unknown,-1,-1,-1,-1,17,bruikbaar,loose_pdfs_only,
-2023,13,Week 13,True,Ingevoerd.xlsx,91,False,,0,1,0,0,unknown,-1,-1,-1,-1,23,bruikbaar,loose_pdfs_only,
-2023,14,Week 14,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Nummers door winkels.xlsx
-2023,16,Week 16,True,Ingevoerd.xlsx,99,False,,0,3,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,onbekende_submappen:Doorgestuurd
-2023,18,Week 18,True,Ingevoerd.xlsx,93,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2023,19,Week 19,True,Ingevoerd.xlsx,71,False,,0,1,0,0,unknown,-1,-1,-1,-1,28,bruikbaar,loose_pdfs_only,
-2023,2,Week 2,True,Ingevoerd.xlsx,78,False,,0,1,0,0,unknown,-1,-1,-1,-1,14,bruikbaar,loose_pdfs_only,
-2023,20,Week 20,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
-2023,21,Week 21,True,Ingevoerd.xlsx,109,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2023,23,Week 23,True,Ingevoerd.xlsx,75,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,onbekende_submappen:Winkel
-2023,24,Week 24,True,Ingevoerd.xlsx,70,False,,0,0,0,0,unknown,-1,-1,-1,-1,18,bruikbaar,pdf_missing,
-2023,25,Week 25,True,Ingevoerd.xlsx,52,False,,0,1,0,0,unknown,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
-2023,26,Week 26,True,Ingevoerd.xlsx,91,False,,0,1,0,0,unknown,-1,-1,-1,-1,34,bruikbaar,loose_pdfs_only,
-2023,27,Week 27,True,Ingevoerd.xlsx,113,False,,0,2,0,0,unknown,-1,-1,-1,-1,9,bruikbaar,loose_pdfs_only,
-2023,28,Week 28,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:print nrs.xlsx
-2023,29,Week 29,True,Ingevoerd.xlsx,71,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2023,3,Week 3,True,Ingevoerd.xlsx,133,False,,0,1,0,0,unknown,-1,-1,-1,-1,9,bruikbaar,loose_pdfs_only,
-2023,30,Week 30,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2023,31,Week 31,True,Ingevoerd.xlsx,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2023,32,Week 32,True,Ingevoerd.xlsx,62,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2023,34,Week 34,True,Ingevoerd.xlsx,18,False,,0,0,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
-2023,35,Week 35,True,Ingevoerde nrs.xlsx,55,False,,0,1,0,0,unknown,-1,-1,-1,-1,10,bruikbaar,loose_pdfs_only,onbekende_submappen:herverdeling winkels
-2023,36,Week 36,True,Ingevoerd.xlsx,50,False,,0,1,0,0,unknown,-1,-1,-1,-1,14,bruikbaar,loose_pdfs_only,
-2023,37,Week 37,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",
-2023,38,Week 38,True,Ingevoerd.xlsx,104,False,,0,0,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
-2023,4,Week 4,True,Ingevoerd.xlsx,40,False,,0,2,0,0,unknown,-1,-1,-1,-1,6,bruikbaar,loose_pdfs_only,
-2023,40,Week 40,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 40 totaal.xlsx,Print nrs.xlsx"
-2023,41,Week 41,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2023,42,Week 42,False,,0,False,,0,5,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 41- totaal.xlsx,Print nrs.xlsx; onbekende_submappen:winekls"
-2023,43,Week 43,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 43- totaal.xlsx,Printnummers.xlsx"
-2023,44,Week 44,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2023,45,Week 45,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 45- totaal gemaakt.xlsx,Print nrs.xlsx"
-2023,46,Week 46,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:print nrs.xlsx
-2023,47,Week 47,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx; onbekende_submappen:Herverdeling naar outlets
-2023,49,Week 49,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2023,5,Week 5,True,Ingevoerd.xlsx,40,False,,0,1,0,0,unknown,-1,-1,-1,-1,40,bruikbaar,loose_pdfs_only,
-2023,50,Week 50,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2023,51,Week 51,True,Ingevoerd.xlsx,63,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2023,6,Week 6,True,Ingevoerd.xlsx,55,False,,0,1,0,0,unknown,-1,-1,-1,-1,10,bruikbaar,loose_pdfs_only,
-2023,7,Week 7,True,Ingevoerd.xlsx,57,False,,0,1,0,0,unknown,-1,-1,-1,-1,16,bruikbaar,loose_pdfs_only,
-2023,9,Week 9,True,Ingevoerd.xlsx,71,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2023,10,week 10,True,Ingevoerd.xlsx,71,False,,0,1,0,0,unknown,-1,-1,-1,-1,71,bruikbaar,loose_pdfs_only,
-2023,11,week 11,True,Ingevoerd.xlsx,71,False,,0,1,0,0,unknown,-1,-1,-1,-1,71,bruikbaar,loose_pdfs_only,
-2024,10,Week 10,True,Ingevoerd.xlsx,93,False,,0,1,0,0,unknown,-1,-1,-1,-1,39,bruikbaar,loose_pdfs_only,onbekende_submappen:per filiaal
-2024,11,Week 11,True,Ingevoerd.xlsx,75,False,,0,1,0,0,unknown,-1,-1,-1,-1,25,bruikbaar,loose_pdfs_only,
-2024,12,Week 12,True,Ingevoerd.xlsx,71,False,,0,0,0,0,unknown,-1,-1,-1,-1,21,bruikbaar,pdf_missing,onbekende_submappen:Herverdeling winkels
-2024,13,Week 13,True,Ingevoerd.xlsx,125,False,,0,2,0,0,unknown,-1,-1,-1,-1,12,bruikbaar,loose_pdfs_only,
-2024,15,Week 15,True,Ingevoerd.xlsx,108,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,16,Week 16,True,Ingevoerd.xlsx,97,False,,0,0,0,0,unknown,-1,-1,-1,-1,22,bruikbaar,pdf_missing,
-2024,17,Week 17,True,Ingevoerde nrs.xlsx,67,False,,0,2,0,0,unknown,-1,-1,-1,-1,40,bruikbaar,loose_pdfs_only,
-2024,18,Week 18,True,Ingevoerde nrs.xlsx,65,False,,0,0,0,0,unknown,-1,-1,-1,-1,24,bruikbaar,pdf_missing,
-2024,2,Week 2,True,Ingevoerd.xlsx,69,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,20,Week 20,True,Ingevoerde.xlsx,71,False,,0,0,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
-2024,22,Week 22,True,Ingevoerd.xlsx,0,False,,0,3,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,23,Week 23,True,Ingevoerde nrs.xlsx,128,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,24,Week 24,True,Ingevoerde.xlsx,80,False,,0,3,0,0,unknown,-1,-1,-1,-1,11,bruikbaar,loose_pdfs_only,
-2024,25,Week 25,True,Ingevoerde nrs.xlsx,75,False,,0,2,0,0,unknown,-1,-1,-1,-1,13,bruikbaar,loose_pdfs_only,
-2024,27,Week 27,True,Ingevoerd.xlsx,119,False,,0,3,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,29,Week 29,True,Ingevoerde nrss.xlsx,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,3,Week 3,True,Ingevoerd.xlsx,126,False,,0,2,0,0,unknown,-1,-1,-1,-1,22,bruikbaar,loose_pdfs_only,"onbekende_submappen:Extra retouren Smashed Lemon,Voor de winkels"
-2024,30,Week 30,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2024,32,Week 32,True,Ingevoerd.xlsx,37,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,33,Week 33,True,Ingevoerde nummers.xlsx,72,False,,0,1,0,0,unknown,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
-2024,34,Week 34,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
-2024,35,Week 35,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Herverdeling.xlsx
-2024,37,Week 37,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2024,38,Week 38,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2024,4,Week 4,True,Ingevoerd.xlsx,53,False,,0,0,0,0,unknown,-1,-1,-1,-1,16,bruikbaar,pdf_missing,
-2024,40,Week 40,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2024,41,Week 41,True,Ingevoerde nummers.xlsx,99,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,42,Week 42,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2024,43,Week 43,True,Ingevoerd.xlsx,100,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,44,Week 44,True,Ingevoerde nummers.xlsx,103,False,,0,1,0,0,unknown,-1,-1,-1,-1,23,bruikbaar,loose_pdfs_only,
-2024,45,Week 45,True,Ingevoerde nummers.xlsx,66,False,,0,1,0,0,unknown,-1,-1,-1,-1,32,bruikbaar,loose_pdfs_only,onbekende_submappen:Aanvulling winkels
-2024,46,Week 46,True,Ingevoerd.xlsx,73,False,,0,1,0,0,unknown,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
-2024,47,Week 47,True,Ingevoerd.xlsx,89,False,,0,3,0,0,unknown,-1,-1,-1,-1,10,bruikbaar,loose_pdfs_only,
-2024,48,Week 48,True,Ingevoerde nrs.xlsx,98,False,,0,1,0,0,unknown,-1,-1,-1,-1,17,bruikbaar,loose_pdfs_only,
-2024,49,Week 49,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
-2024,5,Week 5,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:herverdeling nos.xlsx,Print nrs.xlsx; onbekende_submappen:Herverdeling voor winkels"
-2024,50,Week 50,True,Ingevoerd.xlsx,75,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,51,Week 51,True,Ingevoerde nra.xlsx,90,False,,0,1,0,0,unknown,-1,-1,-1,-1,20,bruikbaar,loose_pdfs_only,
-2024,6,Week 6,True,Ingevoerd.xlsx,147,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,8,Week 8,True,Ingevoerd.xlsx,131,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2024,9,Week 9,True,Ingevoerd.xlsx,54,False,,0,1,0,0,unknown,-1,-1,-1,-1,26,bruikbaar,loose_pdfs_only,onbekende_submappen:Correcties herverdeling rechtstreeks naar outlets
-2024,36,week 36,False,,0,False,,0,4,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:totale lijst hervedeling.xlsx
-2025,10,Week 10,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx; onbekende_submappen:al klaargezet
-2025,11,Week 11,True,Ingevoerde nummers.xlsx,101,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,12,Week 12,True,Ingevoerd.xlsx,76,False,,0,1,0,0,unknown,-1,-1,-1,-1,23,bruikbaar,loose_pdfs_only,
-2025,13,Week 13,True,Ingevoerd.xlsx,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,14,Week 14,True,Ingevoerde.xlsx,107,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,15,Week 15,True,Ingevoerd.xlsx,74,False,,0,1,0,0,unknown,-1,-1,-1,-1,20,bruikbaar,loose_pdfs_only,
-2025,16,Week 16,True,Ingevoerd.xlsx,87,False,,0,1,0,0,unknown,-1,-1,-1,-1,24,bruikbaar,loose_pdfs_only,onbekende_submappen:winkel
-2025,18,Week 18,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Invoer.xlsx,nrs elvira extra.xlsx,Print_nummers.xlsx"
-2025,19,Week 19,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:artikelen retour en outlet.xlsx,Herverdeling week 20 Brunssum.xlsx,Herverdeling week 20 Budel.xlsx,Herverdeling week 20 Echt.xlsx,Herverdeling week 20 Etten-Leur.xlsx"
-2025,2,Week 2,True,Ingevoerd.xlsx,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,20,Week 20,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Invoer.xlsx,print nrs.xlsx,totalen.xlsx"
-2025,21,Week 21,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
-2025,22,Week 22,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
-2025,23,Week 23,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:herverdeling incl riemen.xlsx,Invoer.xlsx,Print_nummers.xlsx"
-2025,24,Week 24,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
-2025,25,Week 25,True,Ingevoerd.xlsx,163,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,26,Week 26,True,Ingevoerd.xlsx,69,False,,0,1,0,0,unknown,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
-2025,27,Week 27,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 27 Brunssum.xlsx,Herverdeling week 27 Budel.xlsx,Herverdeling week 27 Echt.xlsx,Herverdeling week 27 Etten-Leur.xlsx,Herverdeling week 27 Kerkrade.xlsx"
-2025,29,Week 29,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:herverdeling week 29 totaal.xlsx,Print_nummers_wk29.xlsx"
-2025,3,Week 3,True,Ingevoerde nrs.xlsx,93,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,30,Week 30,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling Brunssum Week 30.xlsx,Herverdeling Budel Week 30.xlsx,Herverdeling Echt Week 30.xlsx,Herverdeling Eten-Leur Week 30.xlsx,Herverdeling Kerkrade Week 30.xlsx"
-2025,31,Week 31,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
-2025,32,Week 32,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling totaal week 32.xlsx,Print_nummers.xlsx"
-2025,33,Week 33,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 33  totaal.xlsx,Herverdeling week 33  voor 11.xlsx,Herverdeling week 33  voor 12.xlsx,Herverdeling week 33  voor 13.xlsx,Herverdeling week 33  voor 31.xlsx"
-2025,34,Week 34,True,Ingevoerde wk 34.xlsx,73,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,38,Week 38,True,Ingevoerd.xlsx,78,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,39,Week 39,True,Ingevoerde nrs 39.xlsx,82,False,,0,2,0,0,unknown,-1,-1,-1,-1,15,bruikbaar,loose_pdfs_only,
-2025,4,Week 4,True,Ingevoerde nummers.xlsx,78,False,,0,0,0,0,unknown,-1,-1,-1,-1,14,bruikbaar,pdf_missing,
-2025,40,Week 40,True,Ingevoerd.xlsx,85,False,,0,1,0,0,unknown,-1,-1,-1,-1,22,bruikbaar,loose_pdfs_only,
-2025,41,Week 41,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
-2025,42,Week 42 Fout,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:doorgestuurd.xlsx
-2025,43,Week 43,True,Ingevoerd.xlsx,81,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,44,Week 44,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Invoeren.xlsx,Print_nummers_wk44.xlsx"
-2025,45,Week 45,True,Ingevoerd.xlsx,103,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,46,Week 46,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Ingevoerend - hernoemd en gesorteerd.xlsx,Ingevoerend.xlsx,Print_nummers_wk47.xlsx"
-2025,47,Week 47,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Ingevuurd - sorteren en filteren.xlsx,Ingevuurd.xlsx,Print_nummers.xlsx"
-2025,49,Week 49,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Print_nummers.xlsx,Winkel totaal.xlsx"
-2025,5,Week 5,True,Ingevoerd.xlsx,127,False,,0,1,0,0,unknown,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
-2025,50,Week 50,True,Totaal ingevoerd.xlsx,67,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,onbekende_submappen:Kerstmarkt naar weert
-2025,51,Week 51,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Print_nummers.xlsx,Stuks kerstmarkt.xlsx,Webshop.xlsx; onbekende_submappen:ingeveord"
-2025,6,Week 6,True,Ingevoerd.xlsx,65,False,,0,1,0,0,unknown,-1,-1,-1,-1,9,bruikbaar,loose_pdfs_only,
-2025,7,Week 7,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Inoeren.xlsx,Print nrs.xlsx"
-2025,8,Week 8,True,Ingevoerd.xlsx,61,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2025,9,Week 9,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
-2025,42,week 42,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Ingefuuhrd - kopie.xlsx,Ingefuuhrd.xlsx,Print_nummers.xlsx"
-2026,10,Week 10,True,Ingevoerd.xlsx,43,False,,0,0,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
-2026,11,Week 11,True,Ingevoerd.xlsx,43,False,,0,1,0,0,unknown,-1,-1,-1,-1,1,bruikbaar,loose_pdfs_only,
-2026,12,Week 12,True,Ingevoerd.xlsx,47,True,print pdf,47,2,0,0,unknown,-1,-1,-1,-1,0,compleet,,
-2026,13,Week 13,True,Ingevoerd.xlsx,62,True,print pdf,66,2,0,4,unknown,-1,-1,-1,-1,0,compleet,extra_pdfs,
-2026,14,Week 14,True,Ingevoerd.xlsx,72,True,print pdf,84,2,0,12,unknown,-1,-1,-1,-1,2,compleet,extra_pdfs,
-2026,16,Week 16,True,Ingevoerd.xlsx,91,True,print pdf,87,2,8,4,unknown,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,17,Week 17,True,Ingevoerd.xlsx,74,True,print pdf,61,1,17,4,unknown,-1,-1,-1,-1,4,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,18,Week 18,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
-2026,19,Week 19,True,Ingevoerd.xlsx,87,True,print pdf,90,2,2,5,unknown,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,2,Week 2,True,Ingevoerd.xlsx,53,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,onbekende_submappen:Herverdeling voor de winkels
-2026,20,Week 20,True,Ingevoerd.xlsx,52,True,PDF Herverderlen naar manuel,27,0,25,0,unknown,-1,-1,-1,-1,3,bruikbaar,many_missing_pdfs,
-2026,21,Week 21,True,Ingevoerd.xlsx,72,False,,0,1,0,0,unknown,-1,-1,-1,-1,17,bruikbaar,loose_pdfs_only,
-2026,23,Week 23,True,Ingevoerd.xlsx,97,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2026,24,Week 24,True,Ingevoerd.xlsx,119,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2026,25,Week 25,True,Ingevoerd.xlsx,62,True,pdf,65,1,2,5,unknown,-1,-1,-1,-1,1,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,26,Week 26,True,Ingevoerd.xlsx,58,True,PDF_Originelen,66,1,2,10,unknown,-1,-1,-1,-1,5,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,27,Week 27,True,Ingevoerd.xlsx,64,True,PDF_Originelen,70,1,2,8,unknown,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,28,Week 28,True,Ingevoerd.xlsx,64,False,,0,1,0,0,unknown,-1,-1,-1,-1,64,bruikbaar,loose_pdfs_only,
-2026,3,Week 3,True,Ingevoerd.xlsx,30,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2026,31,Week 31,True,Ingevoerd.xlsx,18,True,pdf_print,40,1,0,22,unknown,-1,-1,-1,-1,0,compleet,extra_pdfs,
-2026,32,Week 32,True,Ingevoerd.xlsx,41,True,pdf_print,41,1,2,2,unknown,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,35,Week 35,True,Ingevoerd.xlsx,63,True,pdf print,73,2,10,20,unknown,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,36,Week 36,True,Ingevoerd.xlsx,32,True,pdf_print,36,1,0,4,unknown,-1,-1,-1,-1,0,compleet,extra_pdfs,
-2026,37,Week 37,False,,0,True,pdf_print,39,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,excel_missing,geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
-2026,39,Week 39,True,Ingevoerd.xlsx,88,True,pdf_print,71,1,25,8,unknown,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,40,Week 40,True,Ingevoerd.xlsx,112,True,print_pdf,43,1,72,3,unknown,-1,-1,-1,-1,24,bruikbaar,"many_missing_pdfs,extra_pdfs",
-2026,41,Week 41,True,Ingevoerd.xlsx,61,True,pdf_print,77,2,0,16,unknown,-1,-1,-1,-1,0,compleet,extra_pdfs,
-2026,42,Week 42,True,Ingevoerd.xlsx,97,True,pdf_print,98,2,3,4,unknown,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,43,Week 43,True,Ingevoerd.xlsx,53,False,,0,1,0,0,unknown,-1,-1,-1,-1,4,bruikbaar,loose_pdfs_only,
-2026,44,Week 44,True,Ingevoerd.xlsx,85,True,pdf_print,91,1,0,6,unknown,-1,-1,-1,-1,0,compleet,extra_pdfs,
-2026,5,Week 5,False,,0,False,,0,2,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:herverdeling van regulier naar outlets.xlsx,Herverdeling week X voor X.xlsx,Opvallende volgnummers.xlsx,Print_nummers.xlsx; onbekende_submappen:invoer"
-2026,6,Week 6,True,Ingevoerd.xlsx,60,False,,0,1,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2026,7,Week 7,True,Ingevoerd.xlsx,71,False,,0,2,0,0,unknown,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
-2026,9,Week 9,False,,0,False,,0,1,0,0,unknown,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 9 voor 11.xlsx,Herverdeling week 9 voor 12.xlsx,Herverdeling week 9 voor 13.xlsx,Herverdeling week 9 voor 31.xlsx,Herverdeling week 9 voor 38.xlsx"
-2026,29,week 29,True,Ingevoerd.xlsx,73,False,,0,0,0,0,unknown,-1,-1,-1,-1,4,bruikbaar,pdf_missing,onbekende_submappen:Retouren Smashed Lemon
-2026,30,week 30,False,,0,False,,0,0,0,0,unknown,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
-2026,33,week 33,True,Ingevoerd.xlsx,86,True,print_pdf,93,1,2,9,unknown,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
-2026,34,week 34,True,Ingevoerd.xlsx,71,True,pdf_print,71,2,5,5,unknown,-1,-1,-1,-1,19,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2017,1,Week 1,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert.xlsx,Heverdelingslijst 2017 Brunssum.xlsx,Totaal.xlsx,Week 1 Budel.xlsx"
+2017,10,Week 10,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (14).xlsx,Herverdeellijst 2017 - Weert  week 10.xlsx,Heverdelingslijst 2016 (14) brunssum.xlsx,week 10 herver budel.xlsx"
+2017,11,Week 11,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:brunssum.xlsx,budel.xlsx,Herverdeellijst 2014 - Echt (1) (15).xlsx,Herverdeellijst 2017 - Weert wk 11.xlsx,Macro lijst.xlsx"
+2017,12,Week 12,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx"
+2017,13,Week 13,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,14,Week 14,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,16,Week 16,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Buul.xlsx,Herverdeellijst 2014 - Echt (1) (21).xlsx,Herverdeellijst 2017 - Weert week 16.xlsx,Heverdelingslijst 2016 (20) BRS.xlsx,Totaal.xlsx"
+2017,17,Week 17,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (22).xlsx,Herverdeellijst 2017 - Weert week 17.xlsx,Heverdelingslijst 2016 (21) Brs.xlsx,Macro lijst.xlsx,week 17 herv Budel.xlsx"
+2017,18,Week 18,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:BRS 11 dubbele.xlsx,BRS 11 Enkele.xlsx,Budel 13.xlsx,Echt 06.xlsx,Totaal.xlsx"
+2017,19,Week 19,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1).xlsx,Herverdeellijst 2017 - Weert 19.xlsx,Totaal.xlsx,Week 19 herv Budel.xlsx"
+2017,2,Week 2,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert week 2.xlsx,Totaal.xlsx,week 2 Budel herverdeling.xlsx"
+2017,21,Week 21,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert 21.xlsx,Totaal.xlsx"
+2017,22,Week 22,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,23,Week 23,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,26,Week 26,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx"
+2017,27,Week 27,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brs.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,28,Week 28,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx,Weert.xlsx"
+2017,29,Week 29,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:BRS.xlsx,Budel.xlsx,Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert 29.xlsx,Totaal.xlsx"
+2017,30,Week 30,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Herverdeellijst 2014 - Echt (1).xlsx,Herverdeellijst 2017 - Weert 30.xlsx,totaal.xlsx"
+2017,31,Week 31,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,Herverdeellijst 2017 - Weert week 31.xlsx,Totaal.xlsx,Week 31 herv Budel.xlsx"
+2017,34,Week 34,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (1) schoenen.xlsx,Herverdeellijst 2014 - Echt (1) (1).xlsx,Herverdeellijst 2017 - Weert wk 33.xlsx,Heverdelingslijst 2016 (30) Brunssum.xlsx,week 34 herv Budel.xlsx"
+2017,35,Week 35,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,36,Week 36,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:BRS.xlsx,Budel.xlsx,Echt.xlsx,Nieuw - Microsoft Excel-werkblad.xlsx,totaal.xlsx"
+2017,37,Week 37,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,39,Week 39,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brs.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,4,Week 4,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Herverdeellijst 2014 - Echt (1) (10).xlsx,Herverdeellijst 2017 - Weert week 4.xlsx,Totaal.xlsx,Week 4 herver Budel.xlsx"
+2017,40,Week 40,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Br-z.xlsx,Brs.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx"
+2017,41,Week 41,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:BR-z.xlsx,BRS.xlsx,Budel.xlsx,echt.xlsx,tilly wek 40.xlsx"
+2017,42,Week 42,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,43,Week 43,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:brunssum.xlsx,Budel.xlsx,Herverdeellijst 2014 - Echt (1) (26).xlsx,Herverdeellijst 2017 - Weert week 43.xlsx,totaal.xlsx"
+2017,44,Week 44,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:brs.xlsx,budel.xlsx,Herverdeellijst 2014 - Echt (1).xlsx,totaal.xlsx"
+2017,45,Week 45,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
+2017,46,Week 46,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,47,Week 47,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel week 47 herv.xlsx,Echt Herverdeellijst 2014 - Echt (1).xlsx,totaal.xlsx,Weert week 47.xlsx"
+2017,48,Week 48,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Buul week 48 herv 1.xlsx,Herverdeellijst 2014 - Echt (1).xlsx,Herverdeellijst 2017 - Weert week 48.xlsx,totaal.xlsx"
+2017,5,Week 5,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (11).xlsx,Herverdeellijst 2017 - Weert week 5.xlsx,Heverdelingslijst 2016 Brunssum.xlsx,Totaal.xlsx,week 5 herver BUDEL.xlsx"
+2017,6,Week 6,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2017,7,Week 7,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt.xlsx,Herverdeellijst 2017 - Weert  wk 7.xlsx,Heverdelingslijst 2016 brunssum.xlsx,Totaal.xlsx,week 7 herver  Budel.xlsx"
+2017,9,Week 9,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum Heverdelingslijst 2016 (13).xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx,Weert Herverdeellijst 2017 - Weert week 9.xlsx"
+2018,1,Week 1,False,,0,False,,0,4,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Echt.xlsx,Totaal.xlsx"
+2018,11,Week 11,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (1).xlsx
+2018,14,Week 14,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Echt.xlsx,totaal.xlsx"
+2018,15,Week 15,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,Totaal.xlsx"
+2018,16,Week 16,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2014 - Echt (1) (1).xlsx,totaal.xlsx"
+2018,17,Week 17,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2018,18,Week 18,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Herverdeellijst 2014 - Echt (1) (1).xlsx,Herverdeellijst 2018 - Weert week 17 (1).xlsx,Herverdeellijst WEEK 18- 2018 - Arcen (1).xlsx"
+2018,2,Week 2,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunss.xlsx,budel.xlsx,Echt.xlsx,TOTAAL.xlsx,Weert.xlsx"
+2018,21,Week 21,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,totaal.xlsx"
+2018,23,Week 23,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,Totaal.xlsx"
+2018,26,Week 26,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Totaal.xlsx"
+2018,27,Week 27,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0716095822465.xlsx,herverdelinslijst week 28.xlsx,Week 28 herv 1.xlsx"
+2018,28,Week 28,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:combi.xlsx
+2018,29,Week 29,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,herverdelinslijst week 29.xlsx,Totaal.xlsx,Week 29 herv 1.xlsx"
+2018,3,Week 3,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2018,30,Week 30,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Totaal.xlsx
+2018,31,Week 31,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Kerkr.xlsx,Totaal.xlsx"
+2018,32,Week 32,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Herverdeellijst  week 32 Kerkrade.xlsx,Herverdeellijst 2018 - Weert week 32.xlsx,Totaal.xlsx"
+2018,33,Week 33,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Totaal.xlsx
+2018,35,Week 35,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Buul.xlsx,Echt.xlsx,Herverdeellijst 2018 - Weert week 35.xlsx,kerk.xlsx,Totaal.xlsx"
+2018,38,Week 38,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Weert.xlsx,_Totaal.xlsx"
+2018,4,Week 4,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx,Weert.xlsx"
+2018,40,Week 40,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Weert.xlsx,_Totaal.xlsx"
+2018,41,Week 41,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,totaal.xlsx"
+2018,42,Week 42,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Totaal.xlsx,Weert.xlsx"
+2018,43,Week 43,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Totaal.xlsx,Weert.xlsx"
+2018,44,Week 44,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Herverdeellijst 2018 - Weert week 44.xlsx,kerkrade.xlsx,Totaal.xlsx"
+2018,45,Week 45,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,totaal.xlsx,Weert.xlsx"
+2018,46,Week 46,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Herverdeellijst 2018 - Weert week 46.xlsx,Totaal.xlsx"
+2018,48,Week 48,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Totaal 123.xlsx,Totaal.xlsx"
+2018,5,Week 5,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2018,7,Week 7,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,totaal.xlsx,Weert.xlsx"
+2018,8,Week 8,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2018 - Weert week 8.xlsx,Totaal.xlsx"
+2018,9,Week 9,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Echt.xlsx,Totaal.xlsx"
+2018,24,week 24,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:capri en shorts.xlsx
+2019,1,Week 1,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Budel.xlsx,Echt.xlsx,Kerkrade.xlsx,Totaal.xlsx,Weert.xlsx"
+2019,11,Week 11,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Map2.xlsx
+2019,14,Week 14,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 13.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0401101024219.xlsx,totaal.xlsx,Week 13 herv.xlsx"
+2019,15,Week 15,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0408092254414.xlsx,Herverdeellijst week 14.xlsx,TOTAAL.xlsx,Week 14 herv.xlsx"
+2019,16,Week 16,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2018 - Weert week 15.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0415095409469.xlsx,Herverdeellijst week 15.xlsx,TOTAAL.xlsx"
+2019,17,Week 17,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Map5.xlsx
+2019,18,Week 18,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 17.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 17.xlsx,Totaal.xlsx,Week 17 herv.xlsx"
+2019,19,Week 19,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 18.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0506095649766.xlsx,Herverdeellijst week 18.xlsx,Totaal.xlsx"
+2019,2,Week 2,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Br-Z.xlsx,Brunssum 1.xlsx,Brunssum 2.xlsx,Budel.xlsx,Echt.xlsx"
+2019,20,Week 20,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:bam jonge.xlsx
+2019,21,Week 21,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0520094033137.xlsx,Herverdeellijst week 20 Kerkrade.xlsx,Totaal.xlsx,Week 20 herv.xlsx; onbekende_submappen:20"
+2019,23,Week 23,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst  week 22.xlsx,Herverdeellijst 2019 - Weert week 22.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0603091419258.xlsx,Totaal.xlsx"
+2019,25,Week 25,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0617100201121.xlsx,Herverdeellijst Week 23 Kerkrade.xlsx,Totaal.xlsx,Week 24 herv.xlsx"
+2019,27,Week 27,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",onbekende_submappen:Doorgest. einde actieweek
+2019,29,Week 29,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Map1.xlsx
+2019,30,Week 30,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 29.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0722120202750.xlsx,herverdeling week 29 2019.xlsx,Totaal.xlsx"
+2019,31,Week 31,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
+2019,32,Week 32,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 31.xlsx,Herverdeellijst 2019 - Weert week 32.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0809102833047.xlsx,Herverdeellijst BLANCO_0809102833215.xlsx"
+2019,36,Week 36,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 35.xlsx,Herverdeellijst BLANCO.xlsx,herverdeling week 35.xlsx,Totaal.xlsx"
+2019,38,Week 38,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0916091914445.xlsx,Herverdeellijst week 37 Kerkrade.xlsx,TOTAAL.xlsx,week 37 herv.xlsx"
+2019,39,Week 39,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
+2019,4,Week 4,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Kerkr.xlsx,totaal.xlsx"
+2019,40,Week 40,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 39.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 39.xlsx,Totaal!.xlsx"
+2019,41,Week 41,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 40.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein 09 week 40.xlsx,Herverdeellijst week 40 Kerkrade.xlsx,totaal.xlsx"
+2019,42,Week 42,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 41.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1014095601566.xlsx,Herverdeellijst Stein 09 week 41.xlsx,Herverdeellijst week 41 Kerkrade.xlsx"
+2019,44,Week 44,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 43.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1028095546871.xlsx,Herverdeellijst Stein week 43.xlsx,Herverdeellijst week 43 kerkrade.xlsx"
+2019,45,Week 45,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1104092319266.xlsx,Herverdeellijst Stein week 44.xlsx,herverdelingslijst week 44 kerkrade.xlsx,Totaal.xlsx"
+2019,46,Week 46,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 45.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1111104016969.xlsx,Herverdeellijst week 45 Kerkrade.xlsx,Herverdeellijst week 45.xlsx"
+2019,47,Week 47,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 46.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1118100533051.xlsx,Herverdeellijst week 46  kerkrade.xlsx,Herverdeellijst week 46.xlsx"
+2019,48,Week 48,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 47.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1125103324910.xlsx,Herverdeellijst week 47 Stein.xlsx,Herverdeellijst week 47.xlsx"
+2019,49,Week 49,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 48.xlsx,Herverdeellijst 2019 - Weert week 48_1202094436629.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1202094436434.xlsx,Herverdeellijst Budel week 48.xlsx"
+2019,5,Week 5,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:budel.xlsx,Echt.xlsx,Totaal.xlsx,Weert.xlsx"
+2019,50,Week 50,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019 - Weert week 49.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1209094947355.xlsx,Herverdeellijst Stein week 49.xlsx,Herverdeellijst week 49 kerkrade.xlsx"
+2019,6,Week 6,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Brunssum.xlsx,Budel.xlsx,Echt.xlsx,Herverdeellijst 2018 - Weert week 6.xlsx,Kerkrade.xlsx"
+2019,7,Week 7,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Totaal.xlsx
+2019,8,Week 8,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
+2019,10,week 10,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
+2019,12,week 12,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
+2019,37,week 37,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2019- Weert week 36.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 36 Kerkrade.xlsx"
+2019,43,week 43,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1021105839949.xlsx,Herverdeellijst Stein 09 week 42.xlsx,Herverdeellijstweek 42.xlsx,totaallijst herverdeling printen.xlsx"
+2020,1,Week 1,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 week 1.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO1.xlsx,Herverdeellijst week 1-2020.xlsx,Herverdeellijst week2.xlsx"
+2020,15,Week 15,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:totaal.xlsx
+2020,2,Week 2,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 week 2.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0113113145871.xlsx,Herverdeellijst BLANCO_0113113145914.xlsx,Herverdeellijst Stein week 2.xlsx"
+2020,22,Week 22,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0525090538969.xlsx,Herverdeellijst Stein week 21.xlsx,Herverdeellijst week 21-2020.xlsx,herverdelingslijst week 19.xlsx"
+2020,25,Week 25,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0615090949363.xlsx,Herverdeellijst week 24 Budel.xlsx,herverdelingslijst week24.xlsx,totaal.xlsx"
+2020,27,Week 27,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 26.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0629093000352.xlsx,Herverdeellijst week 27 kerkrade.xlsx,totaal.xlsx"
+2020,28,Week 28,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 27.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0706102530039.xlsx,herverdelingslijst week 27.xlsx,totaal.xlsx"
+2020,29,Week 29,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Arcen.xlsx,Etten-Leur.xlsx,Herverdeellijst 2020 - Weert week 28.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0713083657934.xlsx"
+2020,3,Week 3,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 3.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0120091953168.xlsx,Herverdeellijst Stein week 3.xlsx,Herverdeellijst week 3 2020 Kerkrade.xlsx"
+2020,30,Week 30,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 29.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0720092111992.xlsx,Herverdeellijst week 29 Budel.xlsx,herverdelingslijst week 29.xlsx; onbekende_submappen:Partners DigiHerVer"
+2020,31,Week 31,False,,0,True,digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Digiherver.xlsx,Herverdeellijst 2020 - Weert week 30.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 30 Budel.xlsx,Herverdeellijst week 30 kerkrade.xlsx"
+2020,32,Week 32,False,,0,True,digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 31.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0803091817867.xlsx,Herverdeellijst week 31 Budel.xlsx,herverdeling week 31 Kerkrade.xlsx"
+2020,33,Week 33,False,,0,True,DigiHerverDocu,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 32.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0810092521457.xlsx,Herverdeellijst week 32 Budel.xlsx,Herverdeellijst week 32 kerkrade.xlsx"
+2020,34,Week 34,False,,0,True,DigiHerver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,geen_ingevoerd_maar_xlsx:Totaal.xlsx
+2020,37,Week 37,False,,0,True,pdf,5,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Arcen.xlsx,DigiHerver.xlsx,Etten-Leur.xlsx,Tegelen.xlsx,Tilburg.xlsx"
+2020,39,Week 39,False,,0,True,digi herver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 38.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0921090728840.xlsx,Herverdeellijst week 38 Kerkrade.xlsx,Herverdeellijst week 38.xlsx"
+2020,40,Week 40,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Digiherver.xlsx,Herverdeellijst 2020 - Weert week 40.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_1005090618348.xlsx,Herverdeellijst week 40.xlsx"
+2020,41,Week 41,False,,0,False,,0,6,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 41.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 41 2020.xlsx,Herverdeellijst week 41 Budel.xlsx,Herverdeellijst wk 41 kerkrade.xlsx"
+2020,42,Week 42,False,,0,True,Digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Digiherver sorteer.xlsx,Digiherver.xlsx,Herverdeellijst 2020 - Weert week 42.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 42 2020.xlsx"
+2020,43,Week 43,False,,0,True,Digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:digiherver totaal.xlsx,Herverdeellijst 2020 - Weert week 43.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 43 2020.xlsx,Totaal.xlsx"
+2020,44,Week 44,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 44.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 44.xlsx,Herverdeellijst week 44_1102091211883.xlsx,Herverdeellijst wk 44 kerkrade.xlsx"
+2020,45,Week 45,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 45.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 45.xlsx,Herverdeellijst week 45_1109091951738.xlsx,Herverdeellijst wk 45.xlsx"
+2020,46,Week 46,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 46.xlsx,herverdeellijst week 46 kerkrade.xlsx,Herverdeellijst week 46.xlsx,Totaal.xlsx,week 46 herverdeling.xlsx"
+2020,47,Week 47,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 47.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 47.xlsx,Herverdeellijst wk 47 kerkrade.xlsx,totaal.xlsx"
+2020,49,Week 49,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Map3.xlsx
+2020,5,Week 5,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 5.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0203092539730.xlsx,Herverdeellijst Stein week 5.xlsx,Herverdeellijst week 5-2020.xlsx"
+2020,53,Week 53,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Arcen.xlsx,Digiherver.xlsx,Etten-Leur.xlsx,Tegelen.xlsx,Tilburg.xlsx"
+2020,7,Week 7,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2020 - Weert week 7.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst BLANCO_0217092220836.xlsx,Herverdeellijst Stein week 7.xlsx,Herverdeellijst week 7.xlsx"
+2020,16,week 16,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:totaal.xlsx
+2020,17,week 17,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeellijst Stein week 17.xlsx,Herverdeellijst week 17 Kerkrade.xlsx,Totaal.xlsx"
+2020,18,week 18,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:totaal.xlsx
+2020,19,week 19,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",
+2020,38,week 38,False,,0,True,digiherver,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,
+2020,6,week 6,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:brunssum.xlsx,Budel.xlsx,Echt.xlsx,Stein.xlsx,totaal.xlsx"
+2020,9,week 9,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:doorgestuurd en top 40.xlsx
+2021,10,Week 10,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 10.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 10 2021 Echt.xlsx,Herverdeellijst week 10 Budel.xlsx,Herverdeellijst week 10 Kerkrade.xlsx"
+2021,11,Week 11,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:ECHT-week 11 2021.xlsx,Herverdeellijst 2021 - Weert week 11.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 11 Stein.xlsx,Herverdeellijst week 11.xlsx"
+2021,12,Week 12,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 12.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 12.xlsx,Herverdeellijst week 12 2021 Echt.xlsx,Herverdeellijst week 12 Budel.xlsx"
+2021,15,Week 15,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 14.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 14.xlsx,Herverdeellijst week 14.xlsx,Herverdeellijst week 14_0412091329578.xlsx"
+2021,16,Week 16,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 15.xlsx,Herverdeellijst Stein week 15.xlsx,Herverdeellijst week 15.xlsx,Herverdeellijst wk 15.xlsx,herverdeling week 16.xlsx"
+2021,17,Week 17,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 16.xlsx,Herverdeellijst 2021 - Weert week 17.xlsx,Herverdeellijst Stein week 17.xlsx,Herverdeellijst week 17.xlsx,Herverdeellijst week 17_0503092214586.xlsx"
+2021,18,Week 18,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 18.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 18 Stein.xlsx,Herverdeellijst week 18.xlsx,herverdeling week 18.xlsx; onbekende_submappen:mail"
+2021,19,Week 19,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 19.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 19.xlsx,Herverdeellijst week 19 2021.xlsx,Herverdeellijst week 19 kerkrade.xlsx"
+2021,21,Week 21,False,,0,True,Digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Digi herver totaal.xlsx,Herverdeellijst 2021 - Weert week 21.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 21.xlsx,Herverdeellijst week 21 Kerkrade.xlsx"
+2021,22,Week 22,False,,0,True,digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst BLANCO.xlsx,Herverdeellijst week 19.xlsx,Herverdeellijst week 22.xlsx,Herverdeellijst week 22_0607093424445.xlsx,Herverdeellijst week 22_0607093424469.xlsx"
+2021,23,Week 23,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 23.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 23 Kerkrade.xlsx,Herverdeellijst week 23.xlsx,Herverdeellijst Week 23_0614093252703.xlsx; onbekende_submappen:digi"
+2021,24,Week 24,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 24.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Srein week 24.xlsx,Herverdeellijst week 24 Kerkrade.xlsx,Herverdeellijst week 24.xlsx"
+2021,26,Week 26,False,,0,True,digi herver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert week 26.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 26-2021.xlsx,Herverdeellijst week 26-2021_0705094658238.xlsx,Herverdeellijst week 26.xlsx"
+2021,28,Week 28,False,,0,True,digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst 2021 - Weert  week 28.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 28.xlsx,Herverdeellijst week 28 Kerkrade.xlsx,Herverdeellijst week 28.xlsx"
+2021,29,Week 29,False,,0,True,digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:digiherver.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst Stein week 29.xlsx,Herverdeellijst week 28.xlsx,Herverdeellijst week 29 Kerkrade.xlsx"
+2021,30,Week 30,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:digi herver.xlsx,Herverdeellijst 2021 - Weert week 30.xlsx,Herverdeellijst BLANCO.xlsx,Herverdeellijst week 28.xlsx,Herverdeellijst week 30 Kerkrade.xlsx"
+2021,32,Week 32,True,totaal blad ingevoerd.xlsx,23,True,digiherver,0,0,23,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,many_missing_pdfs,
+2021,34,Week 34,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Kopie van retourlijst.xlsx,Retourlijst controle 11.xlsx,Retourlijst controle 12.xlsx,Retourlijst controle 13.xlsx,Retourlijst controle 31.xlsx"
+2021,35,Week 35,False,,0,True,digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:digi herver.xlsx,Herverdeellijst 2021 - Weert week 35.xlsx,Herverdeellijst week 34.xlsx,Herverdeellijst week 35.xlsx,herverdeellijst wk 35 Kerkrade.xlsx"
+2021,27,week 27,False,,0,True,digiherver,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,excel_missing,"geen_ingevoerd_maar_xlsx:Herverdeellijst Stein week 27.xlsx,Herverdeellijst week 27 Kerkrade.xlsx,Herverdeellijst week 27.xlsx,Herverdeellijst week 27xlsx.xlsx,totaal.xlsx"
+2021,36,week 36,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling 11.xlsx,Herverdeling 12.xlsx,Herverdeling 13.xlsx,Herverdeling 31.xlsx,Herverdeling 35.xlsx"
+2021,38,week 38,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
+2021,45,week 45,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",onbekende_submappen:Herverdeling Alain & Stephany
+2021,47,week 47,False,,0,False,,0,7,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Arcen herverdeling week 47.xlsx,Brunssum herverdeling week 47.xlsx,Budel herverdeling week 47.xlsx,Echt herverdeling week 47.xlsx,Etten-Leur herverdeling week 47.xlsx"
+2021,48,week 48,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:totaal voor de winkels.xlsx,Totaal.xlsx"
+2021,49,week 49,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:digi herver.xlsx,totaal doorgestuurd v2.xlsx,totaal doorgestuurd.xlsx"
+2022,12,Week 12 Herverdeling,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 12 voor 11.xlsx,Herverdeling week 12 voor 12.xlsx,Herverdeling week 12 voor 13.xlsx,Herverdeling week 12 voor 31.xlsx,Herverdeling week 12 voor 35.xlsx"
+2022,13,Week 13 Herverdeling,True,Ingevoerde opgelezen nummer.xlsx,84,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,pdf_missing,onbekende_submappen:voor de winkel
+2022,14,Week 14,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 14 voor 11.xlsx,Herverdeling week 14 voor 12.xlsx,Herverdeling week 14 voor 13.xlsx,Herverdeling week 14 voor 31.xlsx,Herverdeling week 14 voor 35.xlsx"
+2022,18,Week 18,True,Ingevoerd.xlsx,114,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2022,19,Week 19,True,Ingevoerd.xlsx,57,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,19,bruikbaar,pdf_missing,onbekende_submappen:Per winkel
+2022,20,Week 20,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Invoeren.xlsx,Te printen nummers.xlsx"
+2022,21,Week 21,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 21 2022.xlsx,Herverdeling week 21 Arcen.xlsx,Herverdeling week 21 Brunssum.xlsx,Herverdeling week 21 Budel.xlsx,Herverdeling week 21 Echt.xlsx"
+2022,22,Week 22,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Totaal.xlsx
+2022,23,Week 23,True,Ingevoerd.xlsx,62,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,pdf_missing,onbekende_submappen:Doorsturenn
+2022,24,Week 24,True,Ingevoerd.xlsx,41,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,15,bruikbaar,pdf_missing,
+2022,25,Week 25,True,Ingevoerd.xlsx,90,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,11,bruikbaar,loose_pdfs_only,onbekende_submappen:naar filialen
+2022,29,Week 29,True,Ingevoerd.xlsx,69,False,,0,3,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2022,30,Week 30,True,Ingevoerd.xlsx,84,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,35,bruikbaar,loose_pdfs_only,onbekende_submappen:VOor de inkels
+2022,34,Week 34,True,Ingevoerd.xlsx,82,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2022,35,Week 35,True,Ingevoerd.xlsx,68,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,20,bruikbaar,pdf_missing,
+2022,36,Week 36,True,Ingevoerd.xlsx,120,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,11,bruikbaar,pdf_missing,
+2022,37,Week 37,True,Ingevoerd.xlsx,48,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,6,bruikbaar,pdf_missing,
+2022,38,Week 38,False,,0,False,,0,3,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 38 voor 11.xlsx,Herverdeling week 38 voor 12.xlsx,Herverdeling week 38 voor 13.xlsx,Herverdeling week 38 voor 31.xlsx,Herverdeling week 38 voor 35.xlsx"
+2022,39,Week 39,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 39 totaal.xlsx,Herverdeling week 39 voor 11.xlsx,Herverdeling week 39 voor 12.xlsx,Herverdeling week 39 voor 13.xlsx,Herverdeling week 39 voor 31.xlsx"
+2022,40,Week 40,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:herverdeling print 2-10-2022.xlsx; onbekende_submappen:Per winkels
+2022,41,Week 41,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
+2022,42,Week 42,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 42 Arcen.xlsx,Herverdeling week 42 Brunssum.xlsx,Herverdeling week 42 Budel.xlsx,Herverdeling week 42 Echt.xlsx,Herverdeling week 42 Etten-Leur.xlsx"
+2022,43,Week 43,False,,0,False,,0,3,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 43 Totaal.xlsx,Print nrs.xlsx; onbekende_submappen:Herverdeling per winkel"
+2022,44,Week 44,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 44 Totaal.xlsx,print nrs.xlsx; onbekende_submappen:alle winkels"
+2022,45,Week 45,True,Ingevoerd.xlsx,76,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2022,46,Week 46,True,Ingevoerd.xlsx,95,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,14,bruikbaar,pdf_missing,onbekende_submappen:Winkel documenten
+2022,47,Week 47,True,Ingevoerd.xlsx,54,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,2,bruikbaar,loose_pdfs_only,
+2022,48,Week 48,True,Ingevoerd.xlsx,54,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,3,bruikbaar,loose_pdfs_only,
+2022,49,Week 49,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 49 Arcen.xlsx,Herverdeling week 49 Brunssum.xlsx,Herverdeling week 49 Budel.xlsx,Herverdeling week 49 Echt.xlsx,Herverdeling week 49 Etten-Leur.xlsx"
+2022,50,Week 50,True,Ingevoerd.xlsx,102,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
+2022,51,Week 51,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:print nrs wk 50.xlsx
+2022,52,Week 52,True,Ingevoerd.xlsx,62,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
+2022,15,week 15,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Arcen. Herverdeling week 15.xlsx,Brunssum. Herverdeling week 15.xlsx,Budel. Herverdeling week 15.xlsx,Echt. Herverdeling week 15.xlsx,Etten-Leur Herverdeling week 15.xlsx"
+2022,16,week 16,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:top 40 mc.xlsx
+2023,1,Week 1,True,Ingevoerd.xlsx,112,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,28,bruikbaar,loose_pdfs_only,
+2023,12,Week 12,True,Ingevoerd.xlsx,95,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,17,bruikbaar,loose_pdfs_only,
+2023,13,Week 13,True,Ingevoerd.xlsx,91,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,23,bruikbaar,loose_pdfs_only,
+2023,14,Week 14,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Nummers door winkels.xlsx
+2023,16,Week 16,True,Ingevoerd.xlsx,99,False,,0,3,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,onbekende_submappen:Doorgestuurd
+2023,18,Week 18,True,Ingevoerd.xlsx,93,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2023,19,Week 19,True,Ingevoerd.xlsx,71,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,28,bruikbaar,loose_pdfs_only,
+2023,2,Week 2,True,Ingevoerd.xlsx,78,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,14,bruikbaar,loose_pdfs_only,
+2023,20,Week 20,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
+2023,21,Week 21,True,Ingevoerd.xlsx,109,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2023,23,Week 23,True,Ingevoerd.xlsx,75,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,onbekende_submappen:Winkel
+2023,24,Week 24,True,Ingevoerd.xlsx,70,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,18,bruikbaar,pdf_missing,
+2023,25,Week 25,True,Ingevoerd.xlsx,52,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
+2023,26,Week 26,True,Ingevoerd.xlsx,91,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,34,bruikbaar,loose_pdfs_only,
+2023,27,Week 27,True,Ingevoerd.xlsx,113,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,9,bruikbaar,loose_pdfs_only,
+2023,28,Week 28,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:print nrs.xlsx
+2023,29,Week 29,True,Ingevoerd.xlsx,71,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2023,3,Week 3,True,Ingevoerd.xlsx,133,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,9,bruikbaar,loose_pdfs_only,
+2023,30,Week 30,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2023,31,Week 31,True,Ingevoerd.xlsx,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2023,32,Week 32,True,Ingevoerd.xlsx,62,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2023,34,Week 34,True,Ingevoerd.xlsx,18,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
+2023,35,Week 35,True,Ingevoerde nrs.xlsx,55,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,10,bruikbaar,loose_pdfs_only,onbekende_submappen:herverdeling winkels
+2023,36,Week 36,True,Ingevoerd.xlsx,50,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,14,bruikbaar,loose_pdfs_only,
+2023,37,Week 37,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",
+2023,38,Week 38,True,Ingevoerd.xlsx,104,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
+2023,4,Week 4,True,Ingevoerd.xlsx,40,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,6,bruikbaar,loose_pdfs_only,
+2023,40,Week 40,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 40 totaal.xlsx,Print nrs.xlsx"
+2023,41,Week 41,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2023,42,Week 42,False,,0,False,,0,5,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 41- totaal.xlsx,Print nrs.xlsx; onbekende_submappen:winekls"
+2023,43,Week 43,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:Herverdeling week 43- totaal.xlsx,Printnummers.xlsx"
+2023,44,Week 44,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2023,45,Week 45,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 45- totaal gemaakt.xlsx,Print nrs.xlsx"
+2023,46,Week 46,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:print nrs.xlsx
+2023,47,Week 47,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx; onbekende_submappen:Herverdeling naar outlets
+2023,49,Week 49,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2023,5,Week 5,True,Ingevoerd.xlsx,40,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,40,bruikbaar,loose_pdfs_only,
+2023,50,Week 50,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2023,51,Week 51,True,Ingevoerd.xlsx,63,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2023,6,Week 6,True,Ingevoerd.xlsx,55,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,10,bruikbaar,loose_pdfs_only,
+2023,7,Week 7,True,Ingevoerd.xlsx,57,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,16,bruikbaar,loose_pdfs_only,
+2023,9,Week 9,True,Ingevoerd.xlsx,71,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2023,10,week 10,True,Ingevoerd.xlsx,71,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,71,bruikbaar,loose_pdfs_only,
+2023,11,week 11,True,Ingevoerd.xlsx,71,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,71,bruikbaar,loose_pdfs_only,
+2024,10,Week 10,True,Ingevoerd.xlsx,93,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,39,bruikbaar,loose_pdfs_only,onbekende_submappen:per filiaal
+2024,11,Week 11,True,Ingevoerd.xlsx,75,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,25,bruikbaar,loose_pdfs_only,
+2024,12,Week 12,True,Ingevoerd.xlsx,71,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,21,bruikbaar,pdf_missing,onbekende_submappen:Herverdeling winkels
+2024,13,Week 13,True,Ingevoerd.xlsx,125,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,12,bruikbaar,loose_pdfs_only,
+2024,15,Week 15,True,Ingevoerd.xlsx,108,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,16,Week 16,True,Ingevoerd.xlsx,97,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,22,bruikbaar,pdf_missing,
+2024,17,Week 17,True,Ingevoerde nrs.xlsx,67,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,40,bruikbaar,loose_pdfs_only,
+2024,18,Week 18,True,Ingevoerde nrs.xlsx,65,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,24,bruikbaar,pdf_missing,
+2024,2,Week 2,True,Ingevoerd.xlsx,69,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,20,Week 20,True,Ingevoerde.xlsx,71,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
+2024,22,Week 22,True,Ingevoerd.xlsx,0,False,,0,3,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,23,Week 23,True,Ingevoerde nrs.xlsx,128,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,24,Week 24,True,Ingevoerde.xlsx,80,False,,0,3,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,11,bruikbaar,loose_pdfs_only,
+2024,25,Week 25,True,Ingevoerde nrs.xlsx,75,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,13,bruikbaar,loose_pdfs_only,
+2024,27,Week 27,True,Ingevoerd.xlsx,119,False,,0,3,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,29,Week 29,True,Ingevoerde nrss.xlsx,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,3,Week 3,True,Ingevoerd.xlsx,126,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,22,bruikbaar,loose_pdfs_only,"onbekende_submappen:Extra retouren Smashed Lemon,Voor de winkels"
+2024,30,Week 30,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2024,32,Week 32,True,Ingevoerd.xlsx,37,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,33,Week 33,True,Ingevoerde nummers.xlsx,72,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
+2024,34,Week 34,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
+2024,35,Week 35,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Herverdeling.xlsx
+2024,37,Week 37,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2024,38,Week 38,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2024,4,Week 4,True,Ingevoerd.xlsx,53,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,16,bruikbaar,pdf_missing,
+2024,40,Week 40,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2024,41,Week 41,True,Ingevoerde nummers.xlsx,99,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,42,Week 42,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2024,43,Week 43,True,Ingevoerd.xlsx,100,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,44,Week 44,True,Ingevoerde nummers.xlsx,103,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,23,bruikbaar,loose_pdfs_only,
+2024,45,Week 45,True,Ingevoerde nummers.xlsx,66,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,32,bruikbaar,loose_pdfs_only,onbekende_submappen:Aanvulling winkels
+2024,46,Week 46,True,Ingevoerd.xlsx,73,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
+2024,47,Week 47,True,Ingevoerd.xlsx,89,False,,0,3,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,10,bruikbaar,loose_pdfs_only,
+2024,48,Week 48,True,Ingevoerde nrs.xlsx,98,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,17,bruikbaar,loose_pdfs_only,
+2024,49,Week 49,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print nrs.xlsx
+2024,5,Week 5,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing","geen_ingevoerd_maar_xlsx:herverdeling nos.xlsx,Print nrs.xlsx; onbekende_submappen:Herverdeling voor winkels"
+2024,50,Week 50,True,Ingevoerd.xlsx,75,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,51,Week 51,True,Ingevoerde nra.xlsx,90,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,20,bruikbaar,loose_pdfs_only,
+2024,6,Week 6,True,Ingevoerd.xlsx,147,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,8,Week 8,True,Ingevoerd.xlsx,131,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2024,9,Week 9,True,Ingevoerd.xlsx,54,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,26,bruikbaar,loose_pdfs_only,onbekende_submappen:Correcties herverdeling rechtstreeks naar outlets
+2024,36,week 36,False,,0,False,,0,4,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:totale lijst hervedeling.xlsx
+2025,10,Week 10,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx; onbekende_submappen:al klaargezet
+2025,11,Week 11,True,Ingevoerde nummers.xlsx,101,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,12,Week 12,True,Ingevoerd.xlsx,76,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,23,bruikbaar,loose_pdfs_only,
+2025,13,Week 13,True,Ingevoerd.xlsx,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,14,Week 14,True,Ingevoerde.xlsx,107,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,15,Week 15,True,Ingevoerd.xlsx,74,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,20,bruikbaar,loose_pdfs_only,
+2025,16,Week 16,True,Ingevoerd.xlsx,87,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,24,bruikbaar,loose_pdfs_only,onbekende_submappen:winkel
+2025,18,Week 18,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Invoer.xlsx,nrs elvira extra.xlsx,Print_nummers.xlsx"
+2025,19,Week 19,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:artikelen retour en outlet.xlsx,Herverdeling week 20 Brunssum.xlsx,Herverdeling week 20 Budel.xlsx,Herverdeling week 20 Echt.xlsx,Herverdeling week 20 Etten-Leur.xlsx"
+2025,2,Week 2,True,Ingevoerd.xlsx,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,20,Week 20,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Invoer.xlsx,print nrs.xlsx,totalen.xlsx"
+2025,21,Week 21,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
+2025,22,Week 22,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
+2025,23,Week 23,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:herverdeling incl riemen.xlsx,Invoer.xlsx,Print_nummers.xlsx"
+2025,24,Week 24,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
+2025,25,Week 25,True,Ingevoerd.xlsx,163,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,26,Week 26,True,Ingevoerd.xlsx,69,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
+2025,27,Week 27,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 27 Brunssum.xlsx,Herverdeling week 27 Budel.xlsx,Herverdeling week 27 Echt.xlsx,Herverdeling week 27 Etten-Leur.xlsx,Herverdeling week 27 Kerkrade.xlsx"
+2025,29,Week 29,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:herverdeling week 29 totaal.xlsx,Print_nummers_wk29.xlsx"
+2025,3,Week 3,True,Ingevoerde nrs.xlsx,93,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,30,Week 30,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling Brunssum Week 30.xlsx,Herverdeling Budel Week 30.xlsx,Herverdeling Echt Week 30.xlsx,Herverdeling Eten-Leur Week 30.xlsx,Herverdeling Kerkrade Week 30.xlsx"
+2025,31,Week 31,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
+2025,32,Week 32,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling totaal week 32.xlsx,Print_nummers.xlsx"
+2025,33,Week 33,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 33  totaal.xlsx,Herverdeling week 33  voor 11.xlsx,Herverdeling week 33  voor 12.xlsx,Herverdeling week 33  voor 13.xlsx,Herverdeling week 33  voor 31.xlsx"
+2025,34,Week 34,True,Ingevoerde wk 34.xlsx,73,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,38,Week 38,True,Ingevoerd.xlsx,78,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,39,Week 39,True,Ingevoerde nrs 39.xlsx,82,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,15,bruikbaar,loose_pdfs_only,
+2025,4,Week 4,True,Ingevoerde nummers.xlsx,78,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,14,bruikbaar,pdf_missing,
+2025,40,Week 40,True,Ingevoerd.xlsx,85,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,22,bruikbaar,loose_pdfs_only,
+2025,41,Week 41,False,,0,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
+2025,42,Week 42 Fout,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:doorgestuurd.xlsx
+2025,43,Week 43,True,Ingevoerd.xlsx,81,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,44,Week 44,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Invoeren.xlsx,Print_nummers_wk44.xlsx"
+2025,45,Week 45,True,Ingevoerd.xlsx,103,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,46,Week 46,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Ingevoerend - hernoemd en gesorteerd.xlsx,Ingevoerend.xlsx,Print_nummers_wk47.xlsx"
+2025,47,Week 47,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Ingevuurd - sorteren en filteren.xlsx,Ingevuurd.xlsx,Print_nummers.xlsx"
+2025,49,Week 49,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Print_nummers.xlsx,Winkel totaal.xlsx"
+2025,5,Week 5,True,Ingevoerd.xlsx,127,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,8,bruikbaar,loose_pdfs_only,
+2025,50,Week 50,True,Totaal ingevoerd.xlsx,67,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,onbekende_submappen:Kerstmarkt naar weert
+2025,51,Week 51,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Print_nummers.xlsx,Stuks kerstmarkt.xlsx,Webshop.xlsx; onbekende_submappen:ingeveord"
+2025,6,Week 6,True,Ingevoerd.xlsx,65,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,9,bruikbaar,loose_pdfs_only,
+2025,7,Week 7,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Inoeren.xlsx,Print nrs.xlsx"
+2025,8,Week 8,True,Ingevoerd.xlsx,61,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2025,9,Week 9,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only",geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
+2025,42,week 42,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Ingefuuhrd - kopie.xlsx,Ingefuuhrd.xlsx,Print_nummers.xlsx"
+2026,10,Week 10,True,Ingevoerd.xlsx,43,False,,0,0,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,pdf_missing,
+2026,11,Week 11,True,Ingevoerd.xlsx,43,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,1,bruikbaar,loose_pdfs_only,
+2026,12,Week 12,True,Ingevoerd.xlsx,47,True,print pdf,47,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,compleet,,
+2026,13,Week 13,True,Ingevoerd.xlsx,62,True,print pdf,66,2,0,4,na_kriskras,-1,-1,-1,-1,0,compleet,extra_pdfs,
+2026,14,Week 14,True,Ingevoerd.xlsx,72,True,print pdf,84,2,0,12,na_kriskras,-1,-1,-1,-1,2,compleet,extra_pdfs,
+2026,16,Week 16,True,Ingevoerd.xlsx,91,True,print pdf,87,2,8,4,na_kriskras,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,17,Week 17,True,Ingevoerd.xlsx,74,True,print pdf,61,1,17,4,na_kriskras,-1,-1,-1,-1,4,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,18,Week 18,False,,0,False,,0,0,0,0,na_kriskras,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
+2026,19,Week 19,True,Ingevoerd.xlsx,87,True,print pdf,90,2,2,5,na_kriskras,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,2,Week 2,True,Ingevoerd.xlsx,53,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,onbekende_submappen:Herverdeling voor de winkels
+2026,20,Week 20,True,Ingevoerd.xlsx,52,True,PDF Herverderlen naar manuel,27,0,25,0,na_kriskras,-1,-1,-1,-1,3,bruikbaar,many_missing_pdfs,
+2026,21,Week 21,True,Ingevoerd.xlsx,72,False,,0,1,0,0,na_kriskras,-1,-1,-1,-1,17,bruikbaar,loose_pdfs_only,
+2026,23,Week 23,True,Ingevoerd.xlsx,97,False,,0,1,0,0,na_kriskras,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2026,24,Week 24,True,Ingevoerd.xlsx,119,False,,0,2,0,0,na_kriskras,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2026,25,Week 25,True,Ingevoerd.xlsx,62,True,pdf,65,1,2,5,na_kriskras,-1,-1,-1,-1,1,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,26,Week 26,True,Ingevoerd.xlsx,58,True,PDF_Originelen,66,1,2,10,na_kriskras,-1,-1,-1,-1,5,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,27,Week 27,True,Ingevoerd.xlsx,64,True,PDF_Originelen,70,1,2,8,na_kriskras,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,28,Week 28,True,Ingevoerd.xlsx,64,False,,0,1,0,0,na_kriskras,-1,-1,-1,-1,64,bruikbaar,loose_pdfs_only,
+2026,3,Week 3,True,Ingevoerd.xlsx,30,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2026,31,Week 31,True,Ingevoerd.xlsx,18,True,pdf_print,40,1,0,22,na_kriskras,-1,-1,-1,-1,0,compleet,extra_pdfs,
+2026,32,Week 32,True,Ingevoerd.xlsx,41,True,pdf_print,41,1,2,2,na_kriskras,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,35,Week 35,True,Ingevoerd.xlsx,63,True,pdf print,73,2,10,20,na_kriskras,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,36,Week 36,True,Ingevoerd.xlsx,32,True,pdf_print,36,1,0,4,na_kriskras,-1,-1,-1,-1,0,compleet,extra_pdfs,
+2026,37,Week 37,False,,0,True,pdf_print,39,2,0,0,na_kriskras,-1,-1,-1,-1,-1,bruikbaar,excel_missing,geen_ingevoerd_maar_xlsx:Print_nummers.xlsx
+2026,39,Week 39,True,Ingevoerd.xlsx,88,True,pdf_print,71,1,25,8,na_kriskras,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,40,Week 40,True,Ingevoerd.xlsx,112,True,print_pdf,43,1,72,3,na_kriskras,-1,-1,-1,-1,24,bruikbaar,"many_missing_pdfs,extra_pdfs",
+2026,41,Week 41,True,Ingevoerd.xlsx,61,True,pdf_print,77,2,0,16,na_kriskras,-1,-1,-1,-1,0,compleet,extra_pdfs,
+2026,42,Week 42,True,Ingevoerd.xlsx,97,True,pdf_print,98,2,3,4,na_kriskras,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,43,Week 43,True,Ingevoerd.xlsx,53,False,,0,1,0,0,na_kriskras,-1,-1,-1,-1,4,bruikbaar,loose_pdfs_only,
+2026,44,Week 44,True,Ingevoerd.xlsx,85,True,pdf_print,91,1,0,6,na_kriskras,-1,-1,-1,-1,0,compleet,extra_pdfs,
+2026,5,Week 5,False,,0,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:herverdeling van regulier naar outlets.xlsx,Herverdeling week X voor X.xlsx,Opvallende volgnummers.xlsx,Print_nummers.xlsx; onbekende_submappen:invoer"
+2026,6,Week 6,True,Ingevoerd.xlsx,60,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2026,7,Week 7,True,Ingevoerd.xlsx,71,False,,0,2,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,0,bruikbaar,loose_pdfs_only,
+2026,9,Week 9,False,,0,False,,0,1,0,0,voor_bv_samenvoeging,-1,-1,-1,-1,-1,bruikbaar,"excel_missing,loose_pdfs_only","geen_ingevoerd_maar_xlsx:Herverdeling week 9 voor 11.xlsx,Herverdeling week 9 voor 12.xlsx,Herverdeling week 9 voor 13.xlsx,Herverdeling week 9 voor 31.xlsx,Herverdeling week 9 voor 38.xlsx"
+2026,29,week 29,True,Ingevoerd.xlsx,73,False,,0,0,0,0,na_kriskras,-1,-1,-1,-1,4,bruikbaar,pdf_missing,onbekende_submappen:Retouren Smashed Lemon
+2026,30,week 30,False,,0,False,,0,0,0,0,na_kriskras,-1,-1,-1,-1,-1,onbruikbaar,"excel_missing,pdf_missing",
+2026,33,week 33,True,Ingevoerd.xlsx,86,True,print_pdf,93,1,2,9,na_kriskras,-1,-1,-1,-1,0,bruikbaar,"some_missing_pdfs,extra_pdfs",
+2026,34,week 34,True,Ingevoerd.xlsx,71,True,pdf_print,71,2,5,5,na_kriskras,-1,-1,-1,-1,19,bruikbaar,"some_missing_pdfs,extra_pdfs",
