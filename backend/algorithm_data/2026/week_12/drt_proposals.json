@@ -1,0 +1,1419 @@
+[
+  {
+    "volgnummer": "56015",
+    "article_name": "Walker Stripe Blouse",
+    "total_moves": 0,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": []
+  },
+  {
+    "volgnummer": "56491",
+    "article_name": "Adina Abstract Top",
+    "total_moves": 0,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": []
+  },
+  {
+    "volgnummer": "424548",
+    "article_name": "Lexi Flower Blouse",
+    "total_moves": 3,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "9",
+        "to_store": "12",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "12",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "8",
+        "size": "L",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "424595",
+    "article_name": "Rio Flowy Pique Top",
+    "total_moves": 0,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": []
+  },
+  {
+    "volgnummer": "424920",
+    "article_name": "Siham 48 Pant",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "38",
+        "to_store": "31",
+        "size": "XL",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "8",
+        "size": "XL",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "11",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "6",
+        "size": "M",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "424967",
+    "article_name": "Vada Stripe Cardigan",
+    "total_moves": 3,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "11",
+        "to_store": "6",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "6",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "8",
+        "to_store": "9",
+        "size": "L",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "424968",
+    "article_name": "Vesa Knitted Pull",
+    "total_moves": 1,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "8",
+        "to_store": "12",
+        "size": "S",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "424976",
+    "article_name": "Salina Pull Dots",
+    "total_moves": 2,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "9",
+        "to_store": "12",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "12",
+        "size": "M",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "424977",
+    "article_name": "Salina Pull Dots",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "11",
+        "to_store": "13",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "12",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "31",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "8",
+        "size": "XL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "424979",
+    "article_name": "Vienna Structure Cardigan",
+    "total_moves": 3,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "13",
+        "to_store": "8",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "12",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "12",
+        "size": "XL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425009",
+    "article_name": "Tessy Jog Color Pant",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "9",
+        "to_store": "8",
+        "size": "34",
+        "qty": 1
+      },
+      {
+        "from_store": "31",
+        "to_store": "8",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "12",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "11",
+        "size": "44",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425010",
+    "article_name": "Tessy Jog Color Pant",
+    "total_moves": 1,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "31",
+        "to_store": "9",
+        "size": "34",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425011",
+    "article_name": "Colette Belt Jeans L31",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "11",
+        "to_store": "38",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "31",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "13",
+        "size": "42",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "13",
+        "size": "44",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425014",
+    "article_name": "Brielle Flaire Jeans",
+    "total_moves": 6,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "13",
+        "to_store": "38",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "8",
+        "to_store": "31",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "31",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "11",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "6",
+        "size": "44",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "38",
+        "size": "42",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425016",
+    "article_name": "Conny Pressed Crease Jeans L26",
+    "total_moves": 8,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "9",
+        "to_store": "38",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "38",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "38",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "31",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "31",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "31",
+        "size": "42",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "38",
+        "size": "44",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "38",
+        "size": "44",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425018",
+    "article_name": "Sienna Zipper Jeans",
+    "total_moves": 7,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "9",
+        "to_store": "8",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "8",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "31",
+        "to_store": "38",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "38",
+        "size": "42",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "11",
+        "size": "44",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "8",
+        "size": "42",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "8",
+        "size": "44",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425028",
+    "article_name": "Stella Scuba Pant",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "38",
+        "to_store": "12",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "11",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "11",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "12",
+        "size": "42",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425029",
+    "article_name": "Colette Punta Piping Pant",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "12",
+        "to_store": "31",
+        "size": "34",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "6",
+        "size": "34",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "6",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "38",
+        "size": "36",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425031",
+    "article_name": "Terry Stripe Logo Pull",
+    "total_moves": 10,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "11",
+        "to_store": "31",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "31",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "31",
+        "size": "XL",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "8",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "8",
+        "size": "XXL",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "12",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "6",
+        "size": "XL",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "6",
+        "size": "XXL",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "9",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "9",
+        "size": "L",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425032",
+    "article_name": "Terry Stripe Pull",
+    "total_moves": 5,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "31",
+        "to_store": "9",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "8",
+        "to_store": "9",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "8",
+        "to_store": "12",
+        "size": "XL",
+        "qty": 1
+      },
+      {
+        "from_store": "8",
+        "to_store": "6",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "8",
+        "to_store": "9",
+        "size": "L",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425038",
+    "article_name": "Terry Sweater Chestprint",
+    "total_moves": 8,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "6",
+        "to_store": "9",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "9",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "9",
+        "size": "XL",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "31",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "13",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "13",
+        "size": "XL",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "13",
+        "size": "XXL",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "9",
+        "size": "XL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425046",
+    "article_name": "Top Ajour",
+    "total_moves": 2,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "12",
+        "to_store": "6",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "31",
+        "to_store": "38",
+        "size": "S",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425049",
+    "article_name": "Sweet Ribbon Pull",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "38",
+        "to_store": "31",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "31",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "8",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "9",
+        "size": "XL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425052",
+    "article_name": "Cardigan Popcorn",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "9",
+        "to_store": "38",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "31",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "31",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "11",
+        "size": "M",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425137",
+    "article_name": "Cassidy Knitted Pull",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "13",
+        "to_store": "11",
+        "size": "XL/XX",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "9",
+        "size": "XS/S",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "9",
+        "size": "M/L",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "9",
+        "size": "XS/S",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425162",
+    "article_name": "Eve Elastic Pant",
+    "total_moves": 3,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "6",
+        "to_store": "12",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "9",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "38",
+        "size": "38",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425165",
+    "article_name": "Marigold Stepped Jack",
+    "total_moves": 3,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "8",
+        "to_store": "38",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "38",
+        "size": "42",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "31",
+        "size": "44",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425166",
+    "article_name": "Marigold Stepped Jack",
+    "total_moves": 6,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "13",
+        "to_store": "6",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "31",
+        "to_store": "11",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "31",
+        "to_store": "11",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "38",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "38",
+        "size": "42",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "8",
+        "size": "44",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425170",
+    "article_name": "Magnolia Stepped Jack",
+    "total_moves": 6,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "11",
+        "to_store": "6",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "6",
+        "size": "42",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "9",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "9",
+        "size": "44",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "6",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "6",
+        "size": "40",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425569",
+    "article_name": "Blouse Falon",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "11",
+        "to_store": "31",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "31",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "11",
+        "size": "42",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "11",
+        "size": "42",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425579",
+    "article_name": "Cardigan Marie",
+    "total_moves": 2,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "38",
+        "to_store": "6",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "31",
+        "size": "S",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425583",
+    "article_name": "Cardigan Marieke",
+    "total_moves": 4,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "6",
+        "to_store": "31",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "13",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "13",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "8",
+        "size": "M",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425584",
+    "article_name": "Pullover Izzy",
+    "total_moves": 1,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "38",
+        "to_store": "8",
+        "size": "S",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425591",
+    "article_name": "Blouse Darcy",
+    "total_moves": 0,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": []
+  },
+  {
+    "volgnummer": "425425",
+    "article_name": "Ruan LS Electric Pulse Jacket",
+    "total_moves": 0,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": []
+  },
+  {
+    "volgnummer": "425695",
+    "article_name": "Cartly Pant Straight",
+    "total_moves": 1,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "31",
+        "to_store": "11",
+        "size": "36",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425696",
+    "article_name": "Skyler Palmwave Top",
+    "total_moves": 5,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "38",
+        "to_store": "8",
+        "size": "36",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "9",
+        "size": "40",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "12",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "12",
+        "size": "42",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "8",
+        "size": "38",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425708",
+    "article_name": "Maxx Snake Foil Top",
+    "total_moves": 2,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "9",
+        "to_store": "13",
+        "size": "38",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "6",
+        "size": "36",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425714",
+    "article_name": "Bodhi Fantasie Top",
+    "total_moves": 10,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "6",
+        "to_store": "9",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "9",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "13",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "13",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "8",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "8",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "8",
+        "size": "XL",
+        "qty": 1
+      },
+      {
+        "from_store": "31",
+        "to_store": "38",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "38",
+        "size": "XXL",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "9",
+        "size": "XXL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425723",
+    "article_name": "Lino Structuur Jasje",
+    "total_moves": 3,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "12",
+        "to_store": "8",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "8",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "9",
+        "to_store": "11",
+        "size": "S",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425735",
+    "article_name": "Snoes Fantasy Print Top",
+    "total_moves": 7,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "38",
+        "to_store": "9",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "8",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "8",
+        "size": "XL",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "12",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "31",
+        "size": "L",
+        "qty": 1
+      },
+      {
+        "from_store": "13",
+        "to_store": "31",
+        "size": "M",
+        "qty": 1
+      },
+      {
+        "from_store": "38",
+        "to_store": "9",
+        "size": "L",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425749",
+    "article_name": "Lorrie Flow Print Top",
+    "total_moves": 0,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": []
+  },
+  {
+    "volgnummer": "425750",
+    "article_name": "Lupe Glitter Sweat Jack",
+    "total_moves": 1,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "9",
+        "to_store": "12",
+        "size": "S",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "425831",
+    "article_name": "Bobin 3/4 Roses Blouse",
+    "total_moves": 0,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": []
+  },
+  {
+    "volgnummer": "426316",
+    "article_name": "Vivi Kiezelpad Top",
+    "total_moves": 3,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "11",
+        "to_store": "31",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "12",
+        "to_store": "6",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "11",
+        "to_store": "8",
+        "size": "M",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "426317",
+    "article_name": "Doortje Aqua Garden Top",
+    "total_moves": 1,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "31",
+        "to_store": "12",
+        "size": "M",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "volgnummer": "426318",
+    "article_name": "Doortje Aqua Garden Top",
+    "total_moves": 2,
+    "applied_rules": [
+      "Bundle Planner (per BV, ≥3/winkel)"
+    ],
+    "moves": [
+      {
+        "from_store": "8",
+        "to_store": "31",
+        "size": "S",
+        "qty": 1
+      },
+      {
+        "from_store": "6",
+        "to_store": "12",
+        "size": "S",
+        "qty": 1
+      }
+    ]
+  }
+]
