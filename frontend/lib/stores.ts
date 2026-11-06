@@ -15,8 +15,8 @@ export const STORE_LIST: readonly StoreMeta[] = [
   { code: "11", name: "Brunssum" },
   { code: "12", name: "Kerkrade" },
   { code: "13", name: "Budel" },
-  { code: "31", name: "Tilburg" },
-  { code: "38", name: "Tegelen" },
+  { code: "14", name: "Tilburg" },
+  { code: "15", name: "Tegelen" },
 ] as const
 
 export type StoreTotalsInput = Record<string, number>
