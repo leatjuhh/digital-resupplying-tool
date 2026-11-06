@@ -74,6 +74,17 @@ Lees `docs/PROJECT_CONTEXT_INDEX.md` alleen als routekaart naar aanvullende of h
 - Typecheck frontend: `cd frontend && npx tsc --noEmit`
 - E2E smoke: `npm run browser:smoke` (vereist draaiende app + geseede database)
 
+## Filiaalconfiguratie
+
+Filiaalnummers zijn GEEN stabiele identiteit — MC Company heeft ze eerder gewijzigd (filiaalwissel 5 nov 2026, zie `docs/filiaalnummering-migratie-2026.md`) en kan dat opnieuw doen. Baseer nieuwe code nooit op een hardcoded filiaalnummer zonder de centrale configuratie te raadplegen:
+
+- `backend/redistribution/store_config.py` — welke filialen meedoen aan herverdeling (`NON_REDISTRIBUTION_STORES`), datumbewust via `is_redistribution_candidate(code, as_of=...)`.
+- `backend/redistribution/store_profiles.py` — vloeroppervlak/capaciteit per filiaal, zelfde datumbewuste opzet (`get_store_profile(code, as_of=...)`).
+- `bv_mapping.json` (root + `backend/`, identieke inhoud — beide bijwerken) — filiaal → B.V.-toewijzing.
+- `frontend/lib/stores.ts` — `STORE_LIST` voor de batch-invoer-UI.
+
+Een batch bewaart zijn eigen `filiaal_code`/`filiaal_naam`-snapshot (geen centrale stores-tabel); bij herberekening van een oude batch geeft `as_of=batch.created_at.date()` automatisch de destijds geldige configuratie. Voeg bij een volgende filiaalwissel een nieuwe pre-migratie-set toe in plaats van de oude te overschrijven, zodat historische batches correct herberekend kunnen worden.
+
 ## Werkwijze voor toekomstige prompts
 
 - Begin bij `README.md`, `docs/technical/current-state.md` en `todo/master-backlog.md`.
