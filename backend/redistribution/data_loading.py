@@ -6,6 +6,7 @@ worden via dependency injection meegegeven (Fase 3.3).
 """
 import logging
 from collections import defaultdict
+from datetime import date
 from typing import Dict, List, Optional
 
 from sqlalchemy.orm import Session
@@ -20,9 +21,23 @@ from db_models import ArtikelVoorraad, PDFBatch
 logger = logging.getLogger(__name__)
 
 
+def _get_batch_date(db: Session, batch_id: int) -> Optional[date]:
+    """Datum van de batch (voor filiaalwissel-bewuste config-lookups).
+
+    None (→ `is_redistribution_candidate`/`get_store_profile` vallen terug op
+    vandaag) als de batch niet gevonden kan worden; dat raakt alleen nieuwe
+    batches niet, want die hebben altijd een `created_at`.
+    """
+    batch = db.query(PDFBatch).filter(PDFBatch.id == batch_id).first()
+    if not batch or not batch.created_at:
+        return None
+    return batch.created_at.date()
+
+
 def calculate_batch_store_totals(db: Session, batch_id: int) -> Dict[str, int]:
     """Berekent totaalvoorraad per filiaal over alle artikelen in een batch."""
     from sqlalchemy import func as sa_func
+    batch_date = _get_batch_date(db, batch_id)
     rows = (
         db.query(ArtikelVoorraad.filiaal_code, sa_func.sum(ArtikelVoorraad.voorraad))
         .filter(ArtikelVoorraad.batch_id == batch_id)
@@ -32,7 +47,7 @@ def calculate_batch_store_totals(db: Session, batch_id: int) -> Dict[str, int]:
     return {
         code: int(total or 0)
         for code, total in rows
-        if is_redistribution_candidate(code)
+        if is_redistribution_candidate(code, as_of=batch_date)
     }
 
 
@@ -95,6 +110,7 @@ def load_article_data(
     )
 
     bv_config = bv_config if bv_config is not None else get_bv_config()
+    batch_date = _get_batch_date(db, batch_id)
 
     stores_data: Dict[str, Dict] = defaultdict(lambda: {
         'inventory': {},
@@ -110,7 +126,7 @@ def load_article_data(
         # de typechecker Column[str], op runtime een gewone str).
         store_code = str(record.filiaal_code)
 
-        if not is_redistribution_candidate(store_code):
+        if not is_redistribution_candidate(store_code, as_of=batch_date):
             continue
 
         size = str(record.maat)
@@ -141,7 +157,7 @@ def load_article_data(
         store_total = (
             store_total_inventory.get(store_code, 0) if store_total_inventory else 0
         )
-        profile = get_store_profile(store_code, store_profiles)
+        profile = get_store_profile(store_code, store_profiles, as_of=batch_date)
         max_capacity = profile.max_capacity if profile else 0
         store_inv.calculate_metrics(
             batch_total=batch_total,

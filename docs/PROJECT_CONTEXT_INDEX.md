@@ -50,6 +50,7 @@ Deze index onderscheidt expliciet tussen leidende, aanvullende en historische br
 - `docs/guides/batch-system.md`
 - `docs/guides/integration.md`
 - `docs/guides/redistribution-algorithm.md`
+- `docs/filiaalnummering-migratie-2026.md` — filiaalwissel 5 nov 2026, datumbewuste store-config
 - `docs/technical/baseline-algorithm-phase-1.md`
 - `docs/guides/database.md`
 - `docs/guides/authentication-testing.md`
